@@ -1,31 +1,28 @@
 package Passenger;
 
-import Passenger.Baggage.Baggage;
-import Passenger.BoardingPass.BoardingPass;
 import Passenger.Seat.Seat;
+
+import java.io.Serializable;
 
 public class Passenger {
     private int bookNumber;
     private String surName;
     private int IDNo;
     private int creditCardNo;
-    private BoardingPass boardingPass;
+    private BoardingPass bp;
     private String meal;
-
-    /**update */
     private Seat seat;
     private Baggage baggage;
 
     public Passenger() {
     }
 
-    /**update String seat from Seat seat*/
-    public Passenger(int bookNumber, String surName, int IDNo, int creditCardNo, BoardingPass boardingPass, String meal, Seat seat, Baggage baggage) {
+    public Passenger(int bookNumber, String surName, int IDNo, int creditCardNo, BoardingPass bp, String meal, Seat seat, Baggage baggage) {
         this.bookNumber = bookNumber;
         this.surName = surName;
         this.IDNo = IDNo;
         this.creditCardNo = creditCardNo;
-        this.boardingPass = boardingPass;
+        this.bp = bp;
         this.meal = meal;
         this.seat = seat;
         this.baggage = baggage;
@@ -63,12 +60,12 @@ public class Passenger {
         this.creditCardNo = creditCardNo;
     }
 
-    public BoardingPass getBoardingPass() {
-        return boardingPass;
+    public BoardingPass getBp() {
+        return bp;
     }
 
-    public void setBoardingPass(BoardingPass bp) {
-        this.boardingPass = bp;
+    public void setBp(BoardingPass bp) {
+        this.bp = bp;
     }
 
     public String getMeal() {
