@@ -1,4 +1,4 @@
-package Passenger.Baggage;
+package Passenger;
 
 public class Baggage {
     private String BInfo;

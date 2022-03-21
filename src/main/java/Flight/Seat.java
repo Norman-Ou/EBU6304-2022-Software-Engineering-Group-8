@@ -1,4 +1,4 @@
-package Passenger.Seat;
+package Flight;
 
 public class Seat {
     private String sClass;

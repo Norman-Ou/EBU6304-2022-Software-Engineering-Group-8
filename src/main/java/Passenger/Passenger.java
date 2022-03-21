@@ -1,8 +1,6 @@
 package Passenger;
 
-import Passenger.Baggage.Baggage;
-import Passenger.BoardingPass.BoardingPass;
-import Passenger.Seat.Seat;
+import Flight.Seat;
 
 public class Passenger {
     private int bookNumber;

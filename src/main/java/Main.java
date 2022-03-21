@@ -1,12 +1,10 @@
-package Passenger;
-
-import Passenger.Baggage.Baggage;
-import Passenger.BoardingPass.BoardingPass;
-import Passenger.Seat.Seat;
+import Passenger.Baggage;
+import Passenger.BoardingPass;
+import Passenger.Passenger;
+import Flight.Seat;
 import Tools.DataTransfer;
-import com.alibaba.fastjson.JSONObject;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
 
         Seat s1 = new Seat("Normal",12);

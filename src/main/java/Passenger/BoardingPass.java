@@ -1,4 +1,4 @@
-package Passenger.BoardingPass;
+package Passenger;
 
 public class BoardingPass {
     private String BPInfo;

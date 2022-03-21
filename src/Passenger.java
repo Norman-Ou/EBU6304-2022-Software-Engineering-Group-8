@@ -1,6 +1,6 @@
 package Passenger;
 
-import Passenger.Seat.Seat;
+import Flight.Seat.Seat;
 
 import java.io.Serializable;
 
