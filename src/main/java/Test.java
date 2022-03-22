@@ -45,12 +45,9 @@ public class Test {
         //System.out.println(jsonString);
         Utilities.creatFile(jsonString,fullPath);
 
-        // //打开文件 读取文件
-       // JSONArray tempArray = new JSONArray();
-        //String jsonString2=tempArray.toJSONString();
-        //JSONObject temp = Utilities.array2Object(jsonArray);
-        //JSONObject ob = Utilities.fileToJson(temp,fullPath);
-        //System.out.println(ob);
+        //读取文件
+        JSONArray ar2 = Utilities.readJsonFile(fullPath);
+        //System.out.println(ar2);
 
         // //在文件中根据value查找key
         Passenger object1 = BeanUtils.getPassengerByBookingNo(jsonArray,"creditCardNo","2134");
