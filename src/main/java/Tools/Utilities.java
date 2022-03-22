@@ -32,12 +32,15 @@ public class Utilities {
         return str;
     }
 
-    public static <T,K> T searchObject(JSONArray array, String key, K value, Class<T> tClass) {
+    public static <T,K> T searchObject(JSONArray array, String key, K value, Class<T> tClass, boolean delete) {
 
         for (int i = 0; i < (array.size()); i++) {
             JSONObject ob =  (JSONObject)array.get(i);
-            System.out.println(ob.containsValue(value));
-            if (ob.containsValue(value)){
+            if (ob.containsValue(value)) {
+                if (delete){
+                    array.remove(ob);
+                    return ob.toJavaObject(tClass);
+                }else
                 return ob.toJavaObject(tClass);
             }
         }

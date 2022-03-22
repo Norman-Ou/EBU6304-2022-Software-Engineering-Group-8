@@ -1,4 +1,5 @@
 
+import Config.Config;
 import Passenger.Baggage;
 import Passenger.BoardingPass;
 import Passenger.Passenger;
@@ -55,10 +56,12 @@ public class Test {
         //System.out.println(jsonString);
         Utilities.creatFile(jsonString,fullPath);
 
+//        JSONObject jsonObject = JSONObject.parseObject()
+
         //读取文件
 //        String fileName="t10";
 //        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
-        JSONArray ar2 = Utilities.readJsonFile(fullPath);
+//        JSONArray ar2 = Utilities.readJsonFile(fullPath);
 //        System.out.println(ar2);
 
          //在文件中根据value查找key
@@ -67,6 +70,8 @@ public class Test {
         JSONObject obj1   = Utilities.Bean2JSON(object1);
 //        JSONObject obj2   = Utilities.Bean2JSON(object2);
         System.out.println(obj1);
+        JSONArray ar2 = Utilities.readJsonFile(Config.PassengerFile);
+        System.out.println(ar2);
 //        System.out.println(obj2);
 
         // //对JSONObject替换、删、改

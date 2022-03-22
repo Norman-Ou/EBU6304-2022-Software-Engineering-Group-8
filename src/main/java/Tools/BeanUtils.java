@@ -12,14 +12,14 @@ public class BeanUtils{
     //TODO 异常检测 有可能会返回null
     public static Passenger getPassengerByBookingNo(int bookingNum){
         JSONArray array = Utilities.readJsonFile(Config.PassengerFile);
-        return Utilities.searchObject(array, "bookNumber", bookingNum, Passenger.class);
+        return Utilities.searchObject(array, "bookNumber", bookingNum, Passenger.class, true);
     }
 
     //TODO
     public static Passenger getPassengerBySurname_ID(String surName, int IDNo) throws Exception {
         JSONArray array = Utilities.readJsonFile(Config.PassengerFile);
-        Passenger p1 = Utilities.searchObject(array, "surName", surName, Passenger.class);
-        Passenger p2 = Utilities.searchObject(array, "iDNo", IDNo, Passenger.class);
+        Passenger p1 = Utilities.searchObject(array, "surName", surName, Passenger.class, false);
+        Passenger p2 = Utilities.searchObject(array, "iDNo", IDNo, Passenger.class, false);
 
         //iteration 后面的了
         if (p2 == null){
