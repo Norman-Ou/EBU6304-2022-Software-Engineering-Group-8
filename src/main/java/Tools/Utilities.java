@@ -95,16 +95,31 @@ public class Utilities {
         return temp;
     }
 
-    public static JSONObject fileToJson(JSONObject json,String fileName) {
-
-        try (
-                InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
-        ) {
-            json = JSONObject.parseObject(IOUtils.toString(is, "utf-8"));
-        } catch (Exception e) {
-            System.out.println(fileName + "Error" + e);
+    // 用于读取JSON文件
+    public static JSONArray readJsonFile(String filePath) {
+        BufferedReader reader = null;
+        String readJson = "";
+        try {
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+            reader = new BufferedReader(inputStreamReader);
+            String tempString = null;
+            while ((tempString = reader.readLine()) != null) {
+                readJson += tempString;
+            }
+        } catch (IOException e) {
+            System.out.println(filePath + "Error" + e);
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println(filePath + "Error" + e);
+                }
+            }
         }
-        return json;
+        JSONArray array1 = JSONArray.parseArray(readJson);
+        return array1;
     }
 
     public static JSONObject operateJsonObject(JSONObject obj,int function,String key,String value){
