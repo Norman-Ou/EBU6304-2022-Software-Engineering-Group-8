@@ -1,17 +1,15 @@
 
-import Passenger.Passenger;
 import Passenger.Baggage.Baggage;
 import Passenger.BoardingPass.BoardingPass;
+import Passenger.Passenger;
 import Passenger.Seat.Seat;
 import Tools.Utilities;
+import Tools.BeanUtils;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 
 public class Test {
 
@@ -38,25 +36,30 @@ public class Test {
         JSONArray jsonArray = new JSONArray();
         jsonArray.add(jsonObject1);
         jsonArray.add(jsonObject2);
+        //System.out.println(jsonArray);
 
-        //根据第二个参数查找第个参数
-        Utilities.searchPs(jsonArray,"Norman","iDNo");
+        //创建文件
+        String fileName="1";
+        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
+        String jsonString=jsonArray.toJSONString();
+        //System.out.println(jsonString);
+        Utilities.creatFile(jsonString,fullPath);
 
-        //修改passenger2 iDNo为999
-        String jsOb = Utilities.tojson(jsonObject2);
-        String newOb = Utilities.update(jsOb,"iDNo","T375");
-        JSONObject jsonT = JSONObject.parseObject(newOb);
-        //System.out.println(jsonT);
+        // //打开文件 读取文件
+       // JSONArray tempArray = new JSONArray();
+        //String jsonString2=tempArray.toJSONString();
+        //JSONObject temp = Utilities.array2Object(jsonArray);
+        //JSONObject ob = Utilities.fileToJson(temp,fullPath);
+        //System.out.println(ob);
 
-        //写入文件
-        String fileName="t10";
-        String fullPath = "/Users/wangjiayi/Desktop/Java" + File.separator + fileName + ".json";
+        // //在文件中根据value查找key
+        Passenger object1 = BeanUtils.getPassengerByBookingNo(jsonArray,"creditCardNo","2134");
+        JSONObject obj1 = Utilities.Bean2JSON(object1);
+        System.out.println(obj1);
 
-        List<JSONObject> list=new ArrayList<>();
-        list.add(jsonObject1);
-        list.add(jsonT);
+        // //对JSONObject替换、删、改
+        //JSONObject object2 = Utilities.operateJsonObject(obj1,1,"idNo","190899369");
 
-        Utilities.writeLocalJson(fullPath,list);
 
 
     }
