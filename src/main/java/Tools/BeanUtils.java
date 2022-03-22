@@ -36,8 +36,6 @@ public class BeanUtils{
     //TODO 完成这个方法
     public static Passenger getPassengerByIDDocument(JSONObject idDocument){
         JSONArray array = Utilities.readJsonFile(Config.PassengerFile);
-
-
         return null;
     }
 }

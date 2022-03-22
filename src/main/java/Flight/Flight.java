@@ -87,6 +87,22 @@ public class Flight implements Serializable{
      */
     public Flight(){}
 
+    public Flight(String no, String airlines, String origin, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Passenger> seatingList, HashMap<Integer, Integer> checkinList, ArrayList<ExtraOption> extraOptions) {
+        this.no = no;
+        this.airlines = airlines;
+        this.origin = origin;
+        this.destination = destination;
+        this.gate = gate;
+        this.terminal = terminal;
+        this.ETD = ETD;
+        this.ETC = ETC;
+        this.ETA = ETA;
+        this.luggageLimit = luggageLimit;
+        this.seatingList = seatingList;
+        this.checkinList = checkinList;
+        this.extraOptions = extraOptions;
+    }
+
     /**
      * Accessors of flight
      */

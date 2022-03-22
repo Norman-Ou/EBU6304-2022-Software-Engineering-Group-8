@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 
 public class Utilities {
 
-
     /**
      * @param bean Object bean
      * @return
@@ -36,7 +35,6 @@ public class Utilities {
     public static <T,K> T searchObject(JSONArray array, String key, K value, Class<T> tClass) {
 
         for (int i = 0; i < (array.size()); i++) {
-
             JSONObject ob =  (JSONObject)array.get(i);
             System.out.println(ob.containsValue(value));
             if (ob.containsValue(value)){

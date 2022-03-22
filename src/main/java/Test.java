@@ -34,11 +34,11 @@ public class Test {
         Passenger ps5 = new Passenger(137, "B", 13224369, 1, boardingPass, "soup", s2, baggage);
 
         //DataTransfer.Bean2JSON(ps1);
-        JSONObject jsonObject1 =Utilities.Bean2JSON(ps1);
-        JSONObject jsonObject2 =Utilities.Bean2JSON(ps2);
-        JSONObject jsonObject3 =Utilities.Bean2JSON(ps3);
-        JSONObject jsonObject4 =Utilities.Bean2JSON(ps4);
-        JSONObject jsonObject5 =Utilities.Bean2JSON(ps5);
+        JSONObject jsonObject1 = Utilities.Bean2JSON(ps1);
+        JSONObject jsonObject2 = Utilities.Bean2JSON(ps2);
+        JSONObject jsonObject3 = Utilities.Bean2JSON(ps3);
+        JSONObject jsonObject4 = Utilities.Bean2JSON(ps4);
+        JSONObject jsonObject5 = Utilities.Bean2JSON(ps5);
 
         JSONArray jsonArray = new JSONArray();
         jsonArray.add(jsonObject1);
