@@ -11,6 +11,4 @@ public class BeanUtils{
         return (Passenger) Utilities.searchObject(array, value, key,Passenger.class);
 
     }
-
-
 }

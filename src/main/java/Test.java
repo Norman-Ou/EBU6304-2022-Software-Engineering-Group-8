@@ -1,8 +1,8 @@
 
-import Passenger.Baggage.Baggage;
-import Passenger.BoardingPass.BoardingPass;
+import Passenger.Baggage;
+import Passenger.BoardingPass;
 import Passenger.Passenger;
-import Passenger.Seat.Seat;
+import Flight.Seat;
 import Tools.Utilities;
 import Tools.BeanUtils;
 import com.alibaba.fastjson.JSONArray;
@@ -16,9 +16,9 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
 
-        Seat s1 = new Seat("Normal",12);
+        Seat s1 = new Seat(1,"12");
         JSONObject seat1 = Utilities.Bean2JSON(s1);
-        Seat s2 = new Seat("Edith",13);
+        Seat s2 = new Seat(0,"13");
         JSONObject seat2 = Utilities.Bean2JSON(s2);
 
         Baggage baggage = new Baggage("1st Baggage");
