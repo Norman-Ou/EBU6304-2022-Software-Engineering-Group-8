@@ -1,29 +1,36 @@
 import Flight.*;
 import Passenger.*;
+import Tools.BeanUtils;
 import Tools.ToDB;
 import com.alibaba.fastjson.JSONObject;
 
-public class PassengerEnd implements ToDB {
+public class PassengerEnd {
 
-    private final int bookNumber = 1234;
-    private final String surName = "ourz";
-    private final int IDNo = 10119;
+    private static final int bookNumber = 1234;
+    private static final String surName = "ourz";
+    private static final int IDNo = 10119;
 
-    Passenger passenger;
-    Flight flight;
-
-    @Override
-    public JSONObject readFile() {
-        return null;
-    }
-
-    @Override
-    public void writeFile() {
-
-    }
+//    Passenger getInfoByBookingNo(int BookingNum){
+////        return BeanUtils.getPassengerByBookingNo(bookNumber);
+//    }
 
     public static void main(String[] args) {
+        int choice = 1;
+        Passenger passenger;
 
+
+        switch (choice){
+
+            case 0:
+//                passenger = BeanUtils.getPassengerByBookingNo(bookNumber);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
 
     }
 }

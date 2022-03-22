@@ -56,13 +56,18 @@ public class Test {
         Utilities.creatFile(jsonString,fullPath);
 
         //读取文件
+//        String fileName="t10";
+//        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
         JSONArray ar2 = Utilities.readJsonFile(fullPath);
-        //System.out.println(ar2);
+//        System.out.println(ar2);
 
-        // //在文件中根据value查找key
-        Passenger object1 = BeanUtils.getPassengerByBookingNo(jsonArray,"creditCardNo","2134");
-        JSONObject obj1 = Utilities.Bean2JSON(object1);
+         //在文件中根据value查找key
+        Passenger object1 = BeanUtils.getPassengerByBookingNo("name",2324);
+        Passenger object2 = BeanUtils.getPassengerBySurname(ar2,"surName","A");
+        JSONObject obj1   = Utilities.Bean2JSON(object1);
+        JSONObject obj2   = Utilities.Bean2JSON(object2);
         System.out.println(obj1);
+        System.out.println(obj2);
 
         // //对JSONObject替换、删、改
         //JSONObject object2 = Utilities.operateJsonObject(obj1,1,"idNo","190899369");
@@ -70,6 +75,4 @@ public class Test {
 
 
     }
-
-
 }

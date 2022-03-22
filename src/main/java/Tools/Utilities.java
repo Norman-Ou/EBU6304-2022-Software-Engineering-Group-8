@@ -33,31 +33,17 @@ public class Utilities {
         return str;
     }
 
-    public static <T> T searchObject(JSONArray array, String key, String value, Class<T> tClass) {
-
-        JSONObject temp = new JSONObject();
+    public static <T,K> T searchObject(JSONArray array, String key, K value, Class<T> tClass) {
 
         for (int i = 0; i < (array.size()); i++) {
-            Object obj =  array.get(i);
-            JSONObject ob= (JSONObject) obj;
-            if (ob.get(key) == value) {
-                //        temp = ob;
-                //    }
-                if (ob.containsKey(key)) {
-                    temp = ob;
-                    //System.out.println(ob);
 
-                    if (ob.containsValue(value)) {
-                        temp = ob;
-                        //System.out.println(ob);
-                    }
-                }
-
-
-
+            JSONObject ob =  (JSONObject)array.get(i);
+            System.out.println(ob.containsValue(value));
+            if (ob.containsValue(value)){
+                return ob.toJavaObject(tClass);
             }
         }
-        return (T) temp.toJavaObject(tClass);
+        return null;
     }
 
     public static <T> T json2Bean (JSONObject jsonObject, Class<T> tClass){
@@ -120,9 +106,9 @@ public class Utilities {
 
         JSONObject object=new JSONObject();
         if(function == 1){
-            obj.put(key,value);
+            obj.replace(key,value);
         } else if (function == 2) {
-            obj.put(key,value);
+            obj.replace(key,value);
         }else if (function == 3){
             obj.remove(key);
         }
