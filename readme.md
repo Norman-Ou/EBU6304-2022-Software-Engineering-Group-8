@@ -22,4 +22,4 @@ src
 
 1. Install `jdk1.8.0`
 2. Import this project into `IDEA`
-3. Go into `Main.java` and run the `main` method
+3. Go into `PassengerEnd.java` and run the `main` method

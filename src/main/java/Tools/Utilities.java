@@ -28,12 +28,7 @@ public class Utilities {
      */
     //Bean转换为JSON，返回JSONObject
     public static JSONObject Bean2JSON(Object bean){
-
-        JSONObject jsonObject = (JSONObject) JSON.toJSON(bean);
-        String beanJ = jsonObject.toString();
-        //System.out.println(beanJ);
-
-        return jsonObject;
+        return (JSONObject) JSON.toJSON(bean);
     }
 
     /**
@@ -44,7 +39,6 @@ public class Utilities {
     public static String tojson(Object bean) {
 
         String str = JSON.toJSONString(bean, true);
-        //System.out.println(str);
 
         return str;
     }
