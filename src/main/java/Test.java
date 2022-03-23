@@ -1,5 +1,6 @@
 
 import Config.Config;
+import Flight.Flight;
 import Passenger.Baggage;
 import Passenger.BoardingPass;
 import Passenger.Passenger;
@@ -13,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Test {
-
 
     public static void main(String[] args) throws Exception {
 
@@ -49,27 +49,19 @@ public class Test {
         jsonArray.add(jsonObject5);
         //System.out.println(jsonArray);
 
-        JSONArray arrayPassenger = Utilities.readJsonFile(Config.PassengerFile);
-        Utilities.WritePassengerBean(jsonArray);
-        //Utilities.WritePassengerBean(ps2);
-        //Utilities.WritePassengerBean(ps3);
-
-        JSONArray arrayFlight = Utilities.readJsonFile(Config.FlightFile);
-        Utilities.WriteFlightBean(arrayFlight);
-
-
         //创建Passenger文件
-        //String fileName1="Passenger";
-        //String fullPath1 = "src/main/resources" + File.separator + fileName1 + ".json";
-  //      String jsonString=jsonArray.toJSONString();
-        //System.out.println(jsonString);
-  //      Utilities.creatFile(jsonString,fullPath);
+        Utilities.creatFile(jsonArray);
 
-        //JSONObject jsonObject = JSONObject.parseObject()
+        //读取文件
+        String fileName="Passenger";
+        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
 
-        //创建Flight文件
-        String fileName2="Flight";
-        String fullPath2 = "src/main/resources" + File.separator + fileName2 + ".json";
+        //写入新的Passenger
+        BeanUtils.WritePassengerBean(ps1);
+
+        //写入新的Flight
+        Flight flight1 = new Flight();
+        BeanUtils.WriteFlightBean(flight1);
 
 
         //读取文件
@@ -86,9 +78,6 @@ public class Test {
  //       System.out.println(obj1);
         //JSONArray array2 = Utilities.readJsonFile(Config.PassengerFile);
 
-        //System.out.println(array2);
-        //System.out.println(obj2);
-
         // //对JSONObject替换、改
  //       JSONObject object22 = Utilities.operateJsonObject(obj1,1,"iDNo","13224369");
  //       System.out.println(object22);
@@ -97,8 +86,6 @@ public class Test {
  //       Utilities.deletePs(jsonArray,obj1);
  //       String jStr =jsonArray.toJSONString();
  //       Utilities.creatFile(jStr,fullPath);
-
-
 
     }
 }

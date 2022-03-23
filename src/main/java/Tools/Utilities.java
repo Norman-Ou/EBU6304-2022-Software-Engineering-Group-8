@@ -1,5 +1,6 @@
 package Tools;
 
+import Config.Config;
 import Flight.Seat;
 import Passenger.Passenger;
 import Passenger.*;
@@ -9,11 +10,18 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.IOUtils;
 
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.*;
 
 
 public class Utilities {
@@ -59,7 +67,11 @@ public class Utilities {
     }
 
 
-    public static void creatFile(String str, String fullPath) throws IOException {
+    public static void creatFile(JSONArray arrayPassenger) throws IOException {
+
+        String fileName1 = "Passenger";
+        String fullPath = "src/main/resources" + File.separator + fileName1 + ".json";
+        String jsonString=arrayPassenger.toJSONString();
 
         // Creat a file
         File file = new File(fullPath);
@@ -73,7 +85,7 @@ public class Utilities {
 
         // Write
         Writer write = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
-        write.write(str);
+        write.write(jsonString);
         write.flush();
         write.close();
 
@@ -138,25 +150,4 @@ public class Utilities {
         }
         return null;
     }
-
-    public static void WritePassengerBean(JSONArray jsonArray) throws IOException {
-
-        String fileName1 = "Passenger";
-        String fullPath1 = "src/main/resources" + File.separator + fileName1 + ".json";
-
-        String jsonString = jsonArray.toJSONString();
-        creatFile(jsonString,fullPath1);
-
-    }
-
-    public static void WriteFlightBean(JSONArray jsonArray) throws IOException {
-
-        String fileName1 = "Flight";
-        String fullPath1 = "src/main/resources" + File.separator + fileName1 + ".json";
-
-        String jsonString = jsonArray.toJSONString();
-        creatFile(jsonString,fullPath1);
-
-    }
-
 }
