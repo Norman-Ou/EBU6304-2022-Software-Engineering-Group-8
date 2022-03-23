@@ -49,14 +49,28 @@ public class Test {
         jsonArray.add(jsonObject5);
         //System.out.println(jsonArray);
 
-        //创建文件
-        String fileName="t10";
-        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
+        JSONArray arrayPassenger = Utilities.readJsonFile(Config.PassengerFile);
+        Utilities.WritePassengerBean(jsonArray);
+        //Utilities.WritePassengerBean(ps2);
+        //Utilities.WritePassengerBean(ps3);
+
+        JSONArray arrayFlight = Utilities.readJsonFile(Config.FlightFile);
+        Utilities.WriteFlightBean(arrayFlight);
+
+
+        //创建Passenger文件
+        //String fileName1="Passenger";
+        //String fullPath1 = "src/main/resources" + File.separator + fileName1 + ".json";
   //      String jsonString=jsonArray.toJSONString();
         //System.out.println(jsonString);
   //      Utilities.creatFile(jsonString,fullPath);
 
         //JSONObject jsonObject = JSONObject.parseObject()
+
+        //创建Flight文件
+        String fileName2="Flight";
+        String fullPath2 = "src/main/resources" + File.separator + fileName2 + ".json";
+
 
         //读取文件
         //String fileName="t10";
