@@ -105,9 +105,8 @@ public class Utilities {
 
     public static JSONObject operateJsonObject(JSONObject obj,int function,String key,String value){
 
-        JSONObject object=new JSONObject();
         if(function == 1){
-            obj.replace(key,value);
+            obj.put(key,value);
         } else if (function == 2) {
             obj.replace(key,value);
         }else if (function == 3){
@@ -115,6 +114,17 @@ public class Utilities {
         }
 
         return obj;
+    }
+    public static JSONArray deletePs(JSONArray jsonArray,JSONObject obj1){
+
+        for(int i = 1; i < (jsonArray.size());i++){
+            if(jsonArray.getJSONObject(i).equals(obj1)){
+                jsonArray.remove(obj1);
+                System.out.println(jsonArray);
+                return jsonArray;
+            }
+        }
+        return null;
     }
 
 }

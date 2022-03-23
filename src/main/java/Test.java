@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Test {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         Seat s1 = new Seat(1,"12");
         JSONObject seat1 = Utilities.Bean2JSON(s1);
@@ -50,32 +50,39 @@ public class Test {
         //System.out.println(jsonArray);
 
         //创建文件
-        String fileName="1";
+        String fileName="t10";
         String fullPath = "src/main/resources" + File.separator + fileName + ".json";
-        String jsonString=jsonArray.toJSONString();
+  //      String jsonString=jsonArray.toJSONString();
         //System.out.println(jsonString);
-        Utilities.creatFile(jsonString,fullPath);
+  //      Utilities.creatFile(jsonString,fullPath);
 
-//        JSONObject jsonObject = JSONObject.parseObject()
+        //JSONObject jsonObject = JSONObject.parseObject()
 
         //读取文件
-//        String fileName="t10";
-//        String fullPath = "src/main/resources" + File.separator + fileName + ".json";
-//        JSONArray ar2 = Utilities.readJsonFile(fullPath);
-//        System.out.println(ar2);
+        //String fileName="t10";
+        //String fullPath = "src/main/resources" + File.separator + fileName + ".json";
+        //JSONArray ar2 = Utilities.readJsonFile(fullPath);
+        //System.out.println(ar2);
 
          //在文件中根据value查找key
-        Passenger object1 = BeanUtils.getPassengerByBookingNo(2324);
-//        Passenger object2 = BeanUtils.getPassengerBySurname("A");
-        JSONObject obj1   = Utilities.Bean2JSON(object1);
-//        JSONObject obj2   = Utilities.Bean2JSON(object2);
-        System.out.println(obj1);
-        JSONArray ar2 = Utilities.readJsonFile(Config.PassengerFile);
-        System.out.println(ar2);
-//        System.out.println(obj2);
+ //       Passenger object1 = BeanUtils.getPassengerByBookingNo(877);
+        //Passenger object2 = BeanUtils.getPassengerBySurname_ID("Edith",19089123);
+//        JSONObject obj1   = Utilities.Bean2JSON(object1);
+        //JSONObject obj2   = Utilities.Bean2JSON(object2);
+ //       System.out.println(obj1);
+        //JSONArray array2 = Utilities.readJsonFile(Config.PassengerFile);
 
-        // //对JSONObject替换、删、改
-        //JSONObject object2 = Utilities.operateJsonObject(obj1,1,"idNo","190899369");
+        //System.out.println(array2);
+        //System.out.println(obj2);
+
+        // //对JSONObject替换、改
+ //       JSONObject object22 = Utilities.operateJsonObject(obj1,1,"iDNo","13224369");
+ //       System.out.println(object22);
+
+        //删除某个passenger的全部信息
+ //       Utilities.deletePs(jsonArray,obj1);
+ //       String jStr =jsonArray.toJSONString();
+ //       Utilities.creatFile(jStr,fullPath);
 
 
 
