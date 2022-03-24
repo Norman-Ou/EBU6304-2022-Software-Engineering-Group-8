@@ -1,5 +1,3 @@
-package Tools;
-
 import Passenger.Passenger;
 import Passenger.BoardingPass;
 
