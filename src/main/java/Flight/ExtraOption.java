@@ -2,6 +2,12 @@ package Flight;
 
 import Passenger.CreditCard;
 
+/**
+ * This is the basic Passenger information class
+ *
+ * @author Jiacheng Li
+ * @version 0.2 March 24th, 2022
+ */
 public class ExtraOption {
     /**
      * Kind of a certain extra option.<br/><br/>

@@ -1,20 +1,36 @@
 package Passenger;
 
+
+/**
+ * This is the basic Passenger information class
+ *
+ * @author Jiayi Wang
+ * @author Ruizhe Ou
+ * @author Jiacheng Li
+ * @version 0.2 March 24th, 2022
+ */
 public class Baggage {
-    private String BInfo;
+    /**
+     * Baggage number.<br/><br/>
+     * Default Value: null
+     */
+    private String baggageNo;
 
-    public Baggage(String BInfo) {
-        this.BInfo = BInfo;
-    }
+    /**
+     * Default constructor
+     */
+    public Baggage() {}
 
+    public Baggage(String baggageNo) {this.baggageNo = baggageNo;}
+    /**
+     * Accessors of Baggage class
+     */
     public String getBInfo() {
-        return BInfo;
+        return baggageNo;
     }
 
-    public void setBInfo(String BInfo) {
-        this.BInfo = BInfo;
-    }
-
-    public Baggage() {
-    }
+    /**
+     * Modifiers of Baggage class
+     */
+    public void setBInfo(String baggageNo) {this.baggageNo = baggageNo;}
 }

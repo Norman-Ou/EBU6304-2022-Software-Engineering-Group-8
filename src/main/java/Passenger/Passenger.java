@@ -1,97 +1,78 @@
 package Passenger;
 
-import Flight.Seat;
 
+import Flight.ExtraOption;
+import java.util.*;
+
+/**
+ * This is the basic Passenger information class
+ *
+ * @author Jiayi Wang
+ * @author Ruizhe Ou
+ * @author Jiacheng Li
+ * @version 0.2 March 24th, 2022
+ */
 public class Passenger {
-    private int bookNumber;
+    /**
+     * Booking number of the passenger.<br/><br/>
+     * Default Value: null
+     */
+    private String bookNumber;
+    /**
+     * Personal id of the passenger.<br/><br/>
+     * Default Value: null
+     */
+    private String passengerId;
+    /**
+     * Surname of the passenger.<br/><br/>
+     * Default Value: null
+     */
     private String surName;
-    private int IDNo;
-    private int creditCardNo;
+    /**
+     * Boarding pass object of this passenger.<br/><br/>
+     * Default Value: null
+     */
     private BoardingPass boardingPass;
-    private String meal;
-
-    /**update */
-    private Seat seat;
+    /**
+     * Baggage information object of this passenger.<br/><br/>
+     * Default Value: null
+     */
     private Baggage baggage;
+    /**
+     * Credit card object of this passenger.<br/><br/>
+     * Default Value: null
+     */
+    private CreditCard creditCard;
+    /**
+     * Extra option list of this passenger.<br/><br/>
+     * Default Value: empty ArrayList
+     */
+    private ArrayList<ExtraOption> extraOptions = new ArrayList<>();
 
-    public Passenger() {
-    }
+    /**
+     * Default Constructor
+     */
+    public Passenger() {}
 
-    /**update String seat from Seat seat*/
-    public Passenger(int bookNumber, String surName, int IDNo, int creditCardNo, BoardingPass boardingPass, String meal, Seat seat, Baggage baggage) {
-        this.bookNumber = bookNumber;
-        this.surName = surName;
-        this.IDNo = IDNo;
-        this.creditCardNo = creditCardNo;
-        this.boardingPass = boardingPass;
-        this.meal = meal;
-        this.seat = seat;
-        this.baggage = baggage;
-    }
+    /**
+     * Accessors of Passenger class
+     */
+    public String getBookNumber() {return bookNumber;}
+    public String getPassengerId() {return passengerId;}
+    public String getSurName() {return surName;}
+    public BoardingPass getBoardingPass() {return boardingPass;}
+    public Baggage getBaggage() {return baggage;}
+    public CreditCard getCreditCard() {return creditCard;}
+    public ArrayList<ExtraOption> getExtraOptions() {return extraOptions;}
 
-    public int getBookNumber() {
-        return bookNumber;
-    }
-
-    public void setBookNumber(int bookNumber) {
-        this.bookNumber = bookNumber;
-    }
-
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
-
-    public int getIDNo() {
-        return IDNo;
-    }
-
-    public void setIDNo(int IDNo) {
-        this.IDNo = IDNo;
-    }
-
-    public int getCreditCardNo() {
-        return creditCardNo;
-    }
-
-    public void setCreditCardNo(int creditCardNo) {
-        this.creditCardNo = creditCardNo;
-    }
-
-    public BoardingPass getBoardingPass() {
-        return boardingPass;
-    }
-
-    public void setBoardingPass(BoardingPass bp) {
-        this.boardingPass = bp;
-    }
-
-    public String getMeal() {
-        return meal;
-    }
-
-    public void setMeal(String meal) {
-        this.meal = meal;
-    }
-
-    public Seat getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Seat seat) {
-        this.seat = seat;
-    }
-
-    public Baggage getBaggage() {
-        return baggage;
-    }
-
-    public void setBaggage(Baggage baggage) {
-        this.baggage = baggage;
-    }
-
-
+    /**
+     * Modifiers of Passenger class
+     */
+    public void setBookNumber(String bookNumber) {this.bookNumber = bookNumber;}
+    public void setPassengerId(String passengerId) {this.passengerId = passengerId;}
+    public void setSurName(String surName) {this.surName = surName;}
+    public void setBoardingPass(BoardingPass boardingPass) {this.boardingPass = boardingPass;}
+    public void setBaggage(Baggage baggage) {this.baggage = baggage;}
+    public void setCreditCard(CreditCard creditCard) {this.creditCard = creditCard;}
+    public void setExtraOptions(ArrayList<ExtraOption> extraOptions) {this.extraOptions = extraOptions;}
 }
