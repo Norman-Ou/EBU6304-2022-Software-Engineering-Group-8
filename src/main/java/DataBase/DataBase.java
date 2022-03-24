@@ -1,4 +1,4 @@
-package DataBase.Base;
+package DataBase;
 
 import Config.Config;
 import Passenger.Passenger;
@@ -13,16 +13,22 @@ import java.nio.charset.StandardCharsets;
 /**
  * 实现对JavaArray的增啥读写
  * */
-public class Base {
+public class DataBase {
+
+    private String filePath;
+
+    protected DataBase(String filePath) {
+        this.filePath = filePath;
+    }
 
     //读的时候创建空对象
-    public Base(){}
+    protected DataBase(){}
 
     //TODO Iteration Later
     /**
      * 读取全部的JSONArray
      * */
-    private JSONArray readFile(String filePath) {
+    private JSONArray readFile() {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8));
             return JSON.parseArray(reader.readLine());
@@ -43,7 +49,7 @@ public class Base {
     /**
      * 复写JSONArray
      * */
-    private void writeFile(String filePath, JSONArray array) throws IOException {
+    private void writeFile(JSONArray array) throws IOException {
         String jsonString=array.toJSONString();
 
         // Creat a file
@@ -63,8 +69,8 @@ public class Base {
         write.close();
     }
 
-    private <T, K> T searchObject(String filePath, String key, K value, Class<T> tClass, boolean isDelete) {
-        JSONArray array = readFile(filePath);
+    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) {
+        JSONArray array = readFile();
         for (int i = 0; i < (array.size()); i++) {
             JSONObject ob = (JSONObject) array.get(i);
             if (ob.containsValue(value)) {
@@ -78,15 +84,30 @@ public class Base {
         return null;
     }
 
+    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) {
+        JSONArray array = readFile();
+        for (int i = 0; i < (array.size()); i++) {
+            JSONObject ob = (JSONObject) array.get(i);
+            if (ob.equals(jsonObject)){
+                if (isDelete){
+                    array.remove(ob);
+                    return ob.toJavaObject(tClass);
+                }
+                return ob.toJavaObject(tClass);
+            }
+        }
+        return null;
+    }
+
     //TODO 添加前要检查是否已经存在有一样的，如果有一样时，是再存一个新的还是不存新的了
     /**
      * 向指定的文档路径中增加传入的JSONObject, 对应 Add 方法
      * */
-    public void addObject(String filePath, JSONObject jsonObject){
-        JSONArray jsonArray = readFile(filePath);
+    protected void addObject(JSONObject jsonObject){
+        JSONArray jsonArray = readFile();
         jsonArray.add(jsonObject);
         try {
-            writeFile(filePath, jsonArray);
+            writeFile(jsonArray);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,15 +117,23 @@ public class Base {
      * 从指定的文档路径中删除对应的JSONObject, 对应 Remove 方法 <br/>
      * 删除成功返回选择删除的Object，删除不成功返回null
      * */
-    public<T,K> T removeObject(String filePath, String key, K value, Class<T> tClass) {
-        return searchObject(filePath, key, value, tClass, true);
+    protected <T,K> T removeObject(String key, K value, Class<T> tClass) {
+        return searchObject(key, value, tClass, true);
     }
 
     /**
      * 从指定的文档路径中查找包含对应key-value对的JSONObject, 对应 Get 方法
      * */
-    public<T, K> T getObject(String filePath, String key, K value, Class<T> tClass) {
-        return searchObject(filePath, key, value, tClass, false);
+    protected <T, K> T getObject(String key, K value, Class<T> tClass) {
+        return searchObject(key, value, tClass, false);
+    }
+
+    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) {
+        return searchObject(jsonObject, tClass, false);
+    }
+
+    protected JSONArray getAllObject() {
+        return readFile();
     }
 
 
