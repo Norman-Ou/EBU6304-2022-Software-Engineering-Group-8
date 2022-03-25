@@ -24,6 +24,10 @@ public class DataBase {
     //读的时候创建空对象
     protected DataBase(){}
 
+    private JSONObject beanToJSON(Object bean) {
+        return (JSONObject) JSON.toJSON(bean);
+    }
+
     //TODO Iteration Later
     /**
      * 读取全部的JSONArray
@@ -103,7 +107,8 @@ public class DataBase {
     /**
      * 向指定的文档路径中增加传入的JSONObject, 对应 Add 方法
      * */
-    protected void addObject(JSONObject jsonObject){
+    protected<T> void addObject(T object){
+        JSONObject jsonObject = (JSONObject) JSON.toJSON(object);
         JSONArray jsonArray = readFile();
         jsonArray.add(jsonObject);
         try {
@@ -119,6 +124,10 @@ public class DataBase {
      * */
     protected <T,K> T removeObject(String key, K value, Class<T> tClass) {
         return searchObject(key, value, tClass, true);
+    }
+
+    protected <T> T removeObject(T object, Class<T> tClass) {
+        return searchObject(beanToJSON(object), tClass, true);
     }
 
     /**

@@ -6,15 +6,16 @@ import Tools.Utilities;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+
 public class pDB{
 
-    public static Passenger getPassengerByBookingNo(int bookingNum){
+    public static Passenger loadPassengerByBookingNo(int bookingNum){
         DataBase dataBase = new DataBase(Config.PassengerFile);
         return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
     }
 
     //TODO
-    public static Passenger getPassengerBySurname_ID(String surName, int IDNo) throws Exception {
+    public static Passenger loadPassengerBySurname_ID(String surName, int IDNo) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
         Passenger p1 = dataBase.getObject("surName", surName, Passenger.class);
         Passenger p2 = dataBase.getObject("iDNo", IDNo, Passenger.class);
@@ -30,10 +31,19 @@ public class pDB{
     }
 
     //TODO 完成这个方法
-    public static Passenger getPassengerByIDDocument(JSONObject idDocument){
+    public static Passenger loadPassengerByIDDocument(JSONObject idDocument){
         DataBase dataBase = new DataBase(Config.PassengerFile);
         return dataBase.getObject(idDocument, Passenger.class);
     }
 
+    //TODO 后期返回值改为 boolean 成功返回 true
+    public static void removePassenger(Passenger passenger){
+        DataBase dataBase = new DataBase(Config.PassengerFile);
+        dataBase.removeObject(passenger, Passenger.class);
+    }
 
+    public static void storePassenger(Passenger passenger){
+        DataBase dataBase = new DataBase(Config.PassengerFile);
+        dataBase.addObject(passenger);
+    }
 }
