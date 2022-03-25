@@ -11,7 +11,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 实现对JavaArray的增啥读写
+ * 实现对JavaArray的增删读写
  * */
 public class Base {
 
