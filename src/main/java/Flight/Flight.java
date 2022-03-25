@@ -1,56 +1,60 @@
 package Flight;
 
-import Passenger.Passenger;
-
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * This is the basic Flight information class
+ *
+ * @author Jiacheng Li
+ * @version 0.2 March 24th, 2022
+ */
 public class Flight implements Serializable{
     /**
      * Number of the flight.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String no = "default";
+    private String flightNo;
     /**
      * Airlines which the flight belongs with.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String airlines = "default";
+    private String airlines;
     /**
      * Name of the origin.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String origin = "default";
+    private String origin;
     /**
      * Name of the destination.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String destination = "default";
+    private String destination;
     /**
      * Gate where passengers wait for boarding.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String gate = "default";
+    private String gate;
     /**
      * Terminal which passenger should go to.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String terminal = "default";
+    private String terminal;
     /**
      * Estimated Time of Departure.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String ETD = "default";
+    private String ETD;
     /**
      * Estimated Time of Close.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String ETC = "default";
+    private String ETC;
     /**
      * Estimated Time of Arrival.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String ETA = "default";
+    private String ETA;
     /**
      * Limitation of a simple passenger for luggage consigning.<br/><br/>
      * Default Value: 60
@@ -58,22 +62,10 @@ public class Flight implements Serializable{
     private int luggageLimit = 60;
     /**
      * Seating list for a certain flight.<br/>
-     * (Key, Value) -> (seatNo, Passenger)<br/><br/>
+     * (Key, Value) -> (seatNo, Seat)<br/><br/>
      * Default Value: empty HashMap
      */
-    private HashMap<String, Passenger> seatingList = new HashMap<>();
-    /**
-     * Check-in list of a certain flight.<br/>
-     * (Key, Value) -> (passengerId, checkinStatus)<br/><br/>
-     *
-     * Status No: <br/>
-     * <b>-1</b> means <b>Not check-in yet</b><br/>
-     * <b>0</b> means <b>Check-in complete but not onboard</b><br/>
-     * <b>1</b> means <b>Check-in and onboard</b><br/><br/>
-     *
-     * Default Value: empty HashMap
-     */
-    private HashMap<Integer, Integer> checkinList = new HashMap<>();
+    private ArrayList<Seat> seatingList = new ArrayList<>();
     /**
      * Extra options list of a flight.<br/>
      * Each element means a kind of ExtraOption of <b>seating</b> or <b>meal<b/>.<br/><br/>
@@ -87,8 +79,20 @@ public class Flight implements Serializable{
      */
     public Flight(){}
 
-    public Flight(String no, String airlines, String origin, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Passenger> seatingList, HashMap<Integer, Integer> checkinList, ArrayList<ExtraOption> extraOptions) {
-        this.no = no;
+    public Flight(String flightNo,
+                  String airlines,
+                  String origin,
+                  String destination,
+                  String gate,
+                  String terminal,
+                  String ETD,
+                  String ETC,
+                  String ETA,
+                  int luggageLimit,
+                  ArrayList<Seat> seatingList,
+                  ArrayList<ExtraOption> extraOptions)
+    {
+        this.flightNo = flightNo;
         this.airlines = airlines;
         this.origin = origin;
         this.destination = destination;
@@ -99,14 +103,13 @@ public class Flight implements Serializable{
         this.ETA = ETA;
         this.luggageLimit = luggageLimit;
         this.seatingList = seatingList;
-        this.checkinList = checkinList;
         this.extraOptions = extraOptions;
     }
 
     /**
      * Accessors of flight
      */
-    public String getNo(){return no;}
+    public String getFlightNo() {return flightNo;}
     public String getAirlines(){return airlines;}
     public String getOrigin(){return origin;}
     public String getDestination(){return destination;}
@@ -116,15 +119,14 @@ public class Flight implements Serializable{
     public String getETC(){return ETC;}
     public String getETA(){return ETA;}
     public int getLuggageLimit(){return luggageLimit;}
-    public HashMap<String, Passenger> getSeatingList(){return seatingList;}
-    public HashMap<Integer, Integer> getCheckinList(){return checkinList;}
+    public ArrayList<Seat> getSeatingList() {return seatingList;}
     public ArrayList<ExtraOption> getExtraOptions(){return extraOptions;}
 
     /**
      * Modifiers of flight
      *
      */
-    public void setNo(String no){this.no = no;}
+    public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
     public void setAirlines(String airlines){this.airlines = airlines;}
     public void setOrigin(String origin){this.origin = origin;}
     public void setDestination(String destination){this.destination = destination;}
@@ -134,7 +136,6 @@ public class Flight implements Serializable{
     public void setETC(String ETC){this.ETC = ETC;}
     public void setETA(String ETA){this.ETA = ETA;}
     public void setLuggageLimit(int luggageLimit){this.luggageLimit = luggageLimit;}
-    public void setSeatingList(HashMap<String, Passenger> seatingList){this.seatingList = seatingList;}
-    public void setCheckinList(HashMap<Integer, Integer> checkinList){this.checkinList = checkinList;}
+    public void setSeatingList(ArrayList<Seat> seatingList) {this.seatingList = seatingList;}
     public void setExtraOptions(ArrayList<ExtraOption> extraOptions){this.extraOptions = extraOptions;}
 }

@@ -1,5 +1,13 @@
 package Flight;
 
+import Passenger.Passenger;
+
+/**
+ * This is the basic Seat information class
+ *
+ * @author Jiacheng Li
+ * @version 1.2 March 24th, 2022
+ */
 public class Seat {
     /**
      * Class of a certain seat.<br/><br/>
@@ -12,9 +20,9 @@ public class Seat {
     private int seatClass = -1;
     /**
      * Seat number.<br/><br/>
-     * Default Value: "default"
+     * Default Value: null
      */
-    private String seatNo = "default";
+    private String seatNo;
     /**
      * Flight number.<br/><br/>
      * Default Value: "default"
@@ -30,11 +38,30 @@ public class Seat {
      * Default Value: false
      */
     private boolean lockedStatus = false;
+    /**
+     * Passenger of this seat.<br/><br/>
+     * Default Value: null
+     */
+    private Passenger passenger;
+    /**
+     * Check-in status of the passenger.<br/><br/>
+     *
+     * Status No: <br/>
+     * <b>-1</b> means <b>Not check-in yet</b><br/>
+     * <b>0</b> means <b>Check-in complete but not onboard</b><br/>
+     * <b>1</b> means <b>Check-in and onboard</b><br/><br/>
+     *
+     * Default Value: -1
+     */
+    private int checkinStatus = -1;
 
+    /**
+     * Default constructor
+     */
     public Seat() {}
 
-    public Seat(int sClass, String seatNo) {
-        this.seatClass = sClass;
+    public Seat(int seatClass, String seatNo) {
+        this.seatClass = seatClass;
         this.seatNo = seatNo;
     }
 
@@ -46,6 +73,8 @@ public class Seat {
     public String getFlightNo() {return flightNo;}
     public int getPassengerID() {return passengerID;}
     public boolean isLockedStatus() {return lockedStatus;}
+    public Passenger getPassenger() {return passenger;}
+    public int getCheckinStatus() {return checkinStatus;}
 
     /**
      * Modifiers of Seat
@@ -54,5 +83,7 @@ public class Seat {
     public void setSeatNo(String seatNo) {this.seatNo = seatNo;}
     public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
     public void setPassengerID(int passengerID) {this.passengerID = passengerID;}
-    public void setLockStatus(boolean lockStatus) {this.lockedStatus = lockStatus;}
+    public void setLockedStatus(boolean lockedStatus) {this.lockedStatus = lockedStatus;}
+    public void setPassenger(Passenger passenger) {this.passenger = passenger;}
+    public void setCheckinStatus(int checkinStatus) {this.checkinStatus = checkinStatus;}
 }
