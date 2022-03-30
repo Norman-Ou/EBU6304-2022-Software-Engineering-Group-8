@@ -1,0 +1,68 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundleName": "Check"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"$sizePolicy": 1
+			"background": new java.awt.Color( 51, 153, 255, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+					"columns": 1
+					"rows": 0
+				} ) {
+					name: "contentPanel"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+						name: "panel2"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": new FormMessage( null, "button1.text_3" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Normal", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button2"
+							"text": new FormMessage( null, "button2.text_3" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPMeal", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button3"
+							"text": new FormMessage( null, "button3.text_2" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelMeal", true ) )
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel1"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": new FormMessage( null, "label1.text_11" )
+						"horizontalAlignment": 0
+						"font": new java.awt.Font( "Lucida Grande", 1, 22 )
+						"foreground": new com.jformdesigner.model.SwingColor( "Button.select" )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel3"
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "South"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 425, 325 )
+		} )
+	}
+}
