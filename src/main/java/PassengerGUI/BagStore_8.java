@@ -23,7 +23,7 @@ public class BagStore_8 extends JFrame {
 
     private void ToMeal(ActionEvent e) {
         dispose();
-        new Meal_12().setVisible(true);
+        new PrintBag_11().setVisible(true);
     }
 
     private void Return2Baggage(ActionEvent e) {
