@@ -5,17 +5,25 @@ import Passenger.Baggage;
 import Passenger.BoardingPass;
 import Passenger.Passenger;
 import Flight.Seat;
+import PassengerGUI.Airline_1;
 import Tools.Utilities;
 import Tools.BeanUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import PassengerGUI.Airline_1;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Test {
 
     public static void main(String[] args) throws Exception {
+
+        Locale locale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle("Check",locale);
+        new Airline_1().setVisible(true);
 
 //        Seat s1 = new Seat(1,"12");
 //        JSONObject seat1 = Utilities.Bean2JSON(s1);
