@@ -5,7 +5,7 @@ import Passenger.Passenger;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * Operating class for Passenger Data Base
+ * Passenger Database operation class
  *
  * @author Ruizhe Ou
  * @version 0.1 March 24th, 2022
