@@ -76,3 +76,18 @@ graph LR
     G -->|passenger object|N
     N -->|BoardingPass object|O
 ```
+
+## Other Information
+### Number of meetings held
+
+We held three meetings, the agenda and minutes of the meeting were written in the journals of QMHub
+
+### Cooperation
+
+During the cooperation period, we used Tencent Conference for remote collaboration and sharing. At the same time, we achieved the effect of 1+1 greater than 2 according to the pair programming recommended in the Agile development specification.
+
+### Member work evaluation
+
+We all attended the meeting, and everyone contributed valuable input to Project at the meeting.
+
+Thanks for all the contributions from each memebers throughout iteration 1.
