@@ -17,18 +17,18 @@ public class TestO {
 //        Passenger ps3 = new Passenger();
 //        Passenger ps4 = new Passenger();
 //        Passenger ps5 = new Passenger();
-////        seatingList.put("22A", ps1);
-////        seatingList.put("23B", ps2);
-////        seatingList.put("24C", ps3);
-////        seatingList.put("25E", ps4);
-////        seatingList.put("26C", ps5);
+//        seatingList.put("22A", ps1);
+//        seatingList.put("23B", ps2);
+//        seatingList.put("24C", ps3);
+//        seatingList.put("25E", ps4);
+//        seatingList.put("26C", ps5);
 //
 //        HashMap<String, Integer> checkinList = new HashMap<>();
-////        checkinList.put(ps1.getIDNo(), 0);
-////        checkinList.put(ps2.getIDNo(), 1);
-////        checkinList.put(ps3.getIDNo(), 0);
-////        checkinList.put(ps4.getIDNo(), 1);
-////        checkinList.put(ps5.getIDNo(), 1);
+//        checkinList.put(ps1.getIDNo(), 0);
+//        checkinList.put(ps2.getIDNo(), 1);
+//        checkinList.put(ps3.getIDNo(), 0);
+//        checkinList.put(ps4.getIDNo(), 1);
+//        checkinList.put(ps5.getIDNo(), 1);
 //
 //        ArrayList<ExtraOption> extraOptions = new ArrayList<>();
 //
@@ -53,7 +53,7 @@ public class TestO {
 //        JSONArray jsonArray = new JSONArray();
 //        jsonArray.add(jsonObject);
 //        System.out.println(jsonArray);
-//
+
 
     }
 }

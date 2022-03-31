@@ -15,6 +15,11 @@ public class Baggage {
      * Default Value: null
      */
     private String baggageNo;
+    /**
+     * Assigned bag drop counter info.<br/><br/>
+     * Default Value: null
+     */
+    private String dropCounter;
 
     /**
      * Default constructor
@@ -22,15 +27,18 @@ public class Baggage {
     public Baggage() {}
 
     public Baggage(String baggageNo) {this.baggageNo = baggageNo;}
+
     /**
      * Accessors of Baggage class
      */
-    public String getBInfo() {
-        return baggageNo;
+    public String getBaggageNo() {
+        return this.baggageNo;
     }
+    public String getDropCounter() { return this.dropCounter; }
 
     /**
      * Modifiers of Baggage class
      */
-    public void setBInfo(String baggageNo) {this.baggageNo = baggageNo;}
+    public void setBaggageNo(String baggageNo) {this.baggageNo = baggageNo;}
+    public void setDropCounter(String dropCounter) {this.dropCounter = dropCounter;}
 }
