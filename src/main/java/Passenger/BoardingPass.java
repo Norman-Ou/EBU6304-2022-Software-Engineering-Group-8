@@ -24,7 +24,7 @@ public class BoardingPass {
      * Boarding gate of the flight.<br/><br/>
      * Default Value: null
      */
-    private String Gate;
+    private String gate;
     /**
      * Flight's Estimated Time of Departure.<br/><br/>
      * Default Value: null
@@ -49,19 +49,19 @@ public class BoardingPass {
     /**
      * Accessors of BoardingPass class
      */
-    public String getFlightNo() {return flightNo;}
-    public String getSeatNo() {return seatNo;}
-    public String getGate() {return Gate;}
-    public String getETD() {return ETD;}
-    public String getETC() {return ETC;}
-    public String getETA() {return ETA;}
+    public String getFlightNo() {return this.flightNo;}
+    public String getSeatNo() {return this.seatNo;}
+    public String getGate() {return this.gate;}
+    public String getETD() {return this.ETD;}
+    public String getETC() {return this.ETC;}
+    public String getETA() {return this.ETA;}
 
     /**
      * Modifiers of BoardingPass class
      */
     public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
     public void setSeatNo(String seatNo) {this.seatNo = seatNo;}
-    public void setGate(String gate) {Gate = gate;}
+    public void setGate(String gate) {this.gate = gate;}
     public void setETD(String ETD) {this.ETD = ETD;}
     public void setETC(String ETC) {this.ETC = ETC;}
     public void setETA(String ETA) {this.ETA = ETA;}
