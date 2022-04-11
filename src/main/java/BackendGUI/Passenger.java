@@ -1,10 +1,10 @@
 package BackendGUI;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /*
  * Created by JFormDesigner on Mon Apr 11 01:25:45 CST 2022
  */
