@@ -28,7 +28,7 @@ public class Flight extends JFrame {
 
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
-            String f_ID=InputBar.getText();
+            String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
             FlightID.setText(f_ID);
         }
 

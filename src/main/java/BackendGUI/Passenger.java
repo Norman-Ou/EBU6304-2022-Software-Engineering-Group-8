@@ -30,7 +30,7 @@ public class Passenger extends JFrame {
 
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
-            String p_ID=InputBar.getText();
+            String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
             PassengerID.setText(p_ID);
         }
     }
