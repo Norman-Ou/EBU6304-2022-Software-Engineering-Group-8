@@ -1,10 +1,7 @@
-package BackendGUI;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.*;
 /*
  * Created by JFormDesigner on Mon Apr 11 15:53:40 CST 2022
  */
@@ -46,11 +43,11 @@ public class Flight extends JFrame {
         label2 = new JLabel();
         FlightID = new JTextField();
         label3 = new JLabel();
-        textField3 = new JTextField();
+        BoardingTime = new JTextField();
         label4 = new JLabel();
-        textField4 = new JTextField();
+        TimeLefttoBoard = new JTextField();
         label5 = new JLabel();
-        textField5 = new JTextField();
+        PassengernotBoarding = new JTextField();
         label6 = new JLabel();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
@@ -114,7 +111,7 @@ public class Flight extends JFrame {
         contentPane.add(label3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(textField3, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
+        contentPane.add(BoardingTime, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
 
@@ -124,7 +121,7 @@ public class Flight extends JFrame {
         contentPane.add(label4, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(textField4, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
+        contentPane.add(TimeLefttoBoard, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
 
@@ -134,7 +131,7 @@ public class Flight extends JFrame {
         contentPane.add(label5, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(textField5, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
+        contentPane.add(PassengernotBoarding, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
 
@@ -192,11 +189,11 @@ public class Flight extends JFrame {
     private JLabel label2;
     private JTextField FlightID;
     private JLabel label3;
-    private JTextField textField3;
+    private JTextField BoardingTime;
     private JLabel label4;
-    private JTextField textField4;
+    private JTextField TimeLefttoBoard;
     private JLabel label5;
-    private JTextField textField5;
+    private JTextField PassengernotBoarding;
     private JLabel label6;
     private JLabel label7;
     private JScrollPane scrollPane1;
