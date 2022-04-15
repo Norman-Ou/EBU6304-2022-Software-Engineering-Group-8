@@ -49,6 +49,27 @@ public class CreditCard {
      */
     public CreditCard(){}
 
+    public CreditCard(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public CreditCard(String cardNo,
+                      String nameOnCard,
+                      String country,
+                      String expirationDate,
+                      String cvcCode,
+                      String postalCode,
+                      String billAddress)
+    {
+        this.cardNo = cardNo;
+        this.nameOnCard = nameOnCard;
+        this.country = country;
+        this.expirationDate = expirationDate;
+        this.cvcCode = cvcCode;
+        this.postalCode = postalCode;
+        this.billAddress = billAddress;
+    }
+
     /**
      * Accessors of CreditCard class
      */

@@ -54,6 +54,10 @@ public class Passenger {
      */
     public Passenger() {}
 
+    public Passenger(String passengerId){
+        this.passengerId = passengerId;
+    }
+
     public Passenger(String bookNumber, String passengerId, String surName, BoardingPass boardingPass, Baggage baggage, CreditCard creditCard, ArrayList<ExtraOption> extraOptions) {
         this.bookNumber = bookNumber;
         this.passengerId = passengerId;
