@@ -11,8 +11,10 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 					name: "contentPanel"
+					"opaque": false
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label1"
 						"text": new FormMessage( null, "label1.text_22" )
@@ -29,6 +31,7 @@ new FormModel {
 				} ) {
 					name: "buttonBar"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "cancelButton"
 						"text": new FormMessage( null, "cancelButton.text_14" )
@@ -45,7 +48,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 425, 325 )
+			"size": new java.awt.Dimension( 900, 550 )
 		} )
 	}
 }

@@ -11,8 +11,10 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 					name: "contentPanel"
+					"opaque": false
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textField1"
 						"editable": false
@@ -22,6 +24,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel2"
+					"opaque": false
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label1"
 						"text": new FormMessage( null, "label1.text_23" )
@@ -35,6 +38,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel3"
+					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": new FormMessage( null, "button2.text_8" )
@@ -56,7 +60,7 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 425, 325 )
+			"size": new java.awt.Dimension( 900, 550 )
 			"location": new java.awt.Point( 0, 0 )
 		} )
 	}

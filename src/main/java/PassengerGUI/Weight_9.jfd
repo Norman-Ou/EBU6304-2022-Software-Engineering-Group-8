@@ -11,11 +11,13 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 					"columns": 1
 					"rows": 0
 				} ) {
 					name: "contentPanel"
+					"opaque": false
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"
 						"text": new FormMessage( null, "label3.text" )
@@ -27,6 +29,7 @@ new FormModel {
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 						name: "panel1"
+						"opaque": false
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button4"
 							"text": new FormMessage( null, "button4.text" )
@@ -59,7 +62,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 425, 325 )
+			"size": new java.awt.Dimension( 900, 550 )
 		} )
 	}
 }
