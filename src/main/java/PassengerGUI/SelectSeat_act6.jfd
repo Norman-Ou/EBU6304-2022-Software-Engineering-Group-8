@@ -22,6 +22,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel1"
+					"opaque": false
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "West"
 				} )
@@ -66,6 +67,7 @@ new FormModel {
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 							name: "panel5"
+							"opaque": false
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label3"
 								"text": new FormMessage( null, "label3.text_5" )

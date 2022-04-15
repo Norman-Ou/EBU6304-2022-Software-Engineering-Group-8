@@ -38,6 +38,7 @@ new FormModel {
 				} ) {
 					name: "buttonBar2"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton2"
 						"text": new FormMessage( null, "okButton2.text_2" )
