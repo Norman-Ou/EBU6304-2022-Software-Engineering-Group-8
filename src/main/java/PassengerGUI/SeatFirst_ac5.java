@@ -28,8 +28,25 @@ public class SeatFirst_ac5 extends JFrame {
         dispose();
         new VIPSeat().setVisible(true);
     }
+    public void init() {
+        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
+        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
+        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
+        myPanel.setOpaque(false);					//把我的面板设置为不可视
+//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
+//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
+        //设置界面属性
+        this.setTitle("Passenger check-in system");
+//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
+
 
     private void initComponents() {
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
@@ -47,13 +64,13 @@ public class SeatFirst_ac5 extends JFrame {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder
-            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .
-            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) )
-            ; dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-            ;
+            dialogPane.setOpaque(false);
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font
+            .BOLD,12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -74,6 +91,7 @@ public class SeatFirst_ac5 extends JFrame {
 
             //======== scrollPane1 ========
             {
+                scrollPane1.setOpaque(false);
 
                 //---- textArea1 ----
                 textArea1.setText(bundle.getString("textArea1.text"));
@@ -85,10 +103,10 @@ public class SeatFirst_ac5 extends JFrame {
             dialogPane.add(scrollPane1, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
-        setSize(425, 325);
+        setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    }
+        init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown

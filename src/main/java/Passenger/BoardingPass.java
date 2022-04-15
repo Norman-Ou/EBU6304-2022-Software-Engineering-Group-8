@@ -42,6 +42,18 @@ public class BoardingPass {
     private String ETA;
 
     /**
+     * Flight's departure<br/><br/>
+     * Default Value: null
+     */
+    private String departure;
+
+    /**
+     * Flight's destination<br/><br/>
+     * Default Value: null
+     */
+    private String destination;
+
+    /**
      * Default constructor
      */
     public BoardingPass() {}
@@ -55,6 +67,12 @@ public class BoardingPass {
     public String getETD() {return this.ETD;}
     public String getETC() {return this.ETC;}
     public String getETA() {return this.ETA;}
+    public String getDeparture() {
+        return departure;
+    }
+    public String getDestination() {
+        return destination;
+    }
 
     /**
      * Modifiers of BoardingPass class
@@ -65,4 +83,38 @@ public class BoardingPass {
     public void setETD(String ETD) {this.ETD = ETD;}
     public void setETC(String ETC) {this.ETC = ETC;}
     public void setETA(String ETA) {this.ETA = ETA;}
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    @Override
+    public String toString() {
+        return "BoardingPass{" +
+                "flightNo='" + flightNo + '\'' +
+                ", seatNo='" + seatNo + '\'' +
+                ", gate='" + gate + '\'' +
+                ", ETD='" + ETD + '\'' +
+                ", ETC='" + ETC + '\'' +
+                ", ETA='" + ETA + '\'' +
+                ", departure='" + departure + '\'' +
+                ", destination='" + destination + '\'' +
+                '}';
+    }
+
+    /**
+     * Get all data in the Object in String format.
+     * */
+    public String getAll(){
+        return flightNo + ';' +
+                seatNo + ';' +
+                gate + ';' +
+                ETD + ';' +
+                ETC + ';' +
+                ETA + ';' +
+                departure + ';' +
+                destination;
+    }
 }

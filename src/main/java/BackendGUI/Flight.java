@@ -19,12 +19,12 @@ public class Flight extends JFrame {
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        if(e.getSource()==button2){
-            backend B = new backend();
-            B.setVisible(true);
-            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
+//        if(e.getSource()==button2){
+//            backend B = new backend();
+//            B.setVisible(true);
+//            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            this.dispose();
+//        }
 
     }
 

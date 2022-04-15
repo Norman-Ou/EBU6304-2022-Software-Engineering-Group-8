@@ -1,6 +1,7 @@
 package DataBase;
 
 import Config.Config;
+import Passenger.IDDocument.IDDocument;
 import Passenger.Passenger;
 import com.alibaba.fastjson.JSONObject;
 
@@ -15,7 +16,7 @@ public class pDB{
     /**
      * Get Passenger Object by bookingNumber attr
      * */
-    public static Passenger loadPassengerByBookingNo(int bookingNum){
+    public static Passenger loadPassengerByBookingNo(String bookingNum){
         DataBase dataBase = new DataBase(Config.PassengerFile);
         return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
     }
@@ -24,10 +25,10 @@ public class pDB{
     /**
      * Get Passenger Object by Surname and ID number
      * */
-    public static Passenger loadPassengerBySurname_ID(String surName, int IDNo) throws Exception {
+    public static Passenger loadPassengerBySurname_ID(String surName, String passengerId) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
         Passenger p1 = dataBase.getObject("surName", surName, Passenger.class);
-        Passenger p2 = dataBase.getObject("iDNo", IDNo, Passenger.class);
+        Passenger p2 = dataBase.getObject("passengerId", passengerId, Passenger.class);
         if (p2 == null){
             throw new Exception("SurName doesn't exist");
         }else if (p1 == null){
@@ -43,9 +44,11 @@ public class pDB{
     /**
      * Get Passenger Object by ID document Object from Passenger Data Base
      * */
-    public static Passenger loadPassengerByIDDocument(JSONObject idDocument){
+    public static Passenger loadPassengerByIDDocument(IDDocument idDocument) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        return dataBase.getObject(idDocument, Passenger.class);
+        String surname = idDocument.getSurname();
+        String ID = idDocument.getID();
+        return loadPassengerBySurname_ID(surname,ID);
     }
 
     //TODO 后期返回值改为 boolean 成功返回 true
