@@ -5,7 +5,9 @@ import Passenger.IDDocument.IDDocument;
 import Passenger.*;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Passenger Control Class
@@ -54,13 +56,7 @@ public class Listeners {
     }
 
     public ArrayList<String> showBookedFlightInfo(){
-        ArrayList<String> bookedFlightInfo = new ArrayList<>();
         BoardingPass boardingPass = passenger.getBoardingPass();
-
-        String flightNo = boardingPass.getFlightNo();
-
-        return bookedFlightInfo;
+        return new ArrayList<>(Arrays.asList(boardingPass.getAll().split(";")));
     }
-
-
 }

@@ -89,4 +89,32 @@ public class BoardingPass {
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
+    @Override
+    public String toString() {
+        return "BoardingPass{" +
+                "flightNo='" + flightNo + '\'' +
+                ", seatNo='" + seatNo + '\'' +
+                ", gate='" + gate + '\'' +
+                ", ETD='" + ETD + '\'' +
+                ", ETC='" + ETC + '\'' +
+                ", ETA='" + ETA + '\'' +
+                ", departure='" + departure + '\'' +
+                ", destination='" + destination + '\'' +
+                '}';
+    }
+
+    /**
+     * Get all data in the Object in String format.
+     * */
+    public String getAll(){
+        return flightNo + ';' +
+                seatNo + ';' +
+                gate + ';' +
+                ETD + ';' +
+                ETC + ';' +
+                ETA + ';' +
+                departure + ';' +
+                destination;
+    }
 }
