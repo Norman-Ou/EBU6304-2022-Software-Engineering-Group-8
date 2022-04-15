@@ -24,7 +24,7 @@ public class Flight implements Serializable{
      * Name of the origin.<br/><br/>
      * Default Value: null
      */
-    private String origin;
+    private String departure;
     /**
      * Name of the destination.<br/><br/>
      * Default Value: null
@@ -81,7 +81,7 @@ public class Flight implements Serializable{
 
     public Flight(String flightNo,
                   String airlines,
-                  String origin,
+                  String departure,
                   String destination,
                   String gate,
                   String terminal,
@@ -94,7 +94,7 @@ public class Flight implements Serializable{
     {
         this.flightNo = flightNo;
         this.airlines = airlines;
-        this.origin = origin;
+        this.departure = departure;
         this.destination = destination;
         this.gate = gate;
         this.terminal = terminal;
@@ -111,7 +111,7 @@ public class Flight implements Serializable{
      */
     public String getFlightNo() {return flightNo;}
     public String getAirlines(){return airlines;}
-    public String getOrigin(){return origin;}
+    public String getDeparture(){return departure;}
     public String getDestination(){return destination;}
     public String getGate(){return gate;}
     public String getTerminal(){return terminal;}
@@ -128,7 +128,7 @@ public class Flight implements Serializable{
      */
     public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
     public void setAirlines(String airlines){this.airlines = airlines;}
-    public void setOrigin(String origin){this.origin = origin;}
+    public void setDeparture(String departure){this.departure = departure;}
     public void setDestination(String destination){this.destination = destination;}
     public void setGate(String gate){this.gate = gate;}
     public void setTerminal(String terminal){this.terminal = terminal;}

@@ -49,8 +49,22 @@ public class DataBase {
      * @return JSONArray containing all the data in JSON file
      * */
     private JSONArray readFile() {
+        File file = new File(this.filePath);
+        if (!file.exists()) {
+            try{
+                if (file.createNewFile()){
+                    System.out.println("Initialization File Successfully");
+                } else {
+                    System.out.println("Initialization File Failed");
+                }
+                writeFile(new JSONArray());
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
             return JSON.parseArray(reader.readLine());
         } catch (IOException e) {
             System.out.println(filePath + "Error" + e);
@@ -76,9 +90,6 @@ public class DataBase {
 
         // Creat a file
         File file = new File(filePath);
-        if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
-        }
         if (file.exists()) {
             file.delete();
         }
@@ -149,7 +160,14 @@ public class DataBase {
      * */
     protected<T> void addObject(T object){
         JSONObject jsonObject = (JSONObject) JSON.toJSON(object);
-        JSONArray jsonArray = readFile();
+        JSONArray jsonArray;
+
+        try{
+            jsonArray = readFile();
+        } catch (NullPointerException e){
+            jsonArray = new JSONArray();
+        }
+
         jsonArray.add(jsonObject);
         try {
             writeFile(jsonArray);

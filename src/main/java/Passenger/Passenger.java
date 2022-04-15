@@ -54,6 +54,16 @@ public class Passenger {
      */
     public Passenger() {}
 
+    public Passenger(String bookNumber, String passengerId, String surName, BoardingPass boardingPass, Baggage baggage, CreditCard creditCard, ArrayList<ExtraOption> extraOptions) {
+        this.bookNumber = bookNumber;
+        this.passengerId = passengerId;
+        this.surName = surName;
+        this.boardingPass = boardingPass;
+        this.baggage = baggage;
+        this.creditCard = creditCard;
+        this.extraOptions = extraOptions;
+    }
+
     /**
      * Accessors of Passenger class
      */
