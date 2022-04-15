@@ -104,7 +104,7 @@ public class Flight implements Serializable{
         this.luggageLimit = luggageLimit;
         this.seatingList = seatingList;
         this.extraOptions = extraOptions;
-    }
+        }
 
     /**
      * Accessors of flight
