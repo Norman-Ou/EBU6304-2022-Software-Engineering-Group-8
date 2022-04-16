@@ -51,7 +51,6 @@ new FormModel {
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panel4"
-						"opaque": false
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label2"
 							"text": new FormMessage( null, "label2.text_7" )

@@ -15,6 +15,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 					name: "buttonBar2"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton2"
 						"text": new FormMessage( null, "okButton2.text_4" )
@@ -36,7 +37,8 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": new FormMessage( null, "label1.text_30" )
-					"font": new java.awt.Font( ".AppleSystemUIFont", 3, 36 )
+					"font": new java.awt.Font( ".AppleSystemUIFont", 3, 25 )
+					"horizontalAlignment": 0
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )

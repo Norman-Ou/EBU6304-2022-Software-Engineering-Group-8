@@ -43,7 +43,21 @@ public class SeatFirst_ac5 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
+    public void vipRemainder() {
+        ImageIcon background = new ImageIcon("src/main/java/img/icon.png");//要设置的背景图片
+        JLabel label5 = new JLabel(background);		//把背景图片添加到标签里
+        label5.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
+        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
+        myPanel.setOpaque(false);					//把我的面板设置为不可视
+        myPanel.setLayout(new BorderLayout());		//把我的面板设置为流动布局
+        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
+        this.getLayeredPane().add(label5,  label2);		//把标签添加到分层面板的最底层
+        //设置界面属性
+        this.setTitle("Passenger check-in system");
+//        this.setBounds(30, 30, background.getIconWidth(), background.getIconHeight());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
 
     private void initComponents() {
 
@@ -65,12 +79,12 @@ public class SeatFirst_ac5 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-            border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER
-            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font
-            .BOLD,12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er"
-            .equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -81,11 +95,13 @@ public class SeatFirst_ac5 extends JFrame {
 
             //---- button1 ----
             button1.setText(bundle.getString("button1.text_13"));
+            button1.setOpaque(false);
             button1.addActionListener(e -> NorSeat(e));
             dialogPane.add(button1, BorderLayout.WEST);
 
             //---- button2 ----
             button2.setText(bundle.getString("button2.text_10"));
+            button2.setOpaque(false);
             button2.addActionListener(e -> VIPSeat(e));
             dialogPane.add(button2, BorderLayout.EAST);
 
@@ -94,10 +110,14 @@ public class SeatFirst_ac5 extends JFrame {
                 scrollPane1.setOpaque(false);
 
                 //---- textArea1 ----
-                textArea1.setText(bundle.getString("textArea1.text"));
+                textArea1.setText("\n\n\n\n               There would be  \n            an additional payment  \n                 for VIP Seats");
                 textArea1.setLineWrap(true);
-                textArea1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
                 textArea1.setEditable(false);
+                textArea1.setTabSize(20);
+                textArea1.setWrapStyleWord(true);
+                textArea1.setFont(new Font(Font.MONOSPACED, Font.BOLD, 26));
+                textArea1.setAlignmentX(50.0F);
+                textArea1.setAlignmentY(50.0F);
                 scrollPane1.setViewportView(textArea1);
             }
             dialogPane.add(scrollPane1, BorderLayout.CENTER);
@@ -106,7 +126,10 @@ public class SeatFirst_ac5 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();}
+
+        init();
+        vipRemainder();
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown

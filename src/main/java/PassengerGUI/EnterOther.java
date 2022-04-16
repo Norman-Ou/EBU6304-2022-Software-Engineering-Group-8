@@ -76,7 +76,7 @@ public class EnterOther extends JFrame {
         myPanel.setOpaque(false);					//把我的面板设置为不可视
 //        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
 //        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
         //设置界面属性
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
@@ -107,17 +107,19 @@ public class EnterOther extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar2.setOpaque(false);
                 buttonBar2.setLayout(new FlowLayout());
 
                 //---- okButton2 ----
@@ -145,12 +147,13 @@ public class EnterOther extends JFrame {
 
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_29"));
-            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 26));
+            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 20));
             label1.setHorizontalAlignment(SwingConstants.CENTER);
             dialogPane2.add(label1, BorderLayout.NORTH);
 
             //======== scrollPane1 ========
             {
+                scrollPane1.setOpaque(false);
 
                 //======== panel1 ========
                 {

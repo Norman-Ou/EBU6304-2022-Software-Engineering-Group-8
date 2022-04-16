@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author unknown
+ * @author Jiayi Wang
  */
 public class EnterBN extends JFrame {
 
@@ -92,18 +92,18 @@ public class EnterBN extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border
-            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067"
-            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder
-            () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-            . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException
-            ( ) ;} } );
+            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar2.setOpaque(false);
                 buttonBar2.setLayout(new FlowLayout());
 
                 //---- okButton2 ----
@@ -125,7 +125,8 @@ public class EnterBN extends JFrame {
 
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_30"));
-            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 36));
+            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
+            label1.setHorizontalAlignment(SwingConstants.CENTER);
             dialogPane2.add(label1, BorderLayout.NORTH);
 
             //======== scrollPane1 ========
