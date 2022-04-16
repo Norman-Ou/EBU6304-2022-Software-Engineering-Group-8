@@ -1,5 +1,11 @@
 package DataBase;
 
+import Config.Config;
+import Flight.Flight;
+import Passenger.Passenger;
+
+import java.util.ArrayList;
+
 /**
  * Passenger Database operation class
  *
@@ -7,4 +13,26 @@ package DataBase;
  * @version 0.1 April 9th, 2022
  */
 public class fPD {
+
+    ArrayList<Passenger> arrayList = new ArrayList<Passenger>();
+
+    /**
+     * Add a flight Object into Flight data base
+     * */
+    public static void storeFlight(Flight flight){
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        dataBase.addObject(flight);
+    }
+
+    /**
+     * Remove the flight object in Flight data base
+     * */
+    public static void removeFlight(Flight flight){
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        dataBase.removeObject(flight, Flight.class);
+    }
+
+
+
+
 }
