@@ -7,7 +7,7 @@ import java.util.*;
  * This is the basic Flight information class
  *
  * @author Jiacheng Li
- * @version 0.2 March 24th, 2022
+ * @version 1.3 April 16th, 2022
  */
 public class Flight implements Serializable{
     /**

@@ -55,7 +55,6 @@ public class DataCreation {
     public void createSeats() {
         int[] classArr = {2, 2, 1, 1, 0, 0, 0, 0, 0, 0};
         String[] noArr = {"E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"};
-        String[] flightArr = {"CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852"};
         boolean[] lockStatusArr = {true, false, true, false, true, false, true, true, true, true};
 
         ArrayList<Passenger> passengerArr = new ArrayList<>();
@@ -76,7 +75,6 @@ public class DataCreation {
             this.seatingLists.put(noArr[i], new Seat(
                 classArr[i],
                 noArr[i],
-                flightArr[i],
                 lockStatusArr[i],
                 passengerArr.get(i),
                 checkInArr[i]
