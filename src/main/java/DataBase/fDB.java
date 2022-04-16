@@ -3,9 +3,12 @@ package DataBase;
 import Config.Config;
 import Flight.Flight;
 import Passenger.Passenger;
+import com.alibaba.fastjson.JSONArray;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Passenger Database operation class
@@ -38,4 +41,8 @@ public class fDB {
         return new ArrayList(dataBase.getAllObject().toJavaList(Flight.class));
     }
 
+    public static void replaceAllFlight(ArrayList<Flight> flights) throws IOException {
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        dataBase.replaceAllData(new JSONArray(Collections.singletonList(flights)));
+    }
 }

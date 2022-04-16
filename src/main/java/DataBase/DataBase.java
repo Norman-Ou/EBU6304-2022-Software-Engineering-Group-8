@@ -24,13 +24,11 @@ import java.nio.charset.StandardCharsets;
  */
 public class DataBase {
 
-    private String filePath;
+    private final String filePath;
 
     protected DataBase(String filePath) {
         this.filePath = filePath;
     }
-
-    protected DataBase(){}
 
     /**
      * Transfer a JavaBean Object into a JSONObject
@@ -233,6 +231,10 @@ public class DataBase {
      * */
     protected JSONArray getAllObject() {
         return readFile();
+    }
+
+    protected void replaceAllData(JSONArray jsonArray) throws IOException {
+        writeFile(jsonArray);
     }
 
 }

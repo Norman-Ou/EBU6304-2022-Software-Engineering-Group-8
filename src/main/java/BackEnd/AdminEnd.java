@@ -1,4 +1,3 @@
-/*
 package BackEnd;
 
 import java.util.ArrayList;
@@ -7,13 +6,12 @@ import Passenger.Passenger;
 import Flight.*;
 
 
-*/
 /**
  * This is the control class for admin end operations
  *
  * @author Yao Wang
  * @version 1.2 April 9th, 2022
- *//*
+ */
 
 
 public class AdminEnd {
@@ -116,4 +114,3 @@ public class AdminEnd {
         }
     }
 }
-*/
