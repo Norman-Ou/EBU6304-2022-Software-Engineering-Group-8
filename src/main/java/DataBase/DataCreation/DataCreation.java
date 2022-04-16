@@ -8,6 +8,7 @@ import Passenger.*;
 import Passenger.Passenger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Create Testing Data
@@ -36,7 +37,7 @@ public class DataCreation {
     int[] luggageLimitList = {60, 40, 30, 50, 30};
 
     // Seating Information
-    ArrayList<Seat> seatingLists = new ArrayList<>();
+    HashMap<String, Seat> seatingLists = new HashMap<>();
 
     // ExtraOptions Information
     ArrayList<ExtraOption> extraOptionLists = new ArrayList<>();
@@ -50,24 +51,20 @@ public class DataCreation {
     /**
      * Function to generate seating lists
      *
-     * @since April 14th
-     * @author Jiacheng Li
-     * @version 0.1
      */
     public void createSeats() {
         int[] classArr = {2, 2, 1, 1, 0, 0, 0, 0, 0, 0};
         String[] noArr = {"E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"};
         String[] flightArr = {"CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852", "CA8852"};
-        String[] passengerIdArr = {"215200", "215201", "215202", "215203", "215204", "215205", "215206", "215207", "215208", "215209"};
-        boolean[] lockStatusArr = {true, true, true, true, true, true, true, true, true, true};
+        boolean[] lockStatusArr = {true, false, true, false, true, false, true, true, true, true};
 
         ArrayList<Passenger> passengerArr = new ArrayList<>();
         passengerArr.add(new Passenger("215200"));
-        passengerArr.add(new Passenger("215201"));
+        passengerArr.add(new Passenger());
         passengerArr.add(new Passenger("215202"));
-        passengerArr.add(new Passenger("215203"));
+        passengerArr.add(new Passenger());
         passengerArr.add(new Passenger("215204"));
-        passengerArr.add(new Passenger("215205"));
+        passengerArr.add(new Passenger());
         passengerArr.add(new Passenger("215206"));
         passengerArr.add(new Passenger("215207"));
         passengerArr.add(new Passenger("215208"));
@@ -76,11 +73,10 @@ public class DataCreation {
         int[] checkInArr = {0, 1, 0, 1, -1, 1, 0, 0, 1, 1};
 
         for(int i = 0; i < 10; i++){
-            this.seatingLists.add(new Seat(
+            this.seatingLists.put(noArr[i], new Seat(
                 classArr[i],
                 noArr[i],
                 flightArr[i],
-                passengerIdArr[i],
                 lockStatusArr[i],
                 passengerArr.get(i),
                 checkInArr[i]
@@ -92,9 +88,6 @@ public class DataCreation {
     /**
      * Function to generate Extra options lists
      *
-     * @since April 16th
-     * @author Jiacheng Li
-     * @version 0.1
      */
     public void createOptionLists(){
         int[] kindArr = {0,1,0,0,1,1,0,1,0,1};
@@ -138,9 +131,6 @@ public class DataCreation {
     /**
      * Function to generate flight lists
      *
-     * @since April 16th
-     * @author Jiacheng Li
-     * @version 0.1
      */
     private void createFlights(){
         ArrayList<Flight> flightList = new ArrayList<>();

@@ -29,11 +29,6 @@ public class Seat {
      */
     private String flightNo;
     /**
-     * passenger id of this seat.<br/><br/>
-     * Default Value: -1
-     */
-    private String passengerID;
-    /**
      * Whether this seat has been chosen.<br/><br/>
      * Default Value: false
      */
@@ -63,7 +58,6 @@ public class Seat {
     public Seat(int seatClass,
                 String seatNo,
                 String flightNo,
-                String passengerID,
                 boolean lockedStatus,
                 Passenger passenger,
                 int checkInStatus)
@@ -71,7 +65,6 @@ public class Seat {
         this.seatClass = seatClass;
         this.seatNo = seatNo;
         this.flightNo = flightNo;
-        this.passengerID = passengerID;
         this.lockedStatus = lockedStatus;
         this.passenger = passenger;
         this.checkInStatus = checkInStatus;
@@ -88,7 +81,6 @@ public class Seat {
     public int getSeatClass() {return seatClass;}
     public String getSeatNo() {return seatNo;}
     public String getFlightNo() {return flightNo;}
-    public String getPassengerID() {return passengerID;}
     public boolean isLockedStatus() {return lockedStatus;}
     public Passenger getPassenger() {return passenger;}
     public int getCheckinStatus() {return checkInStatus;}
@@ -99,7 +91,6 @@ public class Seat {
     public void setSeatClass(int seatClass) {this.seatClass = seatClass;}
     public void setSeatNo(String seatNo) {this.seatNo = seatNo;}
     public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
-    public void setPassengerID(String passengerID) {this.passengerID = passengerID;}
     public void setLockedStatus(boolean lockedStatus) {this.lockedStatus = lockedStatus;}
     public void setPassenger(Passenger passenger) {this.passenger = passenger;}
     public void setCheckinStatus(int checkInStatus) {this.checkInStatus = checkInStatus;}

@@ -65,7 +65,7 @@ public class Flight implements Serializable{
      * (Key, Value) -> (seatNo, Seat)<br/><br/>
      * Default Value: empty HashMap
      */
-    private ArrayList<Seat> seatingList = new ArrayList<>();
+    private HashMap<String, Seat> seatingList = new HashMap<>();
     /**
      * Extra options list of a flight.<br/>
      * Each element means a kind of ExtraOption of <b>seating</b> or <b>meal<b/>.<br/><br/>
@@ -79,19 +79,7 @@ public class Flight implements Serializable{
      */
     public Flight(){}
 
-    public Flight(String flightNo,
-                  String airlines,
-                  String departure,
-                  String destination,
-                  String gate,
-                  String terminal,
-                  String ETD,
-                  String ETC,
-                  String ETA,
-                  int luggageLimit,
-                  ArrayList<Seat> seatingList,
-                  ArrayList<ExtraOption> extraOptions)
-    {
+    public Flight(String flightNo, String airlines, String departure, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Seat> seatingList, ArrayList<ExtraOption> extraOptions) {
         this.flightNo = flightNo;
         this.airlines = airlines;
         this.departure = departure;
@@ -104,7 +92,7 @@ public class Flight implements Serializable{
         this.luggageLimit = luggageLimit;
         this.seatingList = seatingList;
         this.extraOptions = extraOptions;
-        }
+    }
 
     /**
      * Accessors of flight
@@ -119,7 +107,7 @@ public class Flight implements Serializable{
     public String getETC(){return ETC;}
     public String getETA(){return ETA;}
     public int getLuggageLimit(){return luggageLimit;}
-    public ArrayList<Seat> getSeatingList() {return seatingList;}
+    public HashMap<String, Seat> getSeatingList() {return seatingList;}
     public ArrayList<ExtraOption> getExtraOptions(){return extraOptions;}
 
     /**
@@ -136,6 +124,6 @@ public class Flight implements Serializable{
     public void setETC(String ETC){this.ETC = ETC;}
     public void setETA(String ETA){this.ETA = ETA;}
     public void setLuggageLimit(int luggageLimit){this.luggageLimit = luggageLimit;}
-    public void setSeatingList(ArrayList<Seat> seatingList) {this.seatingList = seatingList;}
+    public void setSeatingList(HashMap<String, Seat> seatingList) {this.seatingList = seatingList;}
     public void setExtraOptions(ArrayList<ExtraOption> extraOptions){this.extraOptions = extraOptions;}
 }
