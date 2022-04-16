@@ -29,7 +29,7 @@ public class SeatFirst_ac5 extends JFrame {
         new VIPSeat().setVisible(true);
     }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");//要设置的背景图片
         JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
         JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
@@ -44,7 +44,7 @@ public class SeatFirst_ac5 extends JFrame {
         this.setVisible(true);
     }
     public void vipRemainder() {
-        ImageIcon background = new ImageIcon("src/main/java/img/icon.png");//要设置的背景图片
+        ImageIcon background = new ImageIcon("src/main/resources/icon.png");//要设置的背景图片
         JLabel label5 = new JLabel(background);		//把背景图片添加到标签里
         label5.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
         JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板

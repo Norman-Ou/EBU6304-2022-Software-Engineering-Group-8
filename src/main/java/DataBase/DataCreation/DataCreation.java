@@ -154,6 +154,8 @@ public class DataCreation {
     }
 
     public static void main(String[] args) {
-        new DataCreation().creatPassengers();
+        DataCreation dataCreation = new DataCreation();
+        dataCreation.creatPassengers();
+        dataCreation.createFlights();
     }
 }
