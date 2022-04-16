@@ -4,6 +4,7 @@ import Config.Config;
 import Flight.Flight;
 import Passenger.Passenger;
 
+
 import java.util.ArrayList;
 
 /**
@@ -32,7 +33,9 @@ public class fPD {
         dataBase.removeObject(flight, Flight.class);
     }
 
-
-
+    public static ArrayList<Flight> loadAllFlight(){
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        return new ArrayList(dataBase.getAllObject().toJavaList(Flight.class));
+    }
 
 }
