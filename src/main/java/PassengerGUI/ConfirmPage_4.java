@@ -1,12 +1,16 @@
 package PassengerGUI;
 
 import Passenger.Passenger;
+import Passenger.Baggage;
+import Passenger.BoardingPass;
+import Passenger.CreditCard;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
@@ -53,27 +57,40 @@ public class ConfirmPage_4 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-    
 
     private void FlightCaretUpdate(CaretEvent e) {
         // TODO add your code here
         //e.getSource();
     }
 
-    private void button4(ActionEvent e) {
-        try{
-            textField1.setText(
-        EnterBN.getPsnTemp().getBoardingPass().toString());
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        try{
-            textField1.setText(
-                    EnterOther.getPsnTemp1().getBoardingPass().toString());
-        } catch (Exception e1) {
-            e1.printStackTrace();
+    public void info(){
+        if(EnterBN.getPsnTemp()==null){
+            try{
+                textField1.setText(
+                        EnterOther.getPsnTemp1().getBoardingPass().toString());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(EnterOther.getPsnTemp1()==null) {
+            try {
+                textField1.setText(
+                        EnterBN.getPsnTemp().getBoardingPass().toString());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else{
+            try{
+                textField1.setText(
+                        EnterOther.getPsnTemp2().getBoardingPass().toString());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
 
+    }
+
+    private void button4(ActionEvent e) {
+        info();
     }
 
     private void initComponents() {

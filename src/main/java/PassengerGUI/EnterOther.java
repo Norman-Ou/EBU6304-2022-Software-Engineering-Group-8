@@ -4,7 +4,9 @@
 
 package PassengerGUI;
 
+import DataBase.DataCreation.DataCreation;
 import DataBase.pDB;
+import Passenger.IDDocument.IDDocument;
 import Passenger.Passenger;
 
 import java.awt.*;
@@ -14,7 +16,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author unknown
+ * @author Jiayi Wang
  */
 public class EnterOther extends JFrame {
     public EnterOther() {
@@ -27,27 +29,43 @@ public class EnterOther extends JFrame {
     private void ok(ActionEvent e) throws Exception {
         new ConfirmPage_4().setVisible(true);
         dispose();
-        String str=textArea1.getText();
-        this.IDNum=str;
+        this.IDNum=textArea3.getText();
+        this.surname=textArea4.getText();
 //        System.out.println(bookNum);
         Passenger psn = pDB.loadPassengerBySurname_ID(surname,IDNum);
 //        System.out.println(psn);
         psnTemp1=psn;
     }
     public static Passenger getPsnTemp1() {
-        System.out.println(psnTemp1);
+//        System.out.println(psnTemp1);
         return psnTemp1;
     }
 
+    public static Passenger getPsnTemp2() {
+        //Scan a passenger
+        return psnTemp1;
+    }
     private void cancel(ActionEvent e) {
         new Airline_1().setVisible(true);
         dispose();
     }
 
-
     private void textArea1CaretUpdate(ItemEvent e) {
         String sur =(e.getItem()).toString();
         System.out.println(sur);
+    }
+
+    private void scanID(ActionEvent e) {
+        new ConfirmPage_4().setVisible(true);
+        dispose();
+        IDDocument id = new IDDocument("215200","orz");
+//        System.out.println(bookNum);
+        this.IDNum=id.getID();
+        this.surname=id.getSurname();
+        Passenger psn = new Passenger();
+//        System.out.println(psn);
+        psnTemp1=psn;
+
     }
 
     public void init() {
@@ -73,12 +91,13 @@ public class EnterOther extends JFrame {
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
         okButton2 = new JButton();
+        button1 = new JButton();
         cancelButton2 = new JButton();
-        textArea1 = new JTextArea();
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         panel1 = new JPanel();
-        textArea2 = new JTextArea();
+        textArea4 = new JTextArea();
+        textArea3 = new JTextArea();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -88,21 +107,18 @@ public class EnterOther extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
-                buttonBar2.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar2.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar2.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+                buttonBar2.setLayout(new FlowLayout());
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_3"));
@@ -113,19 +129,19 @@ public class EnterOther extends JFrame {
                         ex.printStackTrace();
                     }
                 });
-                buttonBar2.add(okButton2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 5), 0, 0));
+                buttonBar2.add(okButton2);
+
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_18"));
+                button1.addActionListener(e -> scanID(e));
+                buttonBar2.add(button1);
 
                 //---- cancelButton2 ----
                 cancelButton2.setText(bundle.getString("cancelButton2.text_3"));
                 cancelButton2.addActionListener(e -> cancel(e));
-                buttonBar2.add(cancelButton2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                buttonBar2.add(cancelButton2);
             }
             dialogPane2.add(buttonBar2, BorderLayout.SOUTH);
-            dialogPane2.add(textArea1, BorderLayout.WEST);
 
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_29"));
@@ -139,7 +155,16 @@ public class EnterOther extends JFrame {
                 //======== panel1 ========
                 {
                     panel1.setLayout(new GridLayout());
-                    panel1.add(textArea2);
+
+                    //---- textArea4 ----
+                    textArea4.setToolTipText("Surname");
+                    textArea4.setBorder(new TitledBorder(bundle.getString("textArea4.border")));
+                    panel1.add(textArea4);
+
+                    //---- textArea3 ----
+                    textArea3.setToolTipText("ID number");
+                    textArea3.setBorder(new TitledBorder("ID number"));
+                    panel1.add(textArea3);
                 }
                 scrollPane1.setViewportView(panel1);
             }
@@ -157,12 +182,13 @@ public class EnterOther extends JFrame {
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;
+    private JButton button1;
     private JButton cancelButton2;
-    private JTextArea textArea1;
     private JLabel label1;
     private JScrollPane scrollPane1;
     private JPanel panel1;
-    private JTextArea textArea2;
+    private JTextArea textArea4;
+    private JTextArea textArea3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private static Passenger psnTemp;
 

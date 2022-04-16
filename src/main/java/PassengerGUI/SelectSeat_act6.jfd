@@ -55,6 +55,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label2"
 							"text": new FormMessage( null, "label2.text_7" )
+							"opaque": true
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "West"
 						} )
