@@ -1,5 +1,7 @@
 package PassengerGUI;
 
+import Passenger.Passenger;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
@@ -21,7 +23,6 @@ public class ConfirmPage_4 extends JFrame {
     }
 
     private void ErrorPage(ActionEvent e) {
-        // TODO add your code here
         dispose();
         new Error().setVisible(true);
     }
@@ -59,6 +60,22 @@ public class ConfirmPage_4 extends JFrame {
         //e.getSource();
     }
 
+    private void button4(ActionEvent e) {
+        try{
+            textField1.setText(
+        EnterBN.getPsnTemp().getBoardingPass().toString());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        try{
+            textField1.setText(
+                    EnterOther.getPsnTemp1().getBoardingPass().toString());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -71,7 +88,9 @@ public class ConfirmPage_4 extends JFrame {
         button2 = new JButton();
         button1 = new JButton();
         label1 = new JLabel();
+        panel3 = new JPanel();
         textField1 = new JTextField();
+        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -81,12 +100,12 @@ public class ConfirmPage_4 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -120,20 +139,50 @@ public class ConfirmPage_4 extends JFrame {
 
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_2"));
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+            label1.setFont(new Font("Lucida Grande", Font.BOLD, 30));
             label1.setHorizontalAlignment(SwingConstants.CENTER);
             dialogPane.add(label1, BorderLayout.NORTH);
 
-            //---- textField1 ----
-            textField1.setEditable(false);
-            textField1.setOpaque(false);
-            textField1.addCaretListener(e -> FlightCaretUpdate(e));
-            dialogPane.add(textField1, BorderLayout.CENTER);
+            //======== panel3 ========
+            {
+                panel3.setLayout(new BorderLayout());
+
+                //---- textField1 ----
+                textField1.setEditable(false);
+                textField1.setOpaque(false);
+                textField1.addCaretListener(e -> FlightCaretUpdate(e));
+                panel3.add(textField1, BorderLayout.CENTER);
+
+                //---- button4 ----
+                button4.setText(bundle.getString("button4.text_3"));
+                button4.addActionListener(e -> button4(e));
+                panel3.add(button4, BorderLayout.NORTH);
+            }
+            dialogPane.add(panel3, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        //Read input passenger
+
+
+//        try{
+//            Passenger psn2 = EnterOther.getPassenger();
+//            textField1.setText(psn2.toString());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        try{
+//            Passenger psn3 = EnterOther.getPassenger();
+//            textField1.setText(psn3.toString());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -145,7 +194,9 @@ public class ConfirmPage_4 extends JFrame {
     private JButton button2;
     private JButton button1;
     private JLabel label1;
+    private JPanel panel3;
     private JTextField textField1;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }

@@ -21,7 +21,7 @@ public class CheckIn_3 extends JFrame {
 
     private void button1(ActionEvent e) {
         dispose();
-        new ConfirmPage_4().setVisible(true);
+        new EnterBN().setVisible(true);
     }
 
     private void AirlineRe(ActionEvent e) {
