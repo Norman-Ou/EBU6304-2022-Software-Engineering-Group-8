@@ -36,7 +36,7 @@ public class SeatFirst_ac5 extends JFrame {
         myPanel.setOpaque(false);					//把我的面板设置为不可视
 //        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
 //        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
+        this.getLayeredPane().add(label3, Integer.MIN_VALUE);		//把标签添加到分层面板的最底层
         //设置界面属性
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
@@ -51,7 +51,7 @@ public class SeatFirst_ac5 extends JFrame {
         myPanel.setOpaque(false);					//把我的面板设置为不可视
         myPanel.setLayout(new BorderLayout());		//把我的面板设置为流动布局
         this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label5,  label2);		//把标签添加到分层面板的最底层
+        this.getLayeredPane().add(label5);		//把标签添加到分层面板的最底层
         //设置界面属性
         this.setTitle("Passenger check-in system");
 //        this.setBounds(30, 30, background.getIconWidth(), background.getIconHeight());
