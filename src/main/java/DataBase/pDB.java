@@ -7,9 +7,9 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * Passenger Database operation class
- *
+ * @since March 24th, 2022
  * @author Ruizhe Ou
- * @version 0.1 March 24th, 2022
+ * @version 0.1
  */
 public class pDB{
 

@@ -9,7 +9,13 @@ import Passenger.Passenger;
 
 import java.util.ArrayList;
 
-
+/**
+ * Create Testing Data
+ *
+ * @since April 4th, 2022
+ * @author Ruizhe Ou, Jiacheng Li
+ * @version 0.2
+ */
 public class DataCreation {
 
     //Passenger Information
@@ -44,7 +50,7 @@ public class DataCreation {
     /**
      * Function to generate seating lists
      *
-     * @since April 16th
+     * @since April 14th
      * @author Jiacheng Li
      * @version 0.1
      */
