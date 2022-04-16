@@ -1,3 +1,4 @@
+/*
 package BackEnd;
 
 import java.util.ArrayList;
@@ -6,15 +7,17 @@ import Passenger.Passenger;
 import Flight.*;
 
 
+*/
 /**
  * This is the control class for admin end operations
  *
  * @author Yao Wang
  * @version 1.2 April 9th, 2022
- */
+ *//*
+
 
 public class AdminEnd {
-    
+
     public AdminEnd(){}
 
     // 根据航班号查询航班信息 获得对应的乘客列表
@@ -91,7 +94,7 @@ public class AdminEnd {
             String flightNo = this.getFlightList(urgentFlighList.get(i)).get(i).getFlightNo();
             System.out.println("下面是航班号为： "+flightNo+"的航班还未登机的乘客名单：");
             System.out.println(this.getUnboardedPassengerList(flightNo));
-        }   
+        }
     }
 
     public static void main(String[] args) {
@@ -106,10 +109,11 @@ public class AdminEnd {
                 break;
             case 2:
                 // get the list of passengers don't board of the specific flight
-                // can send alarm here 
+                // can send alarm here
                 break;
             default:
                 break;
         }
     }
 }
+*/

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Ruizhe Ou
  * @version 0.1 April 9th, 2022
  */
-public class fPD {
+public class fDB {
 
     ArrayList<Passenger> arrayList = new ArrayList<Passenger>();
 

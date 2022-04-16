@@ -1,6 +1,6 @@
 package DataBase.DataCreation;
 
-import DataBase.pDB;
+import DataBase.*;
 import Flight.ExtraOption;
 import Flight.Flight;
 import Flight.Seat;
@@ -131,10 +131,12 @@ public class DataCreation {
      *
      */
     private void createFlights(){
-        ArrayList<Flight> flightList = new ArrayList<>();
+
+        createOptionLists();
+        createSeats();
 
         for(int i = 0; i < 4; i++){
-            Flight curFlight = new Flight(
+            fDB.storeFlight(new Flight(
                     flightNoArr[i],
                     airlinesArr[i],
                     depArr[i],
@@ -147,9 +149,7 @@ public class DataCreation {
                     luggageLimitList[i],
                     this.seatingLists,
                     this.extraOptionLists
-            );
-
-            flightList.add(curFlight);
+            ));
         }
     }
 
