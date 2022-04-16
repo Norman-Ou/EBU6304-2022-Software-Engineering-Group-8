@@ -3,7 +3,7 @@ package PassengerEnd;
 import DataBase.pDB;
 import Passenger.IDDocument.IDDocument;
 import Passenger.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
