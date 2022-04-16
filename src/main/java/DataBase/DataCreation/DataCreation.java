@@ -15,7 +15,7 @@ import java.util.HashMap;
  *
  * @since April 4th, 2022
  * @author Ruizhe Ou, Jiacheng Li
- * @version 0.2
+ * @version 0.3
  */
 public class DataCreation {
 
@@ -35,6 +35,8 @@ public class DataCreation {
     String[] ETCArr = {"07-09-2022 09:46:00", "06-09-2022 08:46:00", "07-09-2022 08:46:00", "06-09-2022 21:20:00"};
     String[] ETAArr = {"07-09-2022 08:00:00", "06-09-2022 10:00:00", "08-09-2022 09:00:00", "06-09-2022 09:20:00"};
     int[] luggageLimitList = {60, 40, 30, 50, 30};
+    String[] passengerIdArr = {"215200", "215201", "215202", "215203", "215204", "215205", "215206", "215207", "215208", "215209"};
+    HashMap<String, ExtraOption> passengerOptions = new HashMap<>();
 
     // Seating Information
     HashMap<String, Seat> seatingLists = new HashMap<>();
@@ -43,8 +45,17 @@ public class DataCreation {
     ArrayList<ExtraOption> extraOptionLists = new ArrayList<>();
 
     private void creatPassengers(){
+        ArrayList<CreditCard> creditCardArr = new ArrayList<>();
+        creditCardArr.add(new CreditCard("1234 5678 9123 4567"));
+        creditCardArr.add(new CreditCard("1232 5678 9123 4567"));
+        creditCardArr.add(new CreditCard("1134 5678 9123 4567"));
+        creditCardArr.add(new CreditCard("2234 5678 9123 4567"));
+        creditCardArr.add(new CreditCard("4234 5678 9123 4567"));
+        creditCardArr.add(new CreditCard("1634 5678 9123 4567"));
+
+
         for (int i = 0; i < 6; i++){
-            pDB.storePassenger(new Passenger(bookNumberArr[i], pIDArr[i], nameArr[i], new BoardingPass(), new Baggage(), new CreditCard(), new ArrayList<>()));
+            pDB.storePassenger(new Passenger(bookNumberArr[i], pIDArr[i], nameArr[i], new BoardingPass(), new Baggage(), creditCardArr.get(i), new ArrayList<>()));
         }
     }
 
@@ -55,21 +66,21 @@ public class DataCreation {
     public void createSeats() {
         int[] classArr = {2, 2, 1, 1, 0, 0, 0, 0, 0, 0};
         String[] noArr = {"E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"};
-        boolean[] lockStatusArr = {true, false, true, false, true, false, true, true, true, true};
+        boolean[] lockStatusArr = {true, false, true, false, true, false, true, true, true, false};
 
         ArrayList<Passenger> passengerArr = new ArrayList<>();
         passengerArr.add(new Passenger("215200"));
         passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger("215201"));
+        passengerArr.add(new Passenger());
         passengerArr.add(new Passenger("215202"));
         passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger("215203"));
         passengerArr.add(new Passenger("215204"));
+        passengerArr.add(new Passenger("215205"));
         passengerArr.add(new Passenger());
-        passengerArr.add(new Passenger("215206"));
-        passengerArr.add(new Passenger("215207"));
-        passengerArr.add(new Passenger("215208"));
-        passengerArr.add(new Passenger("215209"));
 
-        int[] checkInArr = {0, 1, 0, 1, -1, 1, 0, 0, 1, 1};
+        int[] checkInArr = {0, -1, 0, -1, -1, 1, 0, 0, 1, -1};
 
         for(int i = 0; i < 10; i++){
             this.seatingLists.put(noArr[i], new Seat(
@@ -88,10 +99,10 @@ public class DataCreation {
      *
      */
     public void createOptionLists(){
-        int[] kindArr = {0,1,0,0,1,1,0,1,0,1};
+        int[] kindArr = {0,0,1,1,1,1,1,1,1,1};
         String[] descriptionArr = {
-            "Rice Noodles",
-            "Fried Chicken",
+            "Baby Seat",
+            "Elder Seat",
             "Hot Dogs",
             "British Breakfast",
             "Hamburger",
@@ -102,26 +113,12 @@ public class DataCreation {
             "Salad"
         };
         int[] priceArr = {1,2,3,4,5,6,7,8,9,10};
-        String[] passengerIdArr = {"215200", "215201", "215202", "215203", "215204", "215205", "215206", "215207", "215208", "215209"};
-        ArrayList<CreditCard> creditCardArr = new ArrayList<>();
-        creditCardArr.add(new CreditCard("1234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1232 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1134 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("2234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("4234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1634 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1934 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1254 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1214 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1124 5678 9123 4567"));
 
         for(int i = 0; i < 10; i++){
             this.extraOptionLists.add(new ExtraOption(
                 kindArr[i],
                 descriptionArr[i],
-                priceArr[i],
-                passengerIdArr[i],
-                creditCardArr.get(i)
+                priceArr[i]
             ));
         }
     }
@@ -131,6 +128,9 @@ public class DataCreation {
      *
      */
     private void createFlights(){
+        for(int j = 0; j < 4; j++){
+            passengerOptions.put(pIDArr[j], extraOptionLists.get(j));
+        }
 
         createOptionLists();
         createSeats();
@@ -148,7 +148,8 @@ public class DataCreation {
                     ETAArr[i],
                     luggageLimitList[i],
                     this.seatingLists,
-                    this.extraOptionLists
+                    this.extraOptionLists,
+                    this.passengerOptions
             ));
         }
     }

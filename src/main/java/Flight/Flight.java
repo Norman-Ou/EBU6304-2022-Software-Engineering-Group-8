@@ -7,7 +7,7 @@ import java.util.*;
  * This is the basic Flight information class
  *
  * @author Jiacheng Li
- * @version 1.3 April 16th, 2022
+ * @version 1.4 April 16th, 2022
  */
 public class Flight implements Serializable{
     /**
@@ -73,13 +73,19 @@ public class Flight implements Serializable{
      * Default Value: empty ArrayList
      */
     private ArrayList<ExtraOption> extraOptions = new ArrayList<>();
+    /**
+     * Records of all passenger-ordered extra options of a certain flight.<br/>
+     * (Key, Value) -> (passengerId, Seat)<br/><br/>
+     * Default Value: empty HashMap
+     */
+    private HashMap<String, ExtraOption> passengerOptions = new HashMap<>();
 
     /**
      * Default constructor with no parameters.
      */
     public Flight(){}
 
-    public Flight(String flightNo, String airlines, String departure, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Seat> seatingList, ArrayList<ExtraOption> extraOptions) {
+    public Flight(String flightNo, String airlines, String departure, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Seat> seatingList, ArrayList<ExtraOption> extraOptions, HashMap<String, ExtraOption> passengerOptions) {
         this.flightNo = flightNo;
         this.airlines = airlines;
         this.departure = departure;
@@ -92,6 +98,7 @@ public class Flight implements Serializable{
         this.luggageLimit = luggageLimit;
         this.seatingList = seatingList;
         this.extraOptions = extraOptions;
+        this.passengerOptions = passengerOptions;
     }
 
     /**
@@ -109,6 +116,7 @@ public class Flight implements Serializable{
     public int getLuggageLimit(){return luggageLimit;}
     public HashMap<String, Seat> getSeatingList() {return seatingList;}
     public ArrayList<ExtraOption> getExtraOptions(){return extraOptions;}
+    public HashMap<String, ExtraOption> getPassengerOptions() {return passengerOptions;}
 
     /**
      * Modifiers of flight
@@ -125,5 +133,6 @@ public class Flight implements Serializable{
     public void setETA(String ETA){this.ETA = ETA;}
     public void setLuggageLimit(int luggageLimit){this.luggageLimit = luggageLimit;}
     public void setSeatingList(HashMap<String, Seat> seatingList) {this.seatingList = seatingList;}
-    public void setExtraOptions(ArrayList<ExtraOption> extraOptions){this.extraOptions = extraOptions;}
+    public void setExtraOptions(ArrayList<ExtraOption> extraOptions) {this.extraOptions = extraOptions;}
+    public void setPassengerOptions(HashMap<String, ExtraOption> passengerOptions) {this.passengerOptions = passengerOptions;}
 }

@@ -28,16 +28,6 @@ public class ExtraOption {
      * Default Value: <b>-1<b/>
      */
     private int price = -1;
-    /**
-     * id number of the ordering passenger.<br/><br/>
-     * Default Value: <b>-1</b>
-     */
-    private String passengerId;
-    /**
-     * Binding credit card payment object of the passenger.<br/><br/>
-     * Default Value: <b>new CreditCard()</b>
-     */
-    private CreditCard payment;
 
     /**
      * Default constructor with no parameters.<br/>
@@ -46,15 +36,11 @@ public class ExtraOption {
 
     public ExtraOption(int kind,
                        String description,
-                       int price,
-                       String passengerId,
-                       CreditCard payment)
+                       int price)
     {
         this.kind = kind;
         this.description = description;
         this.price = price;
-        this.passengerId = passengerId;
-        this.payment = payment;
     }
 
     /**
@@ -63,8 +49,6 @@ public class ExtraOption {
     public int getKind() {return kind;}
     public String getDescription() {return description;}
     public int getPrice() {return price;}
-    public String getPassengerId() {return passengerId;}
-    public CreditCard getPayment() {return payment;}
 
     /**
      * Modifiers of ExtraOption
@@ -72,6 +56,4 @@ public class ExtraOption {
     public void setKind(int kind) {this.kind = kind;}
     public void setDescription(String description) {this.description = description;}
     public void setPrice(int price) {this.price = price;}
-    public void setPassengerId(String passengerId) {this.passengerId = passengerId;}
-    public void setPayment(CreditCard payment) {this.payment = payment;}
 }
