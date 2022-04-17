@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 18:42:43 CST 2022
@@ -35,13 +36,14 @@ public class Weight_9 extends JFrame {
         new Baggage_7().setVisible(true);
     }
     private void weighBtn(ActionEvent e) {
-        double wei = Math.random()*30;
+        double wei0 = Math.random()*30;
+        double wei = (double) Math.round(wei0 * 100) / 100;
 
         if(wei<21){
-            weightNum.setText("Your baggage weighs: "+ wei);
+            weightNum.setText("Your baggage weighs: "+ wei+" kg");
         }
         else{
-            weightNum.setText("Your baggage weighs: "+ wei);
+            weightNum.setText("Your baggage weighs: "+ wei+" kg");
             JOptionPane.showMessageDialog(null, "Your baggage is overweight, please return to store or buy more baggage allowance.","Overweight baggage options", JOptionPane.QUESTION_MESSAGE);
         }
         // TODO write wei into baggage tag
