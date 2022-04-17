@@ -49,4 +49,14 @@ public class fDB {
         DataBase dataBase = new DataBase(Config.FlightFile);
         dataBase.replaceAllData(new JSONArray(Collections.singletonList(flights)));
     }
+
+    public static Flight loadFlightByFlightNo(String flightNo){
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        try {
+            return dataBase.getObject("flightNo", flightNo, Flight.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
