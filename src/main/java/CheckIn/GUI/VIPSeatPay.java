@@ -21,7 +21,7 @@ public class VIPSeatPay extends JFrame {
     private void FlightPrint(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment", "Safe pay", JOptionPane.WARNING_MESSAGE);
         dispose();
-        new PrintFlight_6().setVisible(true);
+        new CreditPage().setVisible(true);
     }
     private void BackSeat(ActionEvent e) {
        dispose();

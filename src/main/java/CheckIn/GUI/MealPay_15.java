@@ -32,7 +32,7 @@ public class MealPay_15 extends JFrame {
 
     private void payAdMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        //TODO credit card information
+        new CreditPage().setVisible(true);
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");

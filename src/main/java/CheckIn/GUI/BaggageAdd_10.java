@@ -18,20 +18,16 @@ public class BaggageAdd_10 extends JFrame {
     public BaggageAdd_10() {
         initComponents();
     }
-
-    private void payBag(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        dispose();
-        new Meal_12().setVisible(true);
-        //TODO baggage tag
-    }
+    
     private void BackWeight(ActionEvent e) {
         dispose();
         new Weight_9().setVisible(true);
     }
     private void adBagPay(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Your credit card information: ","Credit information", JOptionPane.QUESTION_MESSAGE);
-        //TODO show credit card information
+        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        dispose();
+        new CreditPage().setVisible(true);
+        //TODO baggage tag
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
@@ -46,6 +42,10 @@ public class BaggageAdd_10 extends JFrame {
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+    private void payBag(ActionEvent e) {
+        // TODO add your code here
     }
 
     private void initComponents() {
@@ -64,20 +64,19 @@ public class BaggageAdd_10 extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
-            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
-            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder
-            () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
-            ( ) ;} } );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
