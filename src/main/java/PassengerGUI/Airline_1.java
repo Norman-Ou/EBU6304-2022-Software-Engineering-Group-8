@@ -1,8 +1,6 @@
 package PassengerGUI;
 
-
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,14 +12,11 @@ import java.util.ResourceBundle;
  * Created by JFormDesigner on Tue Mar 29 18:18:09 CST 2022
  */
 
-
-
 /**
  * @author Jiayi Wang
  */
 public class Airline_1 extends JFrame {
     public Airline_1() {
-
         initComponents();
     }
 
@@ -34,29 +29,23 @@ public class Airline_1 extends JFrame {
     private void exit(ActionEvent e) { dispose();}
 
     private void AirlineChosen(ItemEvent e) {
-        // TODO add your code here
         String airlineChoose =(e.getItem()).toString();
         System.out.println(airlineChoose);
     }
 
-    private void thisPropertyChange(PropertyChangeEvent e) {
-
-    }
-
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
-        this.setTitle("Passenger check-in system");
+    ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    JLabel label3 = new JLabel(background);
+    label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+    JPanel myPanel = (JPanel)this.getContentPane();
+    myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+    this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+    this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setVisible(true);
     }
 
     private void initComponents() {
@@ -73,21 +62,18 @@ public class Airline_1 extends JFrame {
         cancelButton = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
-            new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e"
-            , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 )
-            ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-            ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
+            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========

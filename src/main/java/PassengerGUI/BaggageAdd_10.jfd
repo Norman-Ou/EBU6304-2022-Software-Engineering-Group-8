@@ -18,9 +18,11 @@ new FormModel {
 						name: "panel1"
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 							name: "panel2"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "label3"
-								"text": new FormMessage( null, "label3.text_7" )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "adBagPay"
+								"text": new FormMessage( null, "adBagPay.text_21" )
+								"font": new java.awt.Font( ".AppleSystemUIFont", 1, 20 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "adBagPay", true ) )
 							} )
 						} )
 					} )
@@ -58,7 +60,7 @@ new FormModel {
 					name: "label1"
 					"text": new FormMessage( null, "label1.text_27" )
 					"horizontalAlignment": 0
-					"font": new java.awt.Font( "Lucida Grande", 1, 16 )
+					"font": new java.awt.Font( "Lucida Grande", 1, 25 )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )

@@ -1,36 +1,34 @@
 package BackEnd;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import Passenger.Passenger;
 import Flight.*;
+import DataBase.fDB;
 
 
 /**
  * This is the control class for admin end operations
  *
  * @author Yao Wang
- * @version 1.2 April 9th, 2022
+ * @version 1.3 April 16th, 2022
  */
 
-
 public class AdminEnd {
-
+    
+	// 所有航班的列表
+	private List<Flight> flightList = fDB.loadAllFlight(); 
+	
     public AdminEnd(){}
 
     // 根据航班号查询航班信息 获得对应的乘客列表
     public List<Flight> getFlightList(String targetFlightNo){
         // get flight information and passenger list through flight number
-        // 因为数据限制 暂时简化查找过程
-        // 所有航班的列表
-        List<Flight> flightList = new ArrayList<Flight>();
-        Flight testFlight1 = new Flight();
-        Flight testFlight2 = new Flight();
-        flightList.add(testFlight1);
-        flightList.add(testFlight2);
         // 目标航班的航班列表
         List<Flight> targetFlightList = new ArrayList<Flight>();
-        for (int i = 0; i < targetFlightList.size(); i++) {
+        for (int i = 0; i < flightList.size(); i++) {
             Flight flight = flightList.get(i);
             if(flight.getFlightNo().equals(targetFlightNo)){
                 targetFlightList.add(flight);
@@ -42,16 +40,9 @@ public class AdminEnd {
     // 根据时间查询航班信息 获得对应的乘客列表
     public List<Flight> getFlightListByTime(String targetTime){
         // get flight information and passenger list through current time
-        // 因为数据限制 暂时简化查找过程
-        // 所有航班的列表
-        List<Flight> flightList = new ArrayList<Flight>();
-        Flight testFlight1 = new Flight();
-        Flight testFlight2 = new Flight();
-        flightList.add(testFlight1);
-        flightList.add(testFlight2);
         // 目标航班的航班列表
         List<Flight> targetFlightList = new ArrayList<Flight>();
-        for (int i = 0; i < targetFlightList.size(); i++) {
+        for (int i = 0; i < flightList.size(); i++) {
             Flight flight = flightList.get(i);
             if(flight.getETD().equals(targetTime)){
                 targetFlightList.add(flight);
@@ -59,25 +50,29 @@ public class AdminEnd {
         }
         return targetFlightList;
     }
-
+    
     // 获取 即将起飞（15分钟后，也就是ETC）的航班 列表 (也叫做紧急列表)
-    public List<String> getUrgenList(String currentTime){
-        Flight testFlight = new Flight();
+    public List<String> getUrgenList(){
+    	// 获取当前时间
+    	SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); 
+        String currentTime = sdf.format(System.currentTimeMillis());
         List<String> urgentFlighList = new ArrayList<String>();
-        if(testFlight.getETC()==currentTime){
-            urgentFlighList.add(testFlight.getFlightNo());
+        for (int i = 0; i<flightList.size(); i++) {
+        	Flight flight = flightList.get(i);
+        	if(flight.getETC().equals(currentTime)){
+                urgentFlighList.add(flight.getFlightNo());
+            }
         }
         return urgentFlighList;
     }
 
     // 获取某航班上还未登机乘客名单
     public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
-        // String flightNo = this.getFlightInfo(targetFlightNo).get(0).getFlightNo();
-        List<Seat> seatingList = this.getFlightList(targetFlightNo).get(0).getSeatingList();
+    	HashMap<String, Seat> seatingList = this.getFlightList(targetFlightNo).get(0).getSeatingList();
         List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
-        for(int i = 0; i < seatingList.size(); i++) {
-            Seat seat = seatingList.get(i);
-            if(seat.getCheckinStatus()==-1){
+        for (String key : seatingList.keySet()) {
+        	Seat seat = seatingList.get(key);
+        	if(seat.getCheckinStatus()==-1){
                 // 找到了没登机的乘客的座位
                 unboardedPassengerList.add(seat.getPassenger());
             }

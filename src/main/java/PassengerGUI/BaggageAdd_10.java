@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 
 /**
- * @author unknown
+ * @author Jiayi Wang
  */
 public class BaggageAdd_10 extends JFrame {
     public BaggageAdd_10() {
@@ -23,22 +23,25 @@ public class BaggageAdd_10 extends JFrame {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
         dispose();
         new Meal_12().setVisible(true);
+        //TODO baggage tag
     }
-
     private void BackWeight(ActionEvent e) {
         dispose();
         new Weight_9().setVisible(true);
     }
+    private void adBagPay(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Your credit card information: ","Credit information", JOptionPane.QUESTION_MESSAGE);
+        //TODO show credit card information
+    }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,26 +57,27 @@ public class BaggageAdd_10 extends JFrame {
         contentPanel2 = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
-        label3 = new JLabel();
+        adBagPay = new JButton();
         buttonBar2 = new JPanel();
         okButton2 = new JButton();
         cancelButton2 = new JButton();
         label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder
+            () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -88,9 +92,11 @@ public class BaggageAdd_10 extends JFrame {
                     {
                         panel2.setLayout(new GridLayout());
 
-                        //---- label3 ----
-                        label3.setText(bundle.getString("label3.text_7"));
-                        panel2.add(label3);
+                        //---- adBagPay ----
+                        adBagPay.setText(bundle.getString("adBagPay.text_21"));
+                        adBagPay.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 20));
+                        adBagPay.addActionListener(e -> adBagPay(e));
+                        panel2.add(adBagPay);
                     }
                     panel1.add(panel2);
                 }
@@ -124,7 +130,7 @@ public class BaggageAdd_10 extends JFrame {
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_27"));
             label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 16));
+            label1.setFont(new Font("Lucida Grande", Font.BOLD, 25));
             dialogPane2.add(label1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane2, BorderLayout.CENTER);
@@ -140,7 +146,7 @@ public class BaggageAdd_10 extends JFrame {
     private JPanel contentPanel2;
     private JPanel panel1;
     private JPanel panel2;
-    private JLabel label3;
+    private JButton adBagPay;
     private JPanel buttonBar2;
     private JButton okButton2;
     private JButton cancelButton2;

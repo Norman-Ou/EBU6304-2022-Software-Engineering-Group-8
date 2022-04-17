@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author unknown
+ * @author Jiayi Wang
  */
 public class VIPSeatPay extends JFrame {
     public VIPSeatPay() {
@@ -19,25 +19,23 @@ public class VIPSeatPay extends JFrame {
     }
 
     private void FlightPrint(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment", "Safe pay", JOptionPane.WARNING_MESSAGE);
         dispose();
         new PrintFlight_6().setVisible(true);
     }
-
     private void BackSeat(ActionEvent e) {
        dispose();
        new SeatFirst_ac5().setVisible(true);
     }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,18 +58,19 @@ public class VIPSeatPay extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-            ,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red),
-            dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,
+            12),java.awt.Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -102,6 +101,7 @@ public class VIPSeatPay extends JFrame {
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar2.setOpaque(false);
                 buttonBar2.setLayout(new GridBagLayout());
                 ((GridBagLayout)buttonBar2.getLayout()).columnWidths = new int[] {0, 85, 80};
                 ((GridBagLayout)buttonBar2.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};

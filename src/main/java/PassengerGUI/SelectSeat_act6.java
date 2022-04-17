@@ -1,7 +1,5 @@
 package PassengerGUI;
 
-import DataBase.DataCreation.DataCreation;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
@@ -22,8 +20,6 @@ public class SelectSeat_act6 extends JFrame {
         initComponents();
     }
 
-    private String Seat = "";
-
     private void PrintFlight(ActionEvent e) {
         dispose();
         new PrintFlight_6().setVisible(true);
@@ -33,26 +29,24 @@ public class SelectSeat_act6 extends JFrame {
         dispose();
         new SeatFirst_ac5().setVisible(true);
     }
-    
 
     private void SeatPa(KeyEvent e) {
-//        e.getKeyChar();
-//        System.out.println(e.getKeyChar());
+        String seat = textField2.getText();
+        //TODO add seat info to boarding pass
     }
 
     private void AvailableSeat(CaretEvent e) {
         // TODO add your code here
     }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,26 +68,25 @@ public class SelectSeat_act6 extends JFrame {
         button2 = new JButton();
         panel4 = new JPanel();
         label2 = new JLabel();
-        textField4 = new JTextField();
+        avNorSeat = new JTextField();
         panel5 = new JPanel();
         label3 = new JLabel();
         textField2 = new JTextField();
 
         //======== this ========
-        var contentPane = getContentPane();
-        contentPane.setLayout(new GridLayout());
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder( )) )
-            ; dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
+            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
+            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
+            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -140,10 +133,10 @@ public class SelectSeat_act6 extends JFrame {
                     label2.setOpaque(true);
                     panel4.add(label2, BorderLayout.WEST);
 
-                    //---- textField4 ----
-                    textField4.setEditable(false);
-                    textField4.addCaretListener(e -> AvailableSeat(e));
-                    panel4.add(textField4, BorderLayout.CENTER);
+                    //---- avNorSeat ----
+                    avNorSeat.setEditable(false);
+                    avNorSeat.addCaretListener(e -> AvailableSeat(e));
+                    panel4.add(avNorSeat, BorderLayout.CENTER);
 
                     //======== panel5 ========
                     {
@@ -169,11 +162,12 @@ public class SelectSeat_act6 extends JFrame {
             }
             dialogPane.add(panel2, BorderLayout.CENTER);
         }
-        contentPane.add(dialogPane);
+        contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        Seat = textField2.getText();
+        avNorSeat.setText("Available seats: ");
+        //TODO available seats
         init();
     }
     
@@ -189,7 +183,7 @@ public class SelectSeat_act6 extends JFrame {
     private JButton button2;
     private JPanel panel4;
     private JLabel label2;
-    private JTextField textField4;
+    private JTextField avNorSeat;
     private JPanel panel5;
     private JLabel label3;
     private JTextField textField2;

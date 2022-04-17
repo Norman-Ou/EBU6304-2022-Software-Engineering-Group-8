@@ -45,28 +45,20 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": new FormMessage( null, "label1.text_2" )
-					"font": new java.awt.Font( "Lucida Grande", 1, 30 )
-					"horizontalAlignment": 0
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "North"
-				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel3"
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
+						name: "FirstConfirm"
 						"editable": false
 						"opaque": false
-						addEvent( new FormEvent( "javax.swing.event.CaretListener", "caretUpdate", "FlightCaretUpdate", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button4"
 						"text": new FormMessage( null, "button4.text_3" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4", true ) )
+						"font": new java.awt.Font( ".AppleSystemUIFont", 1, 22 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showInitialInfo", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )

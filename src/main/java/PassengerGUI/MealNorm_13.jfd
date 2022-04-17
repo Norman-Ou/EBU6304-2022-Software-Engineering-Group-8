@@ -15,7 +15,6 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 					name: "tabbedPane2"
 					"opaque": false
-					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "tabbedPane2StateChanged", true ) )
 					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "NorMealStateChanged", true ) )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label1"

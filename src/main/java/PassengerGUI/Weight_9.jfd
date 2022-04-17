@@ -18,14 +18,15 @@ new FormModel {
 				} ) {
 					name: "contentPanel"
 					"opaque": false
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": new FormMessage( null, "label3.text" )
-						"horizontalAlignment": 0
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": new FormMessage( null, "button1.text_19" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "weighBtn", true ) )
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label4"
-						"text": new FormMessage( null, "label4.text" )
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "weightNum"
+						"editable": false
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 						name: "panel1"

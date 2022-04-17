@@ -1,5 +1,6 @@
 package PassengerGUI;
 
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -33,16 +34,27 @@ public class Weight_9 extends JFrame {
         dispose();
         new Baggage_7().setVisible(true);
     }
+    private void weighBtn(ActionEvent e) {
+        double wei = Math.random()*30;
+
+        if(wei<21){
+            weightNum.setText("Your baggage weighs: "+ wei);
+        }
+        else{
+            weightNum.setText("Your baggage weighs: "+ wei);
+            JOptionPane.showMessageDialog(null, "Your baggage is overweight, please return to store or buy more baggage allowance.","Overweight baggage options", JOptionPane.QUESTION_MESSAGE);
+        }
+        // TODO write wei into baggage tag
+    }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,8 +68,8 @@ public class Weight_9 extends JFrame {
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        label3 = new JLabel();
-        label4 = new JLabel();
+        button1 = new JButton();
+        weightNum = new JTextArea();
         panel1 = new JPanel();
         button4 = new JButton();
         button3 = new JButton();
@@ -65,7 +77,7 @@ public class Weight_9 extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
@@ -84,14 +96,15 @@ public class Weight_9 extends JFrame {
                 contentPanel.setOpaque(false);
                 contentPanel.setLayout(new GridLayout(0, 1));
 
-                //---- label3 ----
-                label3.setText(bundle.getString("label3.text"));
-                label3.setHorizontalAlignment(SwingConstants.CENTER);
-                contentPanel.add(label3);
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_19"));
+                button1.setFont(button1.getFont().deriveFont(button1.getFont().getSize() + 2f));
+                button1.addActionListener(e -> weighBtn(e));
+                contentPanel.add(button1);
 
-                //---- label4 ----
-                label4.setText(bundle.getString("label4.text"));
-                contentPanel.add(label4);
+                //---- weightNum ----
+                weightNum.setEditable(false);
+                contentPanel.add(weightNum);
 
                 //======== panel1 ========
                 {
@@ -133,8 +146,8 @@ public class Weight_9 extends JFrame {
     // Generated using JFormDesigner Evaluation license - unknown
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JLabel label3;
-    private JLabel label4;
+    private JButton button1;
+    private JTextArea weightNum;
     private JPanel panel1;
     private JButton button4;
     private JButton button3;

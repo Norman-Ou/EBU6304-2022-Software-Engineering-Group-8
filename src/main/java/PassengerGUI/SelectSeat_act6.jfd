@@ -5,7 +5,7 @@ new FormModel {
 	"i18n.bundleName": "Check"
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridLayout ) ) {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
 			"$sizePolicy": 1
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
@@ -59,7 +59,7 @@ new FormModel {
 							"value": "West"
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
-							name: "textField4"
+							name: "avNorSeat"
 							"editable": false
 							addEvent( new FormEvent( "javax.swing.event.CaretListener", "caretUpdate", "AvailableSeat", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
@@ -89,6 +89,8 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
