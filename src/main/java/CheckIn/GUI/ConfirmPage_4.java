@@ -91,23 +91,25 @@ public class ConfirmPage_4 extends JFrame {
         button2 = new JButton();
         button1 = new JButton();
         panel3 = new JPanel();
-        FirstConfirm = new JTextField();
-        button4 = new JButton();
+        onfirm = new JButton();
+        scrollPane1 = new JScrollPane();
+        FirstConfirm = new JTextArea();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+            awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
+            ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -143,16 +145,17 @@ public class ConfirmPage_4 extends JFrame {
             {
                 panel3.setLayout(new BorderLayout());
 
-                //---- FirstConfirm ----
-                FirstConfirm.setEditable(false);
-                FirstConfirm.setOpaque(false);
-                panel3.add(FirstConfirm, BorderLayout.CENTER);
+                //---- onfirm ----
+                onfirm.setText(bundle.getString("onfirm.text_3"));
+                onfirm.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 22));
+                onfirm.addActionListener(e -> showInitialInfo(e));
+                panel3.add(onfirm, BorderLayout.NORTH);
 
-                //---- button4 ----
-                button4.setText(bundle.getString("button4.text_3"));
-                button4.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 22));
-                button4.addActionListener(e -> showInitialInfo(e));
-                panel3.add(button4, BorderLayout.NORTH);
+                //======== scrollPane1 ========
+                {
+                    scrollPane1.setViewportView(FirstConfirm);
+                }
+                panel3.add(scrollPane1, BorderLayout.CENTER);
             }
             dialogPane.add(panel3, BorderLayout.CENTER);
         }
@@ -160,6 +163,7 @@ public class ConfirmPage_4 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
         //Read input passenger
 
 
@@ -190,8 +194,9 @@ public class ConfirmPage_4 extends JFrame {
     private JButton button2;
     private JButton button1;
     private JPanel panel3;
-    private JTextField FirstConfirm;
-    private JButton button4;
+    private JButton onfirm;
+    private JScrollPane scrollPane1;
+    private JTextArea FirstConfirm;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }

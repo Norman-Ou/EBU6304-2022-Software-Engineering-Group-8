@@ -1,5 +1,11 @@
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
+import Beans.Passenger.SubClasses.Baggage;
+import DataBase.fDB;
+import DataBase.pDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
@@ -16,6 +22,7 @@ import java.util.ResourceBundle;
  * @author JiayiWang
  */
 public class SelectSeat_act6 extends JFrame {
+
     public SelectSeat_act6() {
         initComponents();
     }
@@ -30,12 +37,9 @@ public class SelectSeat_act6 extends JFrame {
         new SeatFirst_ac5().setVisible(true);
     }
 
-    private void SeatPa(KeyEvent e) {
-        String seat = textField2.getText();
-        //TODO add seat info to boarding pass
-    }
 
     private void AvailableSeat(CaretEvent e) {
+
         // TODO add your code here
     }
     public void init() {
@@ -54,6 +58,7 @@ public class SelectSeat_act6 extends JFrame {
     }
 
 
+    public static String seat;
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -166,11 +171,22 @@ public class SelectSeat_act6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        avNorSeat.setText("Available seats: ");
+        seat = textField2.getText();
+        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
+
+        psn.getBoardingPass().setSeatNo(seat);
+        String str=psn.getBoardingPass().getSeatNo();
+        System.out.println(str);
+
+        // fDB.loadAllFlights();
+
+        avNorSeat.setText("Available seats: E1, E2, E3, E4");
         //TODO available seats
         init();
     }
-    
+    private void SeatPa(KeyEvent e) {
+        //TODO add seat info to boarding pass
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
@@ -188,5 +204,8 @@ public class SelectSeat_act6 extends JFrame {
     private JLabel label3;
     private JTextField textField2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public static void main(String[] args) throws Exception {
 
+        new SelectSeat_act6().setVisible(true);
+    }
 }
