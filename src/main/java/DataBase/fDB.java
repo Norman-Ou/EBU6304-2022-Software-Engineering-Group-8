@@ -33,7 +33,11 @@ public class fDB {
      * */
     public static void removeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
-        dataBase.removeObject(flight, Flight.class);
+        try {
+            dataBase.removeObject(flight, Flight.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ArrayList<Flight> loadAllFlights(){

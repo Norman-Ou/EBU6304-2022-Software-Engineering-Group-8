@@ -59,6 +59,20 @@ public class BoardingPass {
     public BoardingPass() {}
 
     /**
+     * Constructor with all attributes
+     */
+    public BoardingPass(String flightNo, String seatNo, String gate, String ETD, String ETC, String ETA, String departure, String destination) {
+        this.flightNo = flightNo;
+        this.seatNo = seatNo;
+        this.gate = gate;
+        this.ETD = ETD;
+        this.ETC = ETC;
+        this.ETA = ETA;
+        this.departure = departure;
+        this.destination = destination;
+    }
+
+    /**
      * Accessors of BoardingPass class
      */
     public String getFlightNo() {return this.flightNo;}

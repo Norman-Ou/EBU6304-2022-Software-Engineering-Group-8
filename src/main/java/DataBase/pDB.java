@@ -5,6 +5,7 @@ import Config.Config;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,12 @@ public class pDB{
      * */
     public static Passenger loadPassengerByBookingNo(String bookingNum){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
+        try {
+            return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //TODO
@@ -64,7 +70,11 @@ public class pDB{
      * */
     public static void removePassenger(Passenger passenger){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        dataBase.removeObject(passenger, Passenger.class);
+        try {
+            dataBase.removeObject(passenger, Passenger.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

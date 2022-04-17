@@ -107,13 +107,14 @@ public class DataBase {
      *
      * @return a Java Object with attribute name and the attribute's value same with arguments
      * */
-    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) {
+    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) throws IOException {
         JSONArray array = readFile();
         for (int i = 0; i < (array.size()); i++) {
             JSONObject ob = (JSONObject) array.get(i);
             if (ob.containsValue(value)) {
                 if (isDelete) {
                     array.remove(ob);
+                    writeFile(array);
                     return ob.toJavaObject(tClass);
                 } else
                     return ob.toJavaObject(tClass);
@@ -131,17 +132,19 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) {
+    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) throws IOException {
         JSONArray array = readFile();
-        for (int i = 0; i < (array.size()); i++) {
+        for (int i = 0; i < array.size(); i++) {
             JSONObject ob = (JSONObject) array.get(i);
-            if (ob.equals(jsonObject)){
+            if (ob.toString().equals(jsonObject.toString())){
                 if (isDelete){
                     array.remove(ob);
+                    writeFile(array);
                     return ob.toJavaObject(tClass);
                 }
                 return ob.toJavaObject(tClass);
             }
+            System.out.println(array.toString());
         }
         return null;
     }
@@ -178,7 +181,7 @@ public class DataBase {
      *@param key attribute name of the Java Object
      *@param value attribute's value of the Java Object
      * */
-    protected <T,K> T removeObject(String key, K value, Class<T> tClass) {
+    protected <T,K> T removeObject(String key, K value, Class<T> tClass) throws IOException {
         return searchObject(key, value, tClass, true);
     }
 
@@ -189,7 +192,7 @@ public class DataBase {
      *@param object the certain Java Object
      *@param tClass Class of the Java Object
      * */
-    protected <T> T removeObject(T object, Class<T> tClass) {
+    protected <T> T removeObject(T object, Class<T> tClass) throws IOException {
         return searchObject(beanToJSON(object), tClass, true);
     }
 
@@ -203,7 +206,7 @@ public class DataBase {
      *
      * @return a Java Object with attribute name and the attribute's value same with arguments
      * */
-    protected <T, K> T getObject(String key, K value, Class<T> tClass) {
+    protected <T, K> T getObject(String key, K value, Class<T> tClass) throws IOException {
         return searchObject(key, value, tClass, false);
     }
 
@@ -216,7 +219,7 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) {
+    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) throws IOException {
         return searchObject(jsonObject, tClass, false);
     }
 
