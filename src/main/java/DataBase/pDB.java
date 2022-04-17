@@ -1,6 +1,5 @@
 package DataBase;
 
-import Beans.Flight.Flight;
 import Config.Config;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;

@@ -59,7 +59,7 @@ public class Passenger extends JFrame {
 
         //======== this ========
         setTitle("Passenger enquiry page");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

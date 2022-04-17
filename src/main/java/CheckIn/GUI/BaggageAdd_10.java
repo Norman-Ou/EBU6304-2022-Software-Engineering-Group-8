@@ -64,7 +64,7 @@ public class BaggageAdd_10 extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========

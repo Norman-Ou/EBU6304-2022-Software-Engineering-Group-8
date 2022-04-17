@@ -94,7 +94,7 @@ public class CreditPage extends JFrame {
         mealSecond = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container  contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========

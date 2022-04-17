@@ -52,7 +52,7 @@ public class backend extends JFrame {
         button2 = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(3, 0));
 
         //======== panel1 ========

@@ -97,6 +97,31 @@ public class DataBase {
         write.close();
     }
 
+    //TODO 添加前要检查是否已经存在有一样的，如果有一样时，是再存一个新的还是不存新的了
+    /**
+     * <b>Interface<b/> <br><br/>
+     * Adding a java object to JSON file
+     *
+     * @param object The adding obnect
+     * */
+    protected<T> void addObject(T object){
+        JSONObject jsonObject = (JSONObject) JSON.toJSON(object);
+        JSONArray jsonArray;
+
+        try{
+            jsonArray = readFile();
+        } catch (NullPointerException e){
+            jsonArray = new JSONArray();
+        }
+
+        jsonArray.add(jsonObject);
+        try {
+            writeFile(jsonArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Get a Java Object in the file according the attribute name and the attribute's value of it.
      *
@@ -144,35 +169,11 @@ public class DataBase {
                 }
                 return ob.toJavaObject(tClass);
             }
-            System.out.println(array.toString());
         }
         return null;
     }
 
-    //TODO 添加前要检查是否已经存在有一样的，如果有一样时，是再存一个新的还是不存新的了
-    /**
-     * <b>Interface<b/> <br><br/>
-     * Adding a java object to JSON file
-     *
-     * @param object The adding obnect
-     * */
-    protected<T> void addObject(T object){
-        JSONObject jsonObject = (JSONObject) JSON.toJSON(object);
-        JSONArray jsonArray;
 
-        try{
-            jsonArray = readFile();
-        } catch (NullPointerException e){
-            jsonArray = new JSONArray();
-        }
-
-        jsonArray.add(jsonObject);
-        try {
-            writeFile(jsonArray);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * <b>Interface<b/> <br><br/>
