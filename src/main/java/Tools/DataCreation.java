@@ -17,7 +17,7 @@ import java.util.HashMap;
  *
  * @since April 4th, 2022
  * @author Ruizhe Ou, Jiacheng Li
- * @version 0.3
+ * @version 0.4
  */
 public class DataCreation {
 
@@ -130,12 +130,13 @@ public class DataCreation {
      *
      */
     private void createFlights(){
-        for(int j = 0; j < 4; j++){
-            passengerOptions.put(pIDArr[j], extraOptionLists.get(j));
-        }
 
         createOptionLists();
         createSeats();
+
+        for(int j = 0; j < 4; j++){
+            passengerOptions.put(nameArr[j], extraOptionLists.get(j));
+        }
 
         for(int i = 0; i < 4; i++){
             fDB.storeFlight(new Flight(
@@ -158,6 +159,8 @@ public class DataCreation {
 
     public static void main(String[] args) {
         DataCreation dataCreation = new DataCreation();
+
+
         dataCreation.creatPassengers();
         dataCreation.createFlights();
     }

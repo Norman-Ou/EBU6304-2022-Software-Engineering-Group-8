@@ -36,12 +36,12 @@ public class fDB {
         dataBase.removeObject(flight, Flight.class);
     }
 
-    public static ArrayList<Flight> loadAllFlight(){
+    public static ArrayList<Flight> loadAllFlights(){
         DataBase dataBase = new DataBase(Config.FlightFile);
         return new ArrayList(dataBase.getAllObject().toJavaList(Flight.class));
     }
 
-    public static void replaceAllFlight(ArrayList<Flight> flights) throws IOException {
+    public static void replaceAllFlights(ArrayList<Flight> flights) throws IOException {
         DataBase dataBase = new DataBase(Config.FlightFile);
         dataBase.replaceAllData(new JSONArray(Collections.singletonList(flights)));
     }

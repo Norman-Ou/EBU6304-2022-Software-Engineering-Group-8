@@ -1,8 +1,11 @@
 package DataBase;
 
+import Beans.Flight.Flight;
 import Config.Config;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
+
+import java.util.ArrayList;
 
 /**
  * Passenger Database operation class
@@ -48,6 +51,11 @@ public class pDB{
         String surname = idDocument.getSurname();
         String ID = idDocument.getID();
         return loadPassengerBySurname_ID(surname,ID);
+    }
+
+    public static ArrayList<Passenger> loadAllPassengers(){
+        DataBase dataBase = new DataBase(Config.PassengerFile);
+        return new ArrayList(dataBase.getAllObject().toJavaList(Passenger.class));
     }
 
     //TODO 后期返回值改为 boolean 成功返回 true

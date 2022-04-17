@@ -21,7 +21,7 @@ import DataBase.fDB;
 public class AdminEnd {
     
 	// 所有航班的列表
-	private List<Flight> flightList = fDB.loadAllFlight(); 
+	private List<Flight> flightList = fDB.loadAllFlights();
 	
     public AdminEnd(){}
 
