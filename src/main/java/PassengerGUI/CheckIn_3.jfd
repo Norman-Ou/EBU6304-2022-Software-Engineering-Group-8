@@ -21,7 +21,6 @@ new FormModel {
 						"font": new java.awt.Font( "Lucida Grande", 1, 24 )
 						"opaque": false
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CheckInButton", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1", true ) )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"

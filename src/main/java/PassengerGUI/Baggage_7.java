@@ -23,7 +23,6 @@ public class Baggage_7 extends JFrame {
     }
 
     private void storeBaggage(ActionEvent e) {
-        // TODO add your code here
         dispose();
         new BagStore_8().setVisible(true);
     }

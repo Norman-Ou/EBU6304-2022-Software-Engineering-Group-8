@@ -19,7 +19,7 @@ public class CheckIn_3 extends JFrame {
         initComponents();
     }
 
-    private void button1(ActionEvent e) {
+    private void CheckInButton(ActionEvent e) {
         dispose();
         new EnterBN().setVisible(true);
     }
@@ -29,9 +29,6 @@ public class CheckIn_3 extends JFrame {
         new Airline_1().setVisible(true);
     }
 
-    private void CheckInButton(ActionEvent e) {
-        // TODO add your code here
-    }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -68,13 +65,11 @@ public class CheckIn_3 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -86,10 +81,7 @@ public class CheckIn_3 extends JFrame {
                 button1.setText(bundle.getString("button1.text_6"));
                 button1.setFont(new Font("Lucida Grande", Font.BOLD, 24));
                 button1.setOpaque(false);
-                button1.addActionListener(e -> {
-			CheckInButton(e);
-			button1(e);
-		});
+                button1.addActionListener(e -> CheckInButton(e));
                 contentPanel.add(button1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);

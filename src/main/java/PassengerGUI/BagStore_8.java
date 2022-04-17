@@ -34,7 +34,7 @@ public class BagStore_8 extends JFrame {
     private void CourtShown(ComponentEvent e) {
         int court = (int)(Math.random()*100);
         e.setSource(court);
-        //TODO generate store inforamation
+        //TODO generate store information
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");

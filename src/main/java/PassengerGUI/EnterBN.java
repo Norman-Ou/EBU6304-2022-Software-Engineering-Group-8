@@ -63,10 +63,6 @@ public class EnterBN extends JFrame {
         this.setVisible(true);
     }
 
-    private void psnBookNum(KeyEvent e) {
-        // TODO add your code here
-    }
-
 
 
     private void initComponents() {
