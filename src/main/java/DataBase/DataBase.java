@@ -1,8 +1,5 @@
 package DataBase;
 
-import Config.Config;
-import Passenger.Passenger;
-import Tools.Utilities;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -14,7 +11,7 @@ import java.nio.charset.StandardCharsets;
  * <b>Database class<b/> <br><br/>
  *
  * The method with Access Modifier <b>Private<b/> is the <b>root method<b/> for the database <br><br/>
- * The method with Access Modifier <b>Protected<b/> is the <b>Interface<b/> for the Passenger Database class and Flight Database<br><br/>
+ * The method with Access Modifier <b>Protected<b/> is the <b>Interface<b/> for the Passenger Database class and Beans.Flight Database<br><br/>
  *
  * @author Jiayi Wang
  * @version 0.1 March 22th, 2022

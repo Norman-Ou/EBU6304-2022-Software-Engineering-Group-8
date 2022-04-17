@@ -1,11 +1,8 @@
 package DataBase;
 
 import Config.Config;
-import Passenger.IDDocument.IDDocument;
-import Passenger.Passenger;
-import com.alibaba.fastjson.JSONObject;
-
-import java.util.ArrayList;
+import Beans.IDDocument.IDDocument;
+import Beans.Passenger.Passenger;
 
 /**
  * Passenger Database operation class

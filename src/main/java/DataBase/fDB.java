@@ -1,8 +1,8 @@
 package DataBase;
 
 import Config.Config;
-import Flight.Flight;
-import Passenger.Passenger;
+import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
 import com.alibaba.fastjson.JSONArray;
 
 
@@ -21,7 +21,7 @@ public class fDB {
     ArrayList<Passenger> arrayList = new ArrayList<Passenger>();
 
     /**
-     * Add a flight Object into Flight data base
+     * Add a flight Object into Beans.Flight data base
      * */
     public static void storeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
@@ -29,7 +29,7 @@ public class fDB {
     }
 
     /**
-     * Remove the flight object in Flight data base
+     * Remove the flight object in Beans.Flight data base
      * */
     public static void removeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
