@@ -18,12 +18,12 @@ import DataBase.fDB;
  * @version 1.3 April 16th, 2022
  */
 
-public class AdminEnd {
+public class bMonitors {
     
 	// 所有航班的列表
 	private List<Flight> flightList = fDB.loadAllFlights();
 	
-    public AdminEnd(){}
+    public bMonitors(){}
 
     // 根据航班号查询航班信息 获得对应的乘客列表
     public List<Flight> getFlightList(String targetFlightNo){
