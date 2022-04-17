@@ -20,7 +20,7 @@ public class MealPay_15 extends JFrame {
     }
 
     private void exit(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Thanks for using. Enjoy your flight!","Goodbye", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new exit_16().setVisible(true);
     }
@@ -29,16 +29,20 @@ public class MealPay_15 extends JFrame {
         dispose();
         new Meal_12().setVisible(true);
     }
+
+    private void payAdMeal(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        //TODO credit card information
+    }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,25 +58,26 @@ public class MealPay_15 extends JFrame {
         contentPanel = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
-        label3 = new JLabel();
+        button1 = new JButton();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
         label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -90,9 +95,11 @@ public class MealPay_15 extends JFrame {
                         panel2.setOpaque(false);
                         panel2.setLayout(new GridLayout());
 
-                        //---- label3 ----
-                        label3.setText(bundle.getString("label3.text_2"));
-                        panel2.add(label3);
+                        //---- button1 ----
+                        button1.setText(bundle.getString("button1.text_20"));
+                        button1.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
+                        button1.addActionListener(e -> payAdMeal(e));
+                        panel2.add(button1);
                     }
                     panel1.add(panel2);
                 }
@@ -127,7 +134,7 @@ public class MealPay_15 extends JFrame {
             //---- label1 ----
             label1.setText(bundle.getString("label1.text_21"));
             label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 16));
+            label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
             dialogPane.add(label1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
@@ -142,7 +149,7 @@ public class MealPay_15 extends JFrame {
     private JPanel contentPanel;
     private JPanel panel1;
     private JPanel panel2;
-    private JLabel label3;
+    private JButton button1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

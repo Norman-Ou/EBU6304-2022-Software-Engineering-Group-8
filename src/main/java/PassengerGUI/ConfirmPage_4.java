@@ -1,16 +1,10 @@
 package PassengerGUI;
 
-import Passenger.Passenger;
-import Passenger.Baggage;
-import Passenger.BoardingPass;
-import Passenger.CreditCard;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
@@ -43,15 +37,14 @@ public class ConfirmPage_4 extends JFrame {
         new CheckIn_3().setVisible(true);
     }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +82,7 @@ public class ConfirmPage_4 extends JFrame {
 
     }
 
-    private void button4(ActionEvent e) {
+    private void showInitialInfo(ActionEvent e) {
         info();
     }
 
@@ -110,19 +103,21 @@ public class ConfirmPage_4 extends JFrame {
         button4 = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+       Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
+            ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -172,7 +167,7 @@ public class ConfirmPage_4 extends JFrame {
 
                 //---- button4 ----
                 button4.setText(bundle.getString("button4.text_3"));
-                button4.addActionListener(e -> button4(e));
+                button4.addActionListener(e -> showInitialInfo(e));
                 panel3.add(button4, BorderLayout.NORTH);
             }
             dialogPane.add(panel3, BorderLayout.CENTER);

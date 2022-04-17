@@ -66,7 +66,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button4"
 						"text": new FormMessage( null, "button4.text_3" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showInitialInfo", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )

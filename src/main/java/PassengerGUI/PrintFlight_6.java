@@ -20,6 +20,11 @@ public class PrintFlight_6 extends JFrame {
         initComponents();
     }
 
+    private void printBoardingpass(ActionEvent e) {
+        //TODO get boarding pass
+        boardingpassPrint.setText("Your boarding pass:");
+    }
+
     private void printThenBag(ActionEvent e) {
         // TODO add your code here
         dispose();
@@ -44,22 +49,21 @@ public class PrintFlight_6 extends JFrame {
         dispose();
         new Error().setVisible(true);
     }
+    
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -70,28 +74,27 @@ public class PrintFlight_6 extends JFrame {
         panel1 = new JPanel();
         scrollPane1 = new JScrollPane();
         panel2 = new JPanel();
-        textArea1 = new JTextArea();
+        boardingpassPrint = new JTextArea();
         panel3 = new JPanel();
         button1 = new JButton();
         PrintButton = new JButton();
         cancelButton = new JButton();
+        button2 = new JButton();
         buttonBar = new JPanel();
-        label1 = new JLabel();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
+            , 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
+            dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -113,10 +116,10 @@ public class PrintFlight_6 extends JFrame {
                             panel2.setOpaque(false);
                             panel2.setLayout(new BorderLayout());
 
-                            //---- textArea1 ----
-                            textArea1.setEditable(false);
-                            textArea1.addCaretListener(e -> Flight(e));
-                            panel2.add(textArea1, BorderLayout.CENTER);
+                            //---- boardingpassPrint ----
+                            boardingpassPrint.setEditable(false);
+                            boardingpassPrint.addCaretListener(e -> Flight(e));
+                            panel2.add(boardingpassPrint, BorderLayout.CENTER);
 
                             //======== panel3 ========
                             {
@@ -142,6 +145,12 @@ public class PrintFlight_6 extends JFrame {
                                 panel3.add(cancelButton, BorderLayout.SOUTH);
                             }
                             panel2.add(panel3, BorderLayout.SOUTH);
+
+                            //---- button2 ----
+                            button2.setText(bundle.getString("button2.text_12"));
+                            button2.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
+                            button2.addActionListener(e -> printBoardingpass(e));
+                            panel2.add(button2, BorderLayout.NORTH);
                         }
                         scrollPane1.setViewportView(panel2);
                     }
@@ -160,12 +169,6 @@ public class PrintFlight_6 extends JFrame {
                 ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
-
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_19"));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-            dialogPane.add(label1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -180,12 +183,12 @@ public class PrintFlight_6 extends JFrame {
     private JPanel panel1;
     private JScrollPane scrollPane1;
     private JPanel panel2;
-    private JTextArea textArea1;
+    private JTextArea boardingpassPrint;
     private JPanel panel3;
     private JButton button1;
     private JButton PrintButton;
     private JButton cancelButton;
+    private JButton button2;
     private JPanel buttonBar;
-    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

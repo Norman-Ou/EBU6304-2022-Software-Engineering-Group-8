@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 /**
- * @author unknown
+ * @author Jiayi Wang
  */
 public class PrintBag_11 extends JFrame {
     public PrintBag_11() {
@@ -20,21 +20,22 @@ public class PrintBag_11 extends JFrame {
         dispose();
         new Meal_12().setVisible(true);
     }
-
     private void Return2Baggage(ActionEvent e) {
         dispose();
         new Baggage_7().setVisible(true);
     }
+    private void showBagTag(ActionEvent e) {
+        // TODO print baggage tag
+    }
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,13 +51,13 @@ public class PrintBag_11 extends JFrame {
         contentPanel = new JPanel();
         textField1 = new JTextField();
         panel2 = new JPanel();
-        label1 = new JLabel();
+        button3 = new JButton();
         panel3 = new JPanel();
         button2 = new JButton();
         button1 = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
@@ -64,11 +65,11 @@ public class PrintBag_11 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
             ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
             ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
             ( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
@@ -88,11 +89,11 @@ public class PrintBag_11 extends JFrame {
                 panel2.setOpaque(false);
                 panel2.setLayout(new BorderLayout());
 
-                //---- label1 ----
-                label1.setText(bundle.getString("label1.text_23"));
-                label1.setHorizontalAlignment(SwingConstants.CENTER);
-                label1.setFont(new Font("Lucida Grande", Font.BOLD, 19));
-                panel2.add(label1, BorderLayout.CENTER);
+                //---- button3 ----
+                button3.setText(bundle.getString("button3.text_5"));
+                button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 20));
+                button3.addActionListener(e -> showBagTag(e));
+                panel2.add(button3, BorderLayout.SOUTH);
             }
             dialogPane.add(panel2, BorderLayout.NORTH);
 
@@ -125,7 +126,7 @@ public class PrintBag_11 extends JFrame {
     private JPanel contentPanel;
     private JTextField textField1;
     private JPanel panel2;
-    private JLabel label1;
+    private JButton button3;
     private JPanel panel3;
     private JButton button2;
     private JButton button1;

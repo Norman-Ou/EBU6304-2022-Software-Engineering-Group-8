@@ -37,18 +37,18 @@ public class VIPSeat extends JFrame {
     }
 
     private void SeatPa(KeyEvent e) {
-        e.getKeyChar();
+        String vipSeat = textField2.getText();
     }
+
     public void init() {
-        ImageIcon background = new ImageIcon("src/main/java/img/img.png");//要设置的背景图片
-        JLabel label3 = new JLabel(background);		//把背景图片添加到标签里
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
-        JPanel myPanel = (JPanel)this.getContentPane();		//把我的面板设置为内容面板
-        myPanel.setOpaque(false);					//把我的面板设置为不可视
-//        myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
-//        this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
-        //设置界面属性
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+//        myPanel.setLayout(new FlowLayout());
+//        this.getLayeredPane().setLayout(null);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,24 +69,26 @@ public class VIPSeat extends JFrame {
         button2 = new JButton();
         panel4 = new JPanel();
         label2 = new JLabel();
-        textField4 = new JTextField();
+        acVipSeat = new JTextField();
         panel5 = new JPanel();
         label3 = new JLabel();
         textField2 = new JTextField();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -132,10 +134,10 @@ public class VIPSeat extends JFrame {
                     label2.setText(bundle.getString("label2.text_8"));
                     panel4.add(label2, BorderLayout.WEST);
 
-                    //---- textField4 ----
-                    textField4.setEditable(false);
-                    textField4.addCaretListener(e -> AvailableSeat(e));
-                    panel4.add(textField4, BorderLayout.CENTER);
+                    //---- acVipSeat ----
+                    acVipSeat.setEditable(false);
+                    acVipSeat.addCaretListener(e -> AvailableSeat(e));
+                    panel4.add(acVipSeat, BorderLayout.CENTER);
 
                     //======== panel5 ========
                     {
@@ -165,7 +167,10 @@ public class VIPSeat extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();}
+        acVipSeat.setText("Available VIP seats: ");
+        //TODO available vip seats
+        init();
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
@@ -178,7 +183,7 @@ public class VIPSeat extends JFrame {
     private JButton button2;
     private JPanel panel4;
     private JLabel label2;
-    private JTextField textField4;
+    private JTextField acVipSeat;
     private JPanel panel5;
     private JLabel label3;
     private JTextField textField2;

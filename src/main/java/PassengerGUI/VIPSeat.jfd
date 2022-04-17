@@ -58,7 +58,7 @@ new FormModel {
 							"value": "West"
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
-							name: "textField4"
+							name: "acVipSeat"
 							"editable": false
 							addEvent( new FormEvent( "javax.swing.event.CaretListener", "caretUpdate", "AvailableSeat", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
