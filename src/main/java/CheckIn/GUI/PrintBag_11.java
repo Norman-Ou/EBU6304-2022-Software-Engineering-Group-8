@@ -2,6 +2,10 @@ package CheckIn.GUI;/*
  * Created by JFormDesigner on Wed Mar 30 11:36:13 CST 2022
  */
 
+import Beans.Passenger.Passenger;
+import Beans.Passenger.SubClasses.Baggage;
+import DataBase.pDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -25,6 +29,10 @@ public class PrintBag_11 extends JFrame {
         new Baggage_7().setVisible(true);
     }
     private void showBagTag(ActionEvent e) {
+        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
+        Baggage bag = new Baggage("12F port");
+        psn.setBaggage(bag);
+        textField1.setText(psn.getBaggage().getBaggageNo());
         // TODO print baggage tag
     }
     public void init() {

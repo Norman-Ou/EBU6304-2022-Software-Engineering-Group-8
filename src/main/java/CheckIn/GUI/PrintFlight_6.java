@@ -1,5 +1,8 @@
 package CheckIn.GUI;
 
+import Beans.Passenger.Passenger;
+import DataBase.pDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
@@ -22,7 +25,7 @@ public class PrintFlight_6 extends JFrame {
 
     private void printBoardingpass(ActionEvent e) {
         //TODO get boarding pass
-        boardingpassPrint.setText("Your boarding pass:");
+
     }
 
     private void printThenBag(ActionEvent e) {
@@ -174,6 +177,11 @@ public class PrintFlight_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
+        psn.getBoardingPass().setSeatNo("E1");
+//        System.out.println(psn.getBoardingPass());
+
+        boardingpassPrint.setText(psn.getBoardingPass().toString());
         init(); }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

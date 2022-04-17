@@ -32,12 +32,14 @@ public class VIPSeat extends JFrame {
         new VIPSeatPay().setVisible(true);
     }
 
+    public static String vipSeat;
     private void AvailableSeat(CaretEvent e) {
         // TODO add your code here
+
     }
 
     private void SeatPa(KeyEvent e) {
-        String vipSeat = textField2.getText();
+         vipSeat = textField2.getText();
     }
 
     public void init() {
@@ -167,7 +169,7 @@ public class VIPSeat extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        acVipSeat.setText("Available VIP seats: ");
+        acVipSeat.setText("Available seats: E1, E2, E3, E4");
         //TODO available vip seats
         init();
     }
