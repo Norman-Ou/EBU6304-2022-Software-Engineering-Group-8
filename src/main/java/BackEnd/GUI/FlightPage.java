@@ -13,8 +13,8 @@ import javax.swing.border.*;
 /**
  * @author Lingxiao
  */
-public class Flight extends JFrame {
-    public Flight() {
+public class FlightPage extends JFrame {
+    public FlightPage() {
         initComponents();
     }
 

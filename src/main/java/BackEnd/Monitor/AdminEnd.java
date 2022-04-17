@@ -92,22 +92,20 @@ public class AdminEnd {
         }
     }
 
-    public static void main(String[] args) {
-        int choice=1;
-        switch (choice){
-
-            case 0:
-                // get flight information of the specific flight
-                break;
-            case 1:
-                // get the passengers list of the specific flight
-                break;
-            case 2:
-                // get the list of passengers don't board of the specific flight
-                // can send alarm here
-                break;
-            default:
-                break;
+    // 通过id查乘客状态
+    public Passenger searchPassengerById(String passengerID){
+        Passenger targetPassenger = new Passenger();
+        for (int i = 0; i<flightList.size(); i++) {
+        	Flight flight = flightList.get(i);
+            HashMap<String, Seat> seatingList = flight.getSeatingList();
+            for (String key : seatingList.keySet()) {
+        	    Seat seat = seatingList.get(key);
+                Passenger psg = seat.getPassenger();
+        	    if(psg.getPassengerId().equals(passengerID)){
+                    targetPassenger=psg;
+                }
+            }
         }
+        return targetPassenger;
     }
 }

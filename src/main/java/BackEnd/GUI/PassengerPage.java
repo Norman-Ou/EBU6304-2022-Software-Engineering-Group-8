@@ -2,6 +2,10 @@ package BackEnd.GUI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import BackEnd.Monitor.AdminEnd;
+import Beans.Passenger.Passenger;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,8 +18,8 @@ import java.awt.event.MouseEvent;
 /**
  * @author Lingxiao
  */
-public class Passenger extends JFrame {
-    public Passenger() {
+public class PassengerPage extends JFrame {
+    public PassengerPage() {
         initComponents();
     }
 
@@ -31,7 +35,27 @@ public class Passenger extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
+            AdminEnd admin = new AdminEnd();
+            Passenger psg = admin.searchPassengerById(p_ID);
             PassengerID.setText(p_ID);
+            PassengerName.setText(psg.getSurName());
+            String FlightNo = psg.getBoardingPass().getFlightNo();
+            FlightID.setText(FlightNo);
+            // BaggageStatus.setText(psg.getBaggage().getDropCounter());
+            // List<Passenger> unboardedPassengerList = admin.getUnboardedPassengerList(FlightNo);
+            // String status = "Already on Board";
+            // for(int i = 0; i<unboardedPassengerList.size(); i++){
+            //     Passenger temp = unboardedPassengerList.get(i);
+            //     if(temp.getPassengerId()==p_ID){
+            //         status="Not on Board";
+            //         break;
+            //     }
+            // }
+            // BoardingStatus.setText(status);
+            // md passenger没存电话！！！
+            // Tel.setText(psg.get);
+            // 展示已选，我觉得可以单开一个页面做
+            // MealOption.setText(psg.getExtraOptions());
         }
     }
 
