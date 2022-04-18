@@ -206,8 +206,4 @@ public class SelectSeat_act6 extends JFrame {
     private JLabel label3;
     private JTextField textField2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-    public static void main(String[] args) throws Exception {
-
-        new SelectSeat_act6().setVisible(true);
-    }
 }

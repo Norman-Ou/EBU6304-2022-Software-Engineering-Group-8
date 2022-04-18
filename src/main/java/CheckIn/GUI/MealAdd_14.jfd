@@ -59,17 +59,39 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 					name: "tabbedPane2"
 					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "adMealState", true ) )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label4"
-						"text": new FormMessage( null, "label4.text_2" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "sahsimiPanel"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "labelSashimi"
+							"text": new FormMessage( null, "labelSashimi.text_2" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label4.tab.title" )
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": new FormMessage( null, "label3.text_3" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "steakPanel"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "labelBurger"
+							"text": new FormMessage( null, "labelBurger.text_3" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "labelBurger.tab.title" )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "tempuraPanel"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"text": new FormMessage( null, "label3.text" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label3.tab.title" )
 					} )

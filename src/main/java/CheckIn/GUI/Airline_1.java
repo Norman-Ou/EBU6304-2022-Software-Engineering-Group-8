@@ -20,7 +20,7 @@ public class Airline_1 extends JFrame {
     }
 
     private void ok(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm airline?","Airline check", JOptionPane.WARNING_MESSAGE);
+//        JOptionPane.showMessageDialog(null, "Confirm airline?","Airline check", JOptionPane.WARNING_MESSAGE);
         dispose();
         new CheckIn_3().setVisible(true);
     }
@@ -46,6 +46,11 @@ public class Airline_1 extends JFrame {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
     }
+//    public void setFirstPic(){
+//        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/checkin.png"));
+//        panel2.add(jl1,BorderLayout.CENTER);
+//
+//    }
 
     private void initComponents() {
 
@@ -54,8 +59,9 @@ public class Airline_1 extends JFrame {
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
+        panel1 = new JPanel();
+        panel2 = new JPanel();
         label1 = new JLabel();
-        comboBox1 = new JComboBox<>();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -68,35 +74,40 @@ public class Airline_1 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+            EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing
+            .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
+            java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener()
+            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))
+            throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
                 contentPanel.setOpaque(false);
-                contentPanel.setLayout(new GridLayout(0, 1));
+                contentPanel.setLayout(new BorderLayout());
 
-                //---- label1 ----
-                label1.setText(bundle.getString("label1.text_5"));
-                label1.setHorizontalAlignment(SwingConstants.CENTER);
-                label1.setFont(new Font("Lucida Grande", Font.BOLD, 28));
-                contentPanel.add(label1);
+                //======== panel1 ========
+                {
+                    panel1.setOpaque(false);
+                    panel1.setLayout(new BorderLayout());
 
-                //---- comboBox1 ----
-                comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
-                    "<Airline>",
-                    "South",
-                    "China",
-                    "East"
-                }));
-                comboBox1.setOpaque(false);
-                comboBox1.addItemListener(e -> AirlineChosen(e));
-                contentPanel.add(comboBox1);
+                    //======== panel2 ========
+                    {
+                        panel2.setOpaque(false);
+                        panel2.setLayout(new BorderLayout());
+
+                        //---- label1 ----
+                        label1.setText(bundle.getString("label1.text_5"));
+                        label1.setHorizontalAlignment(SwingConstants.CENTER);
+                        label1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
+                        label1.setForeground(Color.black);
+                        label1.setBackground(new Color(0, 127, 255, 191));
+                        panel2.add(label1, BorderLayout.CENTER);
+                    }
+                    panel1.add(panel2, BorderLayout.CENTER);
+                }
+                contentPanel.add(panel1, BorderLayout.CENTER);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
@@ -124,7 +135,7 @@ public class Airline_1 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
+//        setFirstPic();
         init();
     }
 
@@ -132,8 +143,9 @@ public class Airline_1 extends JFrame {
     // Generated using JFormDesigner Evaluation license - unknown
     private JPanel dialogPane;
     private JPanel contentPanel;
+    private JPanel panel1;
+    private JPanel panel2;
     private JLabel label1;
-    private JComboBox<String> comboBox1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

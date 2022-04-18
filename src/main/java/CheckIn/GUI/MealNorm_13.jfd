@@ -16,19 +16,47 @@ new FormModel {
 					name: "tabbedPane2"
 					"opaque": false
 					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "NorMealStateChanged", true ) )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
-						"text": new FormMessage( null, "label1.text_12" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelBurger"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label1"
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label1.tab.title" )
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": new FormMessage( null, "label3.text_4" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelCheese"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label3.tab.title_2" )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelHot"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "label4.tab.title_2" )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelSa"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "label5.tab.title" )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
