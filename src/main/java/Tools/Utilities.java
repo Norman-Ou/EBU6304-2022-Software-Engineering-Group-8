@@ -10,6 +10,8 @@ import java.nio.charset.StandardCharsets;
 
 public class Utilities {
 
+    public Utilities(){}
+
     /**
      * @param bean Object bean
      * @return
