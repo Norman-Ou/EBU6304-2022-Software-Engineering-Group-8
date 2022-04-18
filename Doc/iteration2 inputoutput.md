@@ -18,10 +18,10 @@ graph LR
     end
     subgraph DATA BASE
     G[(Passenger List)]
-    M[(Flight List)]
+    M[(Beans.Flight List)]
     end
     subgraph GUI OUTPUT
-    H{{Flight Message}}
+    H{{Beans.Flight Message}}
     O{{Boarding Pass}}
     P{{Meal Menu}}
     end

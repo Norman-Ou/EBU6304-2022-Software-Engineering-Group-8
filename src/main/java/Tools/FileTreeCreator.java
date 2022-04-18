@@ -1,13 +1,44 @@
-# EBU6304-2022-Software-Engineering-Group-8
+package Tools;
 
-#### Introduction
-This is EBU6304 Software Engineering Coursework repository of Group 8
+import java.io.File;
 
-#### File Overview
-```
-Doc
-Iteration Log
-src
+public class FileTreeCreator{
+
+    public static void genDirTree(String path, int level, String dir) {
+        level++;
+        File file = new File(path);
+        File[] files = file.listFiles();
+        if (!file.exists()) {
+            System.out.println("File Doesn't exist");
+            return;
+        }
+        if (files.length != 0) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    dir = f.getName();
+                    System.out.println(levelSign(level) + dir);
+                    genDirTree(f.getAbsolutePath(), level, dir);
+                } else {
+                    System.out.println(levelSign(level) + f.getName());
+                }
+            }
+        }
+    }
+
+    private static String levelSign(int level) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" ├─");
+        for (int x = 0; x < level; x++) {
+            sb.insert(0, " │   ");
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        FileTreeCreator.genDirTree("D:\\Java_Code\\SE_Project_G8\\src", 0, null);
+    }
+}
+/*
 ├─main
 │    ├─java
 │    │    ├─BackEnd
@@ -104,14 +135,6 @@ src
 │    │    ├─passenger_data.json
 ├─test
 │    ├─java
-```
 
-#### Software Structure
-1. Back_End System
-2. Check_In System
-
-#### How to run this project
-
-1. Install `jdk1.8.0`
-2. Import this project into `IDEA`
-3. Go into `CheckIn.PassengerEnd.java` and run the `main` method
+*
+* */

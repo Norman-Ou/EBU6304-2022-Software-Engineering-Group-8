@@ -1,10 +1,10 @@
 package DataBase;
 
 import Config.Config;
-import Passenger.IDDocument.IDDocument;
-import Passenger.Passenger;
-import com.alibaba.fastjson.JSONObject;
+import Beans.IDDocument.IDDocument;
+import Beans.Passenger.Passenger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +20,12 @@ public class pDB{
      * */
     public static Passenger loadPassengerByBookingNo(String bookingNum){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
+        try {
+            return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //TODO
@@ -53,13 +58,22 @@ public class pDB{
         return loadPassengerBySurname_ID(surname,ID);
     }
 
+    public static ArrayList<Passenger> loadAllPassengers(){
+        DataBase dataBase = new DataBase(Config.PassengerFile);
+        return new ArrayList(dataBase.getAllObject().toJavaList(Passenger.class));
+    }
+
     //TODO 后期返回值改为 boolean 成功返回 true
     /**
      * Remove the entering passenger object in Passenger data base
      * */
     public static void removePassenger(Passenger passenger){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        dataBase.removeObject(passenger, Passenger.class);
+        try {
+            dataBase.removeObject(passenger, Passenger.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
