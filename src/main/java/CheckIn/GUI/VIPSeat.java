@@ -67,8 +67,8 @@ public class VIPSeat extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
-        button1 = new JButton();
         button2 = new JButton();
+        button1 = new JButton();
         panel4 = new JPanel();
         label2 = new JLabel();
         acVipSeat = new JTextField();
@@ -77,20 +77,19 @@ public class VIPSeat extends JFrame {
         textField2 = new JTextField();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -114,17 +113,17 @@ public class VIPSeat extends JFrame {
                 //======== panel3 ========
                 {
                     panel3.setOpaque(false);
-                    panel3.setLayout(new BorderLayout());
-
-                    //---- button1 ----
-                    button1.setText(bundle.getString("button1.text_14"));
-                    button1.addActionListener(e -> Back2Confirm(e));
-                    panel3.add(button1, BorderLayout.EAST);
+                    panel3.setLayout(new FlowLayout());
 
                     //---- button2 ----
                     button2.setText(bundle.getString("button2.text_11"));
                     button2.addActionListener(e -> SeatPay(e));
-                    panel3.add(button2, BorderLayout.WEST);
+                    panel3.add(button2);
+
+                    //---- button1 ----
+                    button1.setText(bundle.getString("button1.text_14"));
+                    button1.addActionListener(e -> Back2Confirm(e));
+                    panel3.add(button1);
                 }
                 panel2.add(panel3, BorderLayout.SOUTH);
 
@@ -181,8 +180,8 @@ public class VIPSeat extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
-    private JButton button1;
     private JButton button2;
+    private JButton button1;
     private JPanel panel4;
     private JLabel label2;
     private JTextField acVipSeat;

@@ -69,8 +69,8 @@ public class SelectSeat_act6 extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
-        button1 = new JButton();
         button2 = new JButton();
+        button1 = new JButton();
         panel4 = new JPanel();
         label2 = new JLabel();
         avNorSeat = new JTextField();
@@ -79,19 +79,21 @@ public class SelectSeat_act6 extends JFrame {
         textField2 = new JTextField();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
-            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
-            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -115,17 +117,17 @@ public class SelectSeat_act6 extends JFrame {
                 //======== panel3 ========
                 {
                     panel3.setOpaque(false);
-                    panel3.setLayout(new BorderLayout());
-
-                    //---- button1 ----
-                    button1.setText(bundle.getString("button1.text_12"));
-                    button1.addActionListener(e -> Back2Confirm(e));
-                    panel3.add(button1, BorderLayout.EAST);
+                    panel3.setLayout(new FlowLayout());
 
                     //---- button2 ----
                     button2.setText(bundle.getString("button2.text_9"));
                     button2.addActionListener(e -> PrintFlight(e));
-                    panel3.add(button2, BorderLayout.WEST);
+                    panel3.add(button2);
+
+                    //---- button1 ----
+                    button1.setText(bundle.getString("button1.text_12"));
+                    button1.addActionListener(e -> Back2Confirm(e));
+                    panel3.add(button1);
                 }
                 panel2.add(panel3, BorderLayout.SOUTH);
 
@@ -195,8 +197,8 @@ public class SelectSeat_act6 extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
-    private JButton button1;
     private JButton button2;
+    private JButton button1;
     private JPanel panel4;
     private JLabel label2;
     private JTextField avNorSeat;

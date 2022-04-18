@@ -76,20 +76,19 @@ public class MealAdd_14 extends JFrame {
         label3 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder
-            ()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -121,17 +120,17 @@ public class MealAdd_14 extends JFrame {
             //======== panel6 ========
             {
                 panel6.setOpaque(false);
-                panel6.setLayout(new BorderLayout());
+                panel6.setLayout(new FlowLayout());
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_9"));
                 button1.addActionListener(e -> MealPay(e));
-                panel6.add(button1, BorderLayout.WEST);
+                panel6.add(button1);
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_4"));
                 button2.addActionListener(e -> Back2Meal(e));
-                panel6.add(button2, BorderLayout.EAST);
+                panel6.add(button2);
             }
             dialogPane.add(panel6, BorderLayout.SOUTH);
 
