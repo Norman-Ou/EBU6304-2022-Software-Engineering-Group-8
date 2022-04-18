@@ -3,7 +3,7 @@ package BackEnd.GUI;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import BackEnd.Monitor.AdminEnd;
+import BackEnd.Monitor.bMonitors;
 import Beans.Passenger.Passenger;
 
 import java.awt.*;
@@ -35,7 +35,7 @@ public class PassengerPage extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
-            AdminEnd admin = new AdminEnd();
+            bMonitors admin = new bMonitors();
             Passenger psg = admin.searchPassengerById(p_ID);
             PassengerID.setText(p_ID);
             PassengerName.setText(psg.getSurName());

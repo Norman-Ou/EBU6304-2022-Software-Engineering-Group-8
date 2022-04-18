@@ -4,6 +4,9 @@
 
 package CheckIn.GUI;
 
+import Beans.Passenger.Passenger;
+import DataBase.pDB;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -208,8 +211,10 @@ public class CreditPage extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
+        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
+
         //TODO get credit information
-        String creditInfo = "Your credit information: ";
+        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
         textArea1.setText(creditInfo);
         init();
     }
@@ -235,4 +240,9 @@ public class CreditPage extends JFrame {
     private JButton button1;
     private JButton mealSecond;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public static void main(String[] args) throws Exception {
+
+        new CreditPage().setVisible(true);
+
+    }
 }

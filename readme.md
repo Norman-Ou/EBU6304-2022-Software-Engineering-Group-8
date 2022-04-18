@@ -107,8 +107,8 @@ src
 ```
 
 #### Software Structure
-1. Backend System
-2. Frontend System
+1. Back_End System
+2. Check_In System
 
 #### How to run this project
 

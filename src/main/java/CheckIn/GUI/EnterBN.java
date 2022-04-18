@@ -63,8 +63,6 @@ public class EnterBN extends JFrame {
         this.setVisible(true);
     }
 
-
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
