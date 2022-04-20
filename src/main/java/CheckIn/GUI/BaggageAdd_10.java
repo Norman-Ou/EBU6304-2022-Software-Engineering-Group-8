@@ -66,19 +66,20 @@ public class BaggageAdd_10 extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax
-            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,
-            12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans
-            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e.
-            getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -108,16 +109,12 @@ public class BaggageAdd_10 extends JFrame {
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
-                buttonBar2.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar2.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar2.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+                buttonBar2.setLayout(new FlowLayout());
 
                 //---- cancelButton2 ----
                 cancelButton2.setText(bundle.getString("cancelButton2.text"));
                 cancelButton2.addActionListener(e -> BackWeight(e));
-                buttonBar2.add(cancelButton2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                buttonBar2.add(cancelButton2);
             }
             dialogPane2.add(buttonBar2, BorderLayout.SOUTH);
 

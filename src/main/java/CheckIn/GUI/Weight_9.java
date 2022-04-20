@@ -70,25 +70,28 @@ public class Weight_9 extends JFrame {
         contentPanel = new JPanel();
         button1 = new JButton();
         weightNum = new JTextArea();
+        label1 = new JLabel();
         panel1 = new JPanel();
         button4 = new JButton();
         button3 = new JButton();
         button2 = new JButton();
-        label1 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -105,28 +108,6 @@ public class Weight_9 extends JFrame {
                 //---- weightNum ----
                 weightNum.setEditable(false);
                 contentPanel.add(weightNum);
-
-                //======== panel1 ========
-                {
-                    panel1.setOpaque(false);
-                    panel1.setLayout(new GridLayout());
-
-                    //---- button4 ----
-                    button4.setText(bundle.getString("button4.text"));
-                    button4.addActionListener(e -> PrintBag(e));
-                    panel1.add(button4);
-
-                    //---- button3 ----
-                    button3.setText(bundle.getString("button3.text"));
-                    button3.addActionListener(e -> AddBag(e));
-                    panel1.add(button3);
-
-                    //---- button2 ----
-                    button2.setText(bundle.getString("button2.text_2"));
-                    button2.addActionListener(e -> Back2Bag(e));
-                    panel1.add(button2);
-                }
-                contentPanel.add(panel1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
@@ -135,6 +116,28 @@ public class Weight_9 extends JFrame {
             label1.setHorizontalAlignment(SwingConstants.CENTER);
             label1.setFont(new Font("Lucida Grande", Font.BOLD, 30));
             dialogPane.add(label1, BorderLayout.NORTH);
+
+            //======== panel1 ========
+            {
+                panel1.setOpaque(false);
+                panel1.setLayout(new FlowLayout());
+
+                //---- button4 ----
+                button4.setText(bundle.getString("button4.text"));
+                button4.addActionListener(e -> PrintBag(e));
+                panel1.add(button4);
+
+                //---- button3 ----
+                button3.setText(bundle.getString("button3.text"));
+                button3.addActionListener(e -> AddBag(e));
+                panel1.add(button3);
+
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_2"));
+                button2.addActionListener(e -> Back2Bag(e));
+                panel1.add(button2);
+            }
+            dialogPane.add(panel1, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -148,10 +151,10 @@ public class Weight_9 extends JFrame {
     private JPanel contentPanel;
     private JButton button1;
     private JTextArea weightNum;
+    private JLabel label1;
     private JPanel panel1;
     private JButton button4;
     private JButton button3;
     private JButton button2;
-    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

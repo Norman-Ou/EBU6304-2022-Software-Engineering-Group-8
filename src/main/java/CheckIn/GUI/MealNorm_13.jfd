@@ -16,29 +16,52 @@ new FormModel {
 					name: "tabbedPane2"
 					"opaque": false
 					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "NorMealStateChanged", true ) )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
-						"text": new FormMessage( null, "label1.text_12" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelBurger"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label1"
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label1.tab.title" )
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": new FormMessage( null, "label3.text_4" )
-						"horizontalAlignment": 0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelCheese"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label3.tab.title_2" )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelHot"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "label4.tab.title_2" )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panelSa"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "label5.tab.title" )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-					"$columnSpecs": "0:1.0, 80, 80"
-					"$rowSpecs": "0"
-					"$hGap": 5
-					"$vGap": 5
-				} ) {
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 					name: "buttonBar"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
 					"opaque": false
@@ -46,17 +69,11 @@ new FormModel {
 						name: "okButton"
 						"text": new FormMessage( null, "okButton.text_10" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exit", true ) )
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 1
-						"gridy": 0
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "cancelButton"
 						"text": new FormMessage( null, "cancelButton.text_10" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BackToMeal", true ) )
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 2
-						"gridy": 0
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"

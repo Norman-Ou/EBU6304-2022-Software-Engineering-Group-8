@@ -103,13 +103,13 @@ public class ConfirmPage_4 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-            awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
-            ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -120,22 +120,22 @@ public class ConfirmPage_4 extends JFrame {
                 //======== panel2 ========
                 {
                     panel2.setOpaque(false);
-                    panel2.setLayout(new BorderLayout());
+                    panel2.setLayout(new FlowLayout());
 
                     //---- button3 ----
                     button3.setText(bundle.getString("button3.text_3"));
                     button3.addActionListener(e -> confirm1B(e));
-                    panel2.add(button3, BorderLayout.CENTER);
+                    panel2.add(button3);
 
                     //---- button2 ----
                     button2.setText(bundle.getString("button2.text_5"));
                     button2.addActionListener(e -> Back2Init(e));
-                    panel2.add(button2, BorderLayout.EAST);
+                    panel2.add(button2);
 
                     //---- button1 ----
                     button1.setText(bundle.getString("button1.text_7"));
                     button1.addActionListener(e -> ErrorPage(e));
-                    panel2.add(button1, BorderLayout.WEST);
+                    panel2.add(button1);
                 }
                 panel1.add(panel2, BorderLayout.SOUTH);
             }

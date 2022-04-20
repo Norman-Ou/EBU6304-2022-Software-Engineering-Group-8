@@ -44,6 +44,20 @@ public class MealNorm_13 extends JFrame {
                 break;
         }
     }
+
+    public void setMealPic(){
+        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/burger.png"));
+        panelBurger.add(jl1,BorderLayout.CENTER);
+
+        JLabel jl2=new JLabel(new ImageIcon("src/main/resources/cheese_toast.png"));
+        panelCheese.add(jl2,BorderLayout.CENTER);
+
+        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/hotdog.png"));
+        panelHot.add(jl3,BorderLayout.CENTER);
+
+        JLabel jl4=new JLabel(new ImageIcon("src/main/resources/salad.png"));
+        panelSa.add(jl4,BorderLayout.CENTER);
+    }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -66,26 +80,32 @@ public class MealNorm_13 extends JFrame {
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         tabbedPane2 = new JTabbedPane();
+        panelBurger = new JPanel();
         label1 = new JLabel();
+        panelCheese = new JPanel();
         label3 = new JLabel();
+        panelHot = new JPanel();
+        label4 = new JLabel();
+        panelSa = new JPanel();
+        label5 = new JLabel();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
         label2 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.
+            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== tabbedPane2 ========
@@ -93,15 +113,39 @@ public class MealNorm_13 extends JFrame {
                 tabbedPane2.setOpaque(false);
                 tabbedPane2.addChangeListener(e -> NorMealStateChanged(e));
 
-                //---- label1 ----
-                label1.setText(bundle.getString("label1.text_12"));
-                label1.setHorizontalAlignment(SwingConstants.CENTER);
-                tabbedPane2.addTab(bundle.getString("label1.tab.title"), label1);
+                //======== panelBurger ========
+                {
+                    panelBurger.setLayout(new BorderLayout());
 
-                //---- label3 ----
-                label3.setText(bundle.getString("label3.text_4"));
-                label3.setHorizontalAlignment(SwingConstants.CENTER);
-                tabbedPane2.addTab(bundle.getString("label3.tab.title_2"), label3);
+                    //---- label1 ----
+                    label1.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelBurger.add(label1, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label1.tab.title"), panelBurger);
+
+                //======== panelCheese ========
+                {
+                    panelCheese.setLayout(new BorderLayout());
+
+                    //---- label3 ----
+                    label3.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelCheese.add(label3, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label3.tab.title_2"), panelCheese);
+
+                //======== panelHot ========
+                {
+                    panelHot.setLayout(new BorderLayout());
+                    panelHot.add(label4, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label4.tab.title_2"), panelHot);
+
+                //======== panelSa ========
+                {
+                    panelSa.setLayout(new BorderLayout());
+                    panelSa.add(label5, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label5.tab.title"), panelSa);
             }
             dialogPane.add(tabbedPane2, BorderLayout.CENTER);
 
@@ -109,23 +153,17 @@ public class MealNorm_13 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+                buttonBar.setLayout(new FlowLayout());
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_10"));
                 okButton.addActionListener(e -> exit(e));
-                buttonBar.add(okButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 5), 0, 0));
+                buttonBar.add(okButton);
 
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_10"));
                 cancelButton.addActionListener(e -> BackToMeal(e));
-                buttonBar.add(cancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 
@@ -139,14 +177,21 @@ public class MealNorm_13 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        setMealPic();
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
     private JPanel dialogPane;
     private JTabbedPane tabbedPane2;
+    private JPanel panelBurger;
     private JLabel label1;
+    private JPanel panelCheese;
     private JLabel label3;
+    private JPanel panelHot;
+    private JLabel label4;
+    private JPanel panelSa;
+    private JLabel label5;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

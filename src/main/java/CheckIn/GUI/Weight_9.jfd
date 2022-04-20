@@ -28,25 +28,6 @@ new FormModel {
 						name: "weightNum"
 						"editable": false
 					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-						name: "panel1"
-						"opaque": false
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button4"
-							"text": new FormMessage( null, "button4.text" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "PrintBag", true ) )
-						} )
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button3"
-							"text": new FormMessage( null, "button3.text" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AddBag", true ) )
-						} )
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button2"
-							"text": new FormMessage( null, "button2.text_2" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Bag", true ) )
-						} )
-					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
@@ -57,6 +38,27 @@ new FormModel {
 					"font": new java.awt.Font( "Lucida Grande", 1, 30 )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel1"
+					"opaque": false
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button4"
+						"text": new FormMessage( null, "button4.text" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "PrintBag", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button3"
+						"text": new FormMessage( null, "button3.text" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AddBag", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"text": new FormMessage( null, "button2.text_2" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Bag", true ) )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"

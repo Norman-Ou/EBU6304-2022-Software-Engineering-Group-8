@@ -29,22 +29,18 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel2"
 					"opaque": false
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 						name: "panel3"
 						"opaque": false
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button1"
-							"text": new FormMessage( null, "button1.text_14" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
-						}, new FormLayoutConstraints( class java.lang.String ) {
-							"value": "East"
-						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button2"
 							"text": new FormMessage( null, "button2.text_11" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "SeatPay", true ) )
-						}, new FormLayoutConstraints( class java.lang.String ) {
-							"value": "West"
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": new FormMessage( null, "button1.text_14" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
 						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "South"

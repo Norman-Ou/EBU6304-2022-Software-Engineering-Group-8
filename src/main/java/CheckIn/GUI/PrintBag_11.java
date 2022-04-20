@@ -65,20 +65,20 @@ public class PrintBag_11 extends JFrame {
         button1 = new JButton();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
-            ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder
+            () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -108,17 +108,17 @@ public class PrintBag_11 extends JFrame {
             //======== panel3 ========
             {
                 panel3.setOpaque(false);
-                panel3.setLayout(new BorderLayout());
+                panel3.setLayout(new FlowLayout());
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_8"));
                 button2.addActionListener(e -> ToMeal(e));
-                panel3.add(button2, BorderLayout.WEST);
+                panel3.add(button2);
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_10"));
                 button1.addActionListener(e -> Return2Baggage(e));
-                panel3.add(button1, BorderLayout.EAST);
+                panel3.add(button1);
             }
             dialogPane.add(panel3, BorderLayout.SOUTH);
         }

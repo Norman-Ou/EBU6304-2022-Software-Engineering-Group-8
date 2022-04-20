@@ -44,6 +44,8 @@ public class MealAdd_14 extends JFrame {
         new Meal_12().setVisible(true);
     }
     public void init() {
+        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/burger.png"));
+        this.labelBurger.add(jl3);
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
@@ -56,6 +58,19 @@ public class MealAdd_14 extends JFrame {
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+    public void setMealAdPic(){
+        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/salmon_sashimi.png"));
+        sahsimiPanel.add(jl1,BorderLayout.CENTER);
+        sahsimiPanel.add(labelBurger, BorderLayout.NORTH);
+
+        JLabel jl2=new JLabel(new ImageIcon("src/main/resources/steak.png"));
+        steakPanel.add(jl2,BorderLayout.CENTER);
+        steakPanel.add(labelBurger, BorderLayout.NORTH);
+
+        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/tempura.png"));
+        tempuraPanel.add(jl3,BorderLayout.CENTER);
+        tempuraPanel.add(labelBurger, BorderLayout.NORTH);
     }
 
     private void initComponents() {
@@ -72,24 +87,27 @@ public class MealAdd_14 extends JFrame {
         button1 = new JButton();
         button2 = new JButton();
         tabbedPane2 = new JTabbedPane();
-        label4 = new JLabel();
+        sahsimiPanel = new JPanel();
+        labelSashimi = new JLabel();
+        steakPanel = new JPanel();
+        labelBurger = new JLabel();
+        tempuraPanel = new JPanel();
         label3 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder
-            ()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -121,17 +139,17 @@ public class MealAdd_14 extends JFrame {
             //======== panel6 ========
             {
                 panel6.setOpaque(false);
-                panel6.setLayout(new BorderLayout());
+                panel6.setLayout(new FlowLayout());
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_9"));
                 button1.addActionListener(e -> MealPay(e));
-                panel6.add(button1, BorderLayout.WEST);
+                panel6.add(button1);
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_4"));
                 button2.addActionListener(e -> Back2Meal(e));
-                panel6.add(button2, BorderLayout.EAST);
+                panel6.add(button2);
             }
             dialogPane.add(panel6, BorderLayout.SOUTH);
 
@@ -139,15 +157,38 @@ public class MealAdd_14 extends JFrame {
             {
                 tabbedPane2.addChangeListener(e -> adMealState(e));
 
-                //---- label4 ----
-                label4.setText(bundle.getString("label4.text_2"));
-                label4.setHorizontalAlignment(SwingConstants.CENTER);
-                tabbedPane2.addTab(bundle.getString("label4.tab.title"), label4);
+                //======== sahsimiPanel ========
+                {
+                    sahsimiPanel.setLayout(new BorderLayout());
 
-                //---- label3 ----
-                label3.setText(bundle.getString("label3.text_3"));
-                label3.setHorizontalAlignment(SwingConstants.CENTER);
-                tabbedPane2.addTab(bundle.getString("label3.tab.title"), label3);
+                    //---- labelSashimi ----
+                    labelSashimi.setText(bundle.getString("labelSashimi.text_2"));
+                    labelSashimi.setHorizontalAlignment(SwingConstants.CENTER);
+                    sahsimiPanel.add(labelSashimi, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label4.tab.title"), sahsimiPanel);
+
+                //======== steakPanel ========
+                {
+                    steakPanel.setLayout(new BorderLayout());
+
+                    //---- labelBurger ----
+                    labelBurger.setText(bundle.getString("labelBurger.text_3"));
+                    labelBurger.setHorizontalAlignment(SwingConstants.CENTER);
+                    steakPanel.add(labelBurger, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("labelBurger.tab.title"), steakPanel);
+
+                //======== tempuraPanel ========
+                {
+                    tempuraPanel.setLayout(new BorderLayout());
+
+                    //---- label3 ----
+                    label3.setText(bundle.getString("label3.text"));
+                    label3.setHorizontalAlignment(SwingConstants.CENTER);
+                    tempuraPanel.add(label3, BorderLayout.CENTER);
+                }
+                tabbedPane2.addTab(bundle.getString("label3.tab.title"), tempuraPanel);
             }
             dialogPane.add(tabbedPane2, BorderLayout.CENTER);
         }
@@ -155,7 +196,7 @@ public class MealAdd_14 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
+        setMealAdPic();
         init();}
 
 
@@ -170,7 +211,11 @@ public class MealAdd_14 extends JFrame {
     private JButton button1;
     private JButton button2;
     private JTabbedPane tabbedPane2;
-    private JLabel label4;
+    private JPanel sahsimiPanel;
+    private JLabel labelSashimi;
+    private JPanel steakPanel;
+    private JLabel labelBurger;
+    private JPanel tempuraPanel;
     private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

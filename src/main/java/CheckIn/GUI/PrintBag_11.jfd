@@ -36,22 +36,18 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 					name: "panel3"
 					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": new FormMessage( null, "button2.text_8" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ToMeal", true ) )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "West"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button1"
 						"text": new FormMessage( null, "button1.text_10" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Return2Baggage", true ) )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "East"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"

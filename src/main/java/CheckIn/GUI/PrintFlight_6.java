@@ -78,26 +78,27 @@ public class PrintFlight_6 extends JFrame {
         scrollPane1 = new JScrollPane();
         panel2 = new JPanel();
         boardingpassPrint = new JTextArea();
-        panel3 = new JPanel();
-        button1 = new JButton();
-        PrintButton = new JButton();
-        cancelButton = new JButton();
         button2 = new JButton();
         buttonBar = new JPanel();
+        PrintButton = new JButton();
+        cancelButton = new JButton();
+        button1 = new JButton();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-            , 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-            dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -124,31 +125,6 @@ public class PrintFlight_6 extends JFrame {
                             boardingpassPrint.addCaretListener(e -> Flight(e));
                             panel2.add(boardingpassPrint, BorderLayout.CENTER);
 
-                            //======== panel3 ========
-                            {
-                                panel3.setOpaque(false);
-                                panel3.setLayout(new BorderLayout());
-
-                                //---- button1 ----
-                                button1.setText(bundle.getString("button1.text_4"));
-                                button1.addActionListener(e -> error(e));
-                                panel3.add(button1, BorderLayout.CENTER);
-
-                                //---- PrintButton ----
-                                PrintButton.setText(bundle.getString("PrintButton.text_2"));
-                                PrintButton.addActionListener(e -> {
-			printThenBag(e);
-			ok(e);
-		});
-                                panel3.add(PrintButton, BorderLayout.NORTH);
-
-                                //---- cancelButton ----
-                                cancelButton.setText(bundle.getString("cancelButton.text_12"));
-                                cancelButton.addActionListener(e -> Back2Confirm(e));
-                                panel3.add(cancelButton, BorderLayout.SOUTH);
-                            }
-                            panel2.add(panel3, BorderLayout.SOUTH);
-
                             //---- button2 ----
                             button2.setText(bundle.getString("button2.text_12"));
                             button2.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
@@ -167,9 +143,25 @@ public class PrintFlight_6 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+                buttonBar.setLayout(new FlowLayout());
+
+                //---- PrintButton ----
+                PrintButton.setText(bundle.getString("PrintButton.text_2"));
+                PrintButton.addActionListener(e -> {
+			printThenBag(e);
+			ok(e);
+		});
+                buttonBar.add(PrintButton);
+
+                //---- cancelButton ----
+                cancelButton.setText(bundle.getString("cancelButton.text_12"));
+                cancelButton.addActionListener(e -> Back2Confirm(e));
+                buttonBar.add(cancelButton);
+
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_4"));
+                button1.addActionListener(e -> error(e));
+                buttonBar.add(button1);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
@@ -192,11 +184,10 @@ public class PrintFlight_6 extends JFrame {
     private JScrollPane scrollPane1;
     private JPanel panel2;
     private JTextArea boardingpassPrint;
-    private JPanel panel3;
-    private JButton button1;
-    private JButton PrintButton;
-    private JButton cancelButton;
     private JButton button2;
     private JPanel buttonBar;
+    private JButton PrintButton;
+    private JButton cancelButton;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

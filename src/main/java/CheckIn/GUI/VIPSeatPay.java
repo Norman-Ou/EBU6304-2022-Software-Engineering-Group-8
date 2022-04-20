@@ -58,19 +58,19 @@ public class VIPSeatPay extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax
-            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,
-            12),java.awt.Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -102,23 +102,17 @@ public class VIPSeatPay extends JFrame {
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar2.setOpaque(false);
-                buttonBar2.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar2.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar2.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+                buttonBar2.setLayout(new FlowLayout());
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_2"));
                 okButton2.addActionListener(e -> FlightPrint(e));
-                buttonBar2.add(okButton2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 5), 0, 0));
+                buttonBar2.add(okButton2);
 
                 //---- cancelButton2 ----
                 cancelButton2.setText(bundle.getString("cancelButton2.text_2"));
                 cancelButton2.addActionListener(e -> BackSeat(e));
-                buttonBar2.add(cancelButton2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                buttonBar2.add(cancelButton2);
             }
             dialogPane2.add(buttonBar2, BorderLayout.SOUTH);
 
