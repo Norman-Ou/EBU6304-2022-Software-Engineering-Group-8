@@ -19,12 +19,12 @@ public class backend extends JFrame {
     }
 
     private void button1MouseClicked(MouseEvent e) {
-//        if(e.getSource()==button1){
-//            Beans.Flight F = new Beans.Flight();
-//            F.setVisible(true);
-//            this.dispose();
-//            F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        }
+        if(e.getSource()==button1){
+            FlightPage F = new FlightPage();
+            F.setVisible(true);
+            this.dispose();
+            F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
 
     }
 

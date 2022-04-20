@@ -96,7 +96,7 @@ public class ConfirmPage_4 extends JFrame {
         FirstConfirm = new JTextArea();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
