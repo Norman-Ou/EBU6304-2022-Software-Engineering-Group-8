@@ -57,7 +57,7 @@ public class DataCreation {
         creditCardArr.add(new CreditCard("1634 5678 9123 4567"));
 
 
-        for (int i = 0; i < 6; i++){
+        for (int i = 1; i < 6; i++){
             pDB.storePassenger(new Passenger(bookNumberArr[i], pIDArr[i], nameArr[i], new BoardingPass(), new Baggage(), creditCardArr.get(i), new ArrayList<>()));
         }
     }
@@ -99,6 +99,8 @@ public class DataCreation {
                 new CreditCard("1234 5678 9123 4567"),
                 orzExtraOptionList
         );
+
+        pDB.storePassenger(aCompletePassenger);
 
         ArrayList<Passenger> passengerArr = new ArrayList<>();
         passengerArr.add(aCompletePassenger);

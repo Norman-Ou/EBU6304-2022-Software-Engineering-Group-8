@@ -42,7 +42,7 @@ public class ChangeVar2Container {
     }
 
     public static void main(String[] args) {
-        File file = new File(Config.PassengerFile);
+        File file = new File(Config.CHECK_IN_GUI_FILE);
         File files[] = file.listFiles(new FRFilenameFilter());
         for(File f : files){
             if(f.isDirectory()){
