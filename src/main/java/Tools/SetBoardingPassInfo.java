@@ -48,8 +48,8 @@ public class SetBoardingPassInfo {
                 pDB.storePassenger(passenger);
             }else if (passenger.getSurName().equals("hlx")){
                 pDB.removePassenger(passenger);
-                passenger.setBoardingPass(boardingPassArrayList.get(2));
-                pDB.storePassenger(passenger);
+                    passenger.setBoardingPass(boardingPassArrayList.get(2));
+                    pDB.storePassenger(passenger);
             }else if (passenger.getSurName().equals("wjy")){
                 pDB.removePassenger(passenger);
                 passenger.setBoardingPass(boardingPassArrayList.get(3));

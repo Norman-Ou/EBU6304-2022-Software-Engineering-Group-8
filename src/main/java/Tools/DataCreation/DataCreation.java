@@ -1,4 +1,4 @@
-package Tools;
+package Tools.DataCreation;
 
 import Beans.Passenger.SubClasses.Baggage;
 import Beans.Passenger.SubClasses.BoardingPass;
@@ -9,6 +9,7 @@ import Beans.Flight.Flight;
 import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.Passenger;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,7 +38,7 @@ public class DataCreation {
     String[] ETCArr = {"07-09-2022 09:46:00", "06-09-2022 08:46:00", "07-09-2022 08:46:00", "06-09-2022 21:20:00"};
     String[] ETAArr = {"07-09-2022 08:00:00", "06-09-2022 10:00:00", "08-09-2022 09:00:00", "06-09-2022 09:20:00"};
     int[] luggageLimitList = {60, 40, 30, 50, 30};
-    String[] passengerIdArr = {"215200", "215201", "215202", "215203", "215204", "215205", "215206", "215207", "215208", "215209"};
+
     HashMap<String, ExtraOption> passengerOptions = new HashMap<>();
 
     // Seating Information
@@ -68,21 +69,50 @@ public class DataCreation {
     public void createSeats() {
         int[] classArr = {2, 2, 1, 1, 0, 0, 0, 0, 0, 0};
         String[] noArr = {"E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"};
-        boolean[] lockStatusArr = {true, false, true, false, true, false, true, true, true, false};
+        boolean[] lockStatusArr = {true, false, false, false, false, false, false, false, false, false};
+
+        ExtraOption orzExtraOption = new ExtraOption(
+                1,
+                "British Breakfast",
+                4
+        );
+        ArrayList<ExtraOption> orzExtraOptionList = new ArrayList<ExtraOption>();
+        orzExtraOptionList.add(orzExtraOption);
+
+        FlightData flightNo1 = new FlightData();
+        BoardingPass orzBoardingPass = new BoardingPass(
+            flightNo1.flightNoArr[0],
+            "E01",
+            flightNo1.gateArr[0],
+            flightNo1.ETDArr[0],
+            flightNo1.ETCArr[0],
+            flightNo1.ETAArr[0],
+            flightNo1.depArr[0],
+            flightNo1.desArr[0]
+        );
+        Passenger aCompletePassenger = new Passenger(
+                "2019200",
+                "215200",
+                "orz",
+                orzBoardingPass,
+                new Baggage(),
+                new CreditCard("1234 5678 9123 4567"),
+                orzExtraOptionList
+        );
 
         ArrayList<Passenger> passengerArr = new ArrayList<>();
-        passengerArr.add(new Passenger("215200"));
+        passengerArr.add(aCompletePassenger);
         passengerArr.add(new Passenger());
-        passengerArr.add(new Passenger("215201"));
         passengerArr.add(new Passenger());
-        passengerArr.add(new Passenger("215202"));
         passengerArr.add(new Passenger());
-        passengerArr.add(new Passenger("215203"));
-        passengerArr.add(new Passenger("215204"));
-        passengerArr.add(new Passenger("215205"));
+        passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger());
+        passengerArr.add(new Passenger());
         passengerArr.add(new Passenger());
 
-        int[] checkInArr = {0, -1, 0, -1, -1, 1, 0, 0, 1, -1};
+        int[] checkInArr = {0, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
         for(int i = 0; i < 10; i++){
             this.seatingLists.put(noArr[i], new Seat(
