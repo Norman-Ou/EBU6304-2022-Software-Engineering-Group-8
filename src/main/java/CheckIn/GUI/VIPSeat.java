@@ -1,5 +1,11 @@
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
+import Beans.Flight.SubClasses.Seat;
+import Beans.Passenger.Passenger;
+import DataBase.fDB;
+import DataBase.pDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
@@ -7,6 +13,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Wed Mar 30 17:19:11 CST 2022
@@ -18,6 +27,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class VIPSeat extends JFrame {
+    public String seatVIP;
     public VIPSeat() {
         initComponents();
     }
@@ -168,8 +178,36 @@ public class VIPSeat extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        acVipSeat.setText("Available seats: E1, E2, E3, E4");
-        //TODO available vip seats
+        seatVIP = textField2.getText();
+        String bookNoTemp="";
+        if(!(EnterBN.bookNum==null)){
+            bookNoTemp=EnterBN.bookNum;
+        }else if (!(EnterOther.BookingNumber==null)){
+            bookNoTemp=EnterOther.BookingNumber;
+        }else{
+            acVipSeat.setText("Please return and check in again");
+        }
+
+        Passenger psn = pDB.loadPassengerByBookingNo(bookNoTemp);
+        psn.getBoardingPass().setSeatNo(seatVIP);
+
+        //Write seatNo into passenger
+        psn.getBoardingPass().setSeatNo(seatVIP);
+
+        //Show Available seat
+        String flightNum=psn.getBoardingPass().getFlightNo();
+        Flight flight = fDB.loadFlightByFlightNo(flightNum);
+        assert flight != null;
+        HashMap<String, Seat> map= flight.getSeatingList();
+
+        if(!map.isEmpty()) {
+            for (Map.Entry obj : map.entrySet()) {
+                String str = "key: " + obj.getKey() + ", value: " + obj.getValue();
+                acVipSeat.setText(str);
+                System.out.println(obj.getValue());
+            }
+        }
+
         init();
     }
 

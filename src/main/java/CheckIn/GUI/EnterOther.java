@@ -25,23 +25,32 @@ public class EnterOther extends JFrame {
     public String IDNum;
     public String surname;
     public static Passenger psnTemp1;
+    public static String BookingNumber;
     private void ok(ActionEvent e) throws Exception {
         new ConfirmPage_4().setVisible(true);
         dispose();
         this.IDNum=textArea3.getText();
         this.surname=textArea4.getText();
-//        System.out.println(bookNum);
         Passenger psn = pDB.loadPassengerBySurname_ID(surname,IDNum);
-//        System.out.println(psn);
         psnTemp1=psn;
     }
     public static Passenger getPsnTemp1() {
 //        System.out.println(psnTemp1);
+        try{
+            BookingNumber=psnTemp1.getBookNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return psnTemp1;
     }
 
     public static Passenger getPsnTemp2() {
         //Scan a passenger
+        try{
+            BookingNumber=psnTemp1.getBookNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return psnTemp1;
     }
     private void cancel(ActionEvent e) {
@@ -49,20 +58,13 @@ public class EnterOther extends JFrame {
         dispose();
     }
 
-    private void textArea1CaretUpdate(ItemEvent e) {
-        String sur =(e.getItem()).toString();
-        System.out.println(sur);
-    }
-
     private void scanID(ActionEvent e) {
         new ConfirmPage_4().setVisible(true);
         dispose();
         IDDocument id = new IDDocument("215200","orz");
-//        System.out.println(bookNum);
         this.IDNum=id.getID();
         this.surname=id.getSurname();
         Passenger psn = new Passenger();
-//        System.out.println(psn);
         psnTemp1=psn;
 
     }
@@ -192,12 +194,6 @@ public class EnterOther extends JFrame {
     private JTextArea textArea3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private static Passenger psnTemp;
-
-    public void searchBySur(ItemEvent e) {
-        String surName =(e.getItem()).toString();
-        Passenger psn = pDB.loadPassengerByBookingNo(surName);
-        psnTemp=psn;
-    }
 
     public static Passenger getPassenger(){
         return psnTemp;

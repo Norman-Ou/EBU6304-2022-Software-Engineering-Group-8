@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class MealAdd_14 extends JFrame {
+    public static String VIPmealSelected;
+
     public MealAdd_14() {
         initComponents();
     }
@@ -25,11 +27,18 @@ public class MealAdd_14 extends JFrame {
         int selectedIndex = tabbedPane.getSelectedIndex();
         switch (selectedIndex) {
             case 0:
-                System.out.println("Chinese");
+                VIPmealSelected="Sashimi";
+                System.out.println("Sashimi");
                 //TODO store meal info
                 break;
             case 1:
-                System.out.println("Western");
+                VIPmealSelected="Steak";
+                System.out.println("Steak");
+                //TODO store meal info
+                break;
+            case 2:
+                VIPmealSelected="Tempura";
+                System.out.println("Tempura");
                 //TODO store meal info
                 break;
         }

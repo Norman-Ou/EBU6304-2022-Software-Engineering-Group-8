@@ -22,18 +22,30 @@ public class CreditPage extends JFrame {
     }
 
     private void paySeat(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm to pay?","Safe pay environment attention", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed for your VIP seat. Click confirm for printing your boarding pass.","Safe pay for seat.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new PrintFlight_6().setVisible(true);
     }
     private void payBag(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm to pay?","Safe pay environment attention", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed for your additional baggage. Click confirm for printing your baggage tag.","Safe pay for more baggage.", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new Meal_12().setVisible(true);
+        new PrintBag_11().setVisible(true);
     }
-
+    private String mealTemp="";
+    public void setMealTemp(String str){
+        this.mealTemp=str;
+    }
+    public String getMealTemp(){
+        return this.mealTemp;
+    }
     private void payMeal(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm to pay?","Safe pay environment attention", JOptionPane.WARNING_MESSAGE);
+
+        if(MealAdd_14.VIPmealSelected==null){
+            setMealTemp(MealNorm_13.mealSelected);
+        }else{
+            setMealTemp(MealAdd_14.VIPmealSelected);
+        }
+        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new exit_16().setVisible(true);
     }
@@ -240,9 +252,4 @@ public class CreditPage extends JFrame {
     private JButton button1;
     private JButton mealSecond;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-    public static void main(String[] args) throws Exception {
-
-        new CreditPage().setVisible(true);
-
-    }
 }

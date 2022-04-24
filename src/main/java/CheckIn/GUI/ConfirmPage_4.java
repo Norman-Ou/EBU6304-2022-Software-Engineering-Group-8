@@ -52,6 +52,7 @@ public class ConfirmPage_4 extends JFrame {
     public void info(){
         if(EnterBN.getPsnTemp()==null){
             try{
+//                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo("Have not selected.");
                 FirstConfirm.setText(
                         EnterOther.getPsnTemp1().getBoardingPass().toString());
             } catch (Exception e1) {
@@ -59,6 +60,7 @@ public class ConfirmPage_4 extends JFrame {
             }
         }else if(EnterOther.getPsnTemp1()==null) {
             try {
+//                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo("Have not selected.");
                 FirstConfirm.setText(
                         EnterBN.getPsnTemp().getBoardingPass().toString());
             } catch (Exception e1) {

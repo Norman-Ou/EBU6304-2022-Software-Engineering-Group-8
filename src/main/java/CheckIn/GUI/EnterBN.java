@@ -21,7 +21,7 @@ public class EnterBN extends JFrame {
     public EnterBN() {
         initComponents();
     }
-    public String bookNum;
+    public static String bookNum;
     public static Passenger psnTemp;
     private void ok(ActionEvent e) {
         new ConfirmPage_4().setVisible(true);
@@ -34,8 +34,12 @@ public class EnterBN extends JFrame {
         psnTemp=psn;
     }
     public static Passenger getPsnTemp() {
-        System.out.println(psnTemp);
-        return psnTemp;
+        try{
+            return psnTemp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private void forgetBN(ActionEvent e) {
