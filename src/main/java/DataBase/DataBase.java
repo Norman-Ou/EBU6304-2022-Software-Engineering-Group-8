@@ -1,5 +1,6 @@
 package DataBase;
 
+import Tools.JSONComparator;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -161,7 +162,7 @@ public class DataBase {
         JSONArray array = readFile();
         for (int i = 0; i < array.size(); i++) {
             JSONObject ob = (JSONObject) array.get(i);
-            if (ob.toString().equals(jsonObject.toString())){
+            if (new JSONComparator().compareJsonObject(JSON.toJSONString(ob), JSON.toJSONString(jsonObject)).equals("{}")){
                 if (isDelete){
                     array.remove(ob);
                     writeFile(array);

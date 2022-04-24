@@ -1,7 +1,6 @@
 package DataBase;
 
 import Beans.Order.Order;
-import Beans.Passenger.Passenger;
 import Config.Config;
 
 import java.io.IOException;

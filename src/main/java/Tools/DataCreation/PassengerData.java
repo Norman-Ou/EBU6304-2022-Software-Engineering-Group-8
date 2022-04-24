@@ -4,6 +4,7 @@ import Beans.Passenger.Passenger;
 import Beans.Passenger.SubClasses.CreditCard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PassengerData {
     //Passenger Information
@@ -11,7 +12,7 @@ public class PassengerData {
     String[] bookNumberArr = {"2019200", "2019201", "2019202", "2019203", "2019204", "2019205"};
     String[] pIDArr = {"215200", "215201", "215202", "215203", "215204", "215205"};
 
-    ArrayList<CreditCard> creditCardArrayList = new ArrayList<>();
+    ArrayList creditCardArrayList = new ArrayList(Arrays.asList(pIDArr));
 
     public void setCreditCardArrayList(){
         creditCardArrayList.add(new CreditCard("1234 5678 9123 4567"));

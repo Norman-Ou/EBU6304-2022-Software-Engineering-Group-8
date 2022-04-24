@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CompareJson {
+public class JSONComparator {
     public String compareJsonObject(String oldJsonStr, String newJsonStr1) {
         //将字符串转换为json对象
         JSON oldJson = JSON.parseObject(oldJsonStr);
@@ -220,7 +220,7 @@ public class CompareJson {
 
     public static void main(String[] args){
         String oldStr= "{a:'aaa',b:'bbb'}";
-        String newStr= "{a:'aa',b:'bb'}";
-        System.out.println(new CompareJson().compareJsonObject(oldStr,newStr));
+        String newStr= "{a:'aaa',b:'bbb'}";
+        System.out.println(new JSONComparator().compareJsonObject(oldStr,newStr));
     }
 }

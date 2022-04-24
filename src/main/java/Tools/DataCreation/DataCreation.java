@@ -1,5 +1,6 @@
 package Tools.DataCreation;
 
+import Beans.Order.Order;
 import Beans.Passenger.SubClasses.Baggage;
 import Beans.Passenger.SubClasses.BoardingPass;
 import Beans.Passenger.SubClasses.CreditCard;
@@ -9,7 +10,6 @@ import Beans.Flight.Flight;
 import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.Passenger;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,6 +26,7 @@ public class DataCreation {
     String[] nameArr = {"orz", "wmz", "wy", "ljc", "hlx", "wjy"};
     String[] bookNumberArr = {"2019200", "2019201", "2019202", "2019203", "2019204", "2019205"};
     String[] pIDArr = {"215200","215201", "215202", "215203", "215204", "215205"};
+    String[] creditCardArr = {"1234 5678 9123 4567", "1232 5678 9123 4567", "1134 5678 9123 4567", "2234 5678 9123 4567", "4234 5678 9123 4567", "1634 5678 9123 4567"};
 
     //Beans.Flight Information
     String[] flightNoArr = {"CA8852", "BA3352", "CX2582", "EK3588"};
@@ -49,15 +50,8 @@ public class DataCreation {
     ArrayList<ExtraOption> extraOptionLists = new ArrayList<>();
 
     private void creatPassengers(){
-        ArrayList<CreditCard> creditCardArr = new ArrayList<>();
-        creditCardArr.add(new CreditCard("1234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1232 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1134 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("2234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("4234 5678 9123 4567"));
-        creditCardArr.add(new CreditCard("1634 5678 9123 4567"));
 
-
+        //No checked in passenger
         for (int i = 1; i < 6; i++){
             pDB.storePassenger(
                 new Passenger(
@@ -66,11 +60,24 @@ public class DataCreation {
                     nameArr[i],
                     new BoardingPass(),
                     new Baggage(),
-                    creditCardArr.get(i),
+                    new CreditCard(creditCardArr[i]),
                     new ArrayList<>()
                 )
             );
         }
+    }
+
+    public void createOrderList(){
+        oDB.addOrder(new Order(pIDArr[0], flightNoArr[0], bookNumberArr[0]));
+        oDB.addOrder(new Order(pIDArr[1], flightNoArr[0], bookNumberArr[1]));
+
+        oDB.addOrder(new Order(pIDArr[2], flightNoArr[1], bookNumberArr[2]));
+
+        oDB.addOrder(new Order(pIDArr[3], flightNoArr[2], bookNumberArr[3]));
+        oDB.addOrder(new Order(pIDArr[4], flightNoArr[2], bookNumberArr[4]));
+
+        oDB.addOrder(new Order(pIDArr[5], flightNoArr[3], bookNumberArr[5]));
+        oDB.addOrder(new Order(pIDArr[0], flightNoArr[3], bookNumberArr[0]));
     }
 
     /**
