@@ -3,6 +3,15 @@ package Beans.Order;
 public class Order {
     private String passengerID;
     private String flightNo;
+    private String bookNumber;
+
+    public String getBookNumber() {
+        return bookNumber;
+    }
+
+    public void setBookNumber(String bookNumber) {
+        this.bookNumber = bookNumber;
+    }
 
     public String getPassengerID() {
         return passengerID;
@@ -20,8 +29,9 @@ public class Order {
         this.flightNo = flightNo;
     }
 
-    public Order(String passengerID, String flightNo) {
+    public Order(String passengerID, String flightNo, String bookNumber) {
         this.passengerID = passengerID;
         this.flightNo = flightNo;
+        this.bookNumber = bookNumber;
     }
 }
