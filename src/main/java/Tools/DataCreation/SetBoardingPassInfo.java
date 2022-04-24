@@ -1,4 +1,4 @@
-package Tools;
+package Tools.DataCreation;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;

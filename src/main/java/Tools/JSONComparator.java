@@ -218,9 +218,9 @@ public class JSONComparator {
         return JSON.toJSONString(resultJSONObject);
     }
 
-    public static void main(String[] args){
+/*    public static void main(String[] args){
         String oldStr= "{a:'aaa',b:'bbb'}";
         String newStr= "{a:'aaa',b:'bbb'}";
         System.out.println(new JSONComparator().compareJsonObject(oldStr,newStr));
-    }
+    }*/
 }

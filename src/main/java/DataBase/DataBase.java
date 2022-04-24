@@ -1,5 +1,6 @@
 package DataBase;
 
+import Exceptions.DataNotFound;
 import Tools.JSONComparator;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -19,6 +20,9 @@ import java.nio.charset.StandardCharsets;
  *
  * @author Ruizhe Ou
  * @version 1.0 March 24th, 2022
+ *
+ * @author Ruizhe Ou
+ * @version 1.1 April 24th, 2022
  */
 public class DataBase {
 
@@ -32,56 +36,41 @@ public class DataBase {
      * Transfer a JavaBean Object into a JSONObject
      *
      * @param bean the javabean object that will be transfer to JSONObjcet
-     * @return JSONObjcet
+     * @return JSONObject
      * */
     private JSONObject beanToJSON(Object bean) {
         return (JSONObject) JSON.toJSON(bean);
     }
 
-    //TODO Iteration Later
+
     /**
      * Reading all the data in json file with parameter filePath
      *
      * @return JSONArray containing all the data in JSON file
+     * @throws IOException read failed
      * */
-    private JSONArray readFile() {
+    private JSONArray readFile() throws IOException{
         File file = new File(this.filePath);
         if (!file.exists()) {
-            try{
-                if (file.createNewFile()){
-                    System.out.println("Initialization File Successfully");
-                } else {
-                    System.out.println("Initialization File Failed");
-                }
-                writeFile(new JSONArray());
-            } catch (IOException e){
-                e.printStackTrace();
+            if (file.createNewFile()){
+                System.out.println("Initialization File Successfully");
+            } else {
+                System.out.println("Initialization File Failed");
             }
+            writeFile(new JSONArray());
         }
 
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
-            return JSON.parseArray(reader.readLine());
-        } catch (IOException e) {
-            System.out.println(filePath + "Error" + e);
-        } /*finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    System.out.println(filePath + "Error" + e);
-                }
-            }//later iteration
-        }*/
-        return null;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
+        return JSON.parseArray(reader.readLine());
     }
 
     /**
-     * Writing all the data to json file with parameter filePath
+     * Overwrite json File
      *
      * @param array The data that will be wrote into JSON File
+     * @throws IOException Open file failed.
      * */
-    private void writeFile(JSONArray array) throws IOException {
+    private void writeFile(JSONArray array) throws IOException{
         String jsonString=array.toJSONString();
 
         // Creat a file
@@ -105,22 +94,17 @@ public class DataBase {
      *
      * @param object The adding obnect
      * */
-    protected<T> void addObject(T object){
-        JSONObject jsonObject = (JSONObject) JSON.toJSON(object);
-        JSONArray jsonArray;
+    protected<T> void addObject(T object) throws IOException{
+        JSONObject jsonObject = beanToJSON(object);
+        JSONArray jsonArray = readFile();
 
-        try{
-            jsonArray = readFile();
-        } catch (NullPointerException e){
-            jsonArray = new JSONArray();
-        }
-
-        jsonArray.add(jsonObject);
         try {
-            writeFile(jsonArray);
-        } catch (IOException e) {
-            e.printStackTrace();
+            searchObject(jsonObject, object.getClass(), false);
+        } catch (DataNotFound dataNotFound) {
+            jsonArray.add(jsonObject);
         }
+
+        writeFile(jsonArray);
     }
 
     /**
@@ -133,20 +117,19 @@ public class DataBase {
      *
      * @return a Java Object with attribute name and the attribute's value same with arguments
      * */
-    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) throws IOException {
+    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) throws IOException, DataNotFound {
         JSONArray array = readFile();
         for (int i = 0; i < (array.size()); i++) {
             JSONObject ob = (JSONObject) array.get(i);
-            if (ob.containsValue(value)) {
+            if (ob.get(key) == value){
                 if (isDelete) {
                     array.remove(ob);
                     writeFile(array);
-                    return ob.toJavaObject(tClass);
-                } else
-                    return ob.toJavaObject(tClass);
+                }
+                return ob.toJavaObject(tClass);
             }
         }
-        return null;
+        throw new DataNotFound("DataNotFound");
     }
 
     /**
@@ -158,7 +141,7 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) throws IOException {
+    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) throws IOException, DataNotFound {
         JSONArray array = readFile();
         for (int i = 0; i < array.size(); i++) {
             JSONObject ob = (JSONObject) array.get(i);
@@ -171,7 +154,7 @@ public class DataBase {
                 return ob.toJavaObject(tClass);
             }
         }
-        return null;
+        throw new DataNotFound("DataNotFound");
     }
 
 
@@ -183,7 +166,7 @@ public class DataBase {
      *@param key attribute name of the Java Object
      *@param value attribute's value of the Java Object
      * */
-    protected <T,K> T removeObject(String key, K value, Class<T> tClass) throws IOException {
+    protected <T,K> T removeObject(String key, K value, Class<T> tClass) throws IOException, DataNotFound {
         return searchObject(key, value, tClass, true);
     }
 
@@ -194,7 +177,7 @@ public class DataBase {
      *@param object the certain Java Object
      *@param tClass Class of the Java Object
      * */
-    protected <T> T removeObject(T object, Class<T> tClass) throws IOException {
+    protected <T> T removeObject(T object, Class<T> tClass) throws IOException, DataNotFound {
         return searchObject(beanToJSON(object), tClass, true);
     }
 
@@ -208,7 +191,7 @@ public class DataBase {
      *
      * @return a Java Object with attribute name and the attribute's value same with arguments
      * */
-    protected <T, K> T getObject(String key, K value, Class<T> tClass) throws IOException {
+    protected <T, K> T getObject(String key, K value, Class<T> tClass) throws IOException, DataNotFound {
         return searchObject(key, value, tClass, false);
     }
 
@@ -221,7 +204,7 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) throws IOException {
+    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) throws IOException, DataNotFound {
         return searchObject(jsonObject, tClass, false);
     }
 
@@ -231,7 +214,7 @@ public class DataBase {
      *
      * @return a JSONArray containing all the data in database
      * */
-    protected JSONArray getAllObject() {
+    protected JSONArray getAllObject() throws IOException{
         return readFile();
     }
 

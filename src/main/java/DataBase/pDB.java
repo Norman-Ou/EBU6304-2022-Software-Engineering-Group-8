@@ -3,6 +3,7 @@ package DataBase;
 import Config.Config;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
+import Exceptions.DataNotFound;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * Passenger Database operation class
  * @since March 24th, 2022
  * @author Ruizhe Ou
- * @version 0.1
+ * @version 0.2
  */
 public class pDB{
 
@@ -22,9 +23,11 @@ public class pDB{
         DataBase dataBase = new DataBase(Config.PassengerFile);
         try {
             return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
-        } catch (IOException e) {
+        } catch (IOException | DataNotFound e) {
             e.printStackTrace();
-        }
+        } /*catch (DataNotFound dataNotFound) {
+            throw new DataNotFound("No reservation with booking number " + bookingNum);
+        }*/
         return null;
     }
 
@@ -58,9 +61,14 @@ public class pDB{
         return loadPassengerBySurname_ID(surname,ID);
     }
 
-    public static ArrayList<Passenger> loadAllPassengers(){
+    public static ArrayList loadAllPassengers(){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        return new ArrayList(dataBase.getAllObject().toJavaList(Passenger.class));
+        try {
+            return new ArrayList(dataBase.getAllObject().toJavaList(Passenger.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     //TODO 后期返回值改为 boolean 成功返回 true
@@ -71,7 +79,7 @@ public class pDB{
         DataBase dataBase = new DataBase(Config.PassengerFile);
         try {
             dataBase.removeObject(passenger, Passenger.class);
-        } catch (IOException e) {
+        } catch (IOException | DataNotFound e) {
             e.printStackTrace();
         }
     }
@@ -81,6 +89,10 @@ public class pDB{
      * */
     public static void storePassenger(Passenger passenger){
         DataBase dataBase = new DataBase(Config.PassengerFile);
-        dataBase.addObject(passenger);
+        try {
+            dataBase.addObject(passenger);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

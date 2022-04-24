@@ -6,9 +6,9 @@ package Exceptions;
  * @author Jiacheng Li
  * @version 0.1
  */
-public class PassengerDoesNotExistException extends Exception{
+public class DataNotFound extends Exception{
     private String inputInfo;
-    public PassengerDoesNotExistException(String inputInfo){
+    public DataNotFound(String inputInfo){
         this.inputInfo = inputInfo;
     }
 
