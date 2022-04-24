@@ -33,7 +33,7 @@ public class PrintBag_11 extends JFrame {
         Baggage bag = new Baggage("12F port");
         psn.setBaggage(bag);
         textField1.setText(psn.getBaggage().getBaggageNo());
-        // TODO print baggage tag
+        // TODO print baggage tag write baggage message into psn
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");

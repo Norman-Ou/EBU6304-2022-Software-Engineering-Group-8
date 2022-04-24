@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class MealNorm_13 extends JFrame {
+    public static String mealSelected="";
     public MealNorm_13() {
         initComponents();
     }
@@ -35,11 +36,24 @@ public class MealNorm_13 extends JFrame {
         int selectedIndex = tabbedPane.getSelectedIndex();
         switch (selectedIndex) {
             case 0:
-                System.out.println("Chinese");
+//                setMealSelected("Burger");
+                mealSelected="Burger";
+                System.out.println("Burger");
                 //TODO store meal info
                 break;
             case 1:
-                System.out.println("Western");
+                mealSelected="Cheese toast";
+                System.out.println("Cheese toast");
+                //TODO store meal info
+                break;
+            case 2:
+                mealSelected="Hot dog";
+                System.out.println("Hot dog");
+                //TODO store meal info
+                break;
+            case 3:
+                mealSelected="Salad";
+                System.out.println("Salad");
                 //TODO store meal info
                 break;
         }

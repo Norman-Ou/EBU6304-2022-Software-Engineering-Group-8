@@ -1,18 +1,26 @@
 package CheckIn.GUI;
 
 import Beans.Flight.Flight;
+import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.Passenger;
 import Beans.Passenger.SubClasses.Baggage;
 import DataBase.fDB;
 import DataBase.pDB;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.CaretEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Wed Mar 30 12:24:03 CST 2022
@@ -22,7 +30,7 @@ import java.util.ResourceBundle;
  * @author JiayiWang
  */
 public class SelectSeat_act6 extends JFrame {
-
+    public static String seat;
     public SelectSeat_act6() {
         initComponents();
     }
@@ -39,7 +47,6 @@ public class SelectSeat_act6 extends JFrame {
 
 
     private void AvailableSeat(CaretEvent e) {
-
         // TODO add your code here
     }
     public void init() {
@@ -58,11 +65,11 @@ public class SelectSeat_act6 extends JFrame {
     }
 
 
-    public static String seat;
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         label1 = new JLabel();
@@ -73,7 +80,7 @@ public class SelectSeat_act6 extends JFrame {
         button1 = new JButton();
         panel4 = new JPanel();
         label2 = new JLabel();
-        avNorSeat = new JTextField();
+        acNorSeat = new JTextField();
         panel5 = new JPanel();
         label3 = new JLabel();
         textField2 = new JTextField();
@@ -86,14 +93,13 @@ public class SelectSeat_act6 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -140,10 +146,9 @@ public class SelectSeat_act6 extends JFrame {
                     label2.setOpaque(true);
                     panel4.add(label2, BorderLayout.WEST);
 
-                    //---- avNorSeat ----
-                    avNorSeat.setEditable(false);
-                    avNorSeat.addCaretListener(e -> AvailableSeat(e));
-                    panel4.add(avNorSeat, BorderLayout.CENTER);
+                    //---- acNorSeat ----
+                    acNorSeat.setEditable(false);
+                    panel4.add(acNorSeat, BorderLayout.CENTER);
 
                     //======== panel5 ========
                     {
@@ -153,14 +158,6 @@ public class SelectSeat_act6 extends JFrame {
                         //---- label3 ----
                         label3.setText(bundle.getString("label3.text_5"));
                         panel5.add(label3, BorderLayout.WEST);
-
-                        //---- textField2 ----
-                        textField2.addKeyListener(new KeyAdapter() {
-                            @Override
-                            public void keyTyped(KeyEvent e) {
-                                SeatPa(e);
-                            }
-                        });
                         panel5.add(textField2, BorderLayout.CENTER);
                     }
                     panel4.add(panel5, BorderLayout.SOUTH);
@@ -173,17 +170,35 @@ public class SelectSeat_act6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        //Get passenger
         seat = textField2.getText();
-        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
-
+        String bookNoTemp1="";
+        if(!(EnterBN.bookNum==null)){
+            bookNoTemp1=EnterBN.bookNum;
+        }else if (!(EnterOther.BookingNumber==null)){
+            bookNoTemp1=EnterOther.BookingNumber;
+        }else{
+            acNorSeat.setText("Please return and check in again");
+        }
+        Passenger psn = pDB.loadPassengerByBookingNo(bookNoTemp1);
         psn.getBoardingPass().setSeatNo(seat);
-        String str=psn.getBoardingPass().getSeatNo();
-        System.out.println(str);
 
-        // fDB.loadAllFlights();
+        //Write seatNo into passenger
+        psn.getBoardingPass().setSeatNo(seat);
 
-        avNorSeat.setText("Available seats: E1, E2, E3, E4");
-        //TODO available seats
+        //Show Available seat
+        String flightNum=psn.getBoardingPass().getFlightNo();
+        Flight flight = fDB.loadFlightByFlightNo(flightNum);
+        HashMap<String, Seat> map= flight.getSeatingList();
+
+        if(!map.isEmpty()) {
+            for (Map.Entry obj : map.entrySet()) {
+                String str = "key: " + obj.getKey() + ", value: " + obj.getValue();
+                acNorSeat.setText(str);
+                System.out.println(obj.getValue());
+            }
+        }
+
         init();
     }
     private void SeatPa(KeyEvent e) {
@@ -191,7 +206,7 @@ public class SelectSeat_act6 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane;
     private JLabel label1;
     private JPanel panel1;
@@ -201,9 +216,14 @@ public class SelectSeat_act6 extends JFrame {
     private JButton button1;
     private JPanel panel4;
     private JLabel label2;
-    private JTextField avNorSeat;
+    private JTextField acNorSeat;
     private JPanel panel5;
     private JLabel label3;
     private JTextField textField2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public static void main(String[] args) throws Exception {
+
+        new SelectSeat_act6().setVisible(true);
+
+    }
 }

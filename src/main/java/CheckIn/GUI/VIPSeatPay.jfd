@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -24,6 +24,10 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label3"
 								"text": new FormMessage( null, "label3.text_8" )
+								"opaque": true
+								"foreground": new java.awt.Color( 255, 204, 204, 255 )
+								"font": new java.awt.Font( ".AppleSystemUIFont", 1, 20 )
+								"horizontalAlignment": 0
 							} )
 						} )
 					} )
