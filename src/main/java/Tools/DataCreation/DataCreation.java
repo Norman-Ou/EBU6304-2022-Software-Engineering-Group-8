@@ -25,7 +25,7 @@ public class DataCreation {
     //Passenger Information
     String[] nameArr = {"orz", "wmz", "wy", "ljc", "hlx", "wjy"};
     String[] bookNumberArr = {"2019200", "2019201", "2019202", "2019203", "2019204", "2019205"};
-    String[] pIDArr = {"215200", "215201", "215202", "215203", "215204", "215205"};
+    String[] pIDArr = {"215200","215201", "215202", "215203", "215204", "215205"};
 
     //Beans.Flight Information
     String[] flightNoArr = {"CA8852", "BA3352", "CX2582", "EK3588"};
@@ -34,15 +34,16 @@ public class DataCreation {
     String[] desArr = {"Beijing", "Paris", "Hong Kong", "Dubai"};
     String[] gateArr = {"2A", "45E", "8D", "17F", "39A"};
     String[] terArr = {"T1", "T2", "T2", "T1", "T1"};
-    String[] ETDArr = {"06-09-2022 10:16:00", "06-09-2022 09:16:00", "07-09-2022 09:16:00", "06-09-2022 22:00:00"};
-    String[] ETCArr = {"07-09-2022 09:46:00", "06-09-2022 08:46:00", "07-09-2022 08:46:00", "06-09-2022 21:20:00"};
-    String[] ETAArr = {"07-09-2022 08:00:00", "06-09-2022 10:00:00", "08-09-2022 09:00:00", "06-09-2022 09:20:00"};
+    String[] ETDArr = {"06-09-2022 10:16:00", "06-09-2022 09:16:00", "07-09-2022 09:16:00", "08-09-2022 22:00:00"};
+    String[] ETCArr = {"07-09-2022 09:46:00", "06-09-2022 08:46:00", "07-09-2022 08:46:00", "08-09-2022 21:20:00"};
+    String[] ETAArr = {"07-09-2022 08:00:00", "06-09-2022 10:00:00", "08-09-2022 09:00:00", "08-09-2022 09:20:00"};
     int[] luggageLimitList = {60, 40, 30, 50, 30};
 
     HashMap<String, ExtraOption> passengerOptions = new HashMap<>();
 
     // Seating Information
     HashMap<String, Seat> seatingLists = new HashMap<>();
+    HashMap<String, Seat> noOrzLists = new HashMap<>();
 
     // ExtraOptions Information
     ArrayList<ExtraOption> extraOptionLists = new ArrayList<>();
@@ -58,7 +59,17 @@ public class DataCreation {
 
 
         for (int i = 1; i < 6; i++){
-            pDB.storePassenger(new Passenger(bookNumberArr[i], pIDArr[i], nameArr[i], new BoardingPass(), new Baggage(), creditCardArr.get(i), new ArrayList<>()));
+            pDB.storePassenger(
+                new Passenger(
+                    bookNumberArr[i],
+                    pIDArr[i],
+                    nameArr[i],
+                    new BoardingPass(),
+                    new Baggage(),
+                    creditCardArr.get(i),
+                    new ArrayList<>()
+                )
+            );
         }
     }
 
@@ -114,16 +125,48 @@ public class DataCreation {
         passengerArr.add(new Passenger());
         passengerArr.add(new Passenger());
 
+        ArrayList<Passenger> emptyPassengerArr = new ArrayList<>();
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+        emptyPassengerArr.add(new Passenger());
+
         int[] checkInArr = {0, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
         for(int i = 0; i < 10; i++){
             this.seatingLists.put(noArr[i], new Seat(
-                classArr[i],
-                noArr[i],
-                lockStatusArr[i],
-                passengerArr.get(i),
-                checkInArr[i]
+                    classArr[i],
+                    noArr[i],
+                    lockStatusArr[i],
+                    passengerArr.get(i),
+                    checkInArr[i]
             ));
+        }
+
+        for(int i = 0; i < 10; i++){
+            if(i == 0){
+                this.noOrzLists.put(noArr[i], new Seat(
+                        classArr[i],
+                        noArr[i],
+                        false,
+                        emptyPassengerArr.get(i),
+                        -1
+                ));
+            }else{
+                this.noOrzLists.put(noArr[i], new Seat(
+                        classArr[i],
+                        noArr[i],
+                        lockStatusArr[i],
+                        emptyPassengerArr.get(i),
+                        checkInArr[i]
+                ));
+            }
         }
     }
 
@@ -166,26 +209,47 @@ public class DataCreation {
         createOptionLists();
         createSeats();
 
+        HashMap<String, ExtraOption> orzOptionLists = new HashMap<>();
+
+
         for(int j = 0; j < 4; j++){
-            passengerOptions.put(nameArr[j], extraOptionLists.get(j));
+            if(j == 0)
+                orzOptionLists.put(nameArr[j], extraOptionLists.get(j));
         }
 
         for(int i = 0; i < 4; i++){
-            fDB.storeFlight(new Flight(
-                    flightNoArr[i],
-                    airlinesArr[i],
-                    depArr[i],
-                    desArr[i],
-                    gateArr[i],
-                    terArr[i],
-                    ETDArr[i],
-                    ETCArr[i],
-                    ETAArr[i],
-                    luggageLimitList[i],
-                    this.seatingLists,
-                    this.extraOptionLists,
-                    this.passengerOptions
-            ));
+            if(i == 0)
+                fDB.storeFlight(new Flight(
+                        flightNoArr[i],
+                        airlinesArr[i],
+                        depArr[i],
+                        desArr[i],
+                        gateArr[i],
+                        terArr[i],
+                        ETDArr[i],
+                        ETCArr[i],
+                        ETAArr[i],
+                        luggageLimitList[i],
+                        this.seatingLists,
+                        this.extraOptionLists,
+                        orzOptionLists
+                ));
+            else
+                fDB.storeFlight(new Flight(
+                        flightNoArr[i],
+                        airlinesArr[i],
+                        depArr[i],
+                        desArr[i],
+                        gateArr[i],
+                        terArr[i],
+                        ETDArr[i],
+                        ETCArr[i],
+                        ETAArr[i],
+                        luggageLimitList[i],
+                        this.noOrzLists,
+                        this.extraOptionLists,
+                        this.passengerOptions
+                ));
         }
     }
 
