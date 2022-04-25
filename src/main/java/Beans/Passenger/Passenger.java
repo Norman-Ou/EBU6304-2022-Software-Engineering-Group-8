@@ -82,6 +82,19 @@ public class Passenger {
     public CreditCard getCreditCard() {return creditCard;}
     public ArrayList<ExtraOption> getExtraOptions() {return extraOptions;}
 
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "bookNumber='" + bookNumber + '\'' +
+                ", passengerId='" + passengerId + '\'' +
+                ", surName='" + surName + '\'' +
+                ", boardingPass=" + boardingPass +
+                ", baggage=" + baggage +
+                ", creditCard=" + creditCard +
+                ", extraOptions=" + extraOptions +
+                '}';
+    }
+
     /**
      * Modifiers of Passenger class
      */

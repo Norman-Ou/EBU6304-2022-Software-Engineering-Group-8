@@ -121,7 +121,7 @@ public class DataBase {
         JSONArray array = readFile();
         for (int i = 0; i < (array.size()); i++) {
             JSONObject ob = (JSONObject) array.get(i);
-            if (ob.get(key) == value){
+            if (ob.get(key).equals(value.toString())){
                 if (isDelete) {
                     array.remove(ob);
                     writeFile(array);

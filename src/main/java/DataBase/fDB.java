@@ -36,14 +36,15 @@ public class fDB {
     /**
      * Remove the flight object in Beans.Flight data base
      * */
-    public static void removeFlight(Flight flight) throws DataNotFound {
+    public static void removeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {
             dataBase.removeObject(flight, Flight.class);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (DataNotFound e){
-            throw new DataNotFound("Not Found flight with flight number " + flight.getFlightNo());
+            e.printStackTrace();
+//            throw new DataNotFound("Not Found flight with flight number " + flight.getFlightNo());
         }
     }
 
@@ -62,7 +63,7 @@ public class fDB {
         dataBase.replaceAllData(new JSONArray(Collections.singletonList(flights)));
     }
 
-    public static Flight loadFlightByFlightNo(String flightNo) throws DataNotFound {
+    public static Flight loadFlightByFlightNo(String flightNo)/* throws DataNotFound */{
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {
             return dataBase.getObject("flightNo", flightNo, Flight.class);
@@ -70,7 +71,9 @@ public class fDB {
             e.printStackTrace();
             return null;
         } catch (DataNotFound dataNotFound) {
-            throw new DataNotFound("Flight " + flightNo + " Not Found");
+            dataNotFound.printStackTrace();
+            return null;
+//            throw new DataNotFound("Flight " + flightNo + " Not Found");
         }
     }
 }
