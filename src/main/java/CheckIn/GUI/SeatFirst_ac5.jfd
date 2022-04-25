@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -15,40 +15,24 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": new FormMessage( null, "label1.text_25" )
-					"font": new java.awt.Font( "Lucida Grande", 1, 26 )
+					"font": new java.awt.Font( "Lucida Grande", 1, 30 )
 					"horizontalAlignment": 0
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
-					"text": new FormMessage( null, "button1.text_13" )
-					"opaque": false
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "NorSeat", true ) )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "West"
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button2"
-					"text": new FormMessage( null, "button2.text_10" )
-					"opaque": false
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPSeat", true ) )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "East"
-				} )
-				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-					name: "scrollPane1"
-					"opaque": false
-					add( new FormComponent( "javax.swing.JTextArea" ) {
-						name: "textArea1"
-						"text": "\n\n\n\n               There would be  \n            an additional payment  \n                 for VIP Seats"
-						"lineWrap": true
-						"editable": false
-						"tabSize": 20
-						"wrapStyleWord": true
-						"font": new java.awt.Font( "Monospaced", 1, 26 )
-						"alignmentX": 50.0f
-						"alignmentY": 50.0f
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+					name: "panel1"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": new FormMessage( null, "button1.text_13" )
+						"opaque": false
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "NorSeat", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"text": new FormMessage( null, "button2.text_10" )
+						"opaque": false
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPSeat", true ) )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
