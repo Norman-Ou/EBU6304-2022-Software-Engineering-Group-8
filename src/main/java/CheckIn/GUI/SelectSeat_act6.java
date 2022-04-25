@@ -6,6 +6,7 @@ import Beans.Passenger.Passenger;
 import Beans.Passenger.SubClasses.Baggage;
 import DataBase.fDB;
 import DataBase.pDB;
+import Exceptions.DataNotFound;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -31,7 +32,7 @@ import java.util.ResourceBundle;
  */
 public class SelectSeat_act6 extends JFrame {
     public static String seat;
-    public SelectSeat_act6() {
+    public SelectSeat_act6() throws DataNotFound {
         initComponents();
     }
 
@@ -66,7 +67,7 @@ public class SelectSeat_act6 extends JFrame {
 
 
 
-    private void initComponents() {
+    private void initComponents() throws DataNotFound {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella

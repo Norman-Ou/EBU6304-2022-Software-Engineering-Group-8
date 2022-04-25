@@ -5,6 +5,7 @@ import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.Passenger;
 import DataBase.fDB;
 import DataBase.pDB;
+import Exceptions.DataNotFound;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -28,7 +29,7 @@ import java.util.ResourceBundle;
  */
 public class VIPSeat extends JFrame {
     public String seatVIP;
-    public VIPSeat() {
+    public VIPSeat() throws DataNotFound {
         initComponents();
     }
 
@@ -67,7 +68,7 @@ public class VIPSeat extends JFrame {
         this.setVisible(true);
     }
 
-    private void initComponents() {
+    private void initComponents() throws DataNotFound {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown

@@ -1,5 +1,7 @@
 package CheckIn.GUI;
 
+import Exceptions.DataNotFound;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -19,12 +21,12 @@ public class SeatFirst_ac5 extends JFrame {
         initComponents();
     }
 
-    private void NorSeat(ActionEvent e) {
+    private void NorSeat(ActionEvent e) throws DataNotFound {
         dispose();
         new SelectSeat_act6().setVisible(true);
     }
 
-    private void VIPSeat(ActionEvent e) {
+    private void VIPSeat(ActionEvent e) throws DataNotFound {
         dispose();
         new VIPSeat().setVisible(true);
     }
@@ -81,13 +83,25 @@ public class SeatFirst_ac5 extends JFrame {
             //---- button1 ----
             button1.setText(bundle.getString("button1.text_13"));
             button1.setOpaque(false);
-            button1.addActionListener(e -> NorSeat(e));
+            button1.addActionListener(e -> {
+                try {
+                    NorSeat(e);
+                } catch (DataNotFound ex) {
+                    ex.printStackTrace();
+                }
+            });
             dialogPane.add(button1, BorderLayout.WEST);
 
             //---- button2 ----
             button2.setText(bundle.getString("button2.text_10"));
             button2.setOpaque(false);
-            button2.addActionListener(e -> VIPSeat(e));
+            button2.addActionListener(e -> {
+                try {
+                    VIPSeat(e);
+                } catch (DataNotFound ex) {
+                    ex.printStackTrace();
+                }
+            });
             dialogPane.add(button2, BorderLayout.EAST);
 
             //======== scrollPane1 ========
