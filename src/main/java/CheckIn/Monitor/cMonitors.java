@@ -1,7 +1,10 @@
 package CheckIn.Monitor;
 
+import Beans.Flight.SubClasses.ExtraOption;
 import Beans.Passenger.SubClasses.BoardingPass;
 import Beans.Passenger.Passenger;
+import Beans.Flight.Flight;
+import DataBase.fDB;
 import DataBase.pDB;
 import Exceptions.DataNotFound;
 import DataBase.fDB;
@@ -19,56 +22,41 @@ import java.util.List;
 /**
  * Passenger Control Class
  *
- * @since April 4th, 2022
  * @author Ruizhe Ou
  * @version 0.1 April 4th, 2022
+ * @since April 4th, 2022
  */
 public class cMonitors {
 
     final String bookingNum = "2019200";
-    final String surname = "orz";
     final String id = "215200";
+    final String surname = "orz";
     final IDDocument idDocument = new IDDocument("215200", "orz");
     // 所有航班的列表
 	private static List<Flight> flightList = fDB.loadAllFlights();
 	
 
     Passenger passenger;
+    Flight flight;
 
-    //Search Information by booking number
-    @Test
-    public void firstOption(){
-        try{
-            passenger = pDB.loadPassengerByBookingNo(bookingNum);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
+    public String findPassengerFlight(String bookingNum) throws Exception {
+        passenger = pDB.loadPassengerByBookingNo(bookingNum);
+        return passenger.getBoardingPass().getFlightNo();
     }
 
-    //Search Information by surname and ID
-    @Test
-    public void secondOption(){
-        try{
-            passenger = pDB.loadPassengerBySurname_ID(surname, id);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public String findPassengerFlight(String surname, String id) throws Exception {
+        passenger = pDB.loadPassengerBySurname_ID(surname, id);
+        return passenger.getBoardingPass().getFlightNo();
     }
 
-    //Search Information by scanning ID Document
-    @Test
-    public void thirdOption(){
-        try{
-            passenger = pDB.loadPassengerByIDDocument(idDocument);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+    public String findPassengerFlight(IDDocument idDocument) throws Exception {
+        passenger = pDB.loadPassengerByIDDocument(idDocument);
+        return passenger.getBoardingPass().getFlightNo();
     }
 
-    public ArrayList<String> showBookedFlightInfo(){
-        BoardingPass boardingPass = passenger.getBoardingPass();
-        return new ArrayList<>(Arrays.asList(boardingPass.getAll().split(";")));
+    public Flight findFlight (String flightNo) {
+        flight = fDB.loadFlightByFlightNo(flightNo);
+        return flight;
     }
 
     // wy add these functions to change the method of presenting data of flight
