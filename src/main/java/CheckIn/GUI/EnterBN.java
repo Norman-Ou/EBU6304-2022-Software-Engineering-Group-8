@@ -5,7 +5,9 @@
 package CheckIn.GUI;
 
 import DataBase.pDB;
+import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
+import CheckIn.Monitor.cMonitors;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,19 +25,31 @@ public class EnterBN extends JFrame {
     }
     public static String bookNum;
     public static Passenger psnTemp;
+    public static Flight fltTemp;
     private void ok(ActionEvent e) {
         new ConfirmPage_4().setVisible(true);
         dispose();
         String str=textArea1.getText();
         this.bookNum=str;
 //        System.out.println(bookNum);
+        Flight flt = cMonitors.getFlightByBookingNo(bookNum);
         Passenger psn = pDB.loadPassengerByBookingNo(bookNum);
 //        System.out.println(psn);
+        fltTemp=flt;
         psnTemp=psn;
     }
     public static Passenger getPsnTemp() {
         try{
             return psnTemp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Flight getFlight() {
+        try {
+            return fltTemp;
         } catch (Exception e) {
             e.printStackTrace();
         }

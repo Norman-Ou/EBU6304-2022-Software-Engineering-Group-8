@@ -2,6 +2,9 @@ package CheckIn.GUI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
@@ -59,10 +62,13 @@ public class ConfirmPage_4 extends JFrame {
                 e1.printStackTrace();
             }
         }else if(EnterOther.getPsnTemp1()==null) {
+            // 调试用的
+            // System.out.println(EnterBN.getFlight().getAirlines());
             try {
 //                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo("Have not selected.");
                 FirstConfirm.setText(
-                        EnterBN.getPsnTemp().getBoardingPass().toString());
+                    // 需要对展示信息进行细分
+                        EnterBN.getFlight().toString());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

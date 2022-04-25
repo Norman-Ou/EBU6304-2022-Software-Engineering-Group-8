@@ -20,7 +20,7 @@ public class oDB {
         }
     }
 
-    public Order getOrderByBookingNumber(String bookNumber) throws DataNotFound {
+    public static Order getOrderByBookingNumber(String bookNumber) throws DataNotFound {
         DataBase dataBase = new DataBase(Config.OrderFile);
         try {
             return dataBase.getObject("bookNumber", bookNumber, Order.class);
