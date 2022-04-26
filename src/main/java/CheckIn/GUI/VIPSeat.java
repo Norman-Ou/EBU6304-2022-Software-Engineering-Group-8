@@ -14,10 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 /*
  * Created by JFormDesigner on Wed Mar 30 17:19:11 CST 2022
  */
@@ -51,6 +48,42 @@ public class VIPSeat extends JFrame {
 
     private void SeatPa(KeyEvent e) {
          vipSeat = textField2.getText();
+    }
+    public void showVIPSeats(){
+        seatVIP = textField2.getText();
+
+        HashMap<String, Seat> map=new HashMap<>();
+        if(EnterBN.getPsnTemp()==null){
+            try{
+                map= Objects.requireNonNull(EnterOther.getFlight()).getSeatingList();
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(seatVIP);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else if(EnterOther.getPsnTemp1()==null) {
+            try {
+                map= Objects.requireNonNull(EnterBN.getFlight()).getSeatingList();
+                EnterBN.getPsnTemp().getBoardingPass().setSeatNo(seatVIP);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else{
+            try{
+                map= Objects.requireNonNull(EnterBN.getFlight()).getSeatingList();
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(seatVIP);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        if(!map.isEmpty()) {
+            map.forEach((key, value) -> {
+                String str =  key + "    " ;
+                acVipSeat.setText(acVipSeat.getText()+str);
+                System.out.println(value);
+            });
+        }
     }
 
     public void init() {
@@ -208,7 +241,7 @@ public class VIPSeat extends JFrame {
                 System.out.println(obj.getValue());
             }
         }
-
+        showVIPSeats();
         init();
     }
 

@@ -4,6 +4,8 @@
 
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
+import CheckIn.Monitor.cMonitors;
 import DataBase.pDB;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
@@ -26,16 +28,19 @@ public class EnterOther extends JFrame {
     public String surname;
     public static Passenger psnTemp1;
     public static String BookingNumber;
+    public static Flight fltTemp;
+
     private void ok(ActionEvent e) throws Exception {
         new ConfirmPage_4().setVisible(true);
         dispose();
         this.IDNum=textArea3.getText();
         this.surname=textArea4.getText();
         Passenger psn = pDB.loadPassengerBySurname_ID(surname,IDNum);
+        Flight flt = cMonitors.getFlightByBookingNo(BookingNumber);
+        fltTemp=flt;
         psnTemp1=psn;
     }
     public static Passenger getPsnTemp1() {
-//        System.out.println(psnTemp1);
         try{
             BookingNumber=psnTemp1.getBookNumber();
         } catch (Exception e) {
@@ -67,6 +72,14 @@ public class EnterOther extends JFrame {
         Passenger psn = new Passenger();
         psnTemp1=psn;
 
+    }
+    public static Flight getFlight() {
+        try {
+            return fltTemp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void init() {

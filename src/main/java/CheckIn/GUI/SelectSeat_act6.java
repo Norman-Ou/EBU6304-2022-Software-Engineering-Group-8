@@ -19,10 +19,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 /*
  * Created by JFormDesigner on Wed Mar 30 12:24:03 CST 2022
  */
@@ -37,6 +34,8 @@ public class SelectSeat_act6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
+        seat=this.textField2.getText();
+        System.out.println(this.textField2.getText());
         dispose();
         new PrintFlight_6().setVisible(true);
     }
@@ -46,10 +45,43 @@ public class SelectSeat_act6 extends JFrame {
         new SeatFirst_ac5().setVisible(true);
     }
 
+    public void showSeats(){
+        seat = textField2.getText();
+//        textField2.getText();
+        HashMap<String, Seat> map=new HashMap<>();
+        if(EnterBN.getPsnTemp()==null){
+            try{
+                map= Objects.requireNonNull(EnterOther.getFlight()).getSeatingList();
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(seat);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else if(EnterOther.getPsnTemp1()==null) {
+            try {
+                map= Objects.requireNonNull(EnterBN.getFlight()).getSeatingList();
+                EnterBN.getPsnTemp().getBoardingPass().setSeatNo(seat);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else{
+            try{
+                map= Objects.requireNonNull(EnterBN.getFlight()).getSeatingList();
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(seat);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
 
-    private void AvailableSeat(CaretEvent e) {
-        // TODO add your code here
+        if(!map.isEmpty()) {
+            map.forEach((key, value) -> {
+                String str =  key + "    " ;
+                acNorSeat.setText(acNorSeat.getText()+str);
+                System.out.println(value);
+            });
+        }
     }
+
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -68,7 +100,6 @@ public class SelectSeat_act6 extends JFrame {
 
 
     private void initComponents() throws DataNotFound {
-
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
@@ -94,11 +125,14 @@ public class SelectSeat_act6 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-            , 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-            dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //---- label1 ----
@@ -171,37 +205,8 @@ public class SelectSeat_act6 extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         //Get passenger
         seat = textField2.getText();
-        String bookNoTemp1="";
-        if(!(EnterBN.bookNum==null)){
-            bookNoTemp1=EnterBN.bookNum;
-        }else if (!(EnterOther.BookingNumber==null)){
-            bookNoTemp1=EnterOther.BookingNumber;
-        }else{
-            acNorSeat.setText("Please return and check in again");
-        }
-        Passenger psn = pDB.loadPassengerByBookingNo(bookNoTemp1);
-        psn.getBoardingPass().setSeatNo(seat);
-
-        //Write seatNo into passenger
-        psn.getBoardingPass().setSeatNo(seat);
-
-        //Show Available seat
-        String flightNum=psn.getBoardingPass().getFlightNo();
-        Flight flight = fDB.loadFlightByFlightNo(flightNum);
-        HashMap<String, Seat> map= flight.getSeatingList();
-
-        if(!map.isEmpty()) {
-            for (Map.Entry obj : map.entrySet()) {
-                String str = "key: " + obj.getKey() + ", value: " + obj.getValue();
-                acNorSeat.setText(str);
-                System.out.println(obj.getValue());
-            }
-        }
-
+        showSeats();
         init();
-    }
-    private void SeatPa(KeyEvent e) {
-        //TODO add seat info to boarding pass
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
