@@ -87,12 +87,30 @@ public class MealNorm_13 extends JFrame {
         this.setVisible(true);
     }
 
+    private void Normal(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void VIPMeal(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void cancelMeal(ActionEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
+        Nav = new JPanel();
+        button1 = new JButton();
+        panel5 = new JPanel();
+        button2 = new JButton();
+        panel6 = new JPanel();
+        button3 = new JButton();
         tabbedPane2 = new JTabbedPane();
         panelBurger = new JPanel();
         label1 = new JLabel();
@@ -116,11 +134,47 @@ public class MealNorm_13 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.
+            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
             red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}});
+            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
+
+            //======== Nav ========
+            {
+                Nav.setOpaque(false);
+                Nav.setLayout(new BorderLayout());
+
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_23"));
+                button1.addActionListener(e -> Normal(e));
+                Nav.add(button1, BorderLayout.NORTH);
+
+                //======== panel5 ========
+                {
+                    panel5.setLayout(new BorderLayout());
+
+                    //---- button2 ----
+                    button2.setText(bundle.getString("button2.text_15"));
+                    button2.setEnabled(false);
+                    button2.addActionListener(e -> VIPMeal(e));
+                    panel5.add(button2, BorderLayout.NORTH);
+
+                    //======== panel6 ========
+                    {
+                        panel6.setLayout(new BorderLayout());
+
+                        //---- button3 ----
+                        button3.setText(bundle.getString("button3.text_9"));
+                        button3.setEnabled(false);
+                        button3.addActionListener(e -> cancelMeal(e));
+                        panel6.add(button3, BorderLayout.NORTH);
+                    }
+                    panel5.add(panel6, BorderLayout.CENTER);
+                }
+                Nav.add(panel5, BorderLayout.CENTER);
+            }
+            dialogPane.add(Nav, BorderLayout.WEST);
 
             //======== tabbedPane2 ========
             {
@@ -195,8 +249,14 @@ public class MealNorm_13 extends JFrame {
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane;
+    private JPanel Nav;
+    private JButton button1;
+    private JPanel panel5;
+    private JButton button2;
+    private JPanel panel6;
+    private JButton button3;
     private JTabbedPane tabbedPane2;
     private JPanel panelBurger;
     private JLabel label1;

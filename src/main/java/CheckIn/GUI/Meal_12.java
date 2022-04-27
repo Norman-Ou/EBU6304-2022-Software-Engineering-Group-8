@@ -52,32 +52,38 @@ public class Meal_12 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
+        panel4 = new JPanel();
+        MealPic = new JLabel();
         panel2 = new JPanel();
         button1 = new JButton();
+        panel5 = new JPanel();
         button2 = new JButton();
+        panel6 = new JPanel();
         button3 = new JButton();
         panel1 = new JPanel();
         label1 = new JLabel();
-        panel3 = new JPanel();
 
         //======== this ========
         setBackground(new Color(51, 153, 255));
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
+            new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
+            ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -85,27 +91,49 @@ public class Meal_12 extends JFrame {
                 contentPanel.setOpaque(false);
                 contentPanel.setLayout(new GridLayout(0, 1));
 
-                //======== panel2 ========
+                //======== panel4 ========
                 {
-                    panel2.setOpaque(false);
-                    panel2.setLayout(new GridLayout());
+                    panel4.setLayout(new BorderLayout());
 
-                    //---- button1 ----
-                    button1.setText(bundle.getString("button1.text_3"));
-                    button1.addActionListener(e -> Normal(e));
-                    panel2.add(button1);
+                    //---- MealPic ----
+                    MealPic.setIcon(new ImageIcon(getClass().getResource("/13.png")));
+                    panel4.add(MealPic, BorderLayout.CENTER);
 
-                    //---- button2 ----
-                    button2.setText(bundle.getString("button2.text_3"));
-                    button2.addActionListener(e -> VIPMeal(e));
-                    panel2.add(button2);
+                    //======== panel2 ========
+                    {
+                        panel2.setOpaque(false);
+                        panel2.setLayout(new BorderLayout());
 
-                    //---- button3 ----
-                    button3.setText(bundle.getString("button3.text_2"));
-                    button3.addActionListener(e -> cancelMeal(e));
-                    panel2.add(button3);
+                        //---- button1 ----
+                        button1.setText(bundle.getString("button1.text_3"));
+                        button1.addActionListener(e -> Normal(e));
+                        panel2.add(button1, BorderLayout.NORTH);
+
+                        //======== panel5 ========
+                        {
+                            panel5.setLayout(new BorderLayout());
+
+                            //---- button2 ----
+                            button2.setText(bundle.getString("button2.text_3"));
+                            button2.addActionListener(e -> VIPMeal(e));
+                            panel5.add(button2, BorderLayout.NORTH);
+
+                            //======== panel6 ========
+                            {
+                                panel6.setLayout(new BorderLayout());
+
+                                //---- button3 ----
+                                button3.setText(bundle.getString("button3.text_2"));
+                                button3.addActionListener(e -> cancelMeal(e));
+                                panel6.add(button3, BorderLayout.NORTH);
+                            }
+                            panel5.add(panel6, BorderLayout.CENTER);
+                        }
+                        panel2.add(panel5, BorderLayout.CENTER);
+                    }
+                    panel4.add(panel2, BorderLayout.WEST);
                 }
-                contentPanel.add(panel2);
+                contentPanel.add(panel4);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
@@ -120,13 +148,6 @@ public class Meal_12 extends JFrame {
                 label1.setFont(new Font("Lucida Grande", Font.BOLD, 22));
                 label1.setForeground(UIManager.getColor("Button.select"));
                 panel1.add(label1, BorderLayout.CENTER);
-
-                //======== panel3 ========
-                {
-                    panel3.setOpaque(false);
-                    panel3.setLayout(new BorderLayout());
-                }
-                panel1.add(panel3, BorderLayout.SOUTH);
             }
             dialogPane.add(panel1, BorderLayout.NORTH);
         }
@@ -137,15 +158,18 @@ public class Meal_12 extends JFrame {
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane;
     private JPanel contentPanel;
+    private JPanel panel4;
+    private JLabel MealPic;
     private JPanel panel2;
     private JButton button1;
+    private JPanel panel5;
     private JButton button2;
+    private JPanel panel6;
     private JButton button3;
     private JPanel panel1;
     private JLabel label1;
-    private JPanel panel3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

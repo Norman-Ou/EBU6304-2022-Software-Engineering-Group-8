@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -19,23 +19,50 @@ new FormModel {
 				} ) {
 					name: "contentPanel"
 					"opaque": false
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-						name: "panel2"
-						"opaque": false
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button1"
-							"text": new FormMessage( null, "button1.text_3" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Normal", true ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel4"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "MealPic"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/13.png" )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
 						} )
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button2"
-							"text": new FormMessage( null, "button2.text_3" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPMeal", true ) )
-						} )
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button3"
-							"text": new FormMessage( null, "button3.text_2" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelMeal", true ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "panel2"
+							"opaque": false
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button1"
+								"text": new FormMessage( null, "button1.text_3" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Normal", true ) )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "North"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+								name: "panel5"
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button2"
+									"text": new FormMessage( null, "button2.text_3" )
+									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPMeal", true ) )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "North"
+								} )
+								add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+									name: "panel6"
+									add( new FormComponent( "javax.swing.JButton" ) {
+										name: "button3"
+										"text": new FormMessage( null, "button3.text_2" )
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelMeal", true ) )
+									}, new FormLayoutConstraints( class java.lang.String ) {
+										"value": "North"
+									} )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "Center"
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "Center"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "West"
 						} )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
@@ -52,12 +79,6 @@ new FormModel {
 						"foreground": new com.jformdesigner.model.SwingColor( "Button.select" )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-						name: "panel3"
-						"opaque": false
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "South"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"

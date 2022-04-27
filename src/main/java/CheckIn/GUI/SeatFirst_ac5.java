@@ -21,28 +21,6 @@ public class SeatFirst_ac5 extends JFrame {
         initComponents();
     }
 
-    
-
-    private void VIPSeat(ActionEvent e) throws DataNotFound {
-        JOptionPane.showMessageDialog(null, "There would be an additional payment for VIP seats.","Additional payment check", JOptionPane.WARNING_MESSAGE);
-        dispose();
-        new VIPSeat().setVisible(true);
-    }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
-        JLabel label3 = new JLabel(background);
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
-        JPanel myPanel = (JPanel)this.getContentPane();
-        myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
-        this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-    }
-
     private void checkinAgain(ActionEvent e) {
         dispose();
         new CheckIn_3().setVisible(true);
@@ -54,46 +32,56 @@ public class SeatFirst_ac5 extends JFrame {
         new Error().setVisible(true);
     }
 
-    private void button1(ActionEvent e) throws DataNotFound {
+    private void selectSeat(ActionEvent e) {
         dispose();
-        new SelectSeat_act6().setVisible(true);
+        new Seat1().setVisible(true);
     }
 
+    public void init() {
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.setTitle("Passenger check-in system");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
-        dialogPane = new JPanel();
         label1 = new JLabel();
+        dialogPane = new JPanel();
         buttonBar = new JPanel();
         cancelButton = new JButton();
         button3 = new JButton();
         panel1 = new JPanel();
-        button1 = new JButton();
         button2 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
+        //---- label1 ----
+        label1.setText(bundle.getString("label1.text_25"));
+        label1.setFont(new Font("Lucida Grande", Font.BOLD, 30));
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(label1, BorderLayout.NORTH);
+
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
+            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
+            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
+            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
-
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_25"));
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 30));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            dialogPane.add(label1, BorderLayout.NORTH);
 
             //======== buttonBar ========
             {
@@ -116,32 +104,13 @@ public class SeatFirst_ac5 extends JFrame {
             //======== panel1 ========
             {
                 panel1.setLayout(new GridLayout());
-
-                //---- button1 ----
-                button1.setText(bundle.getString("button1.text_13"));
-                button1.setOpaque(false);
-                button1.addActionListener(e -> {
-                    try {
-                        button1(e);
-                    } catch (DataNotFound ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                panel1.add(button1);
-
-                //---- button2 ----
-                button2.setText(bundle.getString("button2.text_10"));
-                button2.setOpaque(false);
-                button2.addActionListener(e -> {
-                    try {
-                        VIPSeat(e);
-                    } catch (DataNotFound ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                panel1.add(button2);
             }
-            dialogPane.add(panel1, BorderLayout.CENTER);
+            dialogPane.add(panel1, BorderLayout.NORTH);
+
+            //---- button2 ----
+            button2.setText(bundle.getString("button2.text_10"));
+            button2.addActionListener(e -> selectSeat(e));
+            dialogPane.add(button2, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -153,13 +122,12 @@ public class SeatFirst_ac5 extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella
-    private JPanel dialogPane;
     private JLabel label1;
+    private JPanel dialogPane;
     private JPanel buttonBar;
     private JButton cancelButton;
     private JButton button3;
     private JPanel panel1;
-    private JButton button1;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

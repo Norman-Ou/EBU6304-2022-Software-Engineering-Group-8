@@ -82,12 +82,30 @@ public class MealAdd_14 extends JFrame {
         tempuraPanel.add(labelBurger, BorderLayout.NORTH);
     }
 
+    private void Normal(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void VIPMeal(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void cancelMeal(ActionEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
+        Nav = new JPanel();
+        button3 = new JButton();
+        panel5 = new JPanel();
+        button4 = new JButton();
+        panel7 = new JPanel();
+        button5 = new JButton();
         panel1 = new JPanel();
         label1 = new JLabel();
         panel3 = new JPanel();
@@ -111,13 +129,51 @@ public class MealAdd_14 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
+
+            //======== Nav ========
+            {
+                Nav.setOpaque(false);
+                Nav.setLayout(new BorderLayout());
+
+                //---- button3 ----
+                button3.setText(bundle.getString("button3.text_10"));
+                button3.setEnabled(false);
+                button3.addActionListener(e -> Normal(e));
+                Nav.add(button3, BorderLayout.NORTH);
+
+                //======== panel5 ========
+                {
+                    panel5.setLayout(new BorderLayout());
+
+                    //---- button4 ----
+                    button4.setText(bundle.getString("button4.text_4"));
+                    button4.addActionListener(e -> VIPMeal(e));
+                    panel5.add(button4, BorderLayout.NORTH);
+
+                    //======== panel7 ========
+                    {
+                        panel7.setLayout(new BorderLayout());
+
+                        //---- button5 ----
+                        button5.setText(bundle.getString("button5.text_2"));
+                        button5.setEnabled(false);
+                        button5.addActionListener(e -> cancelMeal(e));
+                        panel7.add(button5, BorderLayout.NORTH);
+                    }
+                    panel5.add(panel7, BorderLayout.CENTER);
+                }
+                Nav.add(panel5, BorderLayout.CENTER);
+            }
+            dialogPane.add(Nav, BorderLayout.WEST);
 
             //======== panel1 ========
             {
@@ -210,8 +266,14 @@ public class MealAdd_14 extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane;
+    private JPanel Nav;
+    private JButton button3;
+    private JPanel panel5;
+    private JButton button4;
+    private JPanel panel7;
+    private JButton button5;
     private JPanel panel1;
     private JLabel label1;
     private JPanel panel3;
