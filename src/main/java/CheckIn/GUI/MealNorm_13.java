@@ -23,7 +23,7 @@ public class MealNorm_13 extends JFrame {
 
     private void exit(ActionEvent e) {
         dispose();
-        new exit_16().setVisible(true);
+        new Exit().setVisible(true);
     }
 
     private void BackToMeal(ActionEvent e) {

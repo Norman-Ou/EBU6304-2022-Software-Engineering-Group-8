@@ -55,6 +55,9 @@ new FormModel {
 							name: "SecWin"
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "SecMid"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "SecOut"
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -118,6 +121,9 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "VipWin"
 							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "VipWinItemStateChanged", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "VipMid"
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "VipOut"

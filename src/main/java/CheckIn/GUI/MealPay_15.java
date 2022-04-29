@@ -22,7 +22,7 @@ public class MealPay_15 extends JFrame {
     private void exit(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Thanks for using. Enjoy your flight!","Goodbye", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new exit_16().setVisible(true);
+        new Exit().setVisible(true);
     }
 
     private void BackMeal(ActionEvent e) {

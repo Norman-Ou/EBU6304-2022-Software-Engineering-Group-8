@@ -22,7 +22,7 @@ public class Airline_1 extends JFrame {
     private void ok(ActionEvent e) {
 //        JOptionPane.showMessageDialog(null, "Confirm airline?","Airline check", JOptionPane.WARNING_MESSAGE);
         dispose();
-        new CheckIn_3().setVisible(true);
+        new CheckIn_2().setVisible(true);
     }
 
     private void exit(ActionEvent e) { dispose();}

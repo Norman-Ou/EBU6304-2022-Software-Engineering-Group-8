@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
-import javax.swing.table.*;
 /*
  * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
  */
@@ -18,8 +17,8 @@ import javax.swing.table.*;
 /**
  * @author Jiayi Wang
  */
-public class ConfirmPage_4 extends JFrame {
-    public ConfirmPage_4() {
+public class ConfirmPage_3 extends JFrame {
+    public ConfirmPage_3() {
         initComponents();
     }
 
@@ -30,12 +29,12 @@ public class ConfirmPage_4 extends JFrame {
 
     private void confirm1B(ActionEvent e) {
         dispose();
-        new SeatFirst_ac5().setVisible(true);
+        new SeatFirst_5().setVisible(true);
     }
 
     private void Back2Init(ActionEvent e) {
         dispose();
-        new CheckIn_3().setVisible(true);
+        new CheckIn_2().setVisible(true);
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
@@ -54,32 +53,32 @@ public class ConfirmPage_4 extends JFrame {
 
 
     public void info(){
-        if(EnterBN.getPsnTemp()==null){
+        if(EnterBN_3.getPsnTemp()==null){
             try{
-                BookNum.setText(EnterOther.getPsnTemp1().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp1().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp1().getPassengerId());
-                Depar.setText(EnterOther.getPsnTemp1().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther.getPsnTemp1().getBoardingPass().getDestination());
-                ETA.setText(EnterOther.getPsnTemp1().getBoardingPass().getETA());
-                ETC.setText(EnterOther.getPsnTemp1().getBoardingPass().getETC());
-                ETD.setText(EnterOther.getPsnTemp1().getBoardingPass().getETD());
-                Gate.setText(EnterOther.getPsnTemp1().getBoardingPass().getGate());
+                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                Depar.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDeparture());
+                Desti.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDestination());
+                ETA.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETA());
+                ETC.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETC());
+                ETD.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETD());
+                Gate.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther.getPsnTemp1()==null) {
+        else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                BookNum.setText(EnterBN.getPsnTemp().getBookNumber());
-                Surname.setText(EnterBN.getPsnTemp().getSurName());
-                IDNum.setText(EnterBN.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBN.getPsnTemp().getBoardingPass().getDeparture());
-                Desti.setText(EnterBN.getPsnTemp().getBoardingPass().getDestination());
-                ETA.setText(EnterBN.getPsnTemp().getBoardingPass().getETA());
-                ETC.setText(EnterBN.getPsnTemp().getBoardingPass().getETC());
-                ETD.setText(EnterBN.getPsnTemp().getBoardingPass().getETD());
-                Gate.setText(EnterBN.getPsnTemp().getBoardingPass().getGate());
+                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
+                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDeparture());
+                Desti.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDestination());
+                ETA.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETA());
+                ETC.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETC());
+                ETD.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETD());
+                Gate.setText(EnterBN_3.getPsnTemp().getBoardingPass().getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -87,15 +86,15 @@ public class ConfirmPage_4 extends JFrame {
             try{
 //                FirstConfirm.setText(
 //                        EnterOther.getPsnTemp2().getBoardingPass().toString());
-                BookNum.setText(EnterOther.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp2().getPassengerId());
-                Depar.setText(EnterOther.getPsnTemp2().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther.getPsnTemp2().getBoardingPass().getDestination());
-                ETA.setText(EnterOther.getPsnTemp2().getBoardingPass().getETA());
-                ETC.setText(EnterOther.getPsnTemp2().getBoardingPass().getETC());
-                ETD.setText(EnterOther.getPsnTemp2().getBoardingPass().getETD());
-                Gate.setText(EnterOther.getPsnTemp2().getBoardingPass().getGate());
+                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
+                Depar.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDeparture());
+                Desti.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDestination());
+                ETA.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETA());
+                ETC.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETC());
+                ETD.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETD());
+                Gate.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

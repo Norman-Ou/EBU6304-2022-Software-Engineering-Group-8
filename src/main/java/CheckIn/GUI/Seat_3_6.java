@@ -13,9 +13,9 @@ import javax.swing.border.*;
 /**
  * @author Jiayi Wang
  */
-public class Seat_3Air extends JFrame {
+public class Seat_3_6 extends JFrame {
     public static String seat;
-    public Seat_3Air() {
+    public Seat_3_6() {
         initComponents();
     }
 
@@ -27,20 +27,20 @@ public class Seat_3Air extends JFrame {
 
     private void Back2Confirm(ActionEvent e) {
         dispose();
-        new SeatFirst_ac5().setVisible(true);
+        new SeatFirst_5().setVisible(true);
     }
 
     private void VipWinItemStateChanged(ItemEvent e) {
         if(!(e.getItem() ==null)){
             dispose();
-            new CreditPage().setVisible(true);
+            new VIPSeatPay().setVisible(true);
         }
     }
 
     private void VipOutItemStateChanged(ItemEvent e) {
         if(!(e.getItem() ==null)){
             dispose();
-            new CreditPage().setVisible(true);
+            new VIPSeatPay().setVisible(true);
         }
     }
 
@@ -57,6 +57,7 @@ public class Seat_3Air extends JFrame {
         panel10 = new JPanel();
         label9 = new JLabel();
         SecWin = new JComboBox();
+        SecMid = new JComboBox();
         SecOut = new JComboBox();
         label10 = new JLabel();
         panel11 = new JPanel();
@@ -69,6 +70,7 @@ public class Seat_3Air extends JFrame {
         panel2 = new JPanel();
         label7 = new JLabel();
         VipWin = new JComboBox();
+        VipMid = new JComboBox();
         VipOut = new JComboBox();
         label8 = new JLabel();
         panel9 = new JPanel();
@@ -88,13 +90,12 @@ public class Seat_3Air extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel3. getBorder
-            ( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -130,6 +131,7 @@ public class Seat_3Air extends JFrame {
                     label9.setText(bundle.getString("label9.text_3"));
                     panel10.add(label9);
                     panel10.add(SecWin);
+                    panel10.add(SecMid);
                     panel10.add(SecOut);
 
                     //---- label10 ----
@@ -195,6 +197,7 @@ public class Seat_3Air extends JFrame {
                     //---- VipWin ----
                     VipWin.addItemListener(e -> VipWinItemStateChanged(e));
                     panel2.add(VipWin);
+                    panel2.add(VipMid);
 
                     //---- VipOut ----
                     VipOut.addItemListener(e -> VipOutItemStateChanged(e));
@@ -233,6 +236,7 @@ public class Seat_3Air extends JFrame {
     private JPanel panel10;
     private JLabel label9;
     private JComboBox SecWin;
+    private JComboBox SecMid;
     private JComboBox SecOut;
     private JLabel label10;
     private JPanel panel11;
@@ -245,6 +249,7 @@ public class Seat_3Air extends JFrame {
     private JPanel panel2;
     private JLabel label7;
     private JComboBox VipWin;
+    private JComboBox VipMid;
     private JComboBox VipOut;
     private JLabel label8;
     private JPanel panel9;
@@ -255,7 +260,7 @@ public class Seat_3Air extends JFrame {
 
     public static void main(String[] args) throws Exception {
 
-        new Seat_3Air().setVisible(true);
+        new Seat_3_6().setVisible(true);
 
     }
 }

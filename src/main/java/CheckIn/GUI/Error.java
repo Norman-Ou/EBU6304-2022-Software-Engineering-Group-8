@@ -18,7 +18,7 @@ public class Error extends JFrame {
 
     private void exit(ActionEvent e) {
         dispose();
-        new exit_16().setVisible(true);
+        new Exit().setVisible(true);
     }
 
     public void init() {

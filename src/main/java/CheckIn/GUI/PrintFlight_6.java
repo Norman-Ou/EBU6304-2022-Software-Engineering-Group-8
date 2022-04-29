@@ -5,7 +5,6 @@ import DataBase.pDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.CaretEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
@@ -35,7 +34,7 @@ public class PrintFlight_6 extends JFrame {
 
     private void Back2Confirm(ActionEvent e) {
         dispose();
-        new ConfirmPage_4().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
     }
 
     private void ok(ActionEvent e) {
@@ -48,34 +47,34 @@ public class PrintFlight_6 extends JFrame {
     }
 
     public void info(){
-        if(EnterBN.getPsnTemp()==null){
+        if(EnterBN_3.getPsnTemp()==null){
             try{
-                BookNum.setText(EnterOther.getPsnTemp1().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp1().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp1().getPassengerId());
-                Depar.setText(EnterOther.getPsnTemp1().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther.getPsnTemp1().getBoardingPass().getDestination());
-                ETA.setText(EnterOther.getPsnTemp1().getBoardingPass().getETA());
-                ETC.setText(EnterOther.getPsnTemp1().getBoardingPass().getETC());
-                ETD.setText(EnterOther.getPsnTemp1().getBoardingPass().getETD());
-                Gate.setText(EnterOther.getPsnTemp1().getBoardingPass().getGate());
-                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
+                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                Depar.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDeparture());
+                Desti.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDestination());
+                ETA.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETA());
+                ETC.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETC());
+                ETD.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETD());
+                Gate.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getGate());
+//                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther.getPsnTemp1()==null) {
+        else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                BookNum.setText(EnterBN.getPsnTemp().getBookNumber());
-                Surname.setText(EnterBN.getPsnTemp().getSurName());
-                IDNum.setText(EnterBN.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBN.getPsnTemp().getBoardingPass().getDeparture());
-                Desti.setText(EnterBN.getPsnTemp().getBoardingPass().getDestination());
-                ETA.setText(EnterBN.getPsnTemp().getBoardingPass().getETA());
-                ETC.setText(EnterBN.getPsnTemp().getBoardingPass().getETC());
-                ETD.setText(EnterBN.getPsnTemp().getBoardingPass().getETD());
-                Gate.setText(EnterBN.getPsnTemp().getBoardingPass().getGate());
-                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
+                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
+                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDeparture());
+                Desti.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDestination());
+                ETA.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETA());
+                ETC.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETC());
+                ETD.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETD());
+                Gate.setText(EnterBN_3.getPsnTemp().getBoardingPass().getGate());
+//                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -83,16 +82,16 @@ public class PrintFlight_6 extends JFrame {
             try{
 //                FirstConfirm.setText(
 //                        EnterOther.getPsnTemp2().getBoardingPass().toString());
-                BookNum.setText(EnterOther.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp2().getPassengerId());
-                Depar.setText(EnterOther.getPsnTemp2().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther.getPsnTemp2().getBoardingPass().getDestination());
-                ETA.setText(EnterOther.getPsnTemp2().getBoardingPass().getETA());
-                ETC.setText(EnterOther.getPsnTemp2().getBoardingPass().getETC());
-                ETD.setText(EnterOther.getPsnTemp2().getBoardingPass().getETD());
-                Gate.setText(EnterOther.getPsnTemp2().getBoardingPass().getGate());
-                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
+                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
+                Depar.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDeparture());
+                Desti.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDestination());
+                ETA.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETA());
+                ETC.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETC());
+                ETD.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETD());
+                Gate.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getGate());
+//                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

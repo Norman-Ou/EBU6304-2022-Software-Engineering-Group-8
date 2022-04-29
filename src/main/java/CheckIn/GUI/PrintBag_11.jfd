@@ -28,6 +28,7 @@ new FormModel {
 							"text": new FormMessage( null, "label1.text_19" )
 							"horizontalAlignment": 0
 							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 16 )
+							"opaque": true
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 1
 							"gridy": 1
@@ -38,6 +39,7 @@ new FormModel {
 							"horizontalAlignment": 0
 							"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 18 )
+							"opaque": true
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 2
 							"gridy": 1

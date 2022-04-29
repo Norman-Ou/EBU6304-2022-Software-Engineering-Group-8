@@ -18,16 +18,16 @@ import javax.swing.border.*;
 /**
  * @author Jiayi Wang
  */
-public class EnterBN extends JFrame {
+public class EnterBN_3 extends JFrame {
 
-    public EnterBN() {
+    public EnterBN_3() {
         initComponents();
     }
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
     private void ok(ActionEvent e) {
-        new ConfirmPage_4().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
         dispose();
         String str=textArea1.getText();
         this.bookNum=str;
@@ -57,7 +57,7 @@ public class EnterBN extends JFrame {
     }
 
     private void forgetBN(ActionEvent e) {
-        new EnterOther().setVisible(true);
+        new EnterOther_3().setVisible(true);
         dispose();
     }
 

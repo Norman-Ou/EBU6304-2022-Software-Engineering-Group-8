@@ -19,8 +19,8 @@ import javax.swing.border.*;
 /**
  * @author Jiayi Wang
  */
-public class EnterOther extends JFrame {
-    public EnterOther() {
+public class EnterOther_3 extends JFrame {
+    public EnterOther_3() {
         initComponents();
     }
 
@@ -31,7 +31,7 @@ public class EnterOther extends JFrame {
     public static Flight fltTemp;
 
     private void ok(ActionEvent e) throws Exception {
-        new ConfirmPage_4().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
         dispose();
         this.IDNum=textArea3.getText();
         this.surname=textArea4.getText();
@@ -64,7 +64,7 @@ public class EnterOther extends JFrame {
     }
 
     private void scanID(ActionEvent e) {
-        new ConfirmPage_4().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
         dispose();
         IDDocument id = new IDDocument("215200","orz");
         this.IDNum=id.getID();

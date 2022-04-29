@@ -2,10 +2,6 @@ package CheckIn.GUI;/*
  * Created by JFormDesigner on Wed Mar 30 11:36:13 CST 2022
  */
 
-import Beans.Passenger.Passenger;
-import Beans.Passenger.SubClasses.Baggage;
-import DataBase.pDB;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -32,27 +28,27 @@ public class PrintBag_11 extends JFrame {
         showBag();
     }
     public void showBag(){
-        if(EnterBN.getPsnTemp()==null){
+        if(EnterBN_3.getPsnTemp()==null){
             try{
-                BagNum.setText(EnterOther.getPsnTemp1().getBaggage().getBaggageNo());
-                DropP.setText(EnterOther.getPsnTemp1().getBaggage().getDropCounter());
+                BagNum.setText(EnterOther_3.getPsnTemp1().getBaggage().getBaggageNo());
+                DropP.setText(EnterOther_3.getPsnTemp1().getBaggage().getDropCounter());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther.getPsnTemp1()==null) {
+        else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                BagNum.setText(EnterBN.getPsnTemp().getBaggage().getBaggageNo());
+                BagNum.setText(EnterBN_3.getPsnTemp().getBaggage().getBaggageNo());
 //                System.out.println(EnterBN.getPsnTemp().getBaggage().getBaggageNo());
                 //TODO baggage is null
-                DropP.setText(EnterBN.getPsnTemp().getBaggage().getBaggageNo());
+                DropP.setText(EnterBN_3.getPsnTemp().getBaggage().getBaggageNo());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }else{
             try{
-                BagNum.setText(EnterOther.getPsnTemp2().getBaggage().getBaggageNo());
-                DropP.setText(EnterOther.getPsnTemp2().getBaggage().getDropCounter());
+                BagNum.setText(EnterOther_3.getPsnTemp2().getBaggage().getBaggageNo());
+                DropP.setText(EnterOther_3.getPsnTemp2().getBaggage().getDropCounter());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -109,12 +105,14 @@ public class PrintBag_11 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
+            ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -135,6 +133,7 @@ public class PrintBag_11 extends JFrame {
                     label1.setText(bundle.getString("label1.text_19"));
                     label1.setHorizontalAlignment(SwingConstants.CENTER);
                     label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 16));
+                    label1.setOpaque(true);
                     panel1.add(label1, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
@@ -144,6 +143,7 @@ public class PrintBag_11 extends JFrame {
                     label3.setHorizontalAlignment(SwingConstants.CENTER);
                     label3.setIcon(null);
                     label3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 18));
+                    label3.setOpaque(true);
                     panel1.add(label3, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));

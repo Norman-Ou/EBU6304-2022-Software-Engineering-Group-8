@@ -25,7 +25,7 @@ public class VIPSeatPay extends JFrame {
     }
     private void BackSeat(ActionEvent e) {
        dispose();
-       new SeatFirst_ac5().setVisible(true);
+       new SeatFirst_5().setVisible(true);
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");

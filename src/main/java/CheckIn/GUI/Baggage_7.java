@@ -19,7 +19,7 @@ public class Baggage_7 extends JFrame {
 
     private void weight(ActionEvent e) {
         dispose();
-        new WeightShow().setVisible(true);
+        new WeightShow_8().setVisible(true);
     }
 
     private void storeBaggage(ActionEvent e) {
@@ -51,7 +51,7 @@ public class Baggage_7 extends JFrame {
 
     private void seatAgain(ActionEvent e) {
         dispose();
-        new SeatFirst_ac5().setVisible(true);
+        new SeatFirst_5().setVisible(true);
     }
 
     private void error(ActionEvent e) {

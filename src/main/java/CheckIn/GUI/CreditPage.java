@@ -47,12 +47,12 @@ public class CreditPage extends JFrame {
         }
         JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new exit_16().setVisible(true);
+        new Exit().setVisible(true);
     }
 
     private void back2Seat(ActionEvent e) {
         dispose();
-        new SeatFirst_ac5().setVisible(true);
+        new SeatFirst_5().setVisible(true);
     }
 
     private void mealSecond(ActionEvent e) {
@@ -63,7 +63,7 @@ public class CreditPage extends JFrame {
 
     private void bagSecond(ActionEvent e) {
         dispose();
-        new SeatFirst_ac5().setVisible(true);
+        new SeatFirst_5().setVisible(true);
         // TODO delete used baggage information in user's information list
     }
 

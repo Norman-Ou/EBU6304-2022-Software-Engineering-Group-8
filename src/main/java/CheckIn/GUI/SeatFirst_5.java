@@ -1,7 +1,5 @@
 package CheckIn.GUI;
 
-import Exceptions.DataNotFound;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -16,14 +14,14 @@ import java.util.ResourceBundle;
 /**
  * @author Jiayi Wang
  */
-public class SeatFirst_ac5 extends JFrame {
-    public SeatFirst_ac5() {
+public class SeatFirst_5 extends JFrame {
+    public SeatFirst_5() {
         initComponents();
     }
 
     private void checkinAgain(ActionEvent e) {
         dispose();
-        new CheckIn_3().setVisible(true);
+        new CheckIn_2().setVisible(true);
         
     }
 
@@ -33,8 +31,9 @@ public class SeatFirst_ac5 extends JFrame {
     }
 
     private void selectSeat(ActionEvent e) {
+        //TODO check airline
         dispose();
-        new Seat1().setVisible(true);
+        new Seat_1_6().setVisible(true);
     }
 
     public void init() {
@@ -75,12 +74,13 @@ public class SeatFirst_ac5 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
-            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
-            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+            awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
+            ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
             dialogPane.setLayout(new BorderLayout());
 
             //======== buttonBar ========

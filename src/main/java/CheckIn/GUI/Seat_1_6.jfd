@@ -47,12 +47,16 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel"
+						"opaque": false
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label7"
 							"text": new FormMessage( null, "label7.text_4" )
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "secWin"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "secMid"
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "secOut"
@@ -66,8 +70,12 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel9"
+						"opaque": false
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "thrWin"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "thrMid"
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "thrOut"
@@ -101,6 +109,7 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel2"
+						"opaque": false
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label9"
 							"text": new FormMessage( null, "label9.text_4" )
@@ -122,8 +131,12 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel11"
+						"opaque": false
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "firWin"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "firMid"
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "firOut"
