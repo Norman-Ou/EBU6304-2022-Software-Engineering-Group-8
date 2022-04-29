@@ -79,6 +79,20 @@ public class Seat1 extends JFrame {
         this.setVisible(true);
     }
 
+    private void vipWinItemStateChanged(ItemEvent e) {
+        if(!(e.getItem() ==null)){
+            dispose();
+            new CreditPage().setVisible(true);
+        }
+    }
+
+    private void vipOutItemStateChanged(ItemEvent e) {
+        if(!(e.getItem() ==null)){
+            dispose();
+            new CreditPage().setVisible(true);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella
@@ -123,13 +137,13 @@ public class Seat1 extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            panel3.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder
+            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .
+            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panel3. getBorder () ) )
+            ; panel3. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+            ;
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -216,7 +230,13 @@ public class Seat1 extends JFrame {
                     //---- label9 ----
                     label9.setText(bundle.getString("label9.text_4"));
                     panel2.add(label9);
+
+                    //---- vipWin ----
+                    vipWin.addItemListener(e -> vipWinItemStateChanged(e));
                     panel2.add(vipWin);
+
+                    //---- vipOut ----
+                    vipOut.addItemListener(e -> vipOutItemStateChanged(e));
                     panel2.add(vipOut);
 
                     //---- label10 ----

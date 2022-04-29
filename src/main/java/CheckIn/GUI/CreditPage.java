@@ -87,7 +87,7 @@ public class CreditPage extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -100,28 +100,27 @@ public class CreditPage extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
-        button3 = new JButton();
         button2 = new JButton();
         okButton = new JButton();
         panel4 = new JPanel();
-        bagSecond = new JButton();
         button1 = new JButton();
         mealSecond = new JButton();
 
         //======== this ========
-        Container  contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -173,11 +172,6 @@ public class CreditPage extends JFrame {
                             panel3.setOpaque(false);
                             panel3.setLayout(new BorderLayout());
 
-                            //---- button3 ----
-                            button3.setText(bundle.getString("button3.text_6"));
-                            button3.addActionListener(e -> payBag(e));
-                            panel3.add(button3, BorderLayout.CENTER);
-
                             //---- button2 ----
                             button2.setText(bundle.getString("button2.text_13"));
                             button2.addActionListener(e -> payMeal(e));
@@ -194,11 +188,6 @@ public class CreditPage extends JFrame {
                         {
                             panel4.setOpaque(false);
                             panel4.setLayout(new BorderLayout());
-
-                            //---- bagSecond ----
-                            bagSecond.setText(bundle.getString("bagSecond.text_13"));
-                            bagSecond.addActionListener(e -> bagSecond(e));
-                            panel4.add(bagSecond, BorderLayout.CENTER);
 
                             //---- button1 ----
                             button1.setText(bundle.getString("button1.text_21"));
@@ -232,7 +221,7 @@ public class CreditPage extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JScrollPane scrollPane1;
@@ -244,11 +233,9 @@ public class CreditPage extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
-    private JButton button3;
     private JButton button2;
     private JButton okButton;
     private JPanel panel4;
-    private JButton bagSecond;
     private JButton button1;
     private JButton mealSecond;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

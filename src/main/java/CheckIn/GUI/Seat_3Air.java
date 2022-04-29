@@ -14,16 +14,34 @@ import javax.swing.border.*;
  * @author Jiayi Wang
  */
 public class Seat_3Air extends JFrame {
+    public static String seat;
     public Seat_3Air() {
         initComponents();
     }
 
     private void PrintFlight(ActionEvent e) {
-        // TODO add your code here
+        seat= Objects.requireNonNull(VipWin.getSelectedItem()).toString();
+        dispose();
+        new PrintFlight_6().setVisible(true);
     }
 
     private void Back2Confirm(ActionEvent e) {
-        // TODO add your code here
+        dispose();
+        new SeatFirst_ac5().setVisible(true);
+    }
+
+    private void VipWinItemStateChanged(ItemEvent e) {
+        if(!(e.getItem() ==null)){
+            dispose();
+            new CreditPage().setVisible(true);
+        }
+    }
+
+    private void VipOutItemStateChanged(ItemEvent e) {
+        if(!(e.getItem() ==null)){
+            dispose();
+            new CreditPage().setVisible(true);
+        }
     }
 
     private void initComponents() {
@@ -70,11 +88,13 @@ public class Seat_3Air extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel3. getBorder
+            ( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -171,7 +191,13 @@ public class Seat_3Air extends JFrame {
                     //---- label7 ----
                     label7.setText(bundle.getString("label7.text_5"));
                     panel2.add(label7);
+
+                    //---- VipWin ----
+                    VipWin.addItemListener(e -> VipWinItemStateChanged(e));
                     panel2.add(VipWin);
+
+                    //---- VipOut ----
+                    VipOut.addItemListener(e -> VipOutItemStateChanged(e));
                     panel2.add(VipOut);
 
                     //---- label8 ----

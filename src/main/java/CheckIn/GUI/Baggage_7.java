@@ -19,7 +19,7 @@ public class Baggage_7 extends JFrame {
 
     private void weight(ActionEvent e) {
         dispose();
-        new Weight_9().setVisible(true);
+        new WeightShow().setVisible(true);
     }
 
     private void storeBaggage(ActionEvent e) {
@@ -28,9 +28,10 @@ public class Baggage_7 extends JFrame {
     }
 
     private void BagAdd(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm more payment for baggage?","Baggage extra payment check", JOptionPane.WARNING_MESSAGE);
+//        JOptionPane.showMessageDialog(null, "Confirm more payment for baggage?","Baggage extra payment check", JOptionPane.WARNING_MESSAGE);
         dispose();
-        new BaggageAdd_10().setVisible(true);
+        new BagStore_8().setVisible(true);
+//        new BaggageAdd_10().setVisible(true);
     }
 
     public void init() {
