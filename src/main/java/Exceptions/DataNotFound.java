@@ -7,7 +7,7 @@ package Exceptions;
  * @version 0.1
  */
 public class DataNotFound extends Exception{
-    private String inputInfo;
+    private String inputInfo; 
     public DataNotFound(String inputInfo){
         this.inputInfo = inputInfo;
     }

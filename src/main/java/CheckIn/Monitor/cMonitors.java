@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Passenger Control Class
  *
- * @author Ruizhe Ou
+ * @author Ruizhe Ou, Yao Wang, Mingze Wu
  * @version 0.1 April 4th, 2022
  * @since April 4th, 2022
  */
