@@ -96,6 +96,6 @@ public class cMonitors {
     }
 
     public void setSeat(String seat) {
-
+        this.passenger.getBoardingPass().setSeatNo(seat);
     }
 }
