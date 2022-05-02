@@ -20,17 +20,11 @@ public class Airline_1 extends JFrame {
     }
 
     private void ok(ActionEvent e) {
-//        JOptionPane.showMessageDialog(null, "Confirm airline?","Airline check", JOptionPane.WARNING_MESSAGE);
         dispose();
         new CheckIn_2().setVisible(true);
     }
 
     private void exit(ActionEvent e) { dispose();}
-
-    private void AirlineChosen(ItemEvent e) {
-        String airlineChoose =(e.getItem()).toString();
-        System.out.println(airlineChoose);
-    }
 
     public void init() {
     ImageIcon background = new ImageIcon("src/main/resources/img.png");
@@ -38,19 +32,11 @@ public class Airline_1 extends JFrame {
     label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
     JPanel myPanel = (JPanel)this.getContentPane();
     myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
     this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
     this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
     }
-//    public void setFirstPic(){
-//        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/checkin.png"));
-//        panel2.add(jl1,BorderLayout.CENTER);
-//
-//    }
 
     private void initComponents() {
 
@@ -135,7 +121,6 @@ public class Airline_1 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-//        setFirstPic();
         init();
     }
 

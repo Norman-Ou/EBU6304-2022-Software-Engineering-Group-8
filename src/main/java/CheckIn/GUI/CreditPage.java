@@ -26,11 +26,6 @@ public class CreditPage extends JFrame {
         dispose();
         new PrintFlight_6().setVisible(true);
     }
-    private void payBag(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "You have payed for your additional baggage. Click confirm for printing your baggage tag.","Safe pay for more baggage.", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new PrintBag_11().setVisible(true);
-    }
     private String mealTemp="";
     public void setMealTemp(String str){
         this.mealTemp=str;
@@ -60,13 +55,6 @@ public class CreditPage extends JFrame {
         new Meal_12().setVisible(true);
         // TODO delete used meal information in user's meal information list
     }
-
-    private void bagSecond(ActionEvent e) {
-        dispose();
-        new SeatFirst_5().setVisible(true);
-        // TODO delete used baggage information in user's information list
-    }
-
 
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");

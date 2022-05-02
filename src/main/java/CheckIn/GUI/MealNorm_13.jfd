@@ -54,6 +54,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 					name: "tabbedPane2"
 					"opaque": false
+					"toolTipText": "$32"
 					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "NorMealStateChanged", true ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panelBurger"
@@ -62,6 +63,13 @@ new FormModel {
 							"horizontalAlignment": 0
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label6"
+							"text": new FormMessage( null, "label6.text_4" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
 						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label1.tab.title" )

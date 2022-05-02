@@ -29,6 +29,7 @@ public class EnterBN_3 extends JFrame {
     private void ok(ActionEvent e) {
         new ConfirmPage_3().setVisible(true);
         dispose();
+
         String str=textArea1.getText();
         this.bookNum=str;
 //        System.out.println(bookNum);

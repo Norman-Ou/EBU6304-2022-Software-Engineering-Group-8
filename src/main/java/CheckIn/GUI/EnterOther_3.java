@@ -24,17 +24,20 @@ public class EnterOther_3 extends JFrame {
         initComponents();
     }
 
-    public String IDNum;
-    public String surname;
+    public static String IDNum;
+    public static String surname;
     public static Passenger psnTemp1;
     public static String BookingNumber;
     public static Flight fltTemp;
 
     private void ok(ActionEvent e) throws Exception {
-        new ConfirmPage_3().setVisible(true);
+
+        //open next page
+        new AirPassCse().setVisible(true);
         dispose();
-        this.IDNum=textArea3.getText();
-        this.surname=textArea4.getText();
+
+        IDNum=textArea3.getText();
+        surname=textArea4.getText();
         Passenger psn = pDB.loadPassengerBySurname_ID(surname,IDNum);
         Flight flt = cMonitors.getFlightByBookingNo(BookingNumber);
         fltTemp=flt;
@@ -43,6 +46,7 @@ public class EnterOther_3 extends JFrame {
     public static Passenger getPsnTemp1() {
         try{
             BookingNumber=psnTemp1.getBookNumber();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,7 +94,7 @@ public class EnterOther_3 extends JFrame {
         myPanel.setOpaque(false);
 //        myPanel.setLayout(new FlowLayout());
 //        this.getLayeredPane().setLayout(null);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +103,7 @@ public class EnterOther_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -113,20 +117,19 @@ public class EnterOther_3 extends JFrame {
         textArea3 = new JTextArea();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -194,7 +197,7 @@ public class EnterOther_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;

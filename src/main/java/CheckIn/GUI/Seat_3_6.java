@@ -31,14 +31,16 @@ public class Seat_3_6 extends JFrame {
     }
 
     private void VipWinItemStateChanged(ItemEvent e) {
-        if(!(e.getItem() ==null)){
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.SELECTED){
             dispose();
             new VIPSeatPay().setVisible(true);
         }
     }
 
     private void VipOutItemStateChanged(ItemEvent e) {
-        if(!(e.getItem() ==null)){
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.SELECTED){
             dispose();
             new VIPSeatPay().setVisible(true);
         }
@@ -257,10 +259,4 @@ public class Seat_3_6 extends JFrame {
     private JComboBox FIrOut;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-
-    public static void main(String[] args) throws Exception {
-
-        new Seat_3_6().setVisible(true);
-
-    }
 }

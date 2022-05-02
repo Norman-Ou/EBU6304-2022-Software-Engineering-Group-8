@@ -1,9 +1,14 @@
 package CheckIn.GUI;
 
+import javax.swing.event.*;
+import Beans.Flight.Flight;
+import Beans.Passenger.SubClasses.BoardingPass;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Wed Mar 30 17:09:39 CST 2022
@@ -15,6 +20,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class SeatFirst_5 extends JFrame {
+    String fType = null;
     public SeatFirst_5() {
         initComponents();
     }
@@ -22,18 +28,44 @@ public class SeatFirst_5 extends JFrame {
     private void checkinAgain(ActionEvent e) {
         dispose();
         new CheckIn_2().setVisible(true);
-        
     }
 
     private void error(ActionEvent e) {
         dispose();
         new Error().setVisible(true);
     }
-
-    private void selectSeat(ActionEvent e) {
+    private void seletSeat(ActionEvent e) {
         //TODO check airline
         dispose();
         new Seat_1_6().setVisible(true);
+    }
+
+
+//        if(EnterBN_3.getPsnTemp()==null){
+//
+//                fType= Objects.requireNonNull(EnterOther_3.getFlight()).getFlightType();
+////                jumpSeat();
+//            dispose();
+//            new Seat_1_6().setVisible(true);
+//        }
+//        else if(EnterOther_3.getPsnTemp1()==null) {
+//                fType= Objects.requireNonNull(EnterBN_3.getFlight()).getFlightType();
+////                jumpSeat();
+//        }else{
+//
+//                fType= Objects.requireNonNull(EnterOther_3.getFlight()).getFlightType();
+////                jumpSeat();
+//
+//        }
+//    }
+    public void jumpSeat(){
+        if(Objects.equals(fType, "A")){
+            dispose();
+            new Seat_1_6().setVisible(true);
+        }else if(Objects.equals(fType, "B")){
+            dispose();
+            new Seat_3_6().setVisible(true);
+        }
     }
 
     public void init() {
@@ -42,11 +74,16 @@ public class SeatFirst_5 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    private void selectSeat(ActionEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -74,13 +111,12 @@ public class SeatFirst_5 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-            awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
-            ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax
+            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,
+            12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans
+            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e.
+            getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== buttonBar ========

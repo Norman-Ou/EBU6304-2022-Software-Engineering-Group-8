@@ -114,6 +114,7 @@ public class MealNorm_13 extends JFrame {
         tabbedPane2 = new JTabbedPane();
         panelBurger = new JPanel();
         label1 = new JLabel();
+        label6 = new JLabel();
         panelCheese = new JPanel();
         label3 = new JLabel();
         panelHot = new JPanel();
@@ -133,11 +134,12 @@ public class MealNorm_13 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -179,6 +181,7 @@ public class MealNorm_13 extends JFrame {
             //======== tabbedPane2 ========
             {
                 tabbedPane2.setOpaque(false);
+                tabbedPane2.setToolTipText("$32");
                 tabbedPane2.addChangeListener(e -> NorMealStateChanged(e));
 
                 //======== panelBurger ========
@@ -188,6 +191,11 @@ public class MealNorm_13 extends JFrame {
                     //---- label1 ----
                     label1.setHorizontalAlignment(SwingConstants.CENTER);
                     panelBurger.add(label1, BorderLayout.CENTER);
+
+                    //---- label6 ----
+                    label6.setText(bundle.getString("label6.text_4"));
+                    label6.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelBurger.add(label6, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label1.tab.title"), panelBurger);
 
@@ -260,6 +268,7 @@ public class MealNorm_13 extends JFrame {
     private JTabbedPane tabbedPane2;
     private JPanel panelBurger;
     private JLabel label1;
+    private JLabel label6;
     private JPanel panelCheese;
     private JLabel label3;
     private JPanel panelHot;

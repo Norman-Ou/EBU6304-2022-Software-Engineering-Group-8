@@ -33,6 +33,22 @@ public class Seat_1_6 extends JFrame {
         new SeatFirst_5().setVisible(true);
     }
 
+    private void vipWinItemStateChanged(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+            new VIPSeatPay().setVisible(true);
+        }
+    }
+
+    private void vipOutItemStateChanged(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+            new VIPSeatPay().setVisible(true);
+        }
+    }
+
     public void showSeats(){
 
         HashMap<String, Seat> map=new HashMap<>();
@@ -77,20 +93,6 @@ public class Seat_1_6 extends JFrame {
         this.setTitle("Passenger check-in system");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-    }
-
-    private void vipWinItemStateChanged(ItemEvent e) {
-        if(!(e.getItem() ==null)){
-            dispose();
-            new VIPSeatPay().setVisible(true);
-        }
-    }
-
-    private void vipOutItemStateChanged(ItemEvent e) {
-        if(!(e.getItem() ==null)){
-            dispose();
-            new VIPSeatPay().setVisible(true);
-        }
     }
 
     private void initComponents() {
@@ -306,9 +308,4 @@ public class Seat_1_6 extends JFrame {
     private JComboBox firOut;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    public static void main(String[] args) throws Exception {
-
-        new Seat_1_6().setVisible(true);
-
-    }
 }
