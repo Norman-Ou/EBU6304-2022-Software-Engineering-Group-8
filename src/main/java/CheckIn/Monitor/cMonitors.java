@@ -7,16 +7,12 @@ import Beans.Flight.Flight;
 import DataBase.fDB;
 import DataBase.pDB;
 import Exceptions.DataNotFound;
-import DataBase.fDB;
 import DataBase.oDB;
-import Beans.Flight.Flight;
 import Beans.IDDocument.IDDocument;
 
-import org.apache.commons.io.filefilter.OrFileFilter;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,8 +29,8 @@ public class cMonitors {
     final String surname = "orz";
     final IDDocument idDocument = new IDDocument("215200", "orz");
     // 所有航班的列表
-	private static List<Flight> flightList = fDB.loadAllFlights();
-	
+    private static List<Flight> flightList = fDB.loadAllFlights();
+
 
     Passenger passenger;
     Flight flight;
@@ -54,13 +50,13 @@ public class cMonitors {
         return passenger.getBoardingPass().getFlightNo();
     }
 
-    public Flight findFlight (String flightNo) {
+    public Flight findFlight(String flightNo) {
         flight = fDB.loadFlightByFlightNo(flightNo);
         return flight;
     }
 
     // wy add these functions to change the method of presenting data of flight
-    public static Flight getFlightByBookingNo(String bookingNo){
+    public static Flight getFlightByBookingNo(String bookingNo) {
         String targetFlightNo;
         Flight targetFlight = new Flight();
         try {
@@ -68,7 +64,7 @@ public class cMonitors {
             // get flight information and passenger list through flight number
             for (int i = 0; i < flightList.size(); i++) {
                 Flight flight = flightList.get(i);
-                if(flight.getFlightNo().equals(targetFlightNo)){
+                if (flight.getFlightNo().equals(targetFlightNo)) {
                     targetFlight = flight;
                 }
             }
@@ -76,5 +72,30 @@ public class cMonitors {
             e.printStackTrace();
         }
         return targetFlight;
+    }
+
+    public BoardingPass generateBoardingPass() {
+        passenger = this.passenger;
+        return passenger.getBoardingPass();
+    }
+
+    public void setMeal(String mealName) {
+        ExtraOption eo1 = new ExtraOption();
+        ArrayList<ExtraOption> eos = this.flight.getExtraOptions();
+        for (int i = 0; i < eos.size(); i++) {
+            if (mealName == eos.get(i).getDescription()) {
+                eo1 = eos.get(i);
+            }
+        }
+        ExtraOption eo2 = new ExtraOption();
+        eo2.setKind(1);
+        eo2.setDescription(mealName);
+        eo2.setPrice(eo1.getPrice());
+        this.passenger.getExtraOptions().add(eo2);
+        this.passenger.setExtraOptions(this.passenger.getExtraOptions());
+    }
+
+    public void setSeat(String seat) {
+
     }
 }
