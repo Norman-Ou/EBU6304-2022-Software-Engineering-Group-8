@@ -110,6 +110,11 @@ src
 1. Back_End System
 2. Check_In System
 
+#### Notifications
+1. As for flight categories, we have two kinds of flight regarding their seating list distribution. 
+* For `twoSeat.png` kind of seats the type is 'A'
+* For `triSeat.png` kind of seats the type is 'B'
+
 #### How to run this project
 
 1. Install `jdk1.8.0`
