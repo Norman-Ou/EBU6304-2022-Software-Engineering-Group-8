@@ -10,7 +10,7 @@ import java.util.*;
  * This is the basic Beans.Flight information class
  *
  * @author Jiacheng Li
- * @version 1.4 April 16th, 2022
+ * @version 2.0 May 2nd, 2022
  */
 public class Flight implements Serializable{
     /**
@@ -23,6 +23,11 @@ public class Flight implements Serializable{
      * Default Value: null
      */
     private String airlines;
+    /**
+     * Type of this aircraft.<br/><br/>
+     * Default Value: null
+     */
+    private String flightType;
     /**
      * Name of the origin.<br/><br/>
      * Default Value: null
@@ -88,9 +93,10 @@ public class Flight implements Serializable{
      */
     public Flight(){}
 
-    public Flight(String flightNo, String airlines, String departure, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Seat> seatingList, ArrayList<ExtraOption> extraOptions, HashMap<String, ExtraOption> passengerOptions) {
+    public Flight(String flightNo, String airlines, String flightType, String departure, String destination, String gate, String terminal, String ETD, String ETC, String ETA, int luggageLimit, HashMap<String, Seat> seatingList, ArrayList<ExtraOption> extraOptions, HashMap<String, ExtraOption> passengerOptions) {
         this.flightNo = flightNo;
         this.airlines = airlines;
+        this.flightType = flightType;
         this.departure = departure;
         this.destination = destination;
         this.gate = gate;
@@ -109,6 +115,7 @@ public class Flight implements Serializable{
      */
     public String getFlightNo() {return flightNo;}
     public String getAirlines(){return airlines;}
+    public String getFlightType() {return flightType;}
     public String getDeparture(){return departure;}
     public String getDestination(){return destination;}
     public String getGate(){return gate;}
@@ -127,6 +134,7 @@ public class Flight implements Serializable{
      */
     public void setFlightNo(String flightNo) {this.flightNo = flightNo;}
     public void setAirlines(String airlines){this.airlines = airlines;}
+    public void setFlightType(String flightType){this.flightType = flightType;}
     public void setDeparture(String departure){this.departure = departure;}
     public void setDestination(String destination){this.destination = destination;}
     public void setGate(String gate){this.gate = gate;}
