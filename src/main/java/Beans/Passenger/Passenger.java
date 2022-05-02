@@ -13,7 +13,7 @@ import java.util.*;
  * @author Jiayi Wang
  * @author Ruizhe Ou
  * @author Jiacheng Li
- * @version 0.2 March 24th, 2022
+ * @version 1.0 March 24th, 2022
  */
 public class Passenger {
     /**
