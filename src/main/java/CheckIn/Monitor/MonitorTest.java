@@ -8,5 +8,6 @@ public class MonitorTest {
         cMonitors listeners = new cMonitors();
         String flightNo = listeners.findPassengerFlight("2019200");
         listeners.findFlight(flightNo);
+        listeners.setMeal("Salad");
     }
 }
