@@ -1,0 +1,1154 @@
+{
+    "01A": {
+        "seatClass": 1,
+        "seatNo": "01A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "01C": {
+        "seatClass": 1,
+        "seatNo": "01C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "01J": {
+        "seatClass": 1,
+        "seatNo": "01J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "01L": {
+        "seatClass": 1,
+        "seatNo": "01L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "02A": {
+        "seatClass": 1,
+        "seatNo": "02A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "02C": {
+        "seatClass": 1,
+        "seatNo": "02C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "02J": {
+        "seatClass": 1,
+        "seatNo": "02J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "02L": {
+        "seatClass": 1,
+        "seatNo": "02L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11A": {
+        "seatClass": 0,
+        "seatNo": "11A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11B": {
+        "seatClass": 0,
+        "seatNo": "11B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11C": {
+        "seatClass": 0,
+        "seatNo": "11C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11J": {
+        "seatClass": 0,
+        "seatNo": "11J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11K": {
+        "seatClass": 0,
+        "seatNo": "11K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "11L": {
+        "seatClass": 0,
+        "seatNo": "11L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12A": {
+        "seatClass": 0,
+        "seatNo": "12A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12B": {
+        "seatClass": 0,
+        "seatNo": "12B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12C": {
+        "seatClass": 0,
+        "seatNo": "12C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12J": {
+        "seatClass": 0,
+        "seatNo": "12J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12K": {
+        "seatClass": 0,
+        "seatNo": "12K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "12L": {
+        "seatClass": 0,
+        "seatNo": "12L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13A": {
+        "seatClass": 0,
+        "seatNo": "13A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13B": {
+        "seatClass": 0,
+        "seatNo": "13B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13C": {
+        "seatClass": 0,
+        "seatNo": "13C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13J": {
+        "seatClass": 0,
+        "seatNo": "13J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13K": {
+        "seatClass": 0,
+        "seatNo": "13K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "13L": {
+        "seatClass": 0,
+        "seatNo": "13L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14A": {
+        "seatClass": 0,
+        "seatNo": "14A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14B": {
+        "seatClass": 0,
+        "seatNo": "14B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14C": {
+        "seatClass": 0,
+        "seatNo": "14C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14J": {
+        "seatClass": 0,
+        "seatNo": "14J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14K": {
+        "seatClass": 0,
+        "seatNo": "14K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "14L": {
+        "seatClass": 0,
+        "seatNo": "14L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15A": {
+        "seatClass": 0,
+        "seatNo": "15A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15B": {
+        "seatClass": 0,
+        "seatNo": "15B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15C": {
+        "seatClass": 0,
+        "seatNo": "15C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15J": {
+        "seatClass": 0,
+        "seatNo": "15J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15K": {
+        "seatClass": 0,
+        "seatNo": "15K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "15L": {
+        "seatClass": 0,
+        "seatNo": "15L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16A": {
+        "seatClass": 0,
+        "seatNo": "16A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16B": {
+        "seatClass": 0,
+        "seatNo": "16B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16C": {
+        "seatClass": 0,
+        "seatNo": "16C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16J": {
+        "seatClass": 0,
+        "seatNo": "16J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16K": {
+        "seatClass": 0,
+        "seatNo": "16K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "16L": {
+        "seatClass": 0,
+        "seatNo": "16L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17A": {
+        "seatClass": 0,
+        "seatNo": "17A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17B": {
+        "seatClass": 0,
+        "seatNo": "17B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17C": {
+        "seatClass": 0,
+        "seatNo": "17C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17J": {
+        "seatClass": 0,
+        "seatNo": "17J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17K": {
+        "seatClass": 0,
+        "seatNo": "17K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "17L": {
+        "seatClass": 0,
+        "seatNo": "17L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18A": {
+        "seatClass": 0,
+        "seatNo": "18A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18B": {
+        "seatClass": 0,
+        "seatNo": "18B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18C": {
+        "seatClass": 0,
+        "seatNo": "18C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18J": {
+        "seatClass": 0,
+        "seatNo": "18J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18K": {
+        "seatClass": 0,
+        "seatNo": "18K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "18L": {
+        "seatClass": 0,
+        "seatNo": "18L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19A": {
+        "seatClass": 0,
+        "seatNo": "19A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19B": {
+        "seatClass": 0,
+        "seatNo": "19B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19C": {
+        "seatClass": 0,
+        "seatNo": "19C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19J": {
+        "seatClass": 0,
+        "seatNo": "19J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19K": {
+        "seatClass": 0,
+        "seatNo": "19K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "19L": {
+        "seatClass": 0,
+        "seatNo": "19L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20A": {
+        "seatClass": 0,
+        "seatNo": "20A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20B": {
+        "seatClass": 0,
+        "seatNo": "20B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20C": {
+        "seatClass": 0,
+        "seatNo": "20C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20J": {
+        "seatClass": 0,
+        "seatNo": "20J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20K": {
+        "seatClass": 0,
+        "seatNo": "20K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "20L": {
+        "seatClass": 0,
+        "seatNo": "20L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21A": {
+        "seatClass": 0,
+        "seatNo": "21A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21B": {
+        "seatClass": 0,
+        "seatNo": "21B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21C": {
+        "seatClass": 0,
+        "seatNo": "21C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21J": {
+        "seatClass": 0,
+        "seatNo": "21J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21K": {
+        "seatClass": 0,
+        "seatNo": "21K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "21L": {
+        "seatClass": 0,
+        "seatNo": "21L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22A": {
+        "seatClass": 0,
+        "seatNo": "22A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22B": {
+        "seatClass": 0,
+        "seatNo": "22B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22C": {
+        "seatClass": 0,
+        "seatNo": "22C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22J": {
+        "seatClass": 0,
+        "seatNo": "22J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22K": {
+        "seatClass": 0,
+        "seatNo": "22K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "22L": {
+        "seatClass": 0,
+        "seatNo": "22L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23A": {
+        "seatClass": 0,
+        "seatNo": "23A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23B": {
+        "seatClass": 0,
+        "seatNo": "23B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23C": {
+        "seatClass": 0,
+        "seatNo": "23C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23J": {
+        "seatClass": 0,
+        "seatNo": "23J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23K": {
+        "seatClass": 0,
+        "seatNo": "23K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "23L": {
+        "seatClass": 0,
+        "seatNo": "23L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24A": {
+        "seatClass": 0,
+        "seatNo": "24A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24B": {
+        "seatClass": 0,
+        "seatNo": "24B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24C": {
+        "seatClass": 0,
+        "seatNo": "24C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24J": {
+        "seatClass": 0,
+        "seatNo": "24J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24K": {
+        "seatClass": 0,
+        "seatNo": "24K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "24L": {
+        "seatClass": 0,
+        "seatNo": "24L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25A": {
+        "seatClass": 0,
+        "seatNo": "25A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25B": {
+        "seatClass": 0,
+        "seatNo": "25B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25C": {
+        "seatClass": 0,
+        "seatNo": "25C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25J": {
+        "seatClass": 0,
+        "seatNo": "25J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25K": {
+        "seatClass": 0,
+        "seatNo": "25K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "25L": {
+        "seatClass": 0,
+        "seatNo": "25L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26A": {
+        "seatClass": 0,
+        "seatNo": "26A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26B": {
+        "seatClass": 0,
+        "seatNo": "26B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26C": {
+        "seatClass": 0,
+        "seatNo": "26C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26J": {
+        "seatClass": 0,
+        "seatNo": "26J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26K": {
+        "seatClass": 0,
+        "seatNo": "26K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "26L": {
+        "seatClass": 0,
+        "seatNo": "26L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27A": {
+        "seatClass": 0,
+        "seatNo": "27A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27B": {
+        "seatClass": 0,
+        "seatNo": "27B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27C": {
+        "seatClass": 0,
+        "seatNo": "27C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27J": {
+        "seatClass": 0,
+        "seatNo": "27J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27K": {
+        "seatClass": 0,
+        "seatNo": "27K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "27L": {
+        "seatClass": 0,
+        "seatNo": "27L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28A": {
+        "seatClass": 0,
+        "seatNo": "28A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28B": {
+        "seatClass": 0,
+        "seatNo": "28B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28C": {
+        "seatClass": 0,
+        "seatNo": "28C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28J": {
+        "seatClass": 0,
+        "seatNo": "28J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28K": {
+        "seatClass": 0,
+        "seatNo": "28K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "28L": {
+        "seatClass": 0,
+        "seatNo": "28L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29A": {
+        "seatClass": 0,
+        "seatNo": "29A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29B": {
+        "seatClass": 0,
+        "seatNo": "29B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29C": {
+        "seatClass": 0,
+        "seatNo": "29C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29J": {
+        "seatClass": 0,
+        "seatNo": "29J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29K": {
+        "seatClass": 0,
+        "seatNo": "29K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "29L": {
+        "seatClass": 0,
+        "seatNo": "29L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30A": {
+        "seatClass": 0,
+        "seatNo": "30A",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30B": {
+        "seatClass": 0,
+        "seatNo": "30B",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30C": {
+        "seatClass": 0,
+        "seatNo": "30C",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30J": {
+        "seatClass": 0,
+        "seatNo": "30J",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30K": {
+        "seatClass": 0,
+        "seatNo": "30K",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    },
+    "30L": {
+        "seatClass": 0,
+        "seatNo": "30L",
+        "lockedStatus": false,
+        "passenger": {
+            "extraOptions": []
+        },
+        "checkinStatus": -1
+    }
+}
