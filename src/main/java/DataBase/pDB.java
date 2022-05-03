@@ -4,6 +4,8 @@ import Config.Config;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
 import Exceptions.DataNotFound;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,10 +33,11 @@ public class pDB{
         return null;
     }
 
-    //TODO
+
     /**
      * Get Passenger Object by Surname and ID number
      * */
+    @Deprecated
     public static Passenger loadPassengerBySurname_ID(String surName, String passengerId) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
         Passenger p1 = dataBase.getObject("surName", surName, Passenger.class);
@@ -47,6 +50,31 @@ public class pDB{
             return p1;
         }else{
             throw new Exception("Surname does not match the ID number");
+        }
+    }
+
+    public static ArrayList<Passenger> loadPassengersBySurname_ID(String surName, String passengerId) throws DataNotFound {
+        DataBase dataBase = new DataBase(Config.PassengerFile);
+        ArrayList<Passenger> arrayList = new ArrayList<>();
+
+        try {
+            JSONArray array = dataBase.getAllObject();
+            for (int i = 0; i < (array.size()); i++) {
+                JSONObject ob = (JSONObject) array.get(i);
+                if (ob.get("surName").equals(surName)) {
+                    if (ob.get("passengerId").equals(passengerId)) {
+                        arrayList.add(ob.toJavaObject(Passenger.class));
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (arrayList.isEmpty()){
+            throw new DataNotFound("DataNotFound");
+        } else {
+            return arrayList;
         }
     }
 

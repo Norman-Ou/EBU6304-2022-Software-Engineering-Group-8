@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 /**
  * <b>Database class<b/> <br><br/>
@@ -117,18 +118,23 @@ public class DataBase {
      *
      * @return a Java Object with attribute name and the attribute's value same with arguments
      * */
-    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) throws IOException, DataNotFound {
-        JSONArray array = readFile();
-        for (int i = 0; i < (array.size()); i++) {
-            JSONObject ob = (JSONObject) array.get(i);
-            if (ob.get(key).equals(value.toString())){
-                if (isDelete) {
-                    array.remove(ob);
-                    writeFile(array);
+    private <T, K> T searchObject(String key, K value, Class<T> tClass, boolean isDelete) throws DataNotFound {
+        try {
+            JSONArray array = readFile();
+            for (int i = 0; i < (array.size()); i++) {
+                JSONObject ob = (JSONObject) array.get(i);
+                if (ob.get(key).equals(value.toString())){
+                    if (isDelete) {
+                        array.remove(ob);
+                        writeFile(array);
+                    }
+                    return ob.toJavaObject(tClass);
                 }
-                return ob.toJavaObject(tClass);
             }
+        } catch (IOException e){
+            e.printStackTrace();
         }
+
         throw new DataNotFound("DataNotFound");
     }
 
@@ -141,18 +147,22 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) throws IOException, DataNotFound {
-        JSONArray array = readFile();
-        for (int i = 0; i < array.size(); i++) {
-            JSONObject ob = (JSONObject) array.get(i);
-            if (new JSONComparator().compareJsonObject(JSON.toJSONString(ob), JSON.toJSONString(jsonObject)).equals("{}")){
-                if (isDelete){
-                    array.remove(ob);
-                    writeFile(array);
+    private <T> T searchObject(JSONObject jsonObject, Class<T> tClass, boolean isDelete) throws DataNotFound {
+        try {
+            JSONArray array = readFile();
+            for (int i = 0; i < array.size(); i++) {
+                JSONObject ob = (JSONObject) array.get(i);
+                if (new JSONComparator().compareJsonObject(JSON.toJSONString(ob), JSON.toJSONString(jsonObject)).equals("{}")){
+                    if (isDelete){
+                        array.remove(ob);
+                        writeFile(array);
+                        return ob.toJavaObject(tClass);
+                    }
                     return ob.toJavaObject(tClass);
                 }
-                return ob.toJavaObject(tClass);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         throw new DataNotFound("DataNotFound");
     }
@@ -195,6 +205,21 @@ public class DataBase {
         return searchObject(key, value, tClass, false);
     }
 
+    protected <T, K> ArrayList<T> getObjects(String key, K value, Class<T> tClass) throws DataNotFound{
+        ArrayList<T> arrayList = new ArrayList<>();
+        try {
+            JSONArray array = readFile();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (arrayList.isEmpty()){
+            throw new DataNotFound("Query Data base with Key:" + key + " Value:"+ value + "--DataNotFound");
+        } else {
+            return arrayList;
+        }
+    }
+
     /**
      * <b>Interface<b/> <br><br/>
      * Get a Java Object in JSON file.
@@ -204,7 +229,7 @@ public class DataBase {
      *
      * @return a Java Object same as the argument one
      * */
-    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) throws IOException, DataNotFound {
+    protected <T> T getObject(JSONObject jsonObject, Class<T> tClass) throws DataNotFound {
         return searchObject(jsonObject, tClass, false);
     }
 
