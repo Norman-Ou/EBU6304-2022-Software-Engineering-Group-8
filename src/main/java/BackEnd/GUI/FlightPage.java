@@ -4,11 +4,17 @@
 
 package BackEnd.GUI;
 
+import javax.print.attribute.standard.Destination;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import BackEnd.Monitor.bMonitors;
+import Beans.Flight.Flight;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @author Lingxiao
@@ -18,15 +24,20 @@ public class FlightPage extends JFrame {
         initComponents();
     }
 
+    // button "confirm"
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
             FlightID.setText(f_ID);
-
-
+            bMonitors bMonitor = new bMonitors();
+            Flight targetFlight = bMonitor.getFlightList(f_ID);
+            BoardingTime.setText(targetFlight.getETC());
+            TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
+            Destination.setText(targetFlight.getDestination());
         }
     }
 
+    // button "see more passengerList"
     private void button3MouseClicked(MouseEvent e) {
         if(e.getSource()==button3){
             //FlightID.setText("???");
@@ -36,6 +47,7 @@ public class FlightPage extends JFrame {
         }
     }
 
+    // button "Back"
     private void button2MouseClicked(MouseEvent e) {
         if(e.getSource()==button2){
             backend B = new backend();
@@ -59,7 +71,8 @@ public class FlightPage extends JFrame {
         scrollPane2 = new JScrollPane();
         TimeLefttoBoard = new JTextArea();
         label5 = new JLabel();
-        PassengernotBoarding = new JTextField();
+        // PassengernotBoarding = new JTextField();
+        Destination = new JTextField();
         label6 = new JLabel();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
@@ -150,7 +163,7 @@ public class FlightPage extends JFrame {
         contentPane.add(label5, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(PassengernotBoarding, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
+        contentPane.add(Destination, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 0), 0, 0));
 
@@ -217,7 +230,8 @@ public class FlightPage extends JFrame {
     private JScrollPane scrollPane2;
     private JTextArea TimeLefttoBoard;
     private JLabel label5;
-    private JTextField PassengernotBoarding;
+    // private JTextField PassengernotBoarding;
+    private JTextField Destination;
     private JLabel label6;
     private JLabel label7;
     private JScrollPane scrollPane1;

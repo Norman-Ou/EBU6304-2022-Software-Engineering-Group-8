@@ -54,7 +54,7 @@ public class Seat_1_6 extends JFrame {
         HashMap<String, Seat> map=new HashMap<>();
         if(EnterBN_3.getPsnTemp()==null){
             try{
-                map= Objects.requireNonNull(EnterOther_3.getFlight()).getSeatingList();
+                // map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
                 EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
             } catch (Exception e1) {
                 e1.printStackTrace();
