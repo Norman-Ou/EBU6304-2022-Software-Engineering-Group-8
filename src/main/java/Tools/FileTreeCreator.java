@@ -46,7 +46,7 @@ public class FileTreeCreator{
 │    │    │    │    ├─backend.java
 │    │    │    │    ├─backend.jfd
 │    │    │    │    ├─Flight.java
-│    │    │    │    ├─Flight.jfd
+│    │    │    │    ├─FilghtPage_demo.jfd
 │    │    │    │    ├─Passenger.java
 │    │    │    │    ├─Passenger.jfd
 │    │    │    ├─Monitor

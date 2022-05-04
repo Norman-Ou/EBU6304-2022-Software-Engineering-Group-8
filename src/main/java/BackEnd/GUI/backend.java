@@ -50,9 +50,10 @@ public class backend extends JFrame {
         panel8 = new JPanel();
         panel9 = new JPanel();
         button2 = new JButton();
+        label2 = new JLabel();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(3, 0));
 
         //======== panel1 ========
@@ -126,6 +127,11 @@ public class backend extends JFrame {
             panel2.add(panel8);
         }
         contentPane.add(panel2);
+
+        //---- label2 ----
+        label2.setIcon(new ImageIcon(getClass().getResource("/icon.png")));
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(label2);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -143,5 +149,6 @@ public class backend extends JFrame {
     private JPanel panel8;
     private JPanel panel9;
     private JButton button2;
+    private JLabel label2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

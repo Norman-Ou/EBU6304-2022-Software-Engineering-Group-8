@@ -116,17 +116,15 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 7
 				"gridheight": 4
+				"gridwidth": 3
 			} )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane2"
-				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea2"
-				} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "See passenger list"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridx": 1
-				"gridy": 7
-				"gridwidth": 2
-				"gridheight": 4
+				"gridx": 2
+				"gridy": 11
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"

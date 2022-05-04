@@ -1,3 +1,7 @@
+/*
+ * Created by JFormDesigner on Mon Apr 25 15:56:52 CST 2022
+ */
+
 package BackEnd.GUI;
 
 import javax.swing.*;
@@ -5,47 +9,36 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/*
- * Created by JFormDesigner on Mon Apr 11 15:53:40 CST 2022
- */
-
-
 
 /**
- * @author Lingxiao
+ * @author unknown
  */
-public class FlightPage extends JFrame {
-    public FlightPage() {
+public class FilghtPage_demo extends JFrame {
+    public FilghtPage_demo() {
         initComponents();
     }
 
-
-    private void button2MouseClicked(MouseEvent e) {
-        if(e.getSource()==button2){
-            backend B = new backend();
-            B.setVisible(true);
-            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
-
+    private void button1MouseClicked(MouseEvent e) {
+        //        if(e.getSource()==button2){
+//            backend B = new backend();
+//            B.setVisible(true);
+//            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            this.dispose();
+//        }
     }
 
-    private void button1MouseClicked(MouseEvent e) {
+    private void button2MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
             FlightID.setText(f_ID);
-
-
         }
-
     }
 
     private void button3MouseClicked(MouseEvent e) {
         if(e.getSource()==button3){
-            //FlightID.setText("???");
-            toShowPassengerList T = new toShowPassengerList(this.getPassengerList());
-            T.setVisible(true);
-            //T.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            toShowPassengerList Detail = new toShowPassengerList(this.getPassengerList());
+            Detail.setVisible(true);
+//            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     }
 
@@ -66,15 +59,13 @@ public class FlightPage extends JFrame {
         label6 = new JLabel();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();//此即为乘客信息及其电话的输出位置，可传输到see passenger list里面
-//        scrollPane2 = new JScrollPane();
-//        textArea2 = new JTextArea();
-        button2 = new JButton();
+        textArea1 = new JTextArea();
         button3 = new JButton();
+        button2 = new JButton();
 
         //======== this ========
-        setTitle("Beans.Flight enquiry page");
-        Container contentPane = getContentPane();
+        setTitle("Flight enquiry page");
+        var contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -112,7 +103,7 @@ public class FlightPage extends JFrame {
             new Insets(0, 0, 5, 5), 0, 0));
 
         //---- label2 ----
-        label2.setText("Beans.Flight ID:");
+        label2.setText("Flight ID:");
         label2.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -173,14 +164,6 @@ public class FlightPage extends JFrame {
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
 
-//        //======== scrollPane2 ========
-//        {
-//            scrollPane2.setViewportView(textArea2);
-//        }
-//        contentPane.add(scrollPane2, new GridBagConstraints(1, 7, 2, 4, 0.0, 0.0,
-//            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//            new Insets(0, 0, 5, 5), 0, 0));
-
         //---- button3 ----
         button3.setText("See passenger list");
         button3.addMouseListener(new MouseAdapter() {
@@ -190,8 +173,8 @@ public class FlightPage extends JFrame {
             }
         });
         contentPane.add(button3, new GridBagConstraints(2, 11, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
 
         //---- button2 ----
         button2.setText("Back");
@@ -207,8 +190,6 @@ public class FlightPage extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -227,14 +208,12 @@ public class FlightPage extends JFrame {
     private JLabel label6;
     private JLabel label7;
     private JScrollPane scrollPane1;
-    private JTextArea textArea1;//此即为乘客信息及其电话的输出位置，可传输到see passenger list里面
-    private JButton button2;
+    private JTextArea textArea1;
     private JButton button3;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public String getPassengerList(){ return this.textArea1.getText();}
 
-//    public static void main(String[] args) {
-//        new Beans.Flight().setVisible(true);
-//    }
-public String getPassengerList(){ return this.textArea1.getText();}
 }
+
 
