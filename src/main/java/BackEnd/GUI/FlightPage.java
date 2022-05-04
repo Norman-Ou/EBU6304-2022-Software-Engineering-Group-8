@@ -1,3 +1,7 @@
+/*
+ * Created by JFormDesigner on Wed May 04 17:59:41 CST 2022
+ */
+
 package BackEnd.GUI;
 
 import javax.swing.*;
@@ -5,11 +9,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/*
- * Created by JFormDesigner on Mon Apr 11 15:53:40 CST 2022
- */
-
-
 
 /**
  * @author Lingxiao
@@ -19,17 +18,6 @@ public class FlightPage extends JFrame {
         initComponents();
     }
 
-
-    private void button2MouseClicked(MouseEvent e) {
-        if(e.getSource()==button2){
-            backend B = new backend();
-            B.setVisible(true);
-            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
-
-    }
-
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
@@ -37,7 +25,6 @@ public class FlightPage extends JFrame {
 
 
         }
-
     }
 
     private void button3MouseClicked(MouseEvent e) {
@@ -46,6 +33,15 @@ public class FlightPage extends JFrame {
             toShowPassengerList T = new toShowPassengerList(this.getPassengerList());
             T.setVisible(true);
             //T.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+    }
+
+    private void button2MouseClicked(MouseEvent e) {
+        if(e.getSource()==button2){
+            backend B = new backend();
+            B.setVisible(true);
+            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
         }
     }
 
@@ -60,44 +56,43 @@ public class FlightPage extends JFrame {
         label3 = new JLabel();
         BoardingTime = new JTextField();
         label4 = new JLabel();
-        TimeLefttoBoard = new JTextField();
+        scrollPane2 = new JScrollPane();
+        TimeLefttoBoard = new JTextArea();
         label5 = new JLabel();
         PassengernotBoarding = new JTextField();
         label6 = new JLabel();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();//此即为乘客信息及其电话的输出位置，可传输到see passenger list里面
-//        scrollPane2 = new JScrollPane();
-//        textArea2 = new JTextArea();
-        button2 = new JButton();
+        textArea1 = new JTextArea();
         button3 = new JButton();
+        button2 = new JButton();
 
         //======== this ========
-        setTitle("Beans.Flight enquiry page");
-        Container contentPane = getContentPane();
+        setTitle("Flight enquiry page");
+        var contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0};
-        ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0E-4};
-        ((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+        ((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
         //---- label1 ----
         label1.setText("Please input flight ID:");
         label1.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
 
         //======== panel1 ========
         {
             panel1.setLayout(new FlowLayout());
         }
         contentPane.add(panel1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(InputBar, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(InputBar, new GridBagConstraints(0, 1, 3, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
 
         //---- button1 ----
         button1.setText("Confirm");
@@ -107,79 +102,79 @@ public class FlightPage extends JFrame {
                 button1MouseClicked(e);
             }
         });
-        contentPane.add(button1, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(button1, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label2 ----
-        label2.setText("Beans.Flight ID:");
+        label2.setText("Flight ID:");
         label2.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(FlightID, new GridBagConstraints(1, 2, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(FlightID, new GridBagConstraints(1, 2, 3, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label3 ----
         label3.setText("Boarding Time:");
         label3.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(BoardingTime, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(BoardingTime, new GridBagConstraints(1, 3, 3, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label4 ----
         label4.setText("Time Left to Board:");
         label4.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label4, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(TimeLefttoBoard, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+
+        //======== scrollPane2 ========
+        {
+
+            //---- TimeLefttoBoard ----
+            TimeLefttoBoard.setColumns(10);
+            scrollPane2.setViewportView(TimeLefttoBoard);
+        }
+        contentPane.add(scrollPane2, new GridBagConstraints(1, 4, 3, 2, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label5 ----
         label5.setText("Destination:");
         label5.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label5, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(PassengernotBoarding, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(label5, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(PassengernotBoarding, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label6 ----
         label6.setText("Passenger not Boarding:");
         label6.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label6, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(label6, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
 
         //---- label7 ----
         label7.setText("Tel:");
         label7.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label7, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(label7, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(textArea1);
         }
-        contentPane.add(scrollPane1, new GridBagConstraints(0, 7, 3, 4, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-
-//        //======== scrollPane2 ========
-//        {
-//            scrollPane2.setViewportView(textArea2);
-//        }
-//        contentPane.add(scrollPane2, new GridBagConstraints(1, 7, 2, 4, 0.0, 0.0,
-//            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//            new Insets(0, 0, 5, 5), 0, 0));
+        contentPane.add(scrollPane1, new GridBagConstraints(0, 8, 4, 4, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- button3 ----
         button3.setText("See passenger list");
@@ -189,7 +184,7 @@ public class FlightPage extends JFrame {
                 button3MouseClicked(e);
             }
         });
-        contentPane.add(button3, new GridBagConstraints(2, 11, 1, 1, 0.0, 0.0,
+        contentPane.add(button3, new GridBagConstraints(2, 12, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 5), 0, 0));
 
@@ -201,16 +196,14 @@ public class FlightPage extends JFrame {
                 button2MouseClicked(e);
             }
         });
-        contentPane.add(button2, new GridBagConstraints(3, 11, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 0), 0, 0));
-        pack();
+        contentPane.add(button2, new GridBagConstraints(3, 12, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+        setSize(505, 500);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-
     }
-
+    public String getPassengerList(){ return this.textArea1.getText();}
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JPanel panel1;
@@ -221,20 +214,15 @@ public class FlightPage extends JFrame {
     private JLabel label3;
     private JTextField BoardingTime;
     private JLabel label4;
-    private JTextField TimeLefttoBoard;
+    private JScrollPane scrollPane2;
+    private JTextArea TimeLefttoBoard;
     private JLabel label5;
     private JTextField PassengernotBoarding;
     private JLabel label6;
     private JLabel label7;
     private JScrollPane scrollPane1;
-    private JTextArea textArea1;//此即为乘客信息及其电话的输出位置，可传输到see passenger list里面
-    private JButton button2;
+    private JTextArea textArea1;
     private JButton button3;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
-//    public static void main(String[] args) {
-//        new Beans.Flight().setVisible(true);
-//    }
-public String getPassengerList(){ return this.textArea1.getText();}
 }
-
