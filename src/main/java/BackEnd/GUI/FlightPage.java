@@ -4,17 +4,14 @@
 
 package BackEnd.GUI;
 
-import javax.print.attribute.standard.Destination;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import BackEnd.Monitor.bMonitors;
 import Beans.Flight.Flight;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 /**
  * @author Lingxiao
@@ -23,7 +20,7 @@ public class FlightPage extends JFrame {
     public FlightPage() {
         initComponents();
     }
-
+    public String TransInformation;
     // button "confirm"
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
@@ -34,6 +31,8 @@ public class FlightPage extends JFrame {
             BoardingTime.setText(targetFlight.getETC());
             TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
             Destination.setText(targetFlight.getDestination());
+            TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
+
         }
     }
 
@@ -73,16 +72,16 @@ public class FlightPage extends JFrame {
         label5 = new JLabel();
         // PassengernotBoarding = new JTextField();
         Destination = new JTextField();
-        label6 = new JLabel();
-        label7 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();
+//        label6 = new JLabel();
+//        label7 = new JLabel();
+//        scrollPane1 = new JScrollPane();
+//        textArea1 = new JTextArea();
         button3 = new JButton();
         button2 = new JButton();
 
         //======== this ========
         setTitle("Flight enquiry page");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -168,29 +167,29 @@ public class FlightPage extends JFrame {
                 new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label6 ----
-        label6.setText("Passenger not Boarding:");
-        label6.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label6, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
-
-        //---- label7 ----
-        label7.setText("Tel:");
-        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label7, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
-
-        //======== scrollPane1 ========
-        {
-            scrollPane1.setViewportView(textArea1);
-        }
-        contentPane.add(scrollPane1, new GridBagConstraints(0, 8, 4, 4, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
+//        label6.setText("Passenger not Boarding:");
+//        label6.setBorder(new EmptyBorder(5, 5, 5, 5));
+//        contentPane.add(label6, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
+//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//                new Insets(0, 0, 5, 5), 0, 0));
+//
+//        //---- label7 ----
+//        label7.setText("Tel:");
+//        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
+//        contentPane.add(label7, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
+//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//                new Insets(0, 0, 5, 5), 0, 0));
+//
+//        //======== scrollPane1 ========
+//        {
+//            scrollPane1.setViewportView(textArea1);
+//        }
+//        contentPane.add(scrollPane1, new GridBagConstraints(0, 8, 4, 4, 0.0, 0.0,
+//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//                new Insets(0, 0, 5, 0), 0, 0));
 
         //---- button3 ----
-        button3.setText("See passenger list");
+        button3.setText("Click to see who have not boarded");
         button3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -216,7 +215,7 @@ public class FlightPage extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    public String getPassengerList(){ return this.textArea1.getText();}
+    public String getPassengerList(){ return TransInformation;}
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JPanel panel1;
@@ -232,10 +231,10 @@ public class FlightPage extends JFrame {
     private JLabel label5;
     // private JTextField PassengernotBoarding;
     private JTextField Destination;
-    private JLabel label6;
-    private JLabel label7;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
+//    private JLabel label6;
+//    private JLabel label7;
+//    private JScrollPane scrollPane1;
+//    private JTextArea textArea1;
     private JButton button3;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

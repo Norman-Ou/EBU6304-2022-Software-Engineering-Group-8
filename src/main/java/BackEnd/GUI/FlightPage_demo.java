@@ -4,6 +4,9 @@
 
 package BackEnd.GUI;
 
+import BackEnd.Monitor.bMonitors;
+import Beans.Flight.Flight;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -17,11 +20,17 @@ public class FlightPage_demo extends JFrame {
     public FlightPage_demo() {
         initComponents();
     }
-
+    private String TransInformation;
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
             FlightID.setText(f_ID);
+            bMonitors bMonitor = new bMonitors();
+            Flight targetFlight = bMonitor.getFlightList(f_ID);
+            BoardingTime.setText(targetFlight.getETC());
+            TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
+            Destination.setText(targetFlight.getDestination());
+            TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
 
 
         }
@@ -59,11 +68,7 @@ public class FlightPage_demo extends JFrame {
         scrollPane2 = new JScrollPane();
         TimeLefttoBoard = new JTextArea();
         label5 = new JLabel();
-        PassengernotBoarding = new JTextField();
-        label6 = new JLabel();
-        label7 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();
+        Destination = new JTextField();
         button3 = new JButton();
         button2 = new JButton();
 
@@ -150,29 +155,7 @@ public class FlightPage_demo extends JFrame {
         contentPane.add(label5, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(PassengernotBoarding, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 0), 0, 0));
-
-        //---- label6 ----
-        label6.setText("Passenger not Boarding:");
-        label6.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label6, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-
-        //---- label7 ----
-        label7.setText("Tel:");
-        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label7, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-
-        //======== scrollPane1 ========
-        {
-            scrollPane1.setViewportView(textArea1);
-        }
-        contentPane.add(scrollPane1, new GridBagConstraints(0, 8, 4, 4, 0.0, 0.0,
+        contentPane.add(Destination, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 0), 0, 0));
 
@@ -184,9 +167,9 @@ public class FlightPage_demo extends JFrame {
                 button3MouseClicked(e);
             }
         });
-        contentPane.add(button3, new GridBagConstraints(2, 12, 1, 1, 0.0, 0.0,
+        contentPane.add(button3, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 5), 0, 0));
+            new Insets(0, 0, 5, 5), 0, 0));
 
         //---- button2 ----
         button2.setText("Back");
@@ -196,14 +179,14 @@ public class FlightPage_demo extends JFrame {
                 button2MouseClicked(e);
             }
         });
-        contentPane.add(button2, new GridBagConstraints(3, 12, 1, 1, 0.0, 0.0,
+        contentPane.add(button2, new GridBagConstraints(3, 8, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 0), 0, 0));
-        setSize(505, 500);
+            new Insets(0, 0, 5, 0), 0, 0));
+        pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    public String getPassengerList(){ return this.textArea1.getText();}
+    public String getPassengerList(){ return TransInformation;}
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JPanel panel1;
@@ -217,11 +200,7 @@ public class FlightPage_demo extends JFrame {
     private JScrollPane scrollPane2;
     private JTextArea TimeLefttoBoard;
     private JLabel label5;
-    private JTextField PassengernotBoarding;
-    private JLabel label6;
-    private JLabel label7;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
+    private JTextField Destination;
     private JButton button3;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

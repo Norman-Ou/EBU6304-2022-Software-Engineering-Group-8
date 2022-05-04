@@ -13,7 +13,6 @@ new FormModel {
 		} ) {
 			name: "this"
 			"title": "Flight enquiry page"
-			"$sizePolicy": 1
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Please input flight ID:"
@@ -95,36 +94,11 @@ new FormModel {
 				"gridy": 6
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "PassengernotBoarding"
+				name: "Destination"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 1
 				"gridy": 6
 				"gridwidth": 3
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label6"
-				"text": "Passenger not Boarding:"
-				"border": #EmptyBorder0
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridy": 7
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label7"
-				"text": "Tel:"
-				"border": #EmptyBorder0
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridx": 1
-				"gridy": 7
-			} )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane1"
-				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea1"
-				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridy": 8
-				"gridheight": 4
-				"gridwidth": 4
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button3"
@@ -132,7 +106,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 2
-				"gridy": 12
+				"gridy": 8
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
@@ -140,7 +114,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button2MouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 3
-				"gridy": 12
+				"gridy": 8
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
