@@ -68,12 +68,12 @@ public class PrintFlight_6 extends JFrame {
                 BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
                 Surname.setText(EnterBN_3.getPsnTemp().getSurName());
                 IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDeparture());
-                Desti.setText(EnterBN_3.getPsnTemp().getBoardingPass().getDestination());
-                ETA.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETA());
-                ETC.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETC());
-                ETD.setText(EnterBN_3.getPsnTemp().getBoardingPass().getETD());
-                Gate.setText(EnterBN_3.getPsnTemp().getBoardingPass().getGate());
+                Depar.setText(EnterBN_3.getFlight().getDeparture());
+                Desti.setText(EnterBN_3.getFlight().getDestination());
+                ETA.setText(EnterBN_3.getFlight().getETA());
+                ETC.setText(EnterBN_3.getFlight().getETC());
+                ETD.setText(EnterBN_3.getFlight().getETD());
+                Gate.setText(EnterBN_3.getFlight().getGate());
 //                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
             } catch (Exception e1) {
                 e1.printStackTrace();
