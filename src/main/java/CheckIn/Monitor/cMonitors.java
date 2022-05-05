@@ -62,6 +62,7 @@ public class cMonitors {
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();
+            // System.out.println("here");
             // get flight information and passenger list through flight number
             for (int i = 0; i < flightList.size(); i++) {
                 Flight flight = flightList.get(i);
@@ -80,6 +81,7 @@ public class cMonitors {
         try {
             ArrayList<Flight> targetFlightList = new ArrayList<Flight>();
             ArrayList<Passenger> psgs = pDB.loadPassengersBySurname_ID(surName, IDnum);
+            System.out.println("here2");
             // bookingNumber应该是一个订单号的列表
             ArrayList<String> bookingNoList = new ArrayList<String>();
             for(int i=0;i<psgs.size();i++){

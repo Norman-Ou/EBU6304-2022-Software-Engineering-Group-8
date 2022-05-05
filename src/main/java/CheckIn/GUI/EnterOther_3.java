@@ -42,9 +42,24 @@ public class EnterOther_3 extends JFrame {
         surname=textArea4.getText();
         ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
         fltTemp = fltList;
-//        psnTemp1 = pDB.loadPassengerBySurname_ID(surname,IDNum);
-        psnTemp1 = pDB.loadPassengersBySurname_ID(surname, IDNum).get(0);
-//        psnTemp2 = pDB.loadPassengersBySurname_ID(surname, IDNum).get(1);
+    }
+    public static Passenger getPsnTemp1() {
+        try{
+            BookingNumber=psnTemp1.getBookNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return psnTemp1;
+    }
+
+    public static Passenger getPsnTemp2() {
+        //Scan a passenger
+        try{
+            BookingNumber=psnTemp1.getBookNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return psnTemp1;
     }
 
     public static ArrayList<Flight> getFlightList() {
@@ -70,28 +85,6 @@ public class EnterOther_3 extends JFrame {
 //        Passenger psn = new Passenger();
 //        psnTemp1=psn;
         getPsnTemp2();
-    }
-    public static Passenger getPsnTemp1() {
-        try{
-            BookingNumber=psnTemp1.getBookNumber();
-//            System.out.println(psnTemp1);
-            return psnTemp1;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static Passenger getPsnTemp2() {
-        //Scan a passenger
-        try{
-            BookingNumber=psnTemp1.getBookNumber();
-            return psnTemp1;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void init() {
