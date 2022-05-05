@@ -35,6 +35,7 @@ public class cMonitors {
 
     Passenger passenger;
     Flight flight;
+    Order order;
 
     public String findPassengerFlight(String bookingNum) throws Exception {
         passenger = pDB.loadPassengerByBookingNo(bookingNum);
@@ -126,4 +127,9 @@ public class cMonitors {
     public void setSeat(String seat) {
         this.passenger.getBoardingPass().setSeatNo(seat);
     }
+
+//    public static Order findOrderbyPassergerID(String passengerID) throws Exception {
+////        this.order= new Order(passengerID,flight.getFlightNo(),passenger.getBookNumber());
+//        return this.order;
+//    }
 }

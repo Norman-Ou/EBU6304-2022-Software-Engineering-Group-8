@@ -36,52 +36,6 @@ new FormModel {
 				name: "dialogPane2"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				"opaque": false
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
-					"axis": 1
-				} ) {
-					name: "panel7"
-					"opaque": false
-					"preferredSize": &Dimension0 new java.awt.Dimension( 250, 76 )
-					"maximumSize": &Dimension1 new java.awt.Dimension( 150, 550 )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
-						"axis": 1
-					} ) {
-						name: "panel"
-						"opaque": false
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label7"
-							"text": new FormMessage( null, "label7.text_4" )
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "secWin"
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "secMid"
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "secOut"
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label8"
-							"text": new FormMessage( null, "label8.text_4" )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
-						"axis": 1
-					} ) {
-						name: "panel9"
-						"opaque": false
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "thrWin"
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "thrMid"
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "thrOut"
-						} )
-					} )
-				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel4"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -97,14 +51,29 @@ new FormModel {
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
 					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "infoText"
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button3"
+						"text": new FormMessage( null, "button3.text_12" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "West"
+					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 					"axis": 1
 				} ) {
 					name: "panel10"
 					"opaque": false
-					"preferredSize": #Dimension0
-					"maximumSize": #Dimension1
+					"preferredSize": new java.awt.Dimension( 250, 76 )
+					"maximumSize": new java.awt.Dimension( 150, 550 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+						name: "panel6"
+					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
 					} ) {
@@ -113,18 +82,19 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label9"
 							"text": new FormMessage( null, "label9.text_4" )
+							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 18 )
 						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "vipWin"
-							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "vipWinItemStateChanged", true ) )
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "vipOut"
-							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "vipOutItemStateChanged", true ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+							name: "panel5"
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "vip"
+								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "firClass", true ) )
+							} )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label10"
 							"text": new FormMessage( null, "label10.text_5" )
+							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 18 )
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
@@ -133,13 +103,17 @@ new FormModel {
 						name: "panel11"
 						"opaque": false
 						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "firWin"
+							name: "busS"
+							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "busSeat", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label7"
+							"text": new FormMessage( null, "label7.text_4" )
+							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 18 )
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "firMid"
-						} )
-						add( new FormComponent( "javax.swing.JComboBox" ) {
-							name: "firOut"
+							name: "ecoS"
+							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "ecoSeat", true ) )
 						} )
 					} )
 				} )

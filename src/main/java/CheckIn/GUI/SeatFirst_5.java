@@ -34,7 +34,7 @@ public class SeatFirst_5 extends JFrame {
         dispose();
         new Error().setVisible(true);
     }
-    private void selectSeat(ActionEvent e) {
+    private void selectSeat(ActionEvent e) throws Exception {
         //TODO check airline
         dispose();
         new Seat_1_6().setVisible(true);
@@ -83,7 +83,7 @@ public class SeatFirst_5 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         label1 = new JLabel();
         dialogPane = new JPanel();
@@ -107,11 +107,12 @@ public class SeatFirst_5 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== buttonBar ========
@@ -140,7 +141,13 @@ public class SeatFirst_5 extends JFrame {
 
             //---- button2 ----
             button2.setText(bundle.getString("button2.text_10"));
-            button2.addActionListener(e -> selectSeat(e));
+            button2.addActionListener(e -> {
+                try {
+                    selectSeat(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
             dialogPane.add(button2, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
@@ -152,7 +159,7 @@ public class SeatFirst_5 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JLabel label1;
     private JPanel dialogPane;
     private JPanel buttonBar;

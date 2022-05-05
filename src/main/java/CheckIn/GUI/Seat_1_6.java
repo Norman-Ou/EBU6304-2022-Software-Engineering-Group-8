@@ -6,6 +6,7 @@ package CheckIn.GUI;
 
 import Beans.Flight.Flight;
 import Beans.Flight.SubClasses.Seat;
+import Beans.Order.Order;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
 
@@ -27,8 +28,7 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
-        //TODO
-        seat= Objects.requireNonNull(vipWin.getSelectedItem()).toString();
+//        seat= Objects.requireNonNull(vipWin.getSelectedItem()).toString();
         dispose();
         new PrintFlight_6().setVisible(true);
     }
@@ -38,51 +38,55 @@ public class Seat_1_6 extends JFrame {
         new SeatFirst_5().setVisible(true);
     }
 
-    private void vipWinItemStateChanged(ItemEvent e) {
+    private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             dispose();
-            new VIPSeatPay().setVisible(true);
+            seat=vip.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
         }
     }
-
-    private void vipOutItemStateChanged(ItemEvent e) {
+    private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             dispose();
-            new VIPSeatPay().setVisible(true);
+            seat=busS.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
         }
     }
-    public static BoardingPass bpOther = EnterOther_3.getPsnTemp1().getBoardingPass();
-    public static BoardingPass bpScan = EnterOther_3.getPsnTemp2().getBoardingPass();
-    public static BoardingPass bpNor = EnterBN_3.getPsnTemp().getBoardingPass();
+    private void ecoSeat(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+            seat=ecoS.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
+        }
+    }
 
-    public void showSeats(){
-
+    public void showSeats() {
+        //TODO 从order里面得到seat class
+        infoText.setText("You can choose the seats form "+" to ");
         HashMap<String, Seat> map=new HashMap<>();
-        if(EnterBN_3.getPsnTemp()==null){
-            try{
-//                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
-                bpOther.setSeatNo(seat);
-//                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+//        if(EnterBN_3.getPsnTemp()==null){
+//            try{
+//                //TODO other's seating list
+////                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
+////                bpOther.setSeatNo(seat);
+////                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
+//            } catch (Exception e1) {
+//                e1.printStackTrace();
+//            }
+//        }
+//        else
+            if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-//                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(seat);
-                bpNor.setSeatNo(seat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }else{
             try{
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-//                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(seat);
-                bpScan.setSeatNo(seat);
-
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -90,21 +94,27 @@ public class Seat_1_6 extends JFrame {
 
         if(!map.isEmpty()) {
             for (Map.Entry<String, Seat> entry : map.entrySet()) {
-                //TODO 判断 是否被选择 是否为VIP座位
-//                vipWin.addItem(entry.getKey());
-                Seat s = entry.getValue();
-                if(s == vipWin.getSelectedItem()){
-                    s.setLockedStatus(true);
+                EnterBN_3.getFlight().getSeatingList();
+                EnterBN_3.getFlight().getSeatingList().values();
+                Collection<Seat> values=map.values();
+                Iterator<Seat> iterator2=values.iterator();
 
+                int i = iterator2.next().getSeatClass();
+                while (iterator2.hasNext()){
+                    switch (i) {
+                        case 0:
+                            ecoS.addItem(entry.getKey());
+                            break;
+                            case 1:
+                            vip.addItem(entry.getKey());
+                            break;
+                        case 2:
+                            busS.addItem(entry.getKey());
+                            break;
+                    }
                 }
-                if(!entry.getValue().isLockedStatus()){
-                    vipWin.addItem(entry.getKey());
-                }
-
-
             }
         }
-
     }
 
     public void init() {
@@ -119,39 +129,35 @@ public class Seat_1_6 extends JFrame {
         this.setVisible(true);
     }
 
+    private void button3(ActionEvent e) {
+        showSeats();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         label1 = new JLabel();
         panel3 = new JPanel();
         button2 = new JButton();
         button1 = new JButton();
         dialogPane2 = new JPanel();
-        panel7 = new JPanel();
-        panel = new JPanel();
-        label7 = new JLabel();
-        secWin = new JComboBox();
-        secMid = new JComboBox();
-        secOut = new JComboBox();
-        label8 = new JLabel();
-        panel9 = new JPanel();
-        thrWin = new JComboBox();
-        thrMid = new JComboBox();
-        thrOut = new JComboBox();
         panel4 = new JPanel();
         scrollPane1 = new JScrollPane();
         label2 = new JLabel();
+        infoText = new JTextField();
+        button3 = new JButton();
         panel10 = new JPanel();
+        panel6 = new JPanel();
         panel2 = new JPanel();
         label9 = new JLabel();
-        vipWin = new JComboBox();
-        vipOut = new JComboBox();
+        panel5 = new JPanel();
+        vip = new JComboBox();
         label10 = new JLabel();
         panel11 = new JPanel();
-        firWin = new JComboBox();
-        firMid = new JComboBox();
-        firOut = new JComboBox();
+        busS = new JComboBox();
+        label7 = new JLabel();
+        ecoS = new JComboBox();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -167,11 +173,11 @@ public class Seat_1_6 extends JFrame {
         {
             panel3.setOpaque(false);
             panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
+            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
             awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel3. getBorder( )) )
             ; panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
             ;
             panel3.setLayout(new FlowLayout());
 
@@ -193,43 +199,6 @@ public class Seat_1_6 extends JFrame {
             dialogPane2.setOpaque(false);
             dialogPane2.setLayout(new BoxLayout(dialogPane2, BoxLayout.X_AXIS));
 
-            //======== panel7 ========
-            {
-                panel7.setOpaque(false);
-                panel7.setPreferredSize(new Dimension(250, 76));
-                panel7.setMaximumSize(new Dimension(150, 550));
-                panel7.setLayout(new BoxLayout(panel7, BoxLayout.Y_AXIS));
-
-                //======== panel ========
-                {
-                    panel.setOpaque(false);
-                    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-                    //---- label7 ----
-                    label7.setText(bundle.getString("label7.text_4"));
-                    panel.add(label7);
-                    panel.add(secWin);
-                    panel.add(secMid);
-                    panel.add(secOut);
-
-                    //---- label8 ----
-                    label8.setText(bundle.getString("label8.text_4"));
-                    panel.add(label8);
-                }
-                panel7.add(panel);
-
-                //======== panel9 ========
-                {
-                    panel9.setOpaque(false);
-                    panel9.setLayout(new BoxLayout(panel9, BoxLayout.Y_AXIS));
-                    panel9.add(thrWin);
-                    panel9.add(thrMid);
-                    panel9.add(thrOut);
-                }
-                panel7.add(panel9);
-            }
-            dialogPane2.add(panel7);
-
             //======== panel4 ========
             {
                 panel4.setLayout(new BorderLayout());
@@ -246,6 +215,12 @@ public class Seat_1_6 extends JFrame {
                     scrollPane1.setViewportView(label2);
                 }
                 panel4.add(scrollPane1, BorderLayout.CENTER);
+                panel4.add(infoText, BorderLayout.NORTH);
+
+                //---- button3 ----
+                button3.setText(bundle.getString("button3.text_12"));
+                button3.addActionListener(e -> button3(e));
+                panel4.add(button3, BorderLayout.WEST);
             }
             dialogPane2.add(panel4);
 
@@ -256,6 +231,12 @@ public class Seat_1_6 extends JFrame {
                 panel10.setMaximumSize(new Dimension(150, 550));
                 panel10.setLayout(new BoxLayout(panel10, BoxLayout.Y_AXIS));
 
+                //======== panel6 ========
+                {
+                    panel6.setLayout(new BoxLayout(panel6, BoxLayout.X_AXIS));
+                }
+                panel10.add(panel6);
+
                 //======== panel2 ========
                 {
                     panel2.setOpaque(false);
@@ -263,18 +244,22 @@ public class Seat_1_6 extends JFrame {
 
                     //---- label9 ----
                     label9.setText(bundle.getString("label9.text_4"));
+                    label9.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
                     panel2.add(label9);
 
-                    //---- vipWin ----
-                    vipWin.addItemListener(e -> vipWinItemStateChanged(e));
-                    panel2.add(vipWin);
+                    //======== panel5 ========
+                    {
+                        panel5.setLayout(new BoxLayout(panel5, BoxLayout.X_AXIS));
 
-                    //---- vipOut ----
-                    vipOut.addItemListener(e -> vipOutItemStateChanged(e));
-                    panel2.add(vipOut);
+                        //---- vip ----
+                        vip.addItemListener(e -> firClass(e));
+                        panel5.add(vip);
+                    }
+                    panel2.add(panel5);
 
                     //---- label10 ----
                     label10.setText(bundle.getString("label10.text_5"));
+                    label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
                     panel2.add(label10);
                 }
                 panel10.add(panel2);
@@ -283,9 +268,19 @@ public class Seat_1_6 extends JFrame {
                 {
                     panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
-                    panel11.add(firWin);
-                    panel11.add(firMid);
-                    panel11.add(firOut);
+
+                    //---- busS ----
+                    busS.addItemListener(e -> busSeat(e));
+                    panel11.add(busS);
+
+                    //---- label7 ----
+                    label7.setText(bundle.getString("label7.text_4"));
+                    label7.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
+                    panel11.add(label7);
+
+                    //---- ecoS ----
+                    ecoS.addItemListener(e -> ecoSeat(e));
+                    panel11.add(ecoS);
                 }
                 panel10.add(panel11);
             }
@@ -295,41 +290,33 @@ public class Seat_1_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        showSeats();
+
         init();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JLabel label1;
     private JPanel panel3;
     private JButton button2;
     private JButton button1;
     private JPanel dialogPane2;
-    private JPanel panel7;
-    private JPanel panel;
-    private JLabel label7;
-    private JComboBox secWin;
-    private JComboBox secMid;
-    private JComboBox secOut;
-    private JLabel label8;
-    private JPanel panel9;
-    private JComboBox thrWin;
-    private JComboBox thrMid;
-    private JComboBox thrOut;
     private JPanel panel4;
     private JScrollPane scrollPane1;
     private JLabel label2;
+    private JTextField infoText;
+    private JButton button3;
     private JPanel panel10;
+    private JPanel panel6;
     private JPanel panel2;
     private JLabel label9;
-    private JComboBox vipWin;
-    private JComboBox vipOut;
+    private JPanel panel5;
+    private JComboBox vip;
     private JLabel label10;
     private JPanel panel11;
-    private JComboBox firWin;
-    private JComboBox firMid;
-    private JComboBox firOut;
+    private JComboBox busS;
+    private JLabel label7;
+    private JComboBox ecoS;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }
