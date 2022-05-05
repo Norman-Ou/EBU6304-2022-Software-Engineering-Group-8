@@ -34,7 +34,7 @@ public class EnterBN_3 extends JFrame {
         this.bookNum=str;
 //        System.out.println(bookNum);
         Flight flt = cMonitors.getFlightByBookingNo(bookNum);
-        Passenger psn = pDB.loadPassengerByBookingNo(bookNum);
+        Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
 //        System.out.println(psn);
         fltTemp=flt;
         psnTemp=psn;
