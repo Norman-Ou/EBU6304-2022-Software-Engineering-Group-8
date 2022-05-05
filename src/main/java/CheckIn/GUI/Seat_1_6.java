@@ -9,6 +9,7 @@ import Beans.Flight.SubClasses.Seat;
 import Beans.Order.Order;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
+import DataBase.oDB;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -65,6 +66,8 @@ public class Seat_1_6 extends JFrame {
 
     public void showSeats() {
         //TODO 从order里面得到seat class
+        String bookingNo=EnterBN_3.getPsnTemp().getBookNumber();
+//        oDB.getOrderByBookingNumber(bookingNo);
         infoText.setText("You can choose the seats form "+" to ");
         HashMap<String, Seat> map=new HashMap<>();
 //        if(EnterBN_3.getPsnTemp()==null){
