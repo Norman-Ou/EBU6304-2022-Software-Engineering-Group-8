@@ -9,6 +9,7 @@ import DataBase.pDB;
 import Exceptions.DataNotFound;
 import DataBase.oDB;
 import Beans.IDDocument.IDDocument;
+import Beans.Order.Order;
 
 import org.junit.Test;
 
@@ -34,6 +35,7 @@ public class cMonitors {
 
     Passenger passenger;
     Flight flight;
+    Order order;
 
     public String findPassengerFlight(String bookingNum) throws Exception {
         passenger = pDB.loadPassengerByBookingNo(bookingNum);
@@ -61,6 +63,7 @@ public class cMonitors {
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();
+            // System.out.println("here");
             // get flight information and passenger list through flight number
             for (int i = 0; i < flightList.size(); i++) {
                 Flight flight = flightList.get(i);
@@ -72,6 +75,32 @@ public class cMonitors {
             e.printStackTrace();
         }
         return targetFlight;
+    }
+
+    // wy add these functions to find a passenger's flight list
+    public static ArrayList<Flight> getFlightBySurname_ID(String surName, String IDnum) {
+        try {
+            ArrayList<Flight> targetFlightList = new ArrayList<Flight>();
+            ArrayList<Passenger> psgs = pDB.loadPassengersBySurname_ID(surName, IDnum);
+            System.out.println("here2");
+            // bookingNumber应该是一个订单号的列表
+            ArrayList<String> bookingNoList = new ArrayList<String>();
+            for(int i=0;i<psgs.size();i++){
+                Passenger psg = psgs.get(i);
+                bookingNoList.add(psg.getBookNumber());
+            }
+            // 用订单号锁定flight
+            for (int j = 0; j<bookingNoList.size(); j++){
+                String bookingNo = bookingNoList.get(j);
+                targetFlightList.add(cMonitors.getFlightByBookingNo(bookingNo));
+            }
+            return targetFlightList;
+        } catch (DataNotFound e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public BoardingPass generateBoardingPass() {
@@ -98,4 +127,9 @@ public class cMonitors {
     public void setSeat(String seat) {
         this.passenger.getBoardingPass().setSeatNo(seat);
     }
+
+//    public static Order findOrderbyPassergerID(String passengerID) throws Exception {
+////        this.order= new Order(passengerID,flight.getFlightNo(),passenger.getBookNumber());
+//        return this.order;
+//    }
 }

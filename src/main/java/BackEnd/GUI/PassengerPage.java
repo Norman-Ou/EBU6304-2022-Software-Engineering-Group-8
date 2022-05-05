@@ -1,11 +1,10 @@
 package BackEnd.GUI;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import BackEnd.Monitor.bMonitors;
 import Beans.Passenger.Passenger;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -75,8 +74,8 @@ public class PassengerPage extends JFrame {
         BaggageStatus = new JTextField();
         label6 = new JLabel();
         BoardingStatus = new JTextField();
-        label7 = new JLabel();
-        Tel = new JTextField();
+//        label7 = new JLabel();
+//        Tel = new JTextField();
         label8 = new JLabel();
         MealOption = new JTextField();
         button2 = new JButton();
@@ -171,14 +170,14 @@ public class PassengerPage extends JFrame {
             new Insets(0, 0, 5, 5), 0, 0));
 
         //---- label7 ----
-        label7.setText("Tel:");
-        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.add(label7, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(Tel, new GridBagConstraints(1, 7, 2, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 5), 0, 0));
+//        label7.setText("Tel:");
+//        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
+//        contentPane.add(label7, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
+//            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//            new Insets(0, 0, 5, 5), 0, 0));
+//        contentPane.add(Tel, new GridBagConstraints(1, 7, 2, 1, 0.0, 0.0,
+//            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//            new Insets(0, 0, 5, 5), 0, 0));
 
         //---- label8 ----
         label8.setText("Meal Option:");
@@ -221,8 +220,8 @@ public class PassengerPage extends JFrame {
     private JTextField BaggageStatus;
     private JLabel label6;
     private JTextField BoardingStatus;
-    private JLabel label7;
-    private JTextField Tel;
+//    private JLabel label7;
+//    private JTextField Tel;
     private JLabel label8;
     private JTextField MealOption;
     private JButton button2;

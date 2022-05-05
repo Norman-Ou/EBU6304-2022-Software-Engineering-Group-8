@@ -1,5 +1,7 @@
 package CheckIn.GUI;
 
+import CheckIn.Monitor.cMonitors;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
@@ -29,16 +31,19 @@ public class MealAdd_14 extends JFrame {
             case 0:
                 VIPmealSelected="Sashimi";
                 System.out.println("Sashimi");
+//                cMonitors.setMeal("Sashimi");
                 //TODO store meal info
                 break;
             case 1:
                 VIPmealSelected="Steak";
                 System.out.println("Steak");
+//                cMonitors.setMeal("Steak");
                 //TODO store meal info
                 break;
             case 2:
                 VIPmealSelected="Tempura";
                 System.out.println("Tempura");
+//                cMonitors.setMeal("Tempura");
                 //TODO store meal info
                 break;
         }
@@ -60,11 +65,8 @@ public class MealAdd_14 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

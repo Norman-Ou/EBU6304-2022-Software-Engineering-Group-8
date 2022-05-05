@@ -9,9 +9,11 @@ import CheckIn.Monitor.cMonitors;
 import DataBase.pDB;
 import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
+import Exceptions.DataNotFound;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.net.IDN;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -27,26 +29,23 @@ public class EnterOther_3 extends JFrame {
     public static String IDNum;
     public static String surname;
     public static Passenger psnTemp1;
+    public static Passenger psnTemp2;
     public static String BookingNumber;
-    public static Flight fltTemp;
+    public static ArrayList<Flight> fltTemp;
 
     private void ok(ActionEvent e) throws Exception {
-
         //open next page
         new AirPassCse().setVisible(true);
         dispose();
 
         IDNum=textArea3.getText();
         surname=textArea4.getText();
-        Passenger psn = pDB.loadPassengerBySurname_ID(surname,IDNum);
-        Flight flt = cMonitors.getFlightByBookingNo(BookingNumber);
-        fltTemp=flt;
-        psnTemp1=psn;
+        ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
+        fltTemp = fltList;
     }
     public static Passenger getPsnTemp1() {
         try{
             BookingNumber=psnTemp1.getBookNumber();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,6 +61,16 @@ public class EnterOther_3 extends JFrame {
         }
         return psnTemp1;
     }
+
+    public static ArrayList<Flight> getFlightList() {
+        try {
+            return fltTemp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private void cancel(ActionEvent e) {
         new Airline_1().setVisible(true);
         dispose();
@@ -70,20 +79,12 @@ public class EnterOther_3 extends JFrame {
     private void scanID(ActionEvent e) {
         new ConfirmPage_3().setVisible(true);
         dispose();
-        IDDocument id = new IDDocument("215200","orz");
-        this.IDNum=id.getID();
-        this.surname=id.getSurname();
-        Passenger psn = new Passenger();
-        psnTemp1=psn;
-
-    }
-    public static Flight getFlight() {
-        try {
-            return fltTemp;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+//        IDDocument id = new IDDocument("215200","orz");
+//        IDNum=id.getID();
+//        surname=id.getSurname();
+//        Passenger psn = new Passenger();
+//        psnTemp1=psn;
+        getPsnTemp2();
     }
 
     public void init() {
@@ -209,9 +210,4 @@ public class EnterOther_3 extends JFrame {
     private JTextArea textArea4;
     private JTextArea textArea3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-    private static Passenger psnTemp;
-
-    public static Passenger getPassenger(){
-        return psnTemp;
-    }
 }

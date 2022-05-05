@@ -75,7 +75,7 @@ public class EnterBN_3 extends JFrame {
         myPanel.setOpaque(false);
 //        myPanel.setLayout(new FlowLayout());
 //        this.getLayeredPane().setLayout(null);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +84,7 @@ public class EnterBN_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -96,19 +96,19 @@ public class EnterBN_3 extends JFrame {
         textArea1 = new JTextArea();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -142,6 +142,9 @@ public class EnterBN_3 extends JFrame {
 
             //======== scrollPane1 ========
             {
+
+                //---- textArea1 ----
+                textArea1.setAutoscrolls(false);
                 scrollPane1.setViewportView(textArea1);
             }
             dialogPane2.add(scrollPane1, BorderLayout.CENTER);
@@ -154,7 +157,7 @@ public class EnterBN_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;

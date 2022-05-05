@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -51,11 +51,13 @@ new FormModel {
 							name: "textArea4"
 							"toolTipText": "Surname"
 							"border": new javax.swing.border.TitledBorder( "i18nKey=textArea4.border" )
+							"autoscrolls": false
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "textArea3"
 							"toolTipText": "ID number"
 							"border": new javax.swing.border.TitledBorder( "ID number" )
+							"autoscrolls": false
 						} )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {

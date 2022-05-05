@@ -16,12 +16,11 @@ import java.awt.event.MouseEvent;
 /**
  * @author Lingxiao
  */
-public class FlightPage extends JFrame {
-    public FlightPage() {
+public class FlightPage_demo extends JFrame {
+    public FlightPage_demo() {
         initComponents();
     }
-    public String TransInformation;
-    // button "confirm"
+    private String TransInformation;
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
@@ -33,10 +32,10 @@ public class FlightPage extends JFrame {
             Destination.setText(targetFlight.getDestination());
             TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
 
+
         }
     }
 
-    // button "see more passengerList"
     private void button3MouseClicked(MouseEvent e) {
         if(e.getSource()==button3){
             //FlightID.setText("???");
@@ -46,7 +45,6 @@ public class FlightPage extends JFrame {
         }
     }
 
-    // button "Back"
     private void button2MouseClicked(MouseEvent e) {
         if(e.getSource()==button2){
             backend B = new backend();
@@ -70,18 +68,13 @@ public class FlightPage extends JFrame {
         scrollPane2 = new JScrollPane();
         TimeLefttoBoard = new JTextArea();
         label5 = new JLabel();
-        // PassengernotBoarding = new JTextField();
         Destination = new JTextField();
-//        label6 = new JLabel();
-//        label7 = new JLabel();
-//        scrollPane1 = new JScrollPane();
-//        textArea1 = new JTextArea();
         button3 = new JButton();
         button2 = new JButton();
 
         //======== this ========
         setTitle("Flight enquiry page");
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -92,19 +85,19 @@ public class FlightPage extends JFrame {
         label1.setText("Please input flight ID:");
         label1.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
 
         //======== panel1 ========
         {
             panel1.setLayout(new FlowLayout());
         }
         contentPane.add(panel1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
         contentPane.add(InputBar, new GridBagConstraints(0, 1, 3, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
 
         //---- button1 ----
         button1.setText("Confirm");
@@ -115,35 +108,35 @@ public class FlightPage extends JFrame {
             }
         });
         contentPane.add(button1, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label2 ----
         label2.setText("Flight ID:");
         label2.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
         contentPane.add(FlightID, new GridBagConstraints(1, 2, 3, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label3 ----
         label3.setText("Boarding Time:");
         label3.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
         contentPane.add(BoardingTime, new GridBagConstraints(1, 3, 3, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label4 ----
         label4.setText("Time Left to Board:");
         label4.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label4, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
 
         //======== scrollPane2 ========
         {
@@ -153,52 +146,30 @@ public class FlightPage extends JFrame {
             scrollPane2.setViewportView(TimeLefttoBoard);
         }
         contentPane.add(scrollPane2, new GridBagConstraints(1, 4, 3, 2, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
 
         //---- label5 ----
         label5.setText("Destination:");
         label5.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.add(label5, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
         contentPane.add(Destination, new GridBagConstraints(1, 6, 3, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
-
-        //---- label6 ----
-//        label6.setText("Passenger not Boarding:");
-//        label6.setBorder(new EmptyBorder(5, 5, 5, 5));
-//        contentPane.add(label6, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//                new Insets(0, 0, 5, 5), 0, 0));
-//
-//        //---- label7 ----
-//        label7.setText("Tel:");
-//        label7.setBorder(new EmptyBorder(5, 5, 5, 5));
-//        contentPane.add(label7, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//                new Insets(0, 0, 5, 5), 0, 0));
-//
-//        //======== scrollPane1 ========
-//        {
-//            scrollPane1.setViewportView(textArea1);
-//        }
-//        contentPane.add(scrollPane1, new GridBagConstraints(0, 8, 4, 4, 0.0, 0.0,
-//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//                new Insets(0, 0, 5, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
 
         //---- button3 ----
-        button3.setText("Click to see who have not boarded");
+        button3.setText("See passenger list");
         button3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 button3MouseClicked(e);
             }
         });
-        contentPane.add(button3, new GridBagConstraints(2, 12, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 5), 0, 0));
+        contentPane.add(button3, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 5), 0, 0));
 
         //---- button2 ----
         button2.setText("Back");
@@ -208,10 +179,10 @@ public class FlightPage extends JFrame {
                 button2MouseClicked(e);
             }
         });
-        contentPane.add(button2, new GridBagConstraints(3, 12, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
-        setSize(505, 500);
+        contentPane.add(button2, new GridBagConstraints(3, 8, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
+        pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -229,12 +200,7 @@ public class FlightPage extends JFrame {
     private JScrollPane scrollPane2;
     private JTextArea TimeLefttoBoard;
     private JLabel label5;
-    // private JTextField PassengernotBoarding;
     private JTextField Destination;
-//    private JLabel label6;
-//    private JLabel label7;
-//    private JScrollPane scrollPane1;
-//    private JTextArea textArea1;
     private JButton button3;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
