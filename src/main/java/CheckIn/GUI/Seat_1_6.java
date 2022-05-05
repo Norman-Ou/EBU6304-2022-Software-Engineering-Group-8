@@ -4,13 +4,18 @@
 
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
 import Beans.Flight.SubClasses.Seat;
+import Beans.Passenger.SubClasses.BoardingPass;
+import CheckIn.Monitor.cMonitors;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import static CheckIn.Monitor.cMonitors.getFlightByBookingNo;
 
 /**
  * @author Jiayi Wang
@@ -48,14 +53,18 @@ public class Seat_1_6 extends JFrame {
             new VIPSeatPay().setVisible(true);
         }
     }
+    public static BoardingPass bpOther = EnterOther_3.getPsnTemp1().getBoardingPass();
+    public static BoardingPass bpScan = EnterOther_3.getPsnTemp2().getBoardingPass();
+    public static BoardingPass bpNor = EnterBN_3.getPsnTemp().getBoardingPass();
 
     public void showSeats(){
 
         HashMap<String, Seat> map=new HashMap<>();
         if(EnterBN_3.getPsnTemp()==null){
             try{
-                // map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
-                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
+//                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
+                bpOther.setSeatNo(seat);
+//                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -63,14 +72,17 @@ public class Seat_1_6 extends JFrame {
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(seat);
+//                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(seat);
+                bpNor.setSeatNo(seat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }else{
             try{
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(seat);
+//                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(seat);
+                bpScan.setSeatNo(seat);
+
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -78,9 +90,21 @@ public class Seat_1_6 extends JFrame {
 
         if(!map.isEmpty()) {
             for (Map.Entry<String, Seat> entry : map.entrySet()) {
-                //TODO
-                vipWin.addItem(entry.getKey());}
+                //TODO 判断 是否被选择 是否为VIP座位
+//                vipWin.addItem(entry.getKey());
+                Seat s = entry.getValue();
+                if(s == vipWin.getSelectedItem()){
+                    s.setLockedStatus(true);
+
+                }
+                if(!entry.getValue().isLockedStatus()){
+                    vipWin.addItem(entry.getKey());
+                }
+
+
+            }
         }
+
     }
 
     public void init() {
@@ -89,7 +113,7 @@ public class Seat_1_6 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

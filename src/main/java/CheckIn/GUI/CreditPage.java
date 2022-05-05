@@ -64,7 +64,7 @@ public class CreditPage extends JFrame {
         myPanel.setOpaque(false);
 //        myPanel.setLayout(new FlowLayout());
 //        this.getLayeredPane().setLayout(null);
-        this.getLayeredPane().add(label3, new Integer(Integer.MIN_VALUE));
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

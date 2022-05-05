@@ -12,124 +12,151 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				"opaque": false
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-					"$columnSpecs": "0:1.0, 0, 0:1.0, 0:1.0"
-					"$rowSpecs": "0:1.0"
-					"$alignTop": true
-					"$alignLeft": true
-				} ) {
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel1"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 					name: "contentPanel"
-					"opaque": false
 					"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
 					"font": new java.awt.Font( ".AppleSystemUIFont", 1, 28 )
-					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane1"
-						add( new FormComponent( "javax.swing.JTable" ) {
-							name: "table1"
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-								add( new java.util.Vector {
+					add( new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+						name: "menuBar1"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane1"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "table1"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( "Flight number" )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( "Departure" )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( "Destination" )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( null )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( "ETA" )
+										add( null )
+									} )
+									add( new java.util.Vector {
+										add( "" )
+										add( null )
+									} )
+								}, new java.util.Vector {
+									add( "Title" )
+									add( "Information" )
+								}, new java.util.Vector {
 									add( null )
 									add( null )
+								}, new java.util.Vector {
+									add( null )
+									add( null )
+								}, new java.util.Vector {
+									add( new com.jformdesigner.model.SwingTableColumn( null, 45, 45, 0, true ) )
+									add( new com.jformdesigner.model.SwingTableColumn( null, 0, 40, 0, true ) )
 								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( "Flight number" )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( "Departure" )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( "Destination" )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( null )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( "ETA" )
-									add( null )
-								} )
-								add( new java.util.Vector {
-									add( "" )
-									add( null )
-								} )
-							}, new java.util.Vector {
-								add( "Title" )
-								add( "Information" )
-							}, new java.util.Vector {
-								add( null )
-								add( null )
-							}, new java.util.Vector {
-								add( null )
-								add( null )
-							}, new java.util.Vector {
-								add( new com.jformdesigner.model.SwingTableColumn( null, 45, 45, 0, true ) )
-								add( new com.jformdesigner.model.SwingTableColumn( null, 0, 40, 0, true ) )
+								"preferredScrollableViewportSize": new java.awt.Dimension( 450, 40 )
+								"font": new java.awt.Font( ".AppleSystemUIFont", 0, 14 )
+								"focusTraversalPolicyProvider": true
+								"fillsViewportHeight": true
 							} )
-							"preferredScrollableViewportSize": new java.awt.Dimension( 450, 40 )
-							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 14 )
 						} )
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 1
-					} )
-					add( new FormComponent( "javax.swing.JComboBox" ) {
-						name: "airLine"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-						"gridx": 2
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-					name: "buttonBar"
-					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
-					"opaque": false
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "okButton"
-						"text": new FormMessage( null, "okButton.text_13" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ok", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "cancelButton"
-						"text": new FormMessage( null, "cancelButton.text_18" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancel", true ) )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel2"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+						name: "buttonBar"
+						"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+						"opaque": false
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "okButton"
+							"text": new FormMessage( null, "okButton.text_13" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ok", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "cancelButton"
+							"text": new FormMessage( null, "cancelButton.text_18" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancel", true ) )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
-					"text": new FormMessage( null, "label2.text_11" )
-					"horizontalAlignment": 0
-					"font": new java.awt.Font( "Lucida Grande", 1, 40 )
-					"foreground": sfield java.awt.Color black
-					"background": new java.awt.Color( 0, 127, 255, 191 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "testDO"
+					"text": new FormMessage( null, "testDO.text_26" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "testDO", true ) )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": new FormMessage( null, "label2.text_11" )
+						"horizontalAlignment": 0
+						"font": new java.awt.Font( "Lucida Grande", 1, 40 )
+						"foreground": sfield java.awt.Color black
+						"background": new java.awt.Color( 0, 127, 255, 191 )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+					add( new FormContainer( "javax.swing.JToolBar", new FormLayoutManager( class javax.swing.JToolBar ) ) {
+						name: "toolBar1"
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "airLine"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Airline"
+								addElement( "Airline" )
+							}
+							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "airLineItemStateChanged", true ) )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "South"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
@@ -137,7 +164,7 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 5, 0 )
 			"size": new java.awt.Dimension( 900, 550 )
 		} )
 	}
