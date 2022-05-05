@@ -10,6 +10,7 @@ import Beans.Order.Order;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
 import DataBase.oDB;
+import Exceptions.DataNotFound;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,11 +25,12 @@ import static CheckIn.Monitor.cMonitors.getFlightByBookingNo;
  */
 public class Seat_1_6 extends JFrame {
     public static String seat;
-    public Seat_1_6() {
+    public Seat_1_6() throws Exception {
         initComponents();
     }
 
     private void PrintFlight(ActionEvent e) {
+
 //        seat= Objects.requireNonNull(vipWin.getSelectedItem()).toString();
         dispose();
         new PrintFlight_6().setVisible(true);
@@ -37,6 +39,9 @@ public class Seat_1_6 extends JFrame {
     private void Back2Confirm(ActionEvent e) {
         dispose();
         new SeatFirst_5().setVisible(true);
+    }
+    public void setSeatClass(){
+
     }
 
     private void firClass(ItemEvent e) {
@@ -63,12 +68,27 @@ public class Seat_1_6 extends JFrame {
 //            new VIPSeatPay().setVisible(true);
         }
     }
-
-    public void showSeats() {
+    public void another() throws DataNotFound {
         //TODO 从order里面得到seat class
-        String bookingNo=EnterBN_3.getPsnTemp().getBookNumber();
-//        oDB.getOrderByBookingNumber(bookingNo);
-        infoText.setText("You can choose the seats form "+" to ");
+        String bookingNo = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getBookNumber();
+        Order o = oDB.getOrderByBookingNumber(bookingNo);
+        assert o != null;
+        int i = o.getSeatClass();
+        switch (i) {
+            case 0:
+                infoText.setText("You can choose the seats form 1 to 2");
+                break;
+            case 1:
+                infoText.setText("You can choose the seats form 11 to 17");
+                break;
+            case 2:
+                infoText.setText("You can choose the seats form 18 to 30");
+                break;
+        }
+    }
+
+    public void showSeats() throws Exception {
+        another();
         HashMap<String, Seat> map=new HashMap<>();
 //        if(EnterBN_3.getPsnTemp()==null){
 //            try{
@@ -81,7 +101,7 @@ public class Seat_1_6 extends JFrame {
 //            }
 //        }
 //        else
-            if(EnterOther_3.getPsnTemp1()==null) {
+        if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
             } catch (Exception e1) {
@@ -106,13 +126,13 @@ public class Seat_1_6 extends JFrame {
                 while (iterator2.hasNext()){
                     switch (i) {
                         case 0:
-                            ecoS.addItem(entry.getKey());
-                            break;
-                            case 1:
                             vip.addItem(entry.getKey());
                             break;
-                        case 2:
+                        case 1:
                             busS.addItem(entry.getKey());
+                            break;
+                        case 2:
+                            ecoS.addItem(entry.getKey());
                             break;
                     }
                 }
@@ -132,11 +152,11 @@ public class Seat_1_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void button3(ActionEvent e) {
+    private void button3(ActionEvent e) throws Exception {
         showSeats();
     }
 
-    private void initComponents() {
+    private void initComponents() throws Exception {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
@@ -175,13 +195,12 @@ public class Seat_1_6 extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel3. getBorder( )) )
-            ; panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            panel3.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+            EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing
+            .border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),
+            java.awt.Color.red),panel3. getBorder()));panel3. addPropertyChangeListener(new java.beans.PropertyChangeListener()
+            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))
+            throw new RuntimeException();}});
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -218,11 +237,20 @@ public class Seat_1_6 extends JFrame {
                     scrollPane1.setViewportView(label2);
                 }
                 panel4.add(scrollPane1, BorderLayout.CENTER);
+
+                //---- infoText ----
+                infoText.setEditable(false);
                 panel4.add(infoText, BorderLayout.NORTH);
 
                 //---- button3 ----
                 button3.setText(bundle.getString("button3.text_12"));
-                button3.addActionListener(e -> button3(e));
+                button3.addActionListener(e -> {
+                    try {
+                        button3(e);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 panel4.add(button3, BorderLayout.WEST);
             }
             dialogPane2.add(panel4);
@@ -293,7 +321,7 @@ public class Seat_1_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
+//        showSeats();
         init();
     }
 

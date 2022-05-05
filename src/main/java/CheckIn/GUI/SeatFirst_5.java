@@ -61,7 +61,7 @@ public class SeatFirst_5 extends JFrame {
     public void jumpSeat(){
         if(Objects.equals(fType, "A")){
             dispose();
-            new Seat_1_6().setVisible(true);
+//            new Seat_1_6().setVisible(true);
         }else if(Objects.equals(fType, "B")){
             dispose();
             new Seat_3_6().setVisible(true);

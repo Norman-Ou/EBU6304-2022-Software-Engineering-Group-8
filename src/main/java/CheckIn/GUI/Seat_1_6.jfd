@@ -53,6 +53,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "infoText"
+						"editable": false
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )
