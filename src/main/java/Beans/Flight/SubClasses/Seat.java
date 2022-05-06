@@ -33,17 +33,6 @@ public class Seat {
      * Default Value: null
      */
     private Passenger passenger;
-    /**
-     * Check-in status of the passenger.<br/><br/>
-     *
-     * Status No: <br/>
-     * <b>-1</b> means <b>Not check-in yet</b><br/>
-     * <b>0</b> means <b>Check-in complete but not onboard</b><br/>
-     * <b>1</b> means <b>Check-in and onboard</b><br/><br/>
-     *
-     * Default Value: -1
-     */
-    private int checkInStatus = -1;
 
     /**
      * Default constructor
@@ -53,14 +42,12 @@ public class Seat {
     public Seat(int seatClass,
                 String seatNo,
                 boolean lockedStatus,
-                Passenger passenger,
-                int checkInStatus)
+                Passenger passenger)
     {
         this.seatClass = seatClass;
         this.seatNo = seatNo;
         this.lockedStatus = lockedStatus;
         this.passenger = passenger;
-        this.checkInStatus = checkInStatus;
     }
 
     public Seat(int seatClass, String seatNo) {
@@ -73,9 +60,8 @@ public class Seat {
      */
     public int getSeatClass() {return seatClass;}
     public String getSeatNo() {return seatNo;}
-    public boolean isLockedStatus() {return lockedStatus;}
+    public boolean isLocked() {return lockedStatus;}
     public Passenger getPassenger() {return passenger;}
-    public int getCheckinStatus() {return checkInStatus;}
 
     /**
      * Modifiers of Seat
@@ -84,5 +70,4 @@ public class Seat {
     public void setSeatNo(String seatNo) {this.seatNo = seatNo;}
     public void setLockedStatus(boolean lockedStatus) {this.lockedStatus = lockedStatus;}
     public void setPassenger(Passenger passenger) {this.passenger = passenger;}
-    public void setCheckinStatus(int checkInStatus) {this.checkInStatus = checkInStatus;}
 }
