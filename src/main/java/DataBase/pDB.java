@@ -78,6 +78,10 @@ public class pDB{
         }
     }
 
+    public static ArrayList<Passenger> loadPassengersBySurname(String surName) throws DataNotFound{
+        return new DataBase(Config.FlightFile).getObjects("surname", surName, Passenger.class);
+    }
+
     //TODO 完成这个方法
     /**
      * Get Passenger Object by ID document Object from Passenger Data Base
