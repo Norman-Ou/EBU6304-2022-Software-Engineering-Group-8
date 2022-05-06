@@ -33,11 +33,13 @@ public class ConfirmPage_3 extends JFrame {
         new Seat_1_6().setVisible(true);
 //        SwingUtilities.invokeLater(new Runnable() {
 //            public void run() {
-//                new Seat_1_6().setVisible(true);
-////                new MySwing().Demo();
+//                try {
+//                    new Seat_1_6().setVisible(true);
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
 //            }
 //        });
-//        new seattemp().setVisible(true);
     }
 
     private void Back2Init(ActionEvent e) {

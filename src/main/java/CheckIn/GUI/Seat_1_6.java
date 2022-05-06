@@ -17,9 +17,31 @@ import javax.swing.border.*;
  */
 public class Seat_1_6 extends JFrame {
     public static String seat;
+    private static HashMap<String, Seat> map=new HashMap<>();
+    private static HashMap<String, Seat> mapNew = new HashMap<>();
+
+    public static HashMap<String, Seat> getMapNew() {
+        return mapNew;
+    }
+    public static void setMapNew(HashMap<String, Seat> mapNew1){
+        mapNew=mapNew1;
+    }
+    public static HashMap<String, Seat> getMap() {
+        return map;
+    }
+    public static void setMap(HashMap<String, Seat> map1){
+        map=map1;
+    }
+    public Seat_1_6() throws Exception {
+        initComponents();
+//        JbListener();
+    }
+    private void button3(ActionEvent e) throws Exception {
+        showSeats();
+    }
 
     /**
-     * 按钮的监听函数
+     * 按钮的监听函数 请忽略这里
      */
     private void JbListener(){
         button3.addActionListener(new ActionListener() {
@@ -35,22 +57,55 @@ public class Seat_1_6 extends JFrame {
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
-//                            Thread.sleep(3000);//模仿检测数据合法性
                                     System.out.println("1.正在检测数据合法性...");
                                 }
                             });
 
-                            Thread.sleep(3000);//模仿检测数据合法性
+//                            Thread.sleep(3000);//模仿检测数据合法性
+
+                            Collection<Seat> values=mapNew.values();
+                            Iterator<Seat> iterator2=values.iterator();
+                            int i = iterator2.next().getSeatClass();
+
                             SwingUtilities.invokeLater(new Runnable() {
                                 public void run() {
-                                    judge();
+                                    if (i == 0) {
+                                        if(!mapNew.isEmpty()) {
+                                            for (Map.Entry<String, Seat> entry : mapNew.entrySet()) {
+                                                while (iterator2.hasNext()){
+                                                    vip.addItem(entry.getKey());
+                                                }
+                                            }}
+
+                                    }
                                     System.out.println("2.正在导入数据...");
                                 }
                             });
                             Thread.sleep(4000);//模仿导入数据
                             SwingUtilities.invokeLater(new Runnable() {
                                 public void run() {
+                                    if (i == 1) {
+                                        if(!mapNew.isEmpty()) {
+                                            for (Map.Entry<String, Seat> entry : mapNew.entrySet()) {
+                                                while (iterator2.hasNext()){
+                                                    busS.addItem(entry.getKey());
+                                                }}
+                                        }
+                                    }
                                     System.out.println("3.导入成功!");
+                                }
+                            });
+                            Thread.sleep(4000);//模仿导入数据
+                            SwingUtilities.invokeLater(new Runnable() {
+                                public void run() {
+                                    if(i == 2){
+                                        if(!mapNew.isEmpty()) {
+                                            for (Map.Entry<String, Seat> entry : mapNew.entrySet()) {
+                                                while (iterator2.hasNext()){
+                                                    ecoS.addItem(entry.getKey());
+                                                }
+                                            }}
+                                    }
                                 }
                             });
                         }catch (InterruptedException e1) {
@@ -100,22 +155,6 @@ public class Seat_1_6 extends JFrame {
 //            new VIPSeatPay().setVisible(true);
         }
     }
-    private static HashMap<String, Seat> map=new HashMap<>();
-    private static HashMap<String, Seat> mapNew = new HashMap<>();
-
-    public static HashMap<String, Seat> getMapNew() {
-        return mapNew;
-    }
-    public static void setMapNew(HashMap<String, Seat> mapNew1){
-        mapNew=mapNew1;
-    }
-    public static HashMap<String, Seat> getMap() {
-        return map;
-    }
-    public static void setMap(HashMap<String, Seat> map1){
-        map=map1;
-    }
-
 
     public void showSeats() throws Exception {
 //        HashMap<String, Seat> map=new HashMap<>();
@@ -155,21 +194,14 @@ public class Seat_1_6 extends JFrame {
 //                e1.printStackTrace();
 //            }
 //        }
-//        judge();
-    }
-
-    public void judge(){
-        if(!this.mapNew.isEmpty()) {
-            for (Map.Entry<String, Seat> entry : this.mapNew.entrySet()) {
-//                EnterBN_3.getFlight().getSeatingList();
-//                EnterBN_3.getFlight().getSeatingList().values();
-
-                Collection<Seat> values=this.mapNew.values();
+        //TODO HERE!!!!!!!!
+        if(!map.isEmpty()) {
+            for (Map.Entry<String, Seat> entry : map.entrySet()) {
+                EnterBN_3.getFlight().getSeatingList();
+                EnterBN_3.getFlight().getSeatingList().values();
+                Collection<Seat> values=map.values();
                 Iterator<Seat> iterator2=values.iterator();
-//                while(iterator2.hasNext()){
-//                    int i = iterator2.next().getSeatClass();
-//                    System.out.println(i);
-//                }
+
                 int i = iterator2.next().getSeatClass();
                 while (iterator2.hasNext()){
                     switch (i) {
@@ -187,6 +219,7 @@ public class Seat_1_6 extends JFrame {
             }
         }
     }
+
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -199,9 +232,6 @@ public class Seat_1_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void button3(ActionEvent e) throws Exception {
-        showSeats();
-    }
 
     private void error(ActionEvent e) {
         dispose();
@@ -375,7 +405,7 @@ public class Seat_1_6 extends JFrame {
             }
             dialogPane2.add(panel10);
         }
-        JbListener();
+//        JbListener();
         contentPane.add(dialogPane2, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
