@@ -6,12 +6,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
  * @author Jiayi Wang
  */
 public class PrintBag_11 extends JFrame {
+    public static int bagNo;
     public PrintBag_11() {
         initComponents();
     }
@@ -30,6 +32,39 @@ public class PrintBag_11 extends JFrame {
         }
 
     }
+    public void setBagNo(){
+        bagNo = (int)(Math.random()*1000000);
+        for (int i = 0; i <= 200; i++)
+        {
+            int intFlag = (int)(Math.random() * 1000000);
+
+            String flag = String.valueOf(intFlag);
+            if (flag.length() == 6 && flag.substring(0, 1).equals("9"))
+            {
+                bagNo=intFlag;
+            }
+            else
+            {
+                bagNo = intFlag + 100000;
+            }
+        }
+
+        if(EnterOther_3.getPsnTemp1()==null) {
+            try {
+                EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(EnterBN_3.getPsnTemp()==null) {
+            try {
+                EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        BagNum.setText(bagNo+"");
+
+    }
     private void Return2Baggage(ActionEvent e) {
         dispose();
         new Baggage_7().setVisible(true);
@@ -38,6 +73,7 @@ public class PrintBag_11 extends JFrame {
         showBag();
     }
     public void showBag(){
+        setBagNo();
         if(EnterBN_3.getPsnTemp()==null){
             try{
                 int weightPsn = WeightShow_8.weightPsn;
@@ -45,7 +81,7 @@ public class PrintBag_11 extends JFrame {
                 int court=BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
-                BagNum.setText(EnterOther_3.getPsnTemp1().getBaggage().getBaggageNo());
+                BagNum.setText(bagNo+"");
                 CounterNo.setText(str1);
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -58,7 +94,7 @@ public class PrintBag_11 extends JFrame {
                 int court=BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
-                BagNum.setText(EnterBN_3.getPsnTemp().getBaggage().getBaggageNo());
+                BagNum.setText(bagNo+"");
                 CounterNo.setText(str1);
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -70,8 +106,8 @@ public class PrintBag_11 extends JFrame {
                 int court=BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
-                BagNum.setText(EnterOther_3.getPsnTemp2().getBaggage().getBaggageNo());
-                CounterNo.setText(EnterOther_3.getPsnTemp2().getBaggage().getDropCounter());
+                BagNum.setText(bagNo+"");
+                CounterNo.setText(str1);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

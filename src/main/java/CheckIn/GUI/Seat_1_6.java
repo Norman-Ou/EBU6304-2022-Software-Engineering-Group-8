@@ -10,6 +10,7 @@ import Beans.Order.Order;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
 import DataBase.oDB;
+import Exceptions.DataNotFound;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -33,24 +34,41 @@ public class Seat_1_6 extends JFrame {
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
-                Order order = oDB.getOrderByBookingNumber(str);
-                int intTemp=order.getSeatClass();
-                System.out.println(intTemp);
-                if(intTemp==0){
-                    infoText.setText("You can choose form 18 to 30");
-                }else if(intTemp==1){
-                    infoText.setText("You can choose form 11 to 17");
-                }else if(intTemp==2){
-                    infoText.setText("You can choose form 1 to 10");
-                }else if(intTemp==-1){
-                    infoText.setText("Seat class is -1 now");
-                }
-                showSeats();
-
+                setCombox(str);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(EnterBN_3.getPsnTemp()==null){
+            try {
+                String str=Objects.requireNonNull(EnterOther_3.getPsnTemp1().getBookNumber());
+                setCombox(str);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
+    }
+    public void setCombox(String str) throws Exception {
+
+        Order order = oDB.getOrderByBookingNumber(str);
+        int intTemp=order.getSeatClass();
+        System.out.println(intTemp);
+        //TODO 取不到seat class
+        if(intTemp==0){
+            infoText.setText("You can choose form 18 to 30");
+            busS.setEditable(false);
+            vip.setEditable(false);
+        }else if(intTemp==1){
+            infoText.setText("You can choose form 11 to 17");
+            ecoS.setEditable(false);
+            vip.setEditable(false);
+        }else if(intTemp==2){
+            infoText.setText("You can choose form 1 to 10");
+            ecoS.setEditable(false);
+            busS.setEditable(false);
+        }else if(intTemp==-1){
+            infoText.setText("Seat class is -1 now");
+        }
+        showSeats();
     }
 
     private void PrintFlight(ActionEvent e) {
@@ -60,49 +78,47 @@ public class Seat_1_6 extends JFrame {
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
-//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-//            dispose();
-////            new VIPSeatPay().setVisible(true);
-//        }
-        seat=vip.getSelectedItem().toString();
-//        System.out.println(seat);
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+
+        }seat=vip.getSelectedItem().toString();
+
     }
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-//            dispose();
-////            new VIPSeatPay().setVisible(true);
-//        }
-        seat=busS.getSelectedItem().toString();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+
+        }seat=busS.getSelectedItem().toString();
+
     }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-//            dispose();
-////            new VIPSeatPay().setVisible(true);
-//        }
-        seat=ecoS.getSelectedItem().toString();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+
+        }seat=ecoS.getSelectedItem().toString();
     }
 
     public void showSeats() throws Exception {
         HashMap<String, Seat> map=new HashMap<>();
-//        if(EnterBN_3.getPsnTemp()==null){
-//            try{
-//                //TODO other's seating list
-////                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
-////                bpOther.setSeatNo(seat);
-////                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
-//            } catch (Exception e1) {
-//                e1.printStackTrace();
-//            }
-//        }
-//        else
+        if(EnterBN_3.getPsnTemp()==null){
+            try {
+                map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
+                map.forEach((k,v)->{
+                    if (!mapNew.containsValue(v)){
+                        mapNew.put(k,v);
+                    }
+                });
+                System.out.println(mapNew);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
-                    if (!this.mapNew.containsValue(v)){
-                        this.mapNew.put(k,v);
+                    if (!mapNew.containsValue(v)){
+                        mapNew.put(k,v);
                     }
                 });
                 System.out.println(mapNew);
@@ -149,7 +165,6 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void button3(ActionEvent e) throws Exception {
-//        showSeats();
         checkClass();
     }
 
@@ -199,12 +214,12 @@ public class Seat_1_6 extends JFrame {
         {
             panel3.setOpaque(false);
             panel3.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,panel3. getBorder () ) ); panel3. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+                    javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
+                    . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+                    . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+                    . Color .red ) ,panel3. getBorder () ) ); panel3. addPropertyChangeListener( new java. beans .
+                PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
+                equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----

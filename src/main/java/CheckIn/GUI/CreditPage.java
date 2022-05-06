@@ -47,7 +47,7 @@ public class CreditPage extends JFrame {
 
     private void back2Seat(ActionEvent e) {
         dispose();
-        new SeatFirst_5().setVisible(true);
+//        new SeatFirst_5().setVisible(true);
     }
 
     private void mealSecond(ActionEvent e) {

@@ -4,6 +4,8 @@
 
 package CheckIn.GUI;
 
+import DataBase.fDB;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -34,8 +36,9 @@ public class WeightShow_8 extends JFrame {
     }
     public void showWeight(){
         if(EnterBN_3.getPsnTemp()==null){
-            try{
-                // weightNum.setText(String.valueOf(getPsnTemp1().getBaggage().getBaggageWeight()));
+            try {
+                weightNum.setText(String.valueOf(EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()));
+                weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -43,18 +46,11 @@ public class WeightShow_8 extends JFrame {
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 weightNum.setText(String.valueOf(EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()));
-                //TODO baggage is null
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }else {
-            try {
-//                weightNum.setText(EnterOther.getPsnTemp1().getBaggage().getBaggageNo());
+                weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
-
     }
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
