@@ -1,5 +1,8 @@
 package CheckIn.GUI;
 
+import Beans.Order.Order;
+import DataBase.oDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -7,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
@@ -35,8 +39,26 @@ public class ConfirmPage_3 extends JFrame {
         if (temp == JOptionPane.NO_OPTION) {
             return;
         }if(temp == JOptionPane.YES_OPTION){
-            dispose();
-            new Seat_1_6().setVisible(true);
+            String str1 = "";
+            if(EnterBN_3.getPsnTemp()==null){
+//                str1=EnterOther_3.getFlight().getFlightType();
+            }else if(EnterOther_3.getPsnTemp1()==null){
+                str1=EnterBN_3.getFlight().getFlightType();
+            }
+
+//            System.out.println(str1+"11111111111111");
+            String str2="";//EnterOther_3.getFlight().getFlightType;
+            try {
+                if (Objects.equals(str1, "A")) {
+                    dispose();
+                    new Seat_1_6().setVisible(true);
+                } else if (Objects.equals(str1, "B")) {
+                    dispose();
+                    new Seat_3_6().setVisible(true);
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
             new Error().setVisible(true);
