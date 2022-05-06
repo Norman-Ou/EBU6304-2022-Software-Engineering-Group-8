@@ -31,25 +31,38 @@ public class PrintBag_11 extends JFrame {
     public void showBag(){
         if(EnterBN_3.getPsnTemp()==null){
             try{
+                int weightPsn = WeightShow_8.weightPsn;
+                String str=weightPsn+"";
+                int court=BagStore_8.court;
+                String str1=court+"";
+                Weight.setText(str);
                 BagNum.setText(EnterOther_3.getPsnTemp1().getBaggage().getBaggageNo());
-                DropP.setText(EnterOther_3.getPsnTemp1().getBaggage().getDropCounter());
+                CounterNo.setText(str1);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
-            try {
+            try{
+                int weightPsn = WeightShow_8.weightPsn;
+                String str=weightPsn+"";
+                int court=BagStore_8.court;
+                String str1=court+"";
+                Weight.setText(str);
                 BagNum.setText(EnterBN_3.getPsnTemp().getBaggage().getBaggageNo());
-//                System.out.println(EnterBN.getPsnTemp().getBaggage().getBaggageNo());
-                //TODO baggage is null
-                DropP.setText(EnterBN_3.getPsnTemp().getBaggage().getBaggageNo());
+                CounterNo.setText(str1);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }else{
             try{
+                int weightPsn = WeightShow_8.weightPsn;
+                String str=weightPsn+"";
+                int court=BagStore_8.court;
+                String str1=court+"";
+                Weight.setText(str);
                 BagNum.setText(EnterOther_3.getPsnTemp2().getBaggage().getBaggageNo());
-                DropP.setText(EnterOther_3.getPsnTemp2().getBaggage().getDropCounter());
+                CounterNo.setText(EnterOther_3.getPsnTemp2().getBaggage().getDropCounter());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -70,14 +83,10 @@ public class PrintBag_11 extends JFrame {
         this.setVisible(true);
     }
 
-    private void showBag(ActionEvent e) {
-        showBag();
-    }
-
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -89,9 +98,7 @@ public class PrintBag_11 extends JFrame {
         label10 = new JLabel();
         BagNum = new JTextField();
         label4 = new JLabel();
-        DropP = new JTextField();
-        label5 = new JLabel();
-        StoreC = new JTextField();
+        CounterNo = new JTextField();
         panel2 = new JPanel();
         button3 = new JButton();
         panel3 = new JPanel();
@@ -106,14 +113,13 @@ public class PrintBag_11 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
-            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
-            ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing
+            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+            Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.red
+            ),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName(
+            )))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -175,17 +181,7 @@ public class PrintBag_11 extends JFrame {
                     panel1.add(label4, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
-                    panel1.add(DropP, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 0), 0, 0));
-
-                    //---- label5 ----
-                    label5.setText(bundle.getString("label5.text_4"));
-                    label5.setBorder(new EmptyBorder(5, 5, 5, 5));
-                    panel1.add(label5, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 0), 0, 0));
-                    panel1.add(StoreC, new GridBagConstraints(2, 5, 1, 1, 0.0, 0.0,
+                    panel1.add(CounterNo, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
                 }
@@ -201,7 +197,7 @@ public class PrintBag_11 extends JFrame {
                 //---- button3 ----
                 button3.setText(bundle.getString("button3.text_5"));
                 button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 20));
-                button3.addActionListener(e -> showBag(e));
+                button3.addActionListener(e -> showBagTag(e));
                 panel2.add(button3, BorderLayout.SOUTH);
             }
             dialogPane.add(panel2, BorderLayout.NORTH);
@@ -230,7 +226,7 @@ public class PrintBag_11 extends JFrame {
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
@@ -241,9 +237,7 @@ public class PrintBag_11 extends JFrame {
     private JLabel label10;
     private JTextField BagNum;
     private JLabel label4;
-    private JTextField DropP;
-    private JLabel label5;
-    private JTextField StoreC;
+    private JTextField CounterNo;
     private JPanel panel2;
     private JButton button3;
     private JPanel panel3;

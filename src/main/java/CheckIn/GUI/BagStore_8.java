@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class BagStore_8 extends JFrame {
+    public static int court;
     public BagStore_8() {
         initComponents();
     }
@@ -32,7 +33,7 @@ public class BagStore_8 extends JFrame {
     }
 
     private void CourtShown(ComponentEvent e) {
-        int court = (int)(Math.random()*100);
+        court = (int)(Math.random()*100);
         e.setSource(court);
         //TODO generate store information
     }
