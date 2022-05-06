@@ -17,9 +17,18 @@ public class PrintBag_11 extends JFrame {
     }
 
     private void ToMeal(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Be sure for taking your Baggage and select meal now.","Go for selecting meal.", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new Meal_12().setVisible(true);
+        int temp=JOptionPane.showInternalConfirmDialog(null,
+                "Ready for choosing Meal?", "Double check",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (temp == JOptionPane.NO_OPTION) {
+            return;
+        }if(temp == JOptionPane.YES_OPTION){
+            dispose();
+            new Meal_12().setVisible(true);
+        }if(temp == JOptionPane.CANCEL_OPTION){
+            dispose();
+        }
+
     }
     private void Return2Baggage(ActionEvent e) {
         dispose();
