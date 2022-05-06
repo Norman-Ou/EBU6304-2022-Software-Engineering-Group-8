@@ -1,5 +1,6 @@
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
 import Beans.Order.Order;
 import DataBase.oDB;
 
@@ -42,12 +43,10 @@ public class ConfirmPage_3 extends JFrame {
             String str1 = "";
             if(EnterBN_3.getPsnTemp()==null){
 //                str1=EnterOther_3.getFlight().getFlightType();
+                str1=AirPassCse.flightChoose.getFlightType();
             }else if(EnterOther_3.getPsnTemp1()==null){
                 str1=EnterBN_3.getFlight().getFlightType();
             }
-
-//            System.out.println(str1+"11111111111111");
-            String str2="";//EnterOther_3.getFlight().getFlightType;
             try {
                 if (Objects.equals(str1, "A")) {
                     dispose();
@@ -91,12 +90,13 @@ public class ConfirmPage_3 extends JFrame {
                 BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
                 IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
-                Depar.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDestination());
-                ETA.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETA());
-                ETC.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETC());
-                ETD.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETD());
-                Gate.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getGate());
+                Flight flt=AirPassCse.flightChoose;
+                Depar.setText(flt.getDeparture());
+                Desti.setText(flt.getDestination());
+                ETA.setText(flt.getETA());
+                ETC.setText(flt.getETC());
+                ETD.setText(flt.getETD());
+                Gate.setText(flt.getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -112,22 +112,6 @@ public class ConfirmPage_3 extends JFrame {
                 ETC.setText(EnterBN_3.getFlight().getETC());
                 ETD.setText(EnterBN_3.getFlight().getETD());
                 Gate.setText(EnterBN_3.getFlight().getGate());
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }else{
-            try{
-//                FirstConfirm.setText(
-//                        EnterOther.getPsnTemp2().getBoardingPass().toString());
-                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
-                Depar.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDestination());
-                ETA.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETA());
-                ETC.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETC());
-                ETD.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETD());
-                Gate.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

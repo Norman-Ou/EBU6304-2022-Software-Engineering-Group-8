@@ -1,5 +1,6 @@
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import DataBase.pDB;
 
@@ -59,17 +60,18 @@ public class PrintFlight_6 extends JFrame {
                 BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
                 IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
-                Depar.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getDestination());
-                ETA.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETA());
-                ETC.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETC());
-                ETD.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getETD());
-                Gate.setText(EnterOther_3.getPsnTemp1().getBoardingPass().getGate());
-//                if(Seat_1_6.seat==""){
-//                    Seat.setText(Seat_3_6.seat);
-//                }else{
+                Flight flt=AirPassCse.flightChoose;
+                Depar.setText(flt.getDeparture());
+                Desti.setText(flt.getDestination());
+                ETA.setText(flt.getETA());
+                ETC.setText(flt.getETC());
+                ETD.setText(flt.getETD());
+                Gate.setText(flt.getGate());
+                if(Seat_1_6.seat==null){
+                    Seat.setText(Seat_3_6.seat);
+                }else{
                     Seat.setText(Seat_1_6.seat);
-//                }
+                }
 //                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -86,29 +88,7 @@ public class PrintFlight_6 extends JFrame {
                 ETC.setText(EnterBN_3.getFlight().getETC());
                 ETD.setText(EnterBN_3.getFlight().getETD());
                 Gate.setText(EnterBN_3.getFlight().getGate());
-//                if(Seat_1_6.seat==""){
-//                    Seat.setText(Seat_3_6.seat);
-//                }else{
-                    Seat.setText(Seat_1_6.seat);
-//                }
-//                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }else{
-            try{
-//                FirstConfirm.setText(
-//                        EnterOther.getPsnTemp2().getBoardingPass().toString());
-                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
-                Depar.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDeparture());
-                Desti.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getDestination());
-                ETA.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETA());
-                ETC.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETC());
-                ETD.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getETD());
-                Gate.setText(EnterOther_3.getPsnTemp2().getBoardingPass().getGate());
-                if(Seat_1_6.seat==""){
+                if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
                 }else{
                     Seat.setText(Seat_1_6.seat);

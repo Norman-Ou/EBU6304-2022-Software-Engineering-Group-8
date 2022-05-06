@@ -52,7 +52,7 @@ public class Baggage_7 extends JFrame {
     private void seatAgain(ActionEvent e) throws Exception {
         dispose();
 //        new SeatFirst_5().setVisible(true);
-        new Seat_1_6().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
     }
 
     private void error(ActionEvent e) {

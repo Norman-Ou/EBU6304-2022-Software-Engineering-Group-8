@@ -42,6 +42,15 @@ public class EnterOther_3 extends JFrame {
         surname=textArea4.getText();
         ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
         fltTemp = fltList;
+        psnTemp1=cMonitors.getPassengerBySurname_ID(surname,IDNum);
+    }
+    public static ArrayList<Flight> getFlight() {
+        try {
+            return fltTemp;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public static Passenger getPsnTemp1() {
         try{

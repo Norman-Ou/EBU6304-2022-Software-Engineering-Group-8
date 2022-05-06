@@ -33,7 +33,7 @@ public class BagStore_8 extends JFrame {
     }
 
     private void CourtShown(ComponentEvent e) {
-        court = (int)(Math.random()*100);
+        court = (int)(Math.random()*100)+2;
         e.setSource(court);
         //TODO generate store information
     }

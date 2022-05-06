@@ -12,6 +12,7 @@ import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.Passenger;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
+import DataBase.fDB;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,35 +24,33 @@ import javax.swing.border.*;
  * @author Jiayi Wang
  */
 public class AirPassCse extends JFrame {
+    public static Flight flightChoose;
     public AirPassCse() {
         initComponents();
     }
 
     public void airlineAdd(){
-        if(EnterOther_3.getPsnTemp1()==null){
-            try{
-                BoardingPass boardingPass = Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getBoardingPass();
+        String flightNo = "";
+        String Dep= "";
+        String Des= "";
+        String ETA= "";
+        try{
+            ArrayList<Flight> list=EnterOther_3.getFlight();
+            for(Flight flt : list){          //同for(int i = 0;i<list.size();i++)
+                flightNo=flt.getFlightNo();
+                Dep=flt.getDeparture();
+                Des=flt.getDestination();
+                ETA=flt.getETA();
+                table1.setValueAt(flightNo,2,1);
+                table1.setValueAt(Dep,5,1);
+                table1.setValueAt(Des,8,1);
+                table1.setValueAt(ETA,11,1);
+                airLine.addItem(flightNo);
+                System.out.println(flightNo);
+            }
 
-                table1.setValueAt(boardingPass.getFlightNo(),2,1);
-                table1.setValueAt(boardingPass.getDeparture(),5,1);
-                table1.setValueAt(boardingPass.getDestination(),8,1);
-                table1.setValueAt(boardingPass.getETA(),11,1);
-                airLine.addItem(boardingPass.getFlightNo());
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
-        else{
-            try{
-                BoardingPass boardingPass = Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getBoardingPass();
-                table1.setValueAt(boardingPass.getFlightNo(),2,1);
-                table1.setValueAt(boardingPass.getDeparture(),5,1);
-                table1.setValueAt(boardingPass.getDestination(),8,1);
-                table1.setValueAt(boardingPass.getETA(),11,1);
-                airLine.addItem(boardingPass.getFlightNo());
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
         }
     }
 
@@ -85,9 +84,10 @@ public class AirPassCse extends JFrame {
     private void airLineItemStateChanged(ItemEvent e) {
 //        e.getItem();
 //        airLine.getSelectedItem();
-        if(e.getItem().equals(airLine.getSelectedItem())){
-            airlineAdd();
-        }
+        flightChoose=fDB.loadFlightByFlightNo(airLine.getSelectedItem().toString());
+//        if(e.getItem().equals(airLine.getSelectedItem())){
+//            airlineAdd();
+//        }
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -117,13 +117,12 @@ public class AirPassCse extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
