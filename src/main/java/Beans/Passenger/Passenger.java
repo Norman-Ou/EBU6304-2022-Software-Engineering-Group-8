@@ -88,6 +88,7 @@ public class Passenger {
     public String getBookNumber() {return bookNumber;}
     public String getPassengerId() {return passengerId;}
     public String getSurName() {return surName;}
+    public int getCheckinStatus() {return checkInStatus;};
     public BoardingPass getBoardingPass() {return boardingPass;}
     public Baggage getBaggage() {return baggage;}
     public CreditCard getCreditCard() {return creditCard;}
@@ -112,6 +113,7 @@ public class Passenger {
     public void setBookNumber(String bookNumber) {this.bookNumber = bookNumber;}
     public void setPassengerId(String passengerId) {this.passengerId = passengerId;}
     public void setSurName(String surName) {this.surName = surName;}
+    public void setCheckinStatus(int checkInStatus) {this.checkInStatus = checkInStatus;};
     public void setBoardingPass(BoardingPass boardingPass) {this.boardingPass = boardingPass;}
     public void setBaggage(Baggage baggage) {this.baggage = baggage;}
     public void setCreditCard(CreditCard creditCard) {this.creditCard = creditCard;}

@@ -8,9 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import Beans.Flight.SubClasses.Seat;
+import Beans.Order.Order;
 import Beans.Passenger.Passenger;
 import Beans.Flight.*;
 import DataBase.fDB;
+import DataBase.oDB;
+import DataBase.pDB;
+import Exceptions.DataNotFound;
 
 
 /**
@@ -24,7 +28,9 @@ public class bMonitors {
     
 	// 所有航班的列表
 	private List<Flight> flightList = fDB.loadAllFlights();
-	
+	// 所有乘客列表
+    private static List<Passenger> passengerList = pDB.loadAllPassengers();
+
     public bMonitors(){}
 
     // 根据航班号查询航班信息 获得对应的乘客列表
@@ -70,25 +76,43 @@ public class bMonitors {
         return urgentFlighList;
     }
 
-    // 获取某航班上还未登机乘客名单
-    public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
-    	// HashMap<String, Seat> seatingList = this.getFlightList(targetFlightNo).getSeatingList();
-        List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
-        // for (String key : seatingList.keySet()) {
-        // 	Seat seat = seatingList.get(key);
-        // 	if(seat.getCheckinStatus()==-1){
-        //         // 找到了没登机的乘客的座位
-        //         unboardedPassengerList.add(seat.getPassenger());
-        //     }
-        // }
-        
-        return unboardedPassengerList;
-
+    // 获取某航班上所有乘客的名单
+    public List<Passenger> getPassengerList(String targetFlightNo) {
+        List<Order> oList;
+        try {
+            oList = oDB.getOrdersByFlightNo(targetFlightNo);
+            List<Passenger> psgList = new ArrayList<Passenger>();
+            for(int i = 1; i<oList.size(); i++){
+                for(int j = 0; j<passengerList.size(); j++){
+                    if(oList.get(i).getPassengerID()==passengerList.get(j).getPassengerId()){
+                        psgList.add(passengerList.get(j));
+                        System.out.println(oList.get(i).getPassengerID());
+                    }
+                }
+            }
+            System.out.println("done back");
+            return psgList;
+        } catch (DataNotFound e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
+    // 获取某航班上还未登机乘客名单 检查航班上的
+    public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
+        List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
+        List<Passenger> psgList = this.getPassengerList(targetFlightNo);
+        for(int i = 0; i<psgList.size(); i++){
+            if(psgList.get(i).getCheckinStatus()!=1){
+                unboardedPassengerList.add(psgList.get(i));
+            }
+        }
+        return unboardedPassengerList;
+    }
+        
     public List<String> printUnboardedPassengerList(List<Passenger> PList){
         List<String> infoList = new ArrayList<String>();
-    	for(int i = 0; i<PList.size(); i++){
+        for(int i = 0; i<PList.size(); i++){
             Passenger psg = PList.get(i);
             String info = psg.getPassengerId() + psg.getSurName();
             System.out.println("method");
@@ -96,7 +120,7 @@ public class bMonitors {
         }
         return infoList;
     }
-
+        
     // 紧急提醒
     // public void pumpWarning(List<String> urgentFlighList){
     //     System.out.println("马上起飞了！！！！");
@@ -110,17 +134,17 @@ public class bMonitors {
     // 通过id查乘客状态
     public Passenger searchPassengerById(String passengerID){
         Passenger targetPassenger = new Passenger();
-        for (int i = 0; i<flightList.size(); i++) {
-        	Flight flight = flightList.get(i);
-            HashMap<String, Seat> seatingList = flight.getSeatingList();
-            for (String key : seatingList.keySet()) {
-        	    Seat seat = seatingList.get(key);
-                Passenger psg = seat.getPassenger();
-        	    if(psg.getPassengerId().equals(passengerID)){
-                    targetPassenger=psg;
+        try {
+            List<Passenger> psglist = pDB.loadPassengersByIDNum(passengerID);
+            for(int i = 0; i<psglist.size(); i++){
+                if(!(psglist.get(i).getCheckinStatus()==1)){
+                    // 有大问题 先不写
                 }
             }
+        } catch (DataNotFound e) {
+            e.printStackTrace();
         }
+        
         return targetPassenger;
     }
 

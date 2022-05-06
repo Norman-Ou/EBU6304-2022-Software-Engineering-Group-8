@@ -78,8 +78,8 @@ public class pDB{
         }
     }
 
-    public static ArrayList<Passenger> loadPassengersBySurname(String surName) throws DataNotFound{
-        return new DataBase(Config.FlightFile).getObjects("surname", surName, Passenger.class);
+    public static ArrayList<Passenger> loadPassengersByIDNum(String passengerId) throws DataNotFound{
+        return new DataBase(Config.FlightFile).getObjects("passengerId", passengerId, Passenger.class);
     }
 
     //TODO 完成这个方法
