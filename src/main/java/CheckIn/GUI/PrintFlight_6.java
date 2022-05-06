@@ -28,6 +28,7 @@ public class PrintFlight_6 extends JFrame {
 
     private void printThenBag(ActionEvent e) {
         // TODO add your code here
+        JOptionPane.showMessageDialog(null, "Printing your boarding pass now and ready for choosing baggage arrangement.","Go for baggage arrangement.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new Baggage_7().setVisible(true);
     }
@@ -70,7 +71,7 @@ public class PrintFlight_6 extends JFrame {
                 ETC.setText(EnterBN_3.getFlight().getETC());
                 ETD.setText(EnterBN_3.getFlight().getETD());
                 Gate.setText(EnterBN_3.getFlight().getGate());
-//                Seat.setText(SelectSeat_act6.seat+VIPSeat.vipSeat);
+                Seat.setText(Seat_1_6.seat);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -335,10 +336,6 @@ public class PrintFlight_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
-        psn.getBoardingPass().setSeatNo("E1");
-//        System.out.println(psn.getBoardingPass());
-
 
         init(); }
 

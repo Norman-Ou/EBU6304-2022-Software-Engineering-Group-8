@@ -32,15 +32,18 @@ public class Seat_1_6 extends JFrame {
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                String str=EnterBN_3.getPsnTemp().getBookNumber();
+                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
                 Order order = oDB.getOrderByBookingNumber(str);
                 int intTemp=order.getSeatClass();
+                System.out.println(intTemp);
                 if(intTemp==0){
                     infoText.setText("You can choose form 18 to 30");
                 }else if(intTemp==1){
                     infoText.setText("You can choose form 11 to 17");
                 }else if(intTemp==2){
                     infoText.setText("You can choose form 1 to 10");
+                }else if(intTemp==-1){
+                    infoText.setText("Seat class is -1 now");
                 }
                 showSeats();
 
@@ -62,27 +65,28 @@ public class Seat_1_6 extends JFrame {
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-            seat=vip.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+//            dispose();
+////            new VIPSeatPay().setVisible(true);
+//        }
+        seat=vip.getSelectedItem().toString();
+//        System.out.println(seat);
     }
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-            seat=busS.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+//            dispose();
+////            new VIPSeatPay().setVisible(true);
+//        }
+        seat=busS.getSelectedItem().toString();
     }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-            seat=ecoS.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+//        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+//            dispose();
+////            new VIPSeatPay().setVisible(true);
+//        }
+        seat=ecoS.getSelectedItem().toString();
     }
 
     public void showSeats() throws Exception {
