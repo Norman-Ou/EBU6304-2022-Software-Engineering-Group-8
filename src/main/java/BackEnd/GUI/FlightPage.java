@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * @author Lingxiao
@@ -31,8 +32,15 @@ public class FlightPage extends JFrame {
             BoardingTime.setText(targetFlight.getETC());
             TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
             Destination.setText(targetFlight.getDestination());
-            TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
-
+            List<String> infoList = bMonitor.printUnboardedPassengerList(bMonitor.getUnboardedPassengerList(f_ID));
+            // TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
+            TransInformation = "";
+            for(int j = 0; j<infoList.size(); j++){
+                String info = infoList.get(j);
+                TransInformation += info + "\n"; 
+                System.out.println(info);
+            }
+            System.out.println("done");
         }
     }
 

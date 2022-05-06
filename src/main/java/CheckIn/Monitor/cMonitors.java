@@ -53,17 +53,25 @@ public class cMonitors {
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();
-            // for (int i = 0; i < flightList.size(); i++) {
-            //     Flight flight = flightList.get(i);
-            //     if (flight.getFlightNo().equals(targetFlightNo)) {
-            //         targetFlight = flight;
-            //     }
-            // }
             targetFlight = cMonitors.findFlight(targetFlightNo);
         } catch (DataNotFound e) {
             e.printStackTrace();
         }
         return targetFlight;
+    }
+
+    public static Flight getFlightByIDDocument(IDDocument idDocument){
+        String targetFlightNo;
+        Flight targetFlight = new Flight();
+        try {
+            Passenger psg = pDB.loadPassengerByIDDocument(idDocument);
+            targetFlightNo = oDB.getOrderByBookingNumber(psg.getBookNumber()).getFlightNo();
+            targetFlight = cMonitors.findFlight(targetFlightNo);
+            return targetFlight;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static ArrayList<Flight> getFlightBySurname_ID(String surName, String IDnum) {
