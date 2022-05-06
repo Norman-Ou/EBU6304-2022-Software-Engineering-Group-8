@@ -207,7 +207,6 @@ new FormModel {
 						name: "PrintButton"
 						"text": new FormMessage( null, "PrintButton.text_2" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "printThenBag", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ok", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "cancelButton"

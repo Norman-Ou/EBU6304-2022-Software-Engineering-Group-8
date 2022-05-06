@@ -49,9 +49,10 @@ public class Baggage_7 extends JFrame {
         this.setVisible(true);
     }
 
-    private void seatAgain(ActionEvent e) {
+    private void seatAgain(ActionEvent e) throws Exception {
         dispose();
-        new SeatFirst_5().setVisible(true);
+//        new SeatFirst_5().setVisible(true);
+        new Seat_1_6().setVisible(true);
     }
 
     private void error(ActionEvent e) {
@@ -135,7 +136,13 @@ public class Baggage_7 extends JFrame {
 
             //---- cancelButton ----
             cancelButton.setText(bundle.getString("cancelButton.text_17"));
-            cancelButton.addActionListener(e -> seatAgain(e));
+            cancelButton.addActionListener(e -> {
+                try {
+                    seatAgain(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
             buttonBar.add(cancelButton);
 
             //---- button4 ----

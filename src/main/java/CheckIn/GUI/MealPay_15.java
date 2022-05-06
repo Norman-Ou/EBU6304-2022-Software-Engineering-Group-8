@@ -1,5 +1,8 @@
 package CheckIn.GUI;
 
+import Beans.Passenger.Passenger;
+import DataBase.pDB;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -24,7 +27,24 @@ public class MealPay_15 extends JFrame {
         dispose();
         new Exit().setVisible(true);
     }
+    private String mealTemp="";
+    public void setMealTemp(String str){
+        this.mealTemp=str;
+    }
+    public String getMealTemp(){
+        return this.mealTemp;
+    }
+    private void payMeal(ActionEvent e) {
 
+        if(MealAdd_14.VIPmealSelected==null){
+            setMealTemp(MealNorm_13.mealSelected);
+        }else{
+            setMealTemp(MealAdd_14.VIPmealSelected);
+        }
+        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
+        dispose();
+        new Exit().setVisible(true);
+    }
     private void BackMeal(ActionEvent e) {
         dispose();
         new Meal_12().setVisible(true);
@@ -32,7 +52,8 @@ public class MealPay_15 extends JFrame {
 
     private void payAdMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        new CreditPage().setVisible(true);
+//        new CreditPage().setVisible(true);
+        new MealPay_15().setVisible(true);
         dispose();
     }
     public void init() {
@@ -49,21 +70,29 @@ public class MealPay_15 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+    public void credit(){
+        Passenger psn = pDB.loadPassengerByBookingNo(EnterBN_3.getPsnTemp().getBookNumber());
+//        EnterBN_3.getPsnTemp().getBookNumber();
+        //TODO get credit information
+        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
+        textArea1.setText(creditInfo);
+    }
 
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
+        textArea1 = new JTextArea();
         button1 = new JButton();
         buttonBar = new JPanel();
+        button2 = new JButton();
         okButton = new JButton();
         cancelButton = new JButton();
-        label1 = new JLabel();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -73,13 +102,13 @@ public class MealPay_15 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -90,20 +119,21 @@ public class MealPay_15 extends JFrame {
                 //======== panel1 ========
                 {
                     panel1.setOpaque(false);
-                    panel1.setLayout(new GridLayout());
+                    panel1.setLayout(new BorderLayout());
 
                     //======== panel2 ========
                     {
                         panel2.setOpaque(false);
-                        panel2.setLayout(new GridLayout());
+                        panel2.setLayout(new BorderLayout());
+                        panel2.add(textArea1, BorderLayout.CENTER);
 
                         //---- button1 ----
                         button1.setText(bundle.getString("button1.text_20"));
                         button1.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
                         button1.addActionListener(e -> payAdMeal(e));
-                        panel2.add(button1);
+                        panel2.add(button1, BorderLayout.NORTH);
                     }
-                    panel1.add(panel2);
+                    panel1.add(panel2, BorderLayout.CENTER);
                 }
                 contentPanel.add(panel1);
             }
@@ -114,6 +144,11 @@ public class MealPay_15 extends JFrame {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
                 buttonBar.setLayout(new FlowLayout());
+
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_17"));
+                button2.addActionListener(e -> payMeal(e));
+                buttonBar.add(button2);
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_6"));
@@ -126,29 +161,26 @@ public class MealPay_15 extends JFrame {
                 buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
-
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_21"));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-            dialogPane.add(label1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();}
+        credit();
+        init();
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
     private JPanel panel2;
+    private JTextArea textArea1;
     private JButton button1;
     private JPanel buttonBar;
+    private JButton button2;
     private JButton okButton;
     private JButton cancelButton;
-    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

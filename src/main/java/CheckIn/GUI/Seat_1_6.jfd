@@ -29,6 +29,11 @@ new FormModel {
 					"text": new FormMessage( null, "button1.text_24" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
 				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button4"
+					"text": new FormMessage( null, "button4.text_7" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "error", true ) )
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "South"
 			} )

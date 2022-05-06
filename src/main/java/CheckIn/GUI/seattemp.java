@@ -5,63 +5,28 @@
 package CheckIn.GUI;
 
 import Beans.Flight.SubClasses.Seat;
+import Beans.Order.Order;
+import CheckIn.Monitor.cMonitors;
+import DataBase.oDB;
+import Exceptions.DataNotFound;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.util.*;
 
 /**
  * @author Jiayi Wang
  */
-public class Seat_1_6 extends JFrame {
+public class seattemp extends JFrame {
     public static String seat;
-
-    /**
-     * 按钮的监听函数
-     */
-    private void JbListener(){
-        button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //定义匿名内部类，该类实现Runnable接口
-                new Thread(new Runnable() {
-                    public void run() {
-                        try{
-                            SwingUtilities.invokeLater(new Runnable() {
-                                public void run() {
-                                    try {
-                                        showSeats();
-                                    } catch (Exception ex) {
-                                        ex.printStackTrace();
-                                    }
-//                            Thread.sleep(3000);//模仿检测数据合法性
-                                    System.out.println("1.正在检测数据合法性...");
-                                }
-                            });
-
-                            Thread.sleep(3000);//模仿检测数据合法性
-                            SwingUtilities.invokeLater(new Runnable() {
-                                public void run() {
-                                    judge();
-                                    System.out.println("2.正在导入数据...");
-                                }
-                            });
-                            Thread.sleep(4000);//模仿导入数据
-                            SwingUtilities.invokeLater(new Runnable() {
-                                public void run() {
-                                    System.out.println("3.导入成功!");
-                                }
-                            });
-                        }catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                }).start();
-            }
-        });
+    public seattemp() throws Exception {
+        initComponents();
     }
-
 
     private void PrintFlight(ActionEvent e) {
 //        seat= Objects.requireNonNull(vipWin.getSelectedItem()).toString();
@@ -100,26 +65,30 @@ public class Seat_1_6 extends JFrame {
 //            new VIPSeatPay().setVisible(true);
         }
     }
-    private static HashMap<String, Seat> map=new HashMap<>();
-    private static HashMap<String, Seat> mapNew = new HashMap<>();
-
-    public static HashMap<String, Seat> getMapNew() {
-        return mapNew;
+    public void another() throws DataNotFound {
+        //TODO 从order里面得到seat class
+//        String bookingNo = EnterBN_3.getPsnTemp().getBookNumber();
+        String bookingNo=EnterBN_3.bookNum;
+        Order o = oDB.getOrderByBookingNumber(bookingNo);
+        int i = o.getSeatClass();
+        String str = "";
+        switch (i) {
+            case 0:
+                str = "1 to 2";
+                break;
+            case 1:
+                str = "11 to 17";
+                break;
+            case 2:
+                str = "18 to 30";
+                break;
+        }
+        infoText.setText("You can choose the seats form " + str);
     }
-    public static void setMapNew(HashMap<String, Seat> mapNew1){
-        mapNew=mapNew1;
-    }
-    public static HashMap<String, Seat> getMap() {
-        return map;
-    }
-    public static void setMap(HashMap<String, Seat> map1){
-        map=map1;
-    }
-
 
     public void showSeats() throws Exception {
-//        HashMap<String, Seat> map=new HashMap<>();
-//        HashMap<String, Seat> mapNew = new HashMap<>();
+        another();
+        HashMap<String, Seat> map=new HashMap<>();
 //        if(EnterBN_3.getPsnTemp()==null){
 //            try{
 //                //TODO other's seating list
@@ -131,45 +100,34 @@ public class Seat_1_6 extends JFrame {
 //            }
 //        }
 //        else
-//        if(EnterOther_3.getPsnTemp1()==null) {
+        if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                this.map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-                this.map.forEach((k,v)->{
-                    if (!this.mapNew.containsValue(v)){
-                        this.mapNew.put(k,v);
-                    }
-                });
-                System.out.println(mapNew);
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-//        }else{
-//            try{
-//                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-//                map.forEach((k,v)->{
-//                    if (!mapNew.containsValue(v)){
-//                        mapNew.put(k,v);
-//                    }
-//                });
-//            } catch (Exception e1) {
-//                e1.printStackTrace();
-//            }
-//        }
-//        judge();
-    }
+        }else{
+            try{
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
 
-    public void judge(){
-        if(!this.mapNew.isEmpty()) {
-            for (Map.Entry<String, Seat> entry : this.mapNew.entrySet()) {
-//                EnterBN_3.getFlight().getSeatingList();
-//                EnterBN_3.getFlight().getSeatingList().values();
-
-                Collection<Seat> values=this.mapNew.values();
+        if(!map.isEmpty()) {
+            for (Map.Entry<String, Seat> entry : map.entrySet()) {
+                EnterBN_3.getFlight().getSeatingList();
+                EnterBN_3.getFlight().getSeatingList().values();
+//                Collection<Seat> values=map.values();
+//                Iterator<Seat> iterator2=values.iterator()
+                HashMap<String, Seat> mapnew = new HashMap<String,Seat>();
+                map.forEach((k,v)->{     //k表示key值，v表示value值
+                    if (!mapnew.containsValue(v)){
+                        mapnew.put(k,v);
+                    }
+                });
+                Collection<Seat> values=mapnew.values();
                 Iterator<Seat> iterator2=values.iterator();
-//                while(iterator2.hasNext()){
-//                    int i = iterator2.next().getSeatClass();
-//                    System.out.println(i);
-//                }
                 int i = iterator2.next().getSeatClass();
                 while (iterator2.hasNext()){
                     switch (i) {
@@ -183,10 +141,12 @@ public class Seat_1_6 extends JFrame {
                             ecoS.addItem(entry.getKey());
                             break;
                     }
+//                    System.out.print(iterator2.next()+", ");
                 }
             }
         }
     }
+
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -199,13 +159,13 @@ public class Seat_1_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void button3(ActionEvent e) throws Exception {
-        showSeats();
-    }
-
     private void error(ActionEvent e) {
         dispose();
         new Error().setVisible(true);
+    }
+
+    private void button3(ActionEvent e) throws Exception {
+        showSeats();
     }
 
     private void initComponents() throws Exception {
@@ -248,12 +208,11 @@ public class Seat_1_6 extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel3.setBorder ( new CompoundBorder ( new TitledBorder ( new EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , TitledBorder. CENTER , TitledBorder . BOTTOM, new
+                    Font ( "Dia\u006cog", Font. BOLD ,12 ) , Color .red
+            ) ,panel3. getBorder () ) ); panel3. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -375,7 +334,6 @@ public class Seat_1_6 extends JFrame {
             }
             dialogPane2.add(panel10);
         }
-        JbListener();
         contentPane.add(dialogPane2, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());

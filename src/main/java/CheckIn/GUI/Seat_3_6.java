@@ -4,6 +4,8 @@
 
 package CheckIn.GUI;
 
+import Beans.Flight.SubClasses.Seat;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -20,35 +22,125 @@ public class Seat_3_6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
-        seat= Objects.requireNonNull(VipWin.getSelectedItem()).toString();
         dispose();
         new PrintFlight_6().setVisible(true);
     }
 
     private void Back2Confirm(ActionEvent e) {
         dispose();
-        new SeatFirst_5().setVisible(true);
+        new ConfirmPage_3().setVisible(true);
+    }
+
+    private void error(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void button3(ActionEvent e) throws Exception {
+        showSeats();
+    }
+
+    private void firClass(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+//            seat=vip.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
+        }
+    }
+
+    private void busSeat(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+//            seat=busS.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
+        }
+    }
+
+    private void ecoSeat(ItemEvent e) {
+        int stateChange = e.getStateChange();
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+//            seat=ecoS.getSelectedItem().toString();
+//            new VIPSeatPay().setVisible(true);
+        }
+    }
+    public void showSeats() throws Exception {
+        HashMap<String, Seat> map=new HashMap<>();
+//        if(EnterBN_3.getPsnTemp()==null){
+//            try{
+//                //TODO other's seating list
+////                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
+////                bpOther.setSeatNo(seat);
+////                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
+//            } catch (Exception e1) {
+//                e1.printStackTrace();
+//            }
+//        }
+//        else
+        if(EnterOther_3.getPsnTemp1()==null) {
+            try {
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else{
+            try{
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        if(!map.isEmpty()) {
+            for (Map.Entry<String, Seat> entry : map.entrySet()) {
+                EnterBN_3.getFlight().getSeatingList();
+                EnterBN_3.getFlight().getSeatingList().values();
+                Collection<Seat> values=map.values();
+                Iterator<Seat> iterator2=values.iterator();
+
+                int i = iterator2.next().getSeatClass();
+                while (iterator2.hasNext()){
+                    switch (i) {
+                        case 0:
+//                            vip.addItem(entry.getKey());
+                            break;
+                        case 1:
+//                            busS.addItem(entry.getKey());
+                            break;
+                        case 2:
+//                            ecoS.addItem(entry.getKey());
+                            break;
+                    }
+
+                    System.out.print(iterator2.next()+", ");
+                }
+            }
+        }
+    }
+    public void init() {
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
+        this.setTitle("Passenger check-in system");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     private void VipWinItemStateChanged(ItemEvent e) {
-        int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.SELECTED){
-            dispose();
-            new VIPSeatPay().setVisible(true);
-        }
+        // TODO add your code here
     }
 
     private void VipOutItemStateChanged(ItemEvent e) {
-        int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.SELECTED){
-            dispose();
-            new VIPSeatPay().setVisible(true);
-        }
+        // TODO add your code here
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         label1 = new JLabel();
         panel3 = new JPanel();
@@ -92,12 +184,11 @@ public class Seat_3_6 extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -225,10 +316,11 @@ public class Seat_3_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        init();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JLabel label1;
     private JPanel panel3;
     private JButton button2;

@@ -27,9 +27,17 @@ public class ConfirmPage_3 extends JFrame {
         new Error().setVisible(true);
     }
 
-    private void confirm1B(ActionEvent e) {
+    private void confirm1B(ActionEvent e) throws Exception {
+        JOptionPane.showMessageDialog(null, "Be sure for your information and select seat now.","Go for selecting seat.", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new SeatFirst_5().setVisible(true);
+        new Seat_1_6().setVisible(true);
+//        SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                new Seat_1_6().setVisible(true);
+////                new MySwing().Demo();
+//            }
+//        });
+//        new seattemp().setVisible(true);
     }
 
     private void Back2Init(ActionEvent e) {
@@ -167,7 +175,13 @@ public class ConfirmPage_3 extends JFrame {
 
                     //---- button3 ----
                     button3.setText(bundle.getString("button3.text_3"));
-                    button3.addActionListener(e -> confirm1B(e));
+                    button3.addActionListener(e -> {
+                        try {
+                            confirm1B(e);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    });
                     panel2.add(button3);
 
                     //---- button2 ----
