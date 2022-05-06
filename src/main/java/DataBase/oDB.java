@@ -1,10 +1,14 @@
 package DataBase;
 
 import Beans.Order.Order;
+import Beans.Passenger.Passenger;
 import Config.Config;
 import Exceptions.DataNotFound;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class oDB {
 
@@ -30,5 +34,15 @@ public class oDB {
         } catch (DataNotFound dataNotFound) {
             throw new DataNotFound(bookNumber + " Order Not Found");
         }
+    }
+
+    public static ArrayList<Order> getOrdersByFlightNo(String flightNo) throws DataNotFound{
+        DataBase dataBase = new DataBase(Config.OrderFile);
+        return dataBase.getObjects("flightNo", flightNo, Order.class);
+    }
+
+    public static ArrayList<Order> getOrdersByPassengerId(String passengerId) throws DataNotFound{
+        DataBase dataBase = new DataBase(Config.OrderFile);
+        return dataBase.getObjects("passengerId", passengerId, Order.class);
     }
 }

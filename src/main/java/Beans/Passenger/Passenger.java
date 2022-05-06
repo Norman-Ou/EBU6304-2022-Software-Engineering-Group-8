@@ -32,6 +32,17 @@ public class Passenger {
      */
     private String surName;
     /**
+     * Check-in status of the passenger.<br/><br/>
+     *
+     * Status No: <br/>
+     * <b>-1</b> means <b>Not check-in yet</b><br/>
+     * <b>0</b> means <b>Check-in complete but not onboard</b><br/>
+     * <b>1</b> means <b>Check-in and onboard</b><br/><br/>
+     *
+     * Default Value: -1
+     */
+    private int checkInStatus = -1;
+    /**
      * Boarding pass object of this passenger.<br/><br/>
      * Default Value: null
      */
