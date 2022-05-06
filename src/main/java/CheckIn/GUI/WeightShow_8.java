@@ -35,18 +35,14 @@ public class WeightShow_8 extends JFrame {
     public void showWeight(){
         if(EnterBN_3.getPsnTemp()==null){
             try{
-
-//                weightNum.setText(EnterOther.getPsnTemp1().getBaggage().getBaggageNo());
+                // weightNum.setText(String.valueOf(getPsnTemp1().getBaggage().getBaggageWeight()));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
-                String str=weightPsn+"";
-                weightNum.setText(str);
-//                weightNum.setText(EnterOther.getPsnTemp1().getBaggage().getBaggageNo());
+                weightNum.setText(String.valueOf(EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()));
                 //TODO baggage is null
             } catch (Exception e1) {
                 e1.printStackTrace();

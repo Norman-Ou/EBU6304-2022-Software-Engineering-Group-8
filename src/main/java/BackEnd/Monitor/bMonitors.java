@@ -72,16 +72,29 @@ public class bMonitors {
 
     // 获取某航班上还未登机乘客名单
     public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
-    	HashMap<String, Seat> seatingList = this.getFlightList(targetFlightNo).getSeatingList();
+    	// HashMap<String, Seat> seatingList = this.getFlightList(targetFlightNo).getSeatingList();
         List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
-        for (String key : seatingList.keySet()) {
-        	Seat seat = seatingList.get(key);
-        	if(seat.getCheckinStatus()==-1){
-                // 找到了没登机的乘客的座位
-                unboardedPassengerList.add(seat.getPassenger());
-            }
-        }
+        // for (String key : seatingList.keySet()) {
+        // 	Seat seat = seatingList.get(key);
+        // 	if(seat.getCheckinStatus()==-1){
+        //         // 找到了没登机的乘客的座位
+        //         unboardedPassengerList.add(seat.getPassenger());
+        //     }
+        // }
+        
         return unboardedPassengerList;
+
+    }
+
+    public List<String> printUnboardedPassengerList(List<Passenger> PList){
+        List<String> infoList = new ArrayList<String>();
+    	for(int i = 0; i<PList.size(); i++){
+            Passenger psg = PList.get(i);
+            String info = psg.getPassengerId() + psg.getSurName();
+            System.out.println("method");
+            infoList.add(info);
+        }
+        return infoList;
     }
 
     // 紧急提醒
@@ -124,10 +137,9 @@ public class bMonitors {
 			long hour = (between / (60 * 60 * 1000) - day * 24);
 			long min = ((between / (60 * 1000)) - day * 24 * 60 - hour * 60);
 			long s = (between / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
-			System.out.println(day + "天" + hour + "小时" + min + "分" + s + "秒");
+			// System.out.println(day + "天" + hour + "小时" + min + "分" + s + "秒");
             return day + "天" + hour + "小时" + min + "分" + s + "秒";
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return null;
