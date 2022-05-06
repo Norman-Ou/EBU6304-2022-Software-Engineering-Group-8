@@ -9,6 +9,7 @@ import Beans.Flight.SubClasses.Seat;
 import Beans.Order.Order;
 import Beans.Passenger.SubClasses.BoardingPass;
 import CheckIn.Monitor.cMonitors;
+import DataBase.oDB;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -26,6 +27,27 @@ public class Seat_1_6 extends JFrame {
     private static HashMap<String, Seat> mapNew = new HashMap<>();
     public Seat_1_6() throws Exception {
         initComponents();
+    }
+    public void checkClass(){
+        Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
+        if(EnterOther_3.getPsnTemp1()==null) {
+            try {
+                String str=EnterBN_3.getPsnTemp().getBookNumber();
+                Order order = oDB.getOrderByBookingNumber(str);
+                int intTemp=order.getSeatClass();
+                if(intTemp==0){
+                    infoText.setText("You can choose form 18 to 30");
+                }else if(intTemp==1){
+                    infoText.setText("You can choose form 11 to 17");
+                }else if(intTemp==2){
+                    infoText.setText("You can choose form 1 to 10");
+                }
+                showSeats();
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     private void PrintFlight(ActionEvent e) {
@@ -77,23 +99,18 @@ public class Seat_1_6 extends JFrame {
 //        }
 //        else
         if(EnterOther_3.getPsnTemp1()==null) {
-//            try {
-//                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-//            } catch (Exception e1) {
-//                e1.printStackTrace();
-//            }
-//        }
-        try {
-            map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
-            map.forEach((k,v)->{
-                if (!this.mapNew.containsValue(v)){
-                    this.mapNew.put(k,v);
-                }
-            });
-            System.out.println(mapNew);
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }}
+            try {
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+                map.forEach((k,v)->{
+                    if (!this.mapNew.containsValue(v)){
+                        this.mapNew.put(k,v);
+                    }
+                });
+                System.out.println(mapNew);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
 
         Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
         while(iter.hasNext()){
@@ -103,7 +120,6 @@ public class Seat_1_6 extends JFrame {
             switch (temp) {
                 case 0:
                     ecoS.addItem(entry.getKey());
-
                     break;
                 case 1:
                     vip.addItem(entry.getKey());
@@ -134,7 +150,8 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void button3(ActionEvent e) throws Exception {
-        showSeats();
+//        showSeats();
+        checkClass();
     }
 
     private void initComponents() throws Exception {
