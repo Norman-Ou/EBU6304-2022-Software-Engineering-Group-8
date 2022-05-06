@@ -38,47 +38,11 @@ public class oDB {
 
     public static ArrayList<Order> getOrdersByFlightNo(String flightNo) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
-        ArrayList<Order> arrayList = new ArrayList<>();
-
-        try {
-            JSONArray array = dataBase.getAllObject();
-            for (int i = 0; i < (array.size()); i++) {
-                JSONObject ob = (JSONObject) array.get(i);
-                if (ob.get("flightNo").equals(flightNo)) {
-                    arrayList.add(ob.toJavaObject(Order.class));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (arrayList.isEmpty()){
-            throw new DataNotFound("DataNotFound");
-        } else {
-            return arrayList;
-        }
+        return dataBase.getObjects("flightNo", flightNo, Order.class);
     }
 
     public static ArrayList<Order> getOrdersByPassengerId(String passengerId) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
-        ArrayList<Order> arrayList = new ArrayList<>();
-
-        try {
-            JSONArray array = dataBase.getAllObject();
-            for (int i = 0; i < (array.size()); i++) {
-                JSONObject ob = (JSONObject) array.get(i);
-                if (ob.get("passengerId").equals(passengerId)) {
-                    arrayList.add(ob.toJavaObject(Order.class));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (arrayList.isEmpty()){
-            throw new DataNotFound("DataNotFound");
-        } else {
-            return arrayList;
-        }
+        return dataBase.getObjects("passengerId", passengerId, Order.class);
     }
 }

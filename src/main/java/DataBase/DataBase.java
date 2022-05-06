@@ -1,5 +1,6 @@
 package DataBase;
 
+import Beans.Order.Order;
 import Exceptions.DataNotFound;
 import Tools.JSONComparator;
 import com.alibaba.fastjson.JSON;
@@ -7,6 +8,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -207,14 +209,21 @@ public class DataBase {
 
     protected <T, K> ArrayList<T> getObjects(String key, K value, Class<T> tClass) throws DataNotFound{
         ArrayList<T> arrayList = new ArrayList<>();
-        try {
-            JSONArray array = readFile();
 
+        try {
+            JSONArray array = getAllObject();
+            for (int i = 0; i < (array.size()); i++) {
+                JSONObject ob = (JSONObject) array.get(i);
+                if (ob.get(key).equals(value)) {
+                    arrayList.add(ob.toJavaObject(tClass));
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         if (arrayList.isEmpty()){
-            throw new DataNotFound("Query Data base with Key:" + key + " Value:"+ value + "--DataNotFound");
+            throw new DataNotFound("Query with Key:" + key + " Value:" + value + " failed. Data Not Found in Data Base");
         } else {
             return arrayList;
         }
