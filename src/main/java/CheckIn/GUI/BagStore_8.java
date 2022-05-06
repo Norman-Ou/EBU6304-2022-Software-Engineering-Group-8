@@ -131,8 +131,8 @@ public class BagStore_8 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         init();
-        String court = ""+(int)(Math.random()*100);
-        textArea1.setText(court);
+        court = (int)(Math.random()*100);
+        textArea1.setText(court+"");
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
