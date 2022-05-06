@@ -1,9 +1,12 @@
 package CheckIn.Monitor;
 
 import Beans.Flight.SubClasses.ExtraOption;
+import Beans.Flight.SubClasses.Seat;
 import Beans.Passenger.SubClasses.BoardingPass;
 import Beans.Passenger.Passenger;
 import Beans.Flight.Flight;
+import CheckIn.GUI.EnterBN_3;
+import CheckIn.GUI.Seat_1_6;
 import DataBase.fDB;
 import DataBase.pDB;
 import Exceptions.DataNotFound;
@@ -13,8 +16,7 @@ import Beans.Order.Order;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Passenger Control Class

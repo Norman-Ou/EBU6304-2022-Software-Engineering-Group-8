@@ -27,7 +27,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button1"
 					"text": new FormMessage( null, "button1.text_24" )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Return", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button4"

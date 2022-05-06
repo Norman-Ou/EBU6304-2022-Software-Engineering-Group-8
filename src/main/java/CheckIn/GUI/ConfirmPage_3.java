@@ -28,18 +28,19 @@ public class ConfirmPage_3 extends JFrame {
     }
 
     private void confirm1B(ActionEvent e) throws Exception {
-        JOptionPane.showMessageDialog(null, "Be sure for your information and select seat now.","Go for selecting seat.", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new Seat_1_6().setVisible(true);
-//        SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new Seat_1_6().setVisible(true);
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-//            }
-//        });
+
+        int temp=JOptionPane.showInternalConfirmDialog(null,
+                "Ready for choosing seat?", "Double check",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (temp == JOptionPane.NO_OPTION) {
+            return;
+        }if(temp == JOptionPane.YES_OPTION){
+            dispose();
+            new Seat_1_6().setVisible(true);
+        }if(temp == JOptionPane.CANCEL_OPTION){
+            dispose();
+            new Error().setVisible(true);
+        }
     }
 
     private void Back2Init(ActionEvent e) {

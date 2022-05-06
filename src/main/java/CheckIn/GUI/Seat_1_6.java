@@ -58,11 +58,6 @@ public class Seat_1_6 extends JFrame {
         new PrintFlight_6().setVisible(true);
     }
 
-    private void Back2Confirm(ActionEvent e) {
-        dispose();
-        new SeatFirst_5().setVisible(true);
-    }
-
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
 //        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
@@ -158,6 +153,11 @@ public class Seat_1_6 extends JFrame {
         checkClass();
     }
 
+    private void Return(ActionEvent e) {
+        dispose();
+        new ConfirmPage_3().setVisible(true);
+    }
+
     private void initComponents() throws Exception {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
@@ -198,14 +198,13 @@ public class Seat_1_6 extends JFrame {
         //======== panel3 ========
         {
             panel3.setOpaque(false);
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel3.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,panel3. getBorder () ) ); panel3. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             panel3.setLayout(new FlowLayout());
 
             //---- button2 ----
@@ -215,7 +214,7 @@ public class Seat_1_6 extends JFrame {
 
             //---- button1 ----
             button1.setText(bundle.getString("button1.text_24"));
-            button1.addActionListener(e -> Back2Confirm(e));
+            button1.addActionListener(e -> Return(e));
             panel3.add(button1);
 
             //---- button4 ----
