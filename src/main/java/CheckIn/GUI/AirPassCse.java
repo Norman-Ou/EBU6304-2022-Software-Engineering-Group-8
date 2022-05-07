@@ -25,28 +25,36 @@ import javax.swing.border.*;
  */
 public class AirPassCse extends JFrame {
     public static Flight flightChoose;
+    public static boolean state;
+    public static String flightNo = "";
+    public static String Dep= "";
+    public static String Des= "";
+    public static String ETA= "";
     public AirPassCse() {
         initComponents();
     }
 
     public void airlineAdd(){
-        String flightNo = "";
-        String Dep= "";
-        String Des= "";
-        String ETA= "";
         try{
             ArrayList<Flight> list=EnterOther_3.getFlight();
-            for(Flight flt : list){          //同for(int i = 0;i<list.size();i++)
+            System.out.println(list);
+            for(Flight flt : list) {          //同for(int i = 0;i<list.size();i++)
                 flightNo=flt.getFlightNo();
                 Dep=flt.getDeparture();
                 Des=flt.getDestination();
                 ETA=flt.getETA();
-                table1.setValueAt(flightNo,2,1);
-                table1.setValueAt(Dep,5,1);
-                table1.setValueAt(Des,8,1);
-                table1.setValueAt(ETA,11,1);
+//                table1.setValueAt(flightNo,2,1);
+//                table1.setValueAt(Dep,5,1);
+//                table1.setValueAt(Des,8,1);
+//                table1.setValueAt(ETA,11,1);
                 airLine.addItem(flightNo);
-                System.out.println(flightNo);
+//                System.out.println(flightNo);
+                if (state) {
+                    table1.setValueAt(flightNo, 2, 1);
+                    table1.setValueAt(Dep, 5, 1);
+                    table1.setValueAt(Des, 8, 1);
+                    table1.setValueAt(ETA, 11, 1);
+                }
             }
 
         } catch (Exception e1) {
@@ -82,12 +90,27 @@ public class AirPassCse extends JFrame {
     }
 
     private void airLineItemStateChanged(ItemEvent e) {
-//        e.getItem();
-//        airLine.getSelectedItem();
-        flightChoose=fDB.loadFlightByFlightNo(airLine.getSelectedItem().toString());
-//        if(e.getItem().equals(airLine.getSelectedItem())){
-//            airlineAdd();
-//        }
+        ArrayList<Flight> list=EnterOther_3.getFlight();
+        System.out.println(list);
+        for(Flight flt : list) {
+            flightNo=flt.getFlightNo();
+//            airLine.addItem(flightNo);
+            System.out.println(flightNo);
+
+            if(e.getStateChange()==ItemEvent.SELECTED){
+                state=true;
+                flightChoose=fDB.loadFlightByFlightNo(airLine.getSelectedItem().toString());
+                if (flightChoose.equals(flightNo)) {
+                    airlineAdd();
+                }
+                if (state) {
+                    table1.setValueAt(flightNo, 2, 1);
+                    table1.setValueAt(Dep, 5, 1);
+                    table1.setValueAt(Des, 8, 1);
+                    table1.setValueAt(ETA, 11, 1);
+                }
+            }
+        }
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

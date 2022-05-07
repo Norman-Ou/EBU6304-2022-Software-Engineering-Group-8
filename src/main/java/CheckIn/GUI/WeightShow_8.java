@@ -35,9 +35,10 @@ public class WeightShow_8 extends JFrame {
         new Baggage_7().setVisible(true);
     }
     public void showWeight(){
+        String str = "Your baggage weighs:";
         if(EnterBN_3.getPsnTemp()==null){
             try {
-                weightNum.setText(String.valueOf(EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()));
+                weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight());
                 weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -45,7 +46,7 @@ public class WeightShow_8 extends JFrame {
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                weightNum.setText(String.valueOf(EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()));
+                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight());
                 weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -75,7 +76,7 @@ public class WeightShow_8 extends JFrame {
         dialogPane2 = new JPanel();
         contentPanel2 = new JPanel();
         button1 = new JButton();
-        weightNum = new JTextArea();
+        weiText = new JTextField();
         panel2 = new JPanel();
         label1 = new JLabel();
         button4 = new JButton();
@@ -91,12 +92,13 @@ public class WeightShow_8 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
+            .Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -110,9 +112,10 @@ public class WeightShow_8 extends JFrame {
                 button1.addActionListener(e -> weighBtn(e));
                 contentPanel2.add(button1);
 
-                //---- weightNum ----
-                weightNum.setEditable(false);
-                contentPanel2.add(weightNum);
+                //---- weiText ----
+                weiText.setHorizontalAlignment(SwingConstants.CENTER);
+                weiText.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 26));
+                contentPanel2.add(weiText);
             }
             dialogPane2.add(contentPanel2, BorderLayout.CENTER);
 
@@ -163,7 +166,7 @@ public class WeightShow_8 extends JFrame {
     private JPanel dialogPane2;
     private JPanel contentPanel2;
     private JButton button1;
-    private JTextArea weightNum;
+    private JTextField weiText;
     private JPanel panel2;
     private JLabel label1;
     private JButton button4;

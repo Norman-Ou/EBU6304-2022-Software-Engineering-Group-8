@@ -11,19 +11,19 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "panel2"
 				"opaque": false
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label3"
-					"text": new FormMessage( null, "label3.text_9" )
-					"horizontalAlignment": 0
-					"font": new java.awt.Font( "Lucida Grande", 1, 26 )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "Center"
-				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button1"
 					"text": new FormMessage( null, "button1.text_31" )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "East"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button6"
+					"text": new FormMessage( null, "button6.text" )
+					"font": new java.awt.Font( ".AppleSystemUIFont", 1, 26 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
@@ -64,13 +64,6 @@ new FormModel {
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panel1"
-						add( new FormComponent( "javax.swing.JButton" ) {
-							name: "button6"
-							"text": new FormMessage( null, "button6.text" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
-						}, new FormLayoutConstraints( class java.lang.String ) {
-							"value": "Center"
-						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "West"
 					} )

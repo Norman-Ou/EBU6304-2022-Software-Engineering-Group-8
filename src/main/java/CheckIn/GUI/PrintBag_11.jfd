@@ -16,75 +16,101 @@ new FormModel {
 					name: "contentPanel"
 					"opaque": false
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-						"$columnSpecs": "0, 179, 0:1.0, 0, 0"
-						"$rowSpecs": "36, 24:1.0, 0, 0, 0, 0, 0"
+						"$columnSpecs": "0, 265, 0:1.0, 0, 0"
+						"$rowSpecs": "center:110:1.0, 62, 64, 70"
 						"$alignTop": true
 						"$alignLeft": true
 					} ) {
 						name: "panel1"
-						"opaque": false
+						"foreground": &Color0 new java.awt.Color( 0, 0, 0, 255 )
+						"background": sfield java.awt.Color white
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label1"
 							"text": new FormMessage( null, "label1.text_19" )
 							"horizontalAlignment": 0
-							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 16 )
+							"font": &Font0 new java.awt.Font( ".AppleSystemUIFont", 1, 24 )
 							"opaque": true
+							"foreground": sfield java.awt.Color black
+							"background": new java.awt.Color( 255, 255, 255, 255 )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 1
-							"gridy": 1
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label3"
 							"text": new FormMessage( null, "label3.text_4" )
 							"horizontalAlignment": 0
 							"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 18 )
+							"font": #Font0
 							"opaque": true
+							"preferredSize": new java.awt.Dimension( 156, 20 )
+							"foreground": sfield java.awt.Color black
+							"background": new java.awt.Color( 255, 255, 255, 255 )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 2
-							"gridy": 1
+							"vAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label2"
 							"text": new FormMessage( null, "label2.text_10" )
 							"border": &EmptyBorder0 new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+							"foreground": #Color0
+							"background": sfield java.awt.Color white
+							"font": &Font1 new java.awt.Font( ".AppleSystemUIFont", 0, 15 )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 2
+							"gridy": 1
 							"gridx": 1
+							"vAlign": 0
+							"hAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "Weight"
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 2
+							"gridy": 1
 							"gridx": 2
+							"hAlign": 5
+							"vAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label10"
 							"text": new FormMessage( null, "label10.text_3" )
 							"border": #EmptyBorder0
+							"foreground": #Color0
+							"background": sfield java.awt.Color white
+							"font": #Font1
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 3
+							"gridy": 2
 							"gridx": 1
+							"vAlign": 0
+							"hAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "BagNum"
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 3
+							"gridy": 2
 							"gridx": 2
+							"hAlign": 5
+							"vAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label4"
 							"text": new FormMessage( null, "label4.text_3" )
 							"border": #EmptyBorder0
+							"foreground": #Color0
+							"background": sfield java.awt.Color white
+							"font": #Font1
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 4
+							"gridy": 3
 							"gridx": 1
+							"vAlign": 0
+							"hAlign": 0
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "CounterNo"
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-							"gridy": 4
+							"gridy": 3
 							"gridx": 2
+							"hAlign": 5
+							"vAlign": 0
 						} )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
@@ -99,7 +125,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button3"
 							"text": new FormMessage( null, "button3.text_5" )
-							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 30 )
+							"font": new java.awt.Font( ".AppleSystemUIFont", 1, 26 )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showBagTag", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"

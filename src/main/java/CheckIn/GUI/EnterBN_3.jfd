@@ -38,28 +38,37 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel1"
 					"opaque": false
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
-						"text": new FormMessage( null, "label1.text_30" )
-						"font": new java.awt.Font( ".AppleSystemUIFont", 3, 25 )
-						"horizontalAlignment": 0
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "Center"
-					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button2"
 						"text": new FormMessage( null, "button2.text_21" )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "East"
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": new FormMessage( null, "label1.text_30" )
+						"font": new java.awt.Font( ".AppleSystemUIFont", 3, 25 )
+						"horizontalAlignment": 0
+						"preferredSize": new java.awt.Dimension( 632, 90 )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
-				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-					name: "scrollPane1"
-					add( new FormComponent( "javax.swing.JTextArea" ) {
-						name: "textArea1"
-						"autoscrolls": false
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "insets 0,hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[grow,center]"
+				} ) {
+					name: "panel2"
+					"opaque": false
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField1"
+						"preferredSize": new java.awt.Dimension( 49, 90 )
+						"horizontalAlignment": 0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"

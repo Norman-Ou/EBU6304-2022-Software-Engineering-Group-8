@@ -5,11 +5,6 @@ package CheckIn.GUI;/**
  * @create: 2022-05-07 20:53
  **/
 
-/**
- *
- * @author wangjiayi
- * @date 2022/5/78:53 下午
- */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,8 +67,8 @@ public class Demo extends JFrame {
                             JOptionPane.showMessageDialog(null, "Ready for next step?","Next step", JOptionPane.QUESTION_MESSAGE);
                             if(PrintFlight_6.stage.equals("BoardingPass")){
                                 new Baggage_7().setVisible(true);
-                            }
-                            if(PrintBag_11.stage0.equals("BagTag")){
+                                PrintFlight_6.stage="false";
+                            }else if(PrintBag_11.stage0.equals("BagTag")){
                                 new Meal_12().setVisible(true);
                             }
                         } catch (InterruptedException ie) {

@@ -14,6 +14,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import net.miginfocom.swing.*;
 
 /**
  * @author Jiayi Wang
@@ -30,7 +31,7 @@ public class EnterBN_3 extends JFrame {
         new ConfirmPage_3().setVisible(true);
         dispose();
 
-        String str=textArea1.getText();
+        String str=textField1.getText();
         this.bookNum=str;
 //        System.out.println(bookNum);
         Flight flt = cMonitors.getFlightByBookingNo(bookNum);
@@ -92,10 +93,10 @@ public class EnterBN_3 extends JFrame {
         button1 = new JButton();
         cancelButton2 = new JButton();
         panel1 = new JPanel();
-        label1 = new JLabel();
         button2 = new JButton();
-        scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();
+        label1 = new JLabel();
+        panel2 = new JPanel();
+        textField1 = new JTextField();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -106,10 +107,10 @@ public class EnterBN_3 extends JFrame {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
             dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
             red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -141,26 +142,35 @@ public class EnterBN_3 extends JFrame {
                 panel1.setOpaque(false);
                 panel1.setLayout(new BorderLayout());
 
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_21"));
+                panel1.add(button2, BorderLayout.EAST);
+
                 //---- label1 ----
                 label1.setText(bundle.getString("label1.text_30"));
                 label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
                 label1.setHorizontalAlignment(SwingConstants.CENTER);
+                label1.setPreferredSize(new Dimension(632, 90));
                 panel1.add(label1, BorderLayout.CENTER);
-
-                //---- button2 ----
-                button2.setText(bundle.getString("button2.text_21"));
-                panel1.add(button2, BorderLayout.EAST);
             }
             dialogPane2.add(panel1, BorderLayout.NORTH);
 
-            //======== scrollPane1 ========
+            //======== panel2 ========
             {
+                panel2.setOpaque(false);
+                panel2.setLayout(new MigLayout(
+                    "insets 0,hidemode 3",
+                    // columns
+                    "[grow,fill]",
+                    // rows
+                    "[grow,center]"));
 
-                //---- textArea1 ----
-                textArea1.setAutoscrolls(false);
-                scrollPane1.setViewportView(textArea1);
+                //---- textField1 ----
+                textField1.setPreferredSize(new Dimension(49, 90));
+                textField1.setHorizontalAlignment(SwingConstants.CENTER);
+                panel2.add(textField1, "cell 0 0");
             }
-            dialogPane2.add(scrollPane1, BorderLayout.CENTER);
+            dialogPane2.add(panel2, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane2, BorderLayout.CENTER);
         setSize(900, 550);
@@ -177,10 +187,10 @@ public class EnterBN_3 extends JFrame {
     private JButton button1;
     private JButton cancelButton2;
     private JPanel panel1;
-    private JLabel label1;
     private JButton button2;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
+    private JLabel label1;
+    private JPanel panel2;
+    private JTextField textField1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }

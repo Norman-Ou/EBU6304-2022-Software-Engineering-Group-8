@@ -163,11 +163,13 @@ public class PrintBag_11 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -177,60 +179,75 @@ public class PrintBag_11 extends JFrame {
 
                 //======== panel1 ========
                 {
-                    panel1.setOpaque(false);
+                    panel1.setForeground(Color.black);
+                    panel1.setBackground(Color.white);
                     panel1.setLayout(new GridBagLayout());
-                    ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 179, 0, 0, 0, 0};
-                    ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {36, 24, 0, 0, 0, 0, 0, 0};
+                    ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 265, 0, 0, 0, 0};
+                    ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {110, 62, 64, 70, 0};
                     ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0, 0.0, 0.0, 1.0E-4};
-                    ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                    ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 0.0, 0.0, 0.0, 1.0E-4};
 
                     //---- label1 ----
                     label1.setText(bundle.getString("label1.text_19"));
                     label1.setHorizontalAlignment(SwingConstants.CENTER);
-                    label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 16));
+                    label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
                     label1.setOpaque(true);
-                    panel1.add(label1, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    label1.setForeground(Color.black);
+                    label1.setBackground(Color.white);
+                    panel1.add(label1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label3 ----
                     label3.setText(bundle.getString("label3.text_4"));
                     label3.setHorizontalAlignment(SwingConstants.CENTER);
                     label3.setIcon(null);
-                    label3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 18));
+                    label3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
                     label3.setOpaque(true);
-                    panel1.add(label3, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    label3.setPreferredSize(new Dimension(156, 20));
+                    label3.setForeground(Color.black);
+                    label3.setBackground(Color.white);
+                    panel1.add(label3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label2 ----
                     label2.setText(bundle.getString("label2.text_10"));
                     label2.setBorder(new EmptyBorder(5, 5, 5, 5));
-                    panel1.add(label2, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    label2.setForeground(Color.black);
+                    label2.setBackground(Color.white);
+                    label2.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
+                    panel1.add(label2, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
                         new Insets(0, 0, 0, 0), 0, 0));
-                    panel1.add(Weight, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    panel1.add(Weight, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label10 ----
                     label10.setText(bundle.getString("label10.text_3"));
                     label10.setBorder(new EmptyBorder(5, 5, 5, 5));
-                    panel1.add(label10, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    label10.setForeground(Color.black);
+                    label10.setBackground(Color.white);
+                    label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
+                    panel1.add(label10, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
                         new Insets(0, 0, 0, 0), 0, 0));
-                    panel1.add(BagNum, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    panel1.add(BagNum, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label4 ----
                     label4.setText(bundle.getString("label4.text_3"));
                     label4.setBorder(new EmptyBorder(5, 5, 5, 5));
-                    panel1.add(label4, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    label4.setForeground(Color.black);
+                    label4.setBackground(Color.white);
+                    label4.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
+                    panel1.add(label4, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
                         new Insets(0, 0, 0, 0), 0, 0));
-                    panel1.add(CounterNo, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    panel1.add(CounterNo, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
                 }
                 contentPanel.add(panel1);
@@ -249,7 +266,7 @@ public class PrintBag_11 extends JFrame {
 
                     //---- button3 ----
                     button3.setText(bundle.getString("button3.text_5"));
-                    button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 30));
+                    button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
                     button3.addActionListener(e -> showBagTag(e));
                     panel4.add(button3, BorderLayout.CENTER);
 

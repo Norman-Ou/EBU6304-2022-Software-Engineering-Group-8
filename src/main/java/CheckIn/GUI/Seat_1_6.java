@@ -178,8 +178,8 @@ public class Seat_1_6 extends JFrame {
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         panel1 = new JPanel();
-        label1 = new JLabel();
         button5 = new JButton();
+        button3 = new JButton();
         panel3 = new JPanel();
         button2 = new JButton();
         button1 = new JButton();
@@ -189,7 +189,6 @@ public class Seat_1_6 extends JFrame {
         scrollPane1 = new JScrollPane();
         label2 = new JLabel();
         infoText = new JTextField();
-        button3 = new JButton();
         panel10 = new JPanel();
         panel6 = new JPanel();
         panel2 = new JPanel();
@@ -209,23 +208,28 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax
-            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
-            12 ) ,java . awt. Color .red ) ,panel1. getBorder () ) ); panel1. addPropertyChangeListener( new java. beans
-            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e.
-            getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+            red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
-
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_23"));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 26));
-            panel1.add(label1, BorderLayout.CENTER);
 
             //---- button5 ----
             button5.setText(bundle.getString("button5.text_5"));
             panel1.add(button5, BorderLayout.EAST);
+
+            //---- button3 ----
+            button3.setText(bundle.getString("button3.text_12"));
+            button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
+            button3.addActionListener(e -> {
+                try {
+                    button3(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+            panel1.add(button3, BorderLayout.CENTER);
         }
         contentPane.add(panel1, BorderLayout.NORTH);
 
@@ -278,17 +282,6 @@ public class Seat_1_6 extends JFrame {
                 //---- infoText ----
                 infoText.setEditable(false);
                 panel4.add(infoText, BorderLayout.NORTH);
-
-                //---- button3 ----
-                button3.setText(bundle.getString("button3.text_12"));
-                button3.addActionListener(e -> {
-                    try {
-                        button3(e);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                panel4.add(button3, BorderLayout.WEST);
             }
             dialogPane2.add(panel4);
 
@@ -317,6 +310,7 @@ public class Seat_1_6 extends JFrame {
 
                     //======== panel5 ========
                     {
+                        panel5.setOpaque(false);
                         panel5.setLayout(new BoxLayout(panel5, BoxLayout.X_AXIS));
 
                         //---- vip ----
@@ -365,8 +359,8 @@ public class Seat_1_6 extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel panel1;
-    private JLabel label1;
     private JButton button5;
+    private JButton button3;
     private JPanel panel3;
     private JButton button2;
     private JButton button1;
@@ -376,7 +370,6 @@ public class Seat_1_6 extends JFrame {
     private JScrollPane scrollPane1;
     private JLabel label2;
     private JTextField infoText;
-    private JButton button3;
     private JPanel panel10;
     private JPanel panel6;
     private JPanel panel2;

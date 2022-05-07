@@ -11,19 +11,19 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "panel1"
 				"opaque": false
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": new FormMessage( null, "label1.text_23" )
-					"horizontalAlignment": 0
-					"font": new java.awt.Font( "Lucida Grande", 1, 26 )
-				}, new FormLayoutConstraints( class java.lang.String ) {
-					"value": "Center"
-				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button5"
 					"text": new FormMessage( null, "button5.text_5" )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "East"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": new FormMessage( null, "button3.text_12" )
+					"font": new java.awt.Font( ".AppleSystemUIFont", 1, 26 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
@@ -75,13 +75,6 @@ new FormModel {
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button3"
-						"text": new FormMessage( null, "button3.text_12" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3", true ) )
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "West"
-					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 					"axis": 1
@@ -105,6 +98,7 @@ new FormModel {
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 							name: "panel5"
+							"opaque": false
 							add( new FormComponent( "javax.swing.JComboBox" ) {
 								name: "vip"
 								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "firClass", true ) )
