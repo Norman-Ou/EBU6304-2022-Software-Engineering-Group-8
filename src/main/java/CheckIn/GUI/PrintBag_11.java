@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
  */
 public class PrintBag_11 extends JFrame {
     public static int bagNo;
+    public static String stage0;
     public PrintBag_11() {
         initComponents();
     }
@@ -26,7 +27,9 @@ public class PrintBag_11 extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             dispose();
-            new Meal_12().setVisible(true);
+            stage0="BagTag";
+            new Demo().setVisible(true);
+//            new Meal_12().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
         }
@@ -145,7 +148,9 @@ public class PrintBag_11 extends JFrame {
         label4 = new JLabel();
         CounterNo = new JTextField();
         panel2 = new JPanel();
+        panel4 = new JPanel();
         button3 = new JButton();
+        button4 = new JButton();
         panel3 = new JPanel();
         button2 = new JButton();
         button1 = new JButton();
@@ -158,13 +163,11 @@ public class PrintBag_11 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.red
-            ),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -239,18 +242,30 @@ public class PrintBag_11 extends JFrame {
                 panel2.setOpaque(false);
                 panel2.setLayout(new BorderLayout());
 
-                //---- button3 ----
-                button3.setText(bundle.getString("button3.text_5"));
-                button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 20));
-                button3.addActionListener(e -> showBagTag(e));
-                panel2.add(button3, BorderLayout.SOUTH);
+                //======== panel4 ========
+                {
+                    panel4.setOpaque(false);
+                    panel4.setLayout(new BorderLayout());
+
+                    //---- button3 ----
+                    button3.setText(bundle.getString("button3.text_5"));
+                    button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 30));
+                    button3.addActionListener(e -> showBagTag(e));
+                    panel4.add(button3, BorderLayout.CENTER);
+
+                    //---- button4 ----
+                    button4.setText(bundle.getString("button4.text_10"));
+                    panel4.add(button4, BorderLayout.EAST);
+                }
+                panel2.add(panel4, BorderLayout.NORTH);
             }
             dialogPane.add(panel2, BorderLayout.NORTH);
 
             //======== panel3 ========
             {
                 panel3.setOpaque(false);
-                panel3.setLayout(new FlowLayout());
+                panel3.setPreferredSize(new Dimension(171, 90));
+                panel3.setLayout(new GridLayout());
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_8"));
@@ -284,7 +299,9 @@ public class PrintBag_11 extends JFrame {
     private JLabel label4;
     private JTextField CounterNo;
     private JPanel panel2;
+    private JPanel panel4;
     private JButton button3;
+    private JButton button4;
     private JPanel panel3;
     private JButton button2;
     private JButton button1;

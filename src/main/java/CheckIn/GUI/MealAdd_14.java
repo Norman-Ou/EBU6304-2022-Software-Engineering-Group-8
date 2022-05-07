@@ -112,6 +112,7 @@ public class MealAdd_14 extends JFrame {
         label1 = new JLabel();
         panel3 = new JPanel();
         label2 = new JLabel();
+        button6 = new JButton();
         panel6 = new JPanel();
         button1 = new JButton();
         button2 = new JButton();
@@ -131,12 +132,13 @@ public class MealAdd_14 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER
-            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font
-            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er"
-            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border
+            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
+            ,java.awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder
+            ()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+            .beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
+            ();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -198,13 +200,18 @@ public class MealAdd_14 extends JFrame {
                     panel3.add(label2, BorderLayout.CENTER);
                 }
                 panel1.add(panel3, BorderLayout.SOUTH);
+
+                //---- button6 ----
+                button6.setText(bundle.getString("button6.text_2"));
+                panel1.add(button6, BorderLayout.EAST);
             }
             dialogPane.add(panel1, BorderLayout.NORTH);
 
             //======== panel6 ========
             {
                 panel6.setOpaque(false);
-                panel6.setLayout(new FlowLayout());
+                panel6.setPreferredSize(new Dimension(252, 90));
+                panel6.setLayout(new GridLayout());
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_9"));
@@ -278,6 +285,7 @@ public class MealAdd_14 extends JFrame {
     private JLabel label1;
     private JPanel panel3;
     private JLabel label2;
+    private JButton button6;
     private JPanel panel6;
     private JButton button1;
     private JButton button2;

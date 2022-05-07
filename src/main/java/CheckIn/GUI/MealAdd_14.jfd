@@ -76,12 +76,19 @@ new FormModel {
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "South"
 					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button6"
+						"text": new FormMessage( null, "button6.text_2" )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "East"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 					name: "panel6"
 					"opaque": false
+					"preferredSize": new java.awt.Dimension( 252, 90 )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button1"
 						"text": new FormMessage( null, "button1.text_9" )

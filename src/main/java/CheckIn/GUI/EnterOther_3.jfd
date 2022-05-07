@@ -12,10 +12,11 @@ new FormModel {
 				name: "dialogPane2"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				"opaque": false
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 					name: "buttonBar2"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
 					"opaque": false
+					"preferredSize": new java.awt.Dimension( 254, 90 )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton2"
 						"text": new FormMessage( null, "okButton2.text_3" )
@@ -34,11 +35,23 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": new FormMessage( null, "label1.text_29" )
-					"font": new java.awt.Font( ".AppleSystemUIFont", 3, 20 )
-					"horizontalAlignment": 0
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel2"
+					"opaque": false
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": new FormMessage( null, "label1.text_29" )
+						"font": new java.awt.Font( ".AppleSystemUIFont", 3, 20 )
+						"horizontalAlignment": 0
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"text": new FormMessage( null, "button2.text_22" )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "East"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )

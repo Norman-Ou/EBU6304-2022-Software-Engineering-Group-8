@@ -232,7 +232,8 @@ public class MealNorm_13 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setPreferredSize(new Dimension(177, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_10"));

@@ -84,14 +84,16 @@ public class EnterBN_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
         okButton2 = new JButton();
         button1 = new JButton();
         cancelButton2 = new JButton();
+        panel1 = new JPanel();
         label1 = new JLabel();
+        button2 = new JButton();
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
 
@@ -103,19 +105,19 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;} } );
+            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
             {
                 buttonBar2.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar2.setOpaque(false);
-                buttonBar2.setLayout(new FlowLayout());
+                buttonBar2.setPreferredSize(new Dimension(234, 90));
+                buttonBar2.setLayout(new GridLayout());
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_4"));
@@ -134,11 +136,22 @@ public class EnterBN_3 extends JFrame {
             }
             dialogPane2.add(buttonBar2, BorderLayout.SOUTH);
 
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_30"));
-            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            dialogPane2.add(label1, BorderLayout.NORTH);
+            //======== panel1 ========
+            {
+                panel1.setOpaque(false);
+                panel1.setLayout(new BorderLayout());
+
+                //---- label1 ----
+                label1.setText(bundle.getString("label1.text_30"));
+                label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                panel1.add(label1, BorderLayout.CENTER);
+
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_21"));
+                panel1.add(button2, BorderLayout.EAST);
+            }
+            dialogPane2.add(panel1, BorderLayout.NORTH);
 
             //======== scrollPane1 ========
             {
@@ -157,13 +170,15 @@ public class EnterBN_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;
     private JButton button1;
     private JButton cancelButton2;
+    private JPanel panel1;
     private JLabel label1;
+    private JButton button2;
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

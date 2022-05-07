@@ -92,7 +92,9 @@ public class MealPay_15 extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         textArea1 = new JTextArea();
+        panel3 = new JPanel();
         button1 = new JButton();
+        button3 = new JButton();
         buttonBar = new JPanel();
         button2 = new JButton();
         okButton = new JButton();
@@ -106,12 +108,13 @@ public class MealPay_15 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
-            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
-            12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder( )) )
+            ; dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -130,11 +133,22 @@ public class MealPay_15 extends JFrame {
                         panel2.setLayout(new BorderLayout());
                         panel2.add(textArea1, BorderLayout.CENTER);
 
-                        //---- button1 ----
-                        button1.setText(bundle.getString("button1.text_20"));
-                        button1.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
-                        button1.addActionListener(e -> payAdMeal(e));
-                        panel2.add(button1, BorderLayout.NORTH);
+                        //======== panel3 ========
+                        {
+                            panel3.setOpaque(false);
+                            panel3.setLayout(new BorderLayout());
+
+                            //---- button1 ----
+                            button1.setText(bundle.getString("button1.text_20"));
+                            button1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 28));
+                            button1.addActionListener(e -> payAdMeal(e));
+                            panel3.add(button1, BorderLayout.CENTER);
+
+                            //---- button3 ----
+                            button3.setText(bundle.getString("button3.text_14"));
+                            panel3.add(button3, BorderLayout.EAST);
+                        }
+                        panel2.add(panel3, BorderLayout.NORTH);
                     }
                     panel1.add(panel2, BorderLayout.CENTER);
                 }
@@ -146,7 +160,8 @@ public class MealPay_15 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setPreferredSize(new Dimension(260, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_17"));
@@ -180,7 +195,9 @@ public class MealPay_15 extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JTextArea textArea1;
+    private JPanel panel3;
     private JButton button1;
+    private JButton button3;
     private JPanel buttonBar;
     private JButton button2;
     private JButton okButton;

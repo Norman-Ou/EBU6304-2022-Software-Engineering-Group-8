@@ -39,13 +39,15 @@ public class Error extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         label1 = new JLabel();
         buttonBar = new JPanel();
         cancelButton = new JButton();
+        panel3 = new JPanel();
+        button1 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -55,13 +57,13 @@ public class Error extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder( )) )
-            ; dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder
+            () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -72,6 +74,7 @@ public class Error extends JFrame {
                 //---- label1 ----
                 label1.setText(bundle.getString("label1.text_22"));
                 label1.setFont(new Font("Lucida Grande", Font.BOLD, 26));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
                 contentPanel.add(label1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -80,7 +83,8 @@ public class Error extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setPreferredSize(new Dimension(88, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_14"));
@@ -88,6 +92,17 @@ public class Error extends JFrame {
                 buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
+
+            //======== panel3 ========
+            {
+                panel3.setOpaque(false);
+                panel3.setLayout(new BorderLayout());
+
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_29"));
+                panel3.add(button1, BorderLayout.EAST);
+            }
+            dialogPane.add(panel3, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -96,11 +111,13 @@ public class Error extends JFrame {
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JLabel label1;
     private JPanel buttonBar;
     private JButton cancelButton;
+    private JPanel panel3;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 /*
  * Created by JFormDesigner on Tue Mar 29 20:16:17 CST 2022
  */
@@ -61,16 +62,17 @@ public class Baggage_7 extends JFrame {
     }
 
     private void initComponents() {
-
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         button2 = new JButton();
         button1 = new JButton();
         button3 = new JButton();
+        panel1 = new JPanel();
         label1 = new JLabel();
+        button5 = new JButton();
         buttonBar = new JPanel();
         cancelButton = new JButton();
         button4 = new JButton();
@@ -83,12 +85,12 @@ public class Baggage_7 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -112,11 +114,22 @@ public class Baggage_7 extends JFrame {
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_16"));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 28));
-            dialogPane.add(label1, BorderLayout.NORTH);
+            //======== panel1 ========
+            {
+                panel1.setOpaque(false);
+                panel1.setLayout(new BorderLayout());
+
+                //---- label1 ----
+                label1.setText(bundle.getString("label1.text_16"));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                label1.setFont(new Font("Lucida Grande", Font.BOLD, 28));
+                panel1.add(label1, BorderLayout.CENTER);
+
+                //---- button5 ----
+                button5.setText(bundle.getString("button5.text_4"));
+                panel1.add(button5, BorderLayout.EAST);
+            }
+            dialogPane.add(panel1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -126,12 +139,13 @@ public class Baggage_7 extends JFrame {
         {
             buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
             buttonBar.setOpaque(false);
-            buttonBar.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,buttonBar. getBorder () ) ); buttonBar. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;} } );
+            buttonBar.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,buttonBar. getBorder( )) )
+            ; buttonBar. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             buttonBar.setLayout(new FlowLayout());
 
             //---- cancelButton ----
@@ -155,13 +169,15 @@ public class Baggage_7 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JButton button2;
     private JButton button1;
     private JButton button3;
+    private JPanel panel1;
     private JLabel label1;
+    private JButton button5;
     private JPanel buttonBar;
     private JButton cancelButton;
     private JButton button4;

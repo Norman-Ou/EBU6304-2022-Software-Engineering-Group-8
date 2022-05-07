@@ -14,9 +14,11 @@ new FormModel {
 				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "ButtonPanel"
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 						name: "panel2"
 						"opaque": false
+						"minimumSize": new java.awt.Dimension( 358, 90 )
+						"preferredSize": new java.awt.Dimension( 358, 90 )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button3"
 							"text": new FormMessage( null, "button3.text_3" )
@@ -204,11 +206,23 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"
 				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "onfirm"
-					"text": new FormMessage( null, "onfirm.text_3" )
-					"font": new java.awt.Font( ".AppleSystemUIFont", 1, 22 )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showInitialInfo", true ) )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panel5"
+					"opaque": false
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "onfirm"
+						"text": new FormMessage( null, "onfirm.text_3" )
+						"font": new java.awt.Font( ".AppleSystemUIFont", 1, 22 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showInitialInfo", true ) )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button4"
+						"text": new FormMessage( null, "button4.text_8" )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "East"
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )

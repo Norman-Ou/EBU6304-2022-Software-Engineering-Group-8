@@ -24,7 +24,7 @@ public class Airline_1 extends JFrame {
         new CheckIn_2().setVisible(true);
     }
 
-    private void exit(ActionEvent e) { dispose();}
+    private void exit(ActionEvent e) throws InterruptedException { dispose();}
 
     public void init() {
     ImageIcon background = new ImageIcon("src/main/resources/img.png");
@@ -41,13 +41,16 @@ public class Airline_1 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
+        panel3 = new JPanel();
         label1 = new JLabel();
+        panel4 = new JPanel();
+        button1 = new JButton();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -60,12 +63,13 @@ public class Airline_1 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-            EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing
-            .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
-            java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener()
-            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))
-            throw new RuntimeException();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -83,13 +87,31 @@ public class Airline_1 extends JFrame {
                         panel2.setOpaque(false);
                         panel2.setLayout(new BorderLayout());
 
-                        //---- label1 ----
-                        label1.setText(bundle.getString("label1.text_5"));
-                        label1.setHorizontalAlignment(SwingConstants.CENTER);
-                        label1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
-                        label1.setForeground(Color.black);
-                        label1.setBackground(new Color(0, 127, 255, 191));
-                        panel2.add(label1, BorderLayout.CENTER);
+                        //======== panel3 ========
+                        {
+                            panel3.setOpaque(false);
+                            panel3.setLayout(new BorderLayout());
+
+                            //---- label1 ----
+                            label1.setText(bundle.getString("label1.text_5"));
+                            label1.setHorizontalAlignment(SwingConstants.CENTER);
+                            label1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
+                            label1.setForeground(Color.black);
+                            label1.setBackground(new Color(0, 127, 255, 191));
+                            panel3.add(label1, BorderLayout.CENTER);
+
+                            //======== panel4 ========
+                            {
+                                panel4.setOpaque(false);
+                                panel4.setLayout(new BorderLayout());
+
+                                //---- button1 ----
+                                button1.setText(bundle.getString("button1.text_25"));
+                                panel4.add(button1, BorderLayout.EAST);
+                            }
+                            panel3.add(panel4, BorderLayout.NORTH);
+                        }
+                        panel2.add(panel3, BorderLayout.CENTER);
                     }
                     panel1.add(panel2, BorderLayout.CENTER);
                 }
@@ -101,7 +123,9 @@ public class Airline_1 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setMinimumSize(new Dimension(168, 60));
+                buttonBar.setPreferredSize(new Dimension(168, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_5"));
@@ -112,7 +136,13 @@ public class Airline_1 extends JFrame {
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_5"));
                 cancelButton.setOpaque(false);
-                cancelButton.addActionListener(e -> exit(e));
+                cancelButton.addActionListener(e -> {
+                    try {
+                        exit(e);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
@@ -125,12 +155,15 @@ public class Airline_1 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
     private JPanel panel2;
+    private JPanel panel3;
     private JLabel label1;
+    private JPanel panel4;
+    private JButton button1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

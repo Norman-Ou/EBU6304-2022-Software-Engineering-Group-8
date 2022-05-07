@@ -55,16 +55,19 @@ public class BagStore_8 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
+        panel1 = new JPanel();
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
+        panel2 = new JPanel();
+        button1 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -74,23 +77,29 @@ public class BagStore_8 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
                 contentPanel.setLayout(new GridLayout(0, 1));
 
-                //---- label1 ----
-                label1.setText(bundle.getString("label1.text_8"));
-                label1.setHorizontalAlignment(SwingConstants.CENTER);
-                label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-                contentPanel.add(label1);
+                //======== panel1 ========
+                {
+                    panel1.setLayout(new GridLayout());
+
+                    //---- label1 ----
+                    label1.setText(bundle.getString("label1.text_8"));
+                    label1.setHorizontalAlignment(SwingConstants.CENTER);
+                    label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+                    panel1.add(label1);
+                }
+                contentPanel.add(panel1);
 
                 //======== scrollPane1 ========
                 {
@@ -112,7 +121,9 @@ public class BagStore_8 extends JFrame {
             //======== buttonBar ========
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setPreferredSize(new Dimension(177, 90));
+                buttonBar.setMinimumSize(new Dimension(177, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_7"));
@@ -125,6 +136,17 @@ public class BagStore_8 extends JFrame {
                 buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
+
+            //======== panel2 ========
+            {
+                panel2.setOpaque(false);
+                panel2.setLayout(new BorderLayout());
+
+                //---- button1 ----
+                button1.setText(bundle.getString("button1.text_28"));
+                panel2.add(button1, BorderLayout.EAST);
+            }
+            dialogPane.add(panel2, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -136,14 +158,17 @@ public class BagStore_8 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
+    private JPanel panel1;
     private JLabel label1;
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
+    private JPanel panel2;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

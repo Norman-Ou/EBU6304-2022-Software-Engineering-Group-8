@@ -48,30 +48,31 @@ public class CheckIn_2 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         button1 = new JButton();
         buttonBar = new JPanel();
         cancelButton = new JButton();
+        panel1 = new JPanel();
         label1 = new JLabel();
+        button2 = new JButton();
 
         //======== this ========
-        Container contentPane = getContentPane();
+        var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
-            ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -92,20 +93,32 @@ public class CheckIn_2 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setLayout(new GridLayout());
 
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_11"));
+                cancelButton.setPreferredSize(new Dimension(78, 90));
                 cancelButton.addActionListener(e -> AirlineRe(e));
                 buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 
-            //---- label1 ----
-            label1.setText(bundle.getString("label1.text_14"));
-            label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-            label1.setHorizontalAlignment(SwingConstants.CENTER);
-            dialogPane.add(label1, BorderLayout.NORTH);
+            //======== panel1 ========
+            {
+                panel1.setOpaque(false);
+                panel1.setLayout(new BorderLayout());
+
+                //---- label1 ----
+                label1.setText(bundle.getString("label1.text_14"));
+                label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                panel1.add(label1, BorderLayout.CENTER);
+
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_20"));
+                panel1.add(button2, BorderLayout.EAST);
+            }
+            dialogPane.add(panel1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -115,12 +128,14 @@ public class CheckIn_2 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JButton button1;
     private JPanel buttonBar;
     private JButton cancelButton;
+    private JPanel panel1;
     private JLabel label1;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

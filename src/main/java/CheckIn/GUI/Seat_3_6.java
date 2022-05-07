@@ -162,7 +162,9 @@ public class Seat_3_6 extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
+        panel2 = new JPanel();
         label3 = new JLabel();
+        button1 = new JButton();
         panel5 = new JPanel();
         button3 = new JButton();
         button4 = new JButton();
@@ -190,21 +192,35 @@ public class Seat_3_6 extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
-        //---- label3 ----
-        label3.setText(bundle.getString("label3.text_9"));
-        label3.setHorizontalAlignment(SwingConstants.CENTER);
-        label3.setFont(new Font("Lucida Grande", Font.BOLD, 26));
-        contentPane.add(label3, BorderLayout.NORTH);
+        //======== panel2 ========
+        {
+            panel2.setOpaque(false);
+            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) )
+            ; panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
+            panel2.setLayout(new BorderLayout());
+
+            //---- label3 ----
+            label3.setText(bundle.getString("label3.text_9"));
+            label3.setHorizontalAlignment(SwingConstants.CENTER);
+            label3.setFont(new Font("Lucida Grande", Font.BOLD, 26));
+            panel2.add(label3, BorderLayout.CENTER);
+
+            //---- button1 ----
+            button1.setText(bundle.getString("button1.text_31"));
+            panel2.add(button1, BorderLayout.EAST);
+        }
+        contentPane.add(panel2, BorderLayout.NORTH);
 
         //======== panel5 ========
         {
             panel5.setOpaque(false);
-            panel5.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,panel5. getBorder( )) ); panel5. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
-            panel5.setLayout(new FlowLayout());
+            panel5.setPreferredSize(new Dimension(254, 90));
+            panel5.setLayout(new GridLayout());
 
             //---- button3 ----
             button3.setText(bundle.getString("button3.text_13"));
@@ -351,7 +367,9 @@ public class Seat_3_6 extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
+    private JPanel panel2;
     private JLabel label3;
+    private JButton button1;
     private JPanel panel5;
     private JButton button3;
     private JButton button4;

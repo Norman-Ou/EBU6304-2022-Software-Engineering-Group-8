@@ -8,17 +8,30 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
 			"$sizePolicy": 1
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label3"
-				"text": new FormMessage( null, "label3.text_9" )
-				"horizontalAlignment": 0
-				"font": new java.awt.Font( "Lucida Grande", 1, 26 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel2"
+				"opaque": false
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": new FormMessage( null, "label3.text_9" )
+					"horizontalAlignment": 0
+					"font": new java.awt.Font( "Lucida Grande", 1, 26 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": new FormMessage( null, "button1.text_31" )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel5"
 				"opaque": false
+				"preferredSize": new java.awt.Dimension( 254, 90 )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button3"
 					"text": new FormMessage( null, "button3.text_13" )

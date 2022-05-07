@@ -8,8 +8,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 /*
  * Created by JFormDesigner on Tue Mar 29 20:34:40 CST 2022
  */
@@ -20,6 +23,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class PrintFlight_6 extends JFrame {
+    public static String stage;
     public PrintFlight_6() {
         initComponents();
     }
@@ -28,7 +32,7 @@ public class PrintFlight_6 extends JFrame {
         info();
     }
 
-    private void printThenBag(ActionEvent e) {
+    private void printThenBag(ActionEvent e) throws InterruptedException {
         int temp=JOptionPane.showInternalConfirmDialog(null,
                 "Ready for Baggage?", "Double check",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -36,7 +40,9 @@ public class PrintFlight_6 extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             dispose();
-            new Baggage_7().setVisible(true);
+            new Demo().setVisible(true);
+            stage="BoardingPass";
+//            new Baggage_7().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
             new Error().setVisible(true);
@@ -120,7 +126,9 @@ public class PrintFlight_6 extends JFrame {
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
+        panel1 = new JPanel();
         button2 = new JButton();
+        button3 = new JButton();
         contentPanel = new JPanel();
         panel4 = new JPanel();
         panel2 = new JPanel();
@@ -159,20 +167,31 @@ public class PrintFlight_6 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax
-            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-            .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
-            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .
-            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder
+            () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
-            //---- button2 ----
-            button2.setText(bundle.getString("button2.text_12"));
-            button2.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
-            button2.addActionListener(e -> printBoardingpass(e));
-            dialogPane.add(button2, BorderLayout.NORTH);
+            //======== panel1 ========
+            {
+                panel1.setOpaque(false);
+                panel1.setLayout(new BorderLayout());
+
+                //---- button2 ----
+                button2.setText(bundle.getString("button2.text_12"));
+                button2.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 24));
+                button2.addActionListener(e -> printBoardingpass(e));
+                panel1.add(button2, BorderLayout.CENTER);
+
+                //---- button3 ----
+                button3.setText(bundle.getString("button3.text_15"));
+                panel1.add(button3, BorderLayout.EAST);
+            }
+            dialogPane.add(panel1, BorderLayout.NORTH);
 
             //======== contentPanel ========
             {
@@ -319,11 +338,18 @@ public class PrintFlight_6 extends JFrame {
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setOpaque(false);
-                buttonBar.setLayout(new FlowLayout());
+                buttonBar.setPreferredSize(new Dimension(254, 90));
+                buttonBar.setLayout(new GridLayout());
 
                 //---- PrintButton ----
                 PrintButton.setText(bundle.getString("PrintButton.text_2"));
-                PrintButton.addActionListener(e -> printThenBag(e));
+                PrintButton.addActionListener(e -> {
+                    try {
+                        printThenBag(e);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar.add(PrintButton);
 
                 //---- cancelButton ----
@@ -348,7 +374,9 @@ public class PrintFlight_6 extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
+    private JPanel panel1;
     private JButton button2;
+    private JButton button3;
     private JPanel contentPanel;
     private JPanel panel4;
     private JPanel panel2;

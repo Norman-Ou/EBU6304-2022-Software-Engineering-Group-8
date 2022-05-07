@@ -125,7 +125,7 @@ public class ConfirmPage_3 extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella
+        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         ButtonPanel = new JPanel();
@@ -156,7 +156,9 @@ public class ConfirmPage_3 extends JFrame {
         label11 = new JLabel();
         Gate = new JTextField();
         panel3 = new JPanel();
+        panel5 = new JPanel();
         onfirm = new JButton();
+        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -166,11 +168,12 @@ public class ConfirmPage_3 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-            , 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-            dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
+            .BOLD,12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== ButtonPanel ========
@@ -180,7 +183,9 @@ public class ConfirmPage_3 extends JFrame {
                 //======== panel2 ========
                 {
                     panel2.setOpaque(false);
-                    panel2.setLayout(new FlowLayout());
+                    panel2.setMinimumSize(new Dimension(358, 90));
+                    panel2.setPreferredSize(new Dimension(358, 90));
+                    panel2.setLayout(new GridLayout());
 
                     //---- button3 ----
                     button3.setText(bundle.getString("button3.text_3"));
@@ -337,11 +342,22 @@ public class ConfirmPage_3 extends JFrame {
             }
             dialogPane.add(panel3, BorderLayout.SOUTH);
 
-            //---- onfirm ----
-            onfirm.setText(bundle.getString("onfirm.text_3"));
-            onfirm.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 22));
-            onfirm.addActionListener(e -> showInitialInfo(e));
-            dialogPane.add(onfirm, BorderLayout.NORTH);
+            //======== panel5 ========
+            {
+                panel5.setOpaque(false);
+                panel5.setLayout(new BorderLayout());
+
+                //---- onfirm ----
+                onfirm.setText(bundle.getString("onfirm.text_3"));
+                onfirm.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 22));
+                onfirm.addActionListener(e -> showInitialInfo(e));
+                panel5.add(onfirm, BorderLayout.CENTER);
+
+                //---- button4 ----
+                button4.setText(bundle.getString("button4.text_8"));
+                panel5.add(button4, BorderLayout.EAST);
+            }
+            dialogPane.add(panel5, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -353,7 +369,7 @@ public class ConfirmPage_3 extends JFrame {
         init();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella
+    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel ButtonPanel;
     private JPanel panel2;
@@ -383,7 +399,9 @@ public class ConfirmPage_3 extends JFrame {
     private JLabel label11;
     private JTextField Gate;
     private JPanel panel3;
+    private JPanel panel5;
     private JButton onfirm;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }

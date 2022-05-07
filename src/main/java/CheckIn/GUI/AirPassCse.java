@@ -103,11 +103,12 @@ public class AirPassCse extends JFrame {
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
-        testDO = new JButton();
         panel3 = new JPanel();
-        label2 = new JLabel();
         toolBar1 = new JToolBar();
         airLine = new JComboBox<>();
+        panel4 = new JPanel();
+        testDO = new JButton();
+        button1 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -117,12 +118,11 @@ public class AirPassCse extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -184,13 +184,15 @@ public class AirPassCse extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setLayout(new BorderLayout());
+                panel2.setLayout(new GridLayout());
 
                 //======== buttonBar ========
                 {
                     buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                     buttonBar.setOpaque(false);
-                    buttonBar.setLayout(new FlowLayout());
+                    buttonBar.setMinimumSize(new Dimension(168, 60));
+                    buttonBar.setPreferredSize(new Dimension(168, 90));
+                    buttonBar.setLayout(new GridLayout());
 
                     //---- okButton ----
                     okButton.setText(bundle.getString("okButton.text_13"));
@@ -202,26 +204,13 @@ public class AirPassCse extends JFrame {
                     cancelButton.addActionListener(e -> cancel(e));
                     buttonBar.add(cancelButton);
                 }
-                panel2.add(buttonBar, BorderLayout.CENTER);
+                panel2.add(buttonBar);
             }
             dialogPane.add(panel2, BorderLayout.SOUTH);
-
-            //---- testDO ----
-            testDO.setText(bundle.getString("testDO.text_26"));
-            testDO.addActionListener(e -> testDO(e));
-            dialogPane.add(testDO, BorderLayout.WEST);
 
             //======== panel3 ========
             {
                 panel3.setLayout(new BorderLayout());
-
-                //---- label2 ----
-                label2.setText(bundle.getString("label2.text_11"));
-                label2.setHorizontalAlignment(SwingConstants.CENTER);
-                label2.setFont(new Font("Lucida Grande", Font.BOLD, 40));
-                label2.setForeground(Color.black);
-                label2.setBackground(new Color(0, 127, 255, 191));
-                panel3.add(label2, BorderLayout.CENTER);
 
                 //======== toolBar1 ========
                 {
@@ -234,6 +223,23 @@ public class AirPassCse extends JFrame {
                     toolBar1.add(airLine);
                 }
                 panel3.add(toolBar1, BorderLayout.SOUTH);
+
+                //======== panel4 ========
+                {
+                    panel4.setOpaque(false);
+                    panel4.setLayout(new BorderLayout());
+
+                    //---- testDO ----
+                    testDO.setText(bundle.getString("testDO.text_26"));
+                    testDO.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 30));
+                    testDO.addActionListener(e -> testDO(e));
+                    panel4.add(testDO, BorderLayout.CENTER);
+
+                    //---- button1 ----
+                    button1.setText(bundle.getString("button1.text_27"));
+                    panel4.add(button1, BorderLayout.EAST);
+                }
+                panel3.add(panel4, BorderLayout.NORTH);
             }
             dialogPane.add(panel3, BorderLayout.NORTH);
         }
@@ -257,10 +263,11 @@ public class AirPassCse extends JFrame {
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
-    private JButton testDO;
     private JPanel panel3;
-    private JLabel label2;
     private JToolBar toolBar1;
     private JComboBox<String> airLine;
+    private JPanel panel4;
+    private JButton testDO;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
