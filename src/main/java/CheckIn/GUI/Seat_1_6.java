@@ -55,7 +55,7 @@ public class Seat_1_6 extends JFrame {
         //TODO 取不到seat class
         if(intTemp==0){
             infoText.setText("You can choose form 18 to 30");
-            busS.setEditable(false);
+//            busS.setEditable(false);
             vip.setEditable(false);
         }else if(intTemp==1){
             infoText.setText("You can choose form 11 to 17");
@@ -64,7 +64,7 @@ public class Seat_1_6 extends JFrame {
         }else if(intTemp==2){
             infoText.setText("You can choose form 1 to 10");
             ecoS.setEditable(false);
-            busS.setEditable(false);
+//            busS.setEditable(false);
         }else if(intTemp==-1){
             infoText.setText("Seat class is -1 now");
         }
@@ -87,7 +87,8 @@ public class Seat_1_6 extends JFrame {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
 
-        }seat=busS.getSelectedItem().toString();
+        }
+//        seat=busS.getSelectedItem().toString();
 
     }
     private void ecoSeat(ItemEvent e) {
@@ -139,9 +140,9 @@ public class Seat_1_6 extends JFrame {
                 case 1:
                     vip.addItem(entry.getKey());
                     break;
-                case 2:
-                    busS.addItem(entry.getKey());
-                    break;
+//                case 2:
+//                    busS.addItem(entry.getKey());
+//                    break;
             }
 
         }
@@ -171,6 +172,16 @@ public class Seat_1_6 extends JFrame {
     private void Return(ActionEvent e) {
         dispose();
         new ConfirmPage_3().setVisible(true);
+    }
+
+    private void upGrade(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Confirm to pay more for upgrading your seat?","Upgrade", JOptionPane.WARNING_MESSAGE);
+    }
+    public void checkUpgradeValid(){
+        EnterBN_3.getFlight().getSeatingList();
+    }
+    public void resetAvSeat(){
+        
     }
 
     private void initComponents() throws Exception {
@@ -208,11 +219,11 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-            red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             panel1.setLayout(new BorderLayout());
 
             //---- button5 ----

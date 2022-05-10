@@ -82,6 +82,13 @@ new FormModel {
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label7"
+							"text": new FormMessage( null, "label7.text_5" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label3.tab.title_2" )
 					} )
@@ -92,6 +99,13 @@ new FormModel {
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label8"
+							"text": new FormMessage( null, "label8.text_4" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label4.tab.title_2" )
 					} )
@@ -101,6 +115,13 @@ new FormModel {
 							name: "label5"
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label9"
+							"text": new FormMessage( null, "label9.text_3" )
+							"horizontalAlignment": 0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
 						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "label5.tab.title" )

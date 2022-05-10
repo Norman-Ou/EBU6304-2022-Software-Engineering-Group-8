@@ -1,10 +1,14 @@
 package CheckIn.GUI;
 
+import Beans.Flight.SubClasses.ExtraOption;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 18:58:58 CST 2022
@@ -17,6 +21,8 @@ import java.util.ResourceBundle;
  */
 public class MealNorm_13 extends JFrame {
     public static String mealSelected="";
+    public static ArrayList<ExtraOption> arrayMealAdd;
+    public static int price;
     public MealNorm_13() {
         initComponents();
     }
@@ -40,22 +46,82 @@ public class MealNorm_13 extends JFrame {
 //                setMealSelected("Burger");
                 mealSelected="Burger";
                 System.out.println("Burger");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Burger");
+                        arrayMealAdd.get(0).setPrice(6);
+                        price = 6;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Burger");
+                        arrayMealAdd.get(0).setPrice(6);
+                        price = 6;
+                    }
+                }
                 break;
             case 1:
                 mealSelected="Cheese toast";
                 System.out.println("Cheese toast");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Cheese toast");
+                        arrayMealAdd.get(0).setPrice(6);
+                        price = 7;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Cheese toast");
+                        arrayMealAdd.get(0).setPrice(6);
+                        price = 7;
+                    }
+                }
                 break;
             case 2:
                 mealSelected="Hot dog";
                 System.out.println("Hot dog");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Hot dog");
+                        arrayMealAdd.get(0).setPrice(8);
+                        price = 8;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Hot dog");
+                        arrayMealAdd.get(0).setPrice(8);
+                        price = 8;
+                    }
+                }
                 break;
             case 3:
                 mealSelected="Salad";
                 System.out.println("Salad");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Salad");
+                        arrayMealAdd.get(0).setPrice(9);
+                        price = 9;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Salad");
+                        arrayMealAdd.get(0).setPrice(9);
+                        price = 9;
+                    }
+                }
                 break;
         }
     }
@@ -118,10 +184,13 @@ public class MealNorm_13 extends JFrame {
         label6 = new JLabel();
         panelCheese = new JPanel();
         label3 = new JLabel();
+        label7 = new JLabel();
         panelHot = new JPanel();
         label4 = new JLabel();
+        label8 = new JLabel();
         panelSa = new JPanel();
         label5 = new JLabel();
+        label9 = new JLabel();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -135,14 +204,12 @@ public class MealNorm_13 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -209,6 +276,11 @@ public class MealNorm_13 extends JFrame {
                     //---- label3 ----
                     label3.setHorizontalAlignment(SwingConstants.CENTER);
                     panelCheese.add(label3, BorderLayout.CENTER);
+
+                    //---- label7 ----
+                    label7.setText(bundle.getString("label7.text_5"));
+                    label7.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelCheese.add(label7, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label3.tab.title_2"), panelCheese);
 
@@ -216,6 +288,11 @@ public class MealNorm_13 extends JFrame {
                 {
                     panelHot.setLayout(new BorderLayout());
                     panelHot.add(label4, BorderLayout.CENTER);
+
+                    //---- label8 ----
+                    label8.setText(bundle.getString("label8.text_4"));
+                    label8.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelHot.add(label8, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label4.tab.title_2"), panelHot);
 
@@ -223,6 +300,11 @@ public class MealNorm_13 extends JFrame {
                 {
                     panelSa.setLayout(new BorderLayout());
                     panelSa.add(label5, BorderLayout.CENTER);
+
+                    //---- label9 ----
+                    label9.setText(bundle.getString("label9.text_3"));
+                    label9.setHorizontalAlignment(SwingConstants.CENTER);
+                    panelSa.add(label9, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label5.tab.title"), panelSa);
             }
@@ -275,10 +357,13 @@ public class MealNorm_13 extends JFrame {
     private JLabel label6;
     private JPanel panelCheese;
     private JLabel label3;
+    private JLabel label7;
     private JPanel panelHot;
     private JLabel label4;
+    private JLabel label8;
     private JPanel panelSa;
     private JLabel label5;
+    private JLabel label9;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;

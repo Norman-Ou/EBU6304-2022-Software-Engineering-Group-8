@@ -1,5 +1,6 @@
 package CheckIn.GUI;
 
+import Beans.Flight.SubClasses.ExtraOption;
 import CheckIn.Monitor.cMonitors;
 
 import javax.swing.*;
@@ -7,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 21:14:55 CST 2022
@@ -19,6 +22,8 @@ import java.util.ResourceBundle;
  */
 public class MealAdd_14 extends JFrame {
     public static String VIPmealSelected;
+    public static ArrayList<ExtraOption> arrayMeal;
+    public static int price;
 
     public MealAdd_14() {
         initComponents();
@@ -31,20 +36,62 @@ public class MealAdd_14 extends JFrame {
             case 0:
                 VIPmealSelected="Sashimi";
                 System.out.println("Sashimi");
-//                cMonitors.setMeal("Sashimi");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Sashimi");
+                        arrayMeal.get(0).setPrice(10);
+                        price = 10;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Sashimi");
+                        arrayMeal.get(0).setPrice(10);
+                        price = 10;
+                    }
+                }
                 break;
             case 1:
                 VIPmealSelected="Steak";
                 System.out.println("Steak");
-//                cMonitors.setMeal("Steak");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Steak");
+                        arrayMeal.get(0).setPrice(11);
+                        price = 11;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Steak");
+                        arrayMeal.get(0).setPrice(11);
+                        price = 11;
+                    }
+                }
                 break;
             case 2:
                 VIPmealSelected="Tempura";
                 System.out.println("Tempura");
-//                cMonitors.setMeal("Tempura");
-                //TODO store meal info
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Tempura");
+                        arrayMeal.get(0).setPrice(12);
+                        price = 12;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Tempura");
+                        arrayMeal.get(0).setPrice(12);
+                        price = 12;
+                    }
+                }
                 break;
         }
     }
@@ -119,10 +166,13 @@ public class MealAdd_14 extends JFrame {
         tabbedPane2 = new JTabbedPane();
         sahsimiPanel = new JPanel();
         labelSashimi = new JLabel();
+        label4 = new JLabel();
         steakPanel = new JPanel();
         labelBurger = new JLabel();
+        label5 = new JLabel();
         tempuraPanel = new JPanel();
         label3 = new JLabel();
+        label6 = new JLabel();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -132,13 +182,11 @@ public class MealAdd_14 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder
-            ()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -237,6 +285,11 @@ public class MealAdd_14 extends JFrame {
                     labelSashimi.setText(bundle.getString("labelSashimi.text_2"));
                     labelSashimi.setHorizontalAlignment(SwingConstants.CENTER);
                     sahsimiPanel.add(labelSashimi, BorderLayout.CENTER);
+
+                    //---- label4 ----
+                    label4.setText(bundle.getString("label4.text_5"));
+                    label4.setHorizontalAlignment(SwingConstants.CENTER);
+                    sahsimiPanel.add(label4, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label4.tab.title"), sahsimiPanel);
 
@@ -248,6 +301,11 @@ public class MealAdd_14 extends JFrame {
                     labelBurger.setText(bundle.getString("labelBurger.text_3"));
                     labelBurger.setHorizontalAlignment(SwingConstants.CENTER);
                     steakPanel.add(labelBurger, BorderLayout.CENTER);
+
+                    //---- label5 ----
+                    label5.setText(bundle.getString("label5.text_4"));
+                    label5.setHorizontalAlignment(SwingConstants.CENTER);
+                    steakPanel.add(label5, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("labelBurger.tab.title"), steakPanel);
 
@@ -259,6 +317,11 @@ public class MealAdd_14 extends JFrame {
                     label3.setText(bundle.getString("label3.text"));
                     label3.setHorizontalAlignment(SwingConstants.CENTER);
                     tempuraPanel.add(label3, BorderLayout.CENTER);
+
+                    //---- label6 ----
+                    label6.setText(bundle.getString("label6.text_5"));
+                    label6.setHorizontalAlignment(SwingConstants.CENTER);
+                    tempuraPanel.add(label6, BorderLayout.NORTH);
                 }
                 tabbedPane2.addTab(bundle.getString("label3.tab.title"), tempuraPanel);
             }
@@ -292,9 +355,12 @@ public class MealAdd_14 extends JFrame {
     private JTabbedPane tabbedPane2;
     private JPanel sahsimiPanel;
     private JLabel labelSashimi;
+    private JLabel label4;
     private JPanel steakPanel;
     private JLabel labelBurger;
+    private JLabel label5;
     private JPanel tempuraPanel;
     private JLabel label3;
+    private JLabel label6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

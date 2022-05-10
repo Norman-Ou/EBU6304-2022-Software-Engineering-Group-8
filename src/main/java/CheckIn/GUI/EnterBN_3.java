@@ -11,6 +11,8 @@ import CheckIn.Monitor.cMonitors;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -27,21 +29,58 @@ public class EnterBN_3 extends JFrame {
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
-    private void ok(ActionEvent e) {
-        new ConfirmPage_3().setVisible(true);
-        dispose();
+    public static String nowTime = "07-09-2022 10:42:32";
+    private void ok(ActionEvent e) throws IllegalAccessException, ParseException {
 
         String str=textField1.getText();
-        this.bookNum=str;
+        bookNum=str;
 //        System.out.println(bookNum);
         Flight flt = cMonitors.getFlightByBookingNo(bookNum);
         Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
 //        System.out.println(psn);
         fltTemp=flt;
         psnTemp=psn;
+        try{
+            firstCheck();
+        } catch (IllegalAccessException illegalAccessException) {
+            illegalAccessException.printStackTrace();
+            errorHandel();
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+
+//        new ConfirmPage_3().setVisible(true);
+        dispose();
+    }
+    public static void errorHandel(){
+        JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
+        new Error().setVisible(true);
+    }
+    public static void firstCheck() throws IllegalAccessException, ParseException {
+        String eta=fltTemp.getETA();
+//        try{
+
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date date1 = format.parse(nowTime);
+            Date date2 = format.parse(eta);
+
+            long nowMillisecond = date1.getTime();
+            long etaMillisecond = date2.getTime();
+//            System.out.println(etaMillisecond - nowMillisecond < 1800000);
+            if(etaMillisecond - nowMillisecond < 1800000){
+//                return true;
+            }else{
+                throw new IllegalAccessException();
+            }
+        new ConfirmPage_3().setVisible(true);
+//        } catch (ParseException | IllegalAccessException e) {
+//            errorHandel();
+//            e.printStackTrace();
+//            return;
+//        }
     }
     public static Passenger getPsnTemp() {
-        try{
+        try {
             return psnTemp;
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,7 +161,13 @@ public class EnterBN_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_4"));
-                okButton2.addActionListener(e -> ok(e));
+                okButton2.addActionListener(e -> {
+                    try {
+                        ok(e);
+                    } catch (IllegalAccessException | ParseException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----

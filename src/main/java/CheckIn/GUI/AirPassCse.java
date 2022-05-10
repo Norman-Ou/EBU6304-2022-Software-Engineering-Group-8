@@ -16,6 +16,8 @@ import DataBase.fDB;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -30,12 +32,16 @@ public class AirPassCse extends JFrame {
     public static String Dep= "";
     public static String Des= "";
     public static String ETA= "";
+    public static String nowTime = "07-09-2022 14:42:32";
     public AirPassCse() {
         initComponents();
     }
+    public static void errorHandel(){
+        JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
+        new Error().setVisible(true);
+    }
 
-    public void airlineAdd(){
-        try{
+    public void airlineAdd() throws IllegalAccessException, ParseException {
             ArrayList<Flight> list=EnterOther_3.getFlight();
             System.out.println(list);
             for(Flight flt : list) {          //同for(int i = 0;i<list.size();i++)
@@ -43,12 +49,21 @@ public class AirPassCse extends JFrame {
                 Dep=flt.getDeparture();
                 Des=flt.getDestination();
                 ETA=flt.getETA();
-//                table1.setValueAt(flightNo,2,1);
-//                table1.setValueAt(Dep,5,1);
-//                table1.setValueAt(Des,8,1);
-//                table1.setValueAt(ETA,11,1);
+
+                String eta=flt.getETA();
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                Date date1 = format.parse(nowTime);
+                Date date2 = format.parse(eta);
+
+                long nowMillisecond = date1.getTime();
+                long etaMillisecond = date2.getTime();
+                if(etaMillisecond - nowMillisecond > 1800000){
+                }else{
+                    throw new IllegalAccessException();
+                }
+
                 airLine.addItem(flightNo);
-//                System.out.println(flightNo);
+
                 if (state) {
                     table1.setValueAt(flightNo, 2, 1);
                     table1.setValueAt(Dep, 5, 1);
@@ -57,22 +72,6 @@ public class AirPassCse extends JFrame {
                 }
             }
 
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-    }
-
-
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
-        JLabel label3 = new JLabel(background);
-        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
-        JPanel myPanel = (JPanel)this.getContentPane();
-        myPanel.setOpaque(false);
-        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
-        this.setTitle("Passenger check-in system");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
 
     private void cancel(ActionEvent e) {
@@ -86,10 +85,17 @@ public class AirPassCse extends JFrame {
     }
 
     private void testDO(ActionEvent e) {
-        airlineAdd();
+
+        try{
+            airlineAdd();
+        } catch (IllegalAccessException | ParseException e1) {
+            errorHandel();
+            e1.printStackTrace();
+        }
+        dispose();
     }
 
-    private void airLineItemStateChanged(ItemEvent e) {
+    private void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
         ArrayList<Flight> list=EnterOther_3.getFlight();
         System.out.println(list);
         for(Flight flt : list) {
@@ -112,6 +118,19 @@ public class AirPassCse extends JFrame {
             }
         }
     }
+
+    public void init() {
+        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
+        this.setTitle("Passenger check-in system");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
@@ -242,7 +261,13 @@ public class AirPassCse extends JFrame {
                     airLine.setModel(new DefaultComboBoxModel<>(new String[] {
                         "Airline"
                     }));
-                    airLine.addItemListener(e -> airLineItemStateChanged(e));
+                    airLine.addItemListener(e -> {
+                        try {
+                            airLineItemStateChanged(e);
+                        } catch (IllegalAccessException | ParseException ex) {
+                            ex.printStackTrace();
+                        }
+                    });
                     toolBar1.add(airLine);
                 }
                 panel3.add(toolBar1, BorderLayout.SOUTH);

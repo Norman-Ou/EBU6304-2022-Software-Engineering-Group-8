@@ -1,9 +1,7 @@
 package CheckIn;
 
 import CheckIn.GUI.Airline_1;
-import CheckIn.GUI.EnterBN_3;
-import CheckIn.GUI.EnterOther_3;
-import DataBase.pDB;
+
 
 
 public class EnterCheckIn {

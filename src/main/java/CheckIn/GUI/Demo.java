@@ -69,6 +69,7 @@ public class Demo extends JFrame {
                                 new Baggage_7().setVisible(true);
                                 PrintFlight_6.stage="false";
                             }else if(PrintBag_11.stage0.equals("BagTag")){
+                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
                                 new Meal_12().setVisible(true);
                             }
                         } catch (InterruptedException ie) {
