@@ -170,6 +170,7 @@ public class Seat_3_6 extends JFrame {
         button1 = new JButton();
         button6 = new JButton();
         panel5 = new JPanel();
+        button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
         button5 = new JButton();
@@ -198,13 +199,12 @@ public class Seat_3_6 extends JFrame {
         //======== panel2 ========
         {
             panel2.setOpaque(false);
-            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
@@ -230,6 +230,11 @@ public class Seat_3_6 extends JFrame {
             panel5.setOpaque(false);
             panel5.setPreferredSize(new Dimension(254, 90));
             panel5.setLayout(new GridLayout());
+
+            //---- button2 ----
+            button2.setText(bundle.getString("button2.text_23"));
+            button2.addActionListener(e -> upGrade(e));
+            panel5.add(button2);
 
             //---- button3 ----
             button3.setText(bundle.getString("button3.text_13"));
@@ -369,6 +374,7 @@ public class Seat_3_6 extends JFrame {
     private JButton button1;
     private JButton button6;
     private JPanel panel5;
+    private JButton button2;
     private JButton button3;
     private JButton button4;
     private JButton button5;

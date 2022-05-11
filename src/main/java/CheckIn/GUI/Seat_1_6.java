@@ -192,6 +192,7 @@ public class Seat_1_6 extends JFrame {
         button5 = new JButton();
         button3 = new JButton();
         panel3 = new JPanel();
+        button6 = new JButton();
         button2 = new JButton();
         button1 = new JButton();
         button4 = new JButton();
@@ -206,9 +207,7 @@ public class Seat_1_6 extends JFrame {
         label9 = new JLabel();
         panel5 = new JPanel();
         vip = new JComboBox();
-        label10 = new JLabel();
         panel11 = new JPanel();
-        busS = new JComboBox();
         label7 = new JLabel();
         ecoS = new JComboBox();
 
@@ -219,11 +218,13 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panel1. getBorder
+            () ) ); panel1. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             panel1.setLayout(new BorderLayout());
 
             //---- button5 ----
@@ -249,6 +250,11 @@ public class Seat_1_6 extends JFrame {
             panel3.setOpaque(false);
             panel3.setPreferredSize(new Dimension(254, 90));
             panel3.setLayout(new GridLayout());
+
+            //---- button6 ----
+            button6.setText(bundle.getString("button6.text_3"));
+            button6.addActionListener(e -> upGrade(e));
+            panel3.add(button6);
 
             //---- button2 ----
             button2.setText(bundle.getString("button2.text_16"));
@@ -329,11 +335,6 @@ public class Seat_1_6 extends JFrame {
                         panel5.add(vip);
                     }
                     panel2.add(panel5);
-
-                    //---- label10 ----
-                    label10.setText(bundle.getString("label10.text_5"));
-                    label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
-                    panel2.add(label10);
                 }
                 panel10.add(panel2);
 
@@ -341,10 +342,6 @@ public class Seat_1_6 extends JFrame {
                 {
                     panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
-
-                    //---- busS ----
-                    busS.addItemListener(e -> busSeat(e));
-                    panel11.add(busS);
 
                     //---- label7 ----
                     label7.setText(bundle.getString("label7.text_4"));
@@ -373,6 +370,7 @@ public class Seat_1_6 extends JFrame {
     private JButton button5;
     private JButton button3;
     private JPanel panel3;
+    private JButton button6;
     private JButton button2;
     private JButton button1;
     private JButton button4;
@@ -387,9 +385,7 @@ public class Seat_1_6 extends JFrame {
     private JLabel label9;
     private JPanel panel5;
     private JComboBox vip;
-    private JLabel label10;
     private JPanel panel11;
-    private JComboBox busS;
     private JLabel label7;
     private JComboBox ecoS;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
