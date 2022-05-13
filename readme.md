@@ -115,6 +115,8 @@ src
 * For `twoSeat.png` kind of seats the type is 'A'
 * For `triSeat.png` kind of seats the type is 'B'
 
+* Date Format in JSON data: `"dd-MM-yyyy HH:mm:ss"`
+
 #### How to run this project
 
 1. Install `jdk1.8.0`
