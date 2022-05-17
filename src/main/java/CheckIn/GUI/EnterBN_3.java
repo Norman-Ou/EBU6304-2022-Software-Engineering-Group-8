@@ -122,6 +122,11 @@ public class EnterBN_3 extends JFrame {
         this.setVisible(true);
     }
 
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
@@ -145,11 +150,12 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -164,7 +170,9 @@ public class EnterBN_3 extends JFrame {
                 okButton2.addActionListener(e -> {
                     try {
                         ok(e);
-                    } catch (IllegalAccessException | ParseException ex) {
+                    } catch (IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    } catch (ParseException ex) {
                         ex.printStackTrace();
                     }
                 });
@@ -189,6 +197,7 @@ public class EnterBN_3 extends JFrame {
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_21"));
+                button2.addActionListener(e -> help(e));
                 panel1.add(button2, BorderLayout.EAST);
 
                 //---- label1 ----

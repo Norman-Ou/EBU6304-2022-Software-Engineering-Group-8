@@ -20,13 +20,20 @@ import javax.swing.border.*;
 public class Seat_3_6 extends JFrame {
     public static String seat;
     private static HashMap<String, Seat> mapNew = new HashMap<>();
+    private static HashMap<String, Seat> map=new HashMap<>();
+    private static boolean upgrade=false;
     public Seat_3_6() {
         initComponents();
     }
 
     private void PrintFlight(ActionEvent e) {
-        dispose();
-        new PrintFlight_6().setVisible(true);
+        if(upgrade){
+            dispose();
+            new CreditPage().setVisible(true);
+        }else{
+            dispose();
+            new PrintFlight_6().setVisible(true);
+        }
     }
 
     private void Back2Confirm(ActionEvent e) {
@@ -44,29 +51,17 @@ public class Seat_3_6 extends JFrame {
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-//            seat=vip.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
     }
 
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-//            seat=busS.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
     }
 
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            dispose();
-//            seat=ecoS.getSelectedItem().toString();
-//            new VIPSeatPay().setVisible(true);
-        }
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
     }
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
@@ -100,18 +95,20 @@ public class Seat_3_6 extends JFrame {
         }
     }
     public void showSeats() throws Exception {
-        HashMap<String, Seat> map=new HashMap<>();
-//        if(EnterBN_3.getPsnTemp()==null){
-//            try{
-//                //TODO other's seating list
-////                 map= Objects.requireNonNull(EnterOther_3.getFlightList()).getSeatingList();
-////                bpOther.setSeatNo(seat);
-////                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(seat);
-//            } catch (Exception e1) {
-//                e1.printStackTrace();
-//            }
-//        }
-//        else
+        if(EnterBN_3.getPsnTemp()==null){
+            try {
+                map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
+                map.forEach((k,v)->{
+                    if (!mapNew.containsValue(v)){
+                        mapNew.put(k,v);
+                    }
+                });
+                System.out.println(mapNew);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
@@ -146,6 +143,20 @@ public class Seat_3_6 extends JFrame {
         }
     }
 
+    private void upGrade(ActionEvent e) {
+        if(map.isEmpty()){
+            JOptionPane.showMessageDialog(null, "There is no available VIP seats.","No VIP Seats", JOptionPane.WARNING_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Confirm to pay more for upgrading your seat?","Upgrade", JOptionPane.WARNING_MESSAGE);
+            upgrade=true;
+            resetAvSeat();
+        }
+    }
+    //乘客选择升舱之后开放vipSeats
+    public void resetAvSeat(){
+        vip.setEnabled(true);
+    }
+
     public void init() {
         ImageIcon background = new ImageIcon("src/main/resources/img.png");
         JLabel label3 = new JLabel(background);
@@ -158,8 +169,9 @@ public class Seat_3_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void upGrade(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm to pay more for upgrading your seat?","Upgrade", JOptionPane.WARNING_MESSAGE);
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
     }
 
     private void initComponents() {
@@ -199,16 +211,17 @@ public class Seat_3_6 extends JFrame {
         //======== panel2 ========
         {
             panel2.setOpaque(false);
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
             button1.setText(bundle.getString("button1.text_31"));
+            button1.addActionListener(e -> help(e));
             panel2.add(button1, BorderLayout.EAST);
 
             //---- button6 ----

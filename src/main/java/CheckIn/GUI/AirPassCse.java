@@ -32,7 +32,7 @@ public class AirPassCse extends JFrame {
     public static String Dep= "";
     public static String Des= "";
     public static String ETA= "";
-    public static String nowTime = "07-09-2022 14:42:32";
+    public static String nowTime = "07-09-2022 7:00:32";
     public AirPassCse() {
         initComponents();
     }
@@ -49,7 +49,7 @@ public class AirPassCse extends JFrame {
                 Dep=flt.getDeparture();
                 Des=flt.getDestination();
                 ETA=flt.getETA();
-
+                System.out.println(ETA);
                 String eta=flt.getETA();
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 Date date1 = format.parse(nowTime);
@@ -57,21 +57,24 @@ public class AirPassCse extends JFrame {
 
                 long nowMillisecond = date1.getTime();
                 long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond > 1800000){
+                if(etaMillisecond - nowMillisecond > 1800000) {
+                    setContent();
                 }else{
                     throw new IllegalAccessException();
                 }
 
-                airLine.addItem(flightNo);
-
-                if (state) {
-                    table1.setValueAt(flightNo, 2, 1);
-                    table1.setValueAt(Dep, 5, 1);
-                    table1.setValueAt(Des, 8, 1);
-                    table1.setValueAt(ETA, 11, 1);
-                }
             }
 
+    }
+
+    private void setContent(){
+        airLine.addItem(flightNo);
+//        if (state) {
+//            table1.setValueAt(flightNo, 2, 1);
+//            table1.setValueAt(Dep, 5, 1);
+//            table1.setValueAt(Des, 8, 1);
+//            table1.setValueAt(ETA, 11, 1);
+//        }
     }
 
     private void cancel(ActionEvent e) {
@@ -92,7 +95,7 @@ public class AirPassCse extends JFrame {
             errorHandel();
             e1.printStackTrace();
         }
-        dispose();
+//        dispose();
     }
 
     private void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
@@ -131,6 +134,11 @@ public class AirPassCse extends JFrame {
         this.setVisible(true);
     }
 
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
@@ -160,11 +168,12 @@ public class AirPassCse extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -264,7 +273,9 @@ public class AirPassCse extends JFrame {
                     airLine.addItemListener(e -> {
                         try {
                             airLineItemStateChanged(e);
-                        } catch (IllegalAccessException | ParseException ex) {
+                        } catch (IllegalAccessException ex) {
+                            ex.printStackTrace();
+                        } catch (ParseException ex) {
                             ex.printStackTrace();
                         }
                     });
@@ -285,6 +296,7 @@ public class AirPassCse extends JFrame {
 
                     //---- button1 ----
                     button1.setText(bundle.getString("button1.text_27"));
+                    button1.addActionListener(e -> help(e));
                     panel4.add(button1, BorderLayout.EAST);
                 }
                 panel3.add(panel4, BorderLayout.NORTH);
