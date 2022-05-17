@@ -57,7 +57,7 @@ public class AirPassCse extends JFrame {
 
                 long nowMillisecond = date1.getTime();
                 long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond > 1800000) {
+                if(etaMillisecond - nowMillisecond >  1800000) {
                     setContent();
                 }else{
                     throw new IllegalAccessException();
