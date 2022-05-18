@@ -29,7 +29,7 @@ public class EnterBN_3 extends JFrame {
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
-    public static String nowTime = "07-09-2022 10:42:32";
+    public static String nowTime = "07-09-2022 9:42:32";
     private void ok(ActionEvent e) throws IllegalAccessException, ParseException {
 
         String str=textField1.getText();
