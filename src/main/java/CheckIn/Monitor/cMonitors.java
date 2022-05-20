@@ -52,8 +52,8 @@ public class cMonitors {
         return flight;
     }
 
-    public static Flight getFlightByBookingNo(String bookingNo) {
-        String targetFlightNo;
+    public static Flight getFlightByBookingNo(String bookingNo){
+        String targetFlightNo = null;
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();

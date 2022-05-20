@@ -41,7 +41,7 @@ public class Seat_1_6 extends JFrame {
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }
     }
-    public int getSeatClazz(){
+    public int getSeatClazz() throws Exception {
         int clazz;
         if(EnterBN_3.getPsnTemp() != null){
             Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());

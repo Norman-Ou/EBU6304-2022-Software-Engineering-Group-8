@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import Exceptions.DataNotFound;
 import net.miginfocom.swing.*;
 
 /**
@@ -30,16 +32,26 @@ public class EnterBN_3 extends JFrame {
     public static Passenger psnTemp;
     public static Flight fltTemp;
     public static String nowTime = "07-09-2022 9:42:32";
-    private void ok(ActionEvent e) throws IllegalAccessException, ParseException {
+    private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
 
         String str=textField1.getText();
         bookNum=str;
 //        System.out.println(bookNum);
-        Flight flt = cMonitors.getFlightByBookingNo(bookNum);
-        Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
+        Flight flt = new Flight();
+        try {
+            flt = cMonitors.getFlightByBookingNo(bookNum);
+            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
 //        System.out.println(psn);
-        fltTemp=flt;
-        psnTemp=psn;
+            fltTemp = flt;
+            psnTemp = psn;
+        }catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+        new CheckIn_2().setVisible(true);
+        }
+        if(flt==null){
+            throw new Exception(bookNum);
+        }
+
         try{
             firstCheck();
         } catch (IllegalAccessException illegalAccessException) {
@@ -47,6 +59,8 @@ public class EnterBN_3 extends JFrame {
             errorHandel();
         } catch (ParseException parseException) {
             parseException.printStackTrace();
+        } catch (Exception exception){
+            dispose();
         }
 
 //        new ConfirmPage_3().setVisible(true);
@@ -56,28 +70,33 @@ public class EnterBN_3 extends JFrame {
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
         new Error().setVisible(true);
     }
-    public static void firstCheck() throws IllegalAccessException, ParseException {
+    public void firstCheck() throws IllegalAccessException, ParseException {
         String eta=fltTemp.getETA();
-//        try{
-
+        try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
-            Date date2 = format.parse(eta);
+            Date date2 = new Date();
+            try{
+            date2 = format.parse(eta);
+                new ConfirmPage_3().setVisible(true);
+            } catch (Exception error){
+                JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+                dispose();
+                new CheckIn_2().setVisible(true);
 
-            long nowMillisecond = date1.getTime();
-            long etaMillisecond = date2.getTime();
-//            System.out.println(etaMillisecond - nowMillisecond < 1800000);
-            if(etaMillisecond - nowMillisecond < 1800000){
-//                return true;
-            }else{
-                throw new IllegalAccessException();
+                long nowMillisecond = date1.getTime();
+                long etaMillisecond = date2.getTime();
+                if(etaMillisecond - nowMillisecond < 1800000){
+                }else{
+                    throw new IllegalAccessException();
+                }
             }
-        new ConfirmPage_3().setVisible(true);
-//        } catch (ParseException | IllegalAccessException e) {
-//            errorHandel();
-//            e.printStackTrace();
-//            return;
-//        }
+//                new ConfirmPage_3().setVisible(true);
+        } catch (ParseException | IllegalAccessException e) {
+            errorHandel();
+            e.printStackTrace();
+        }
+
     }
     public static Passenger getPsnTemp() {
         try {
@@ -174,6 +193,8 @@ public class EnterBN_3 extends JFrame {
                         ex.printStackTrace();
                     } catch (ParseException ex) {
                         ex.printStackTrace();
+                    } catch (Exception dataNotFound) {
+                        dataNotFound.printStackTrace();
                     }
                 });
                 buttonBar2.add(okButton2);
