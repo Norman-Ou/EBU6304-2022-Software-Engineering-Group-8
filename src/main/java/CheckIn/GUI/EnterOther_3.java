@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
  */
 public class EnterOther_3 extends JFrame {
     public static String ETA= "";
-
     public EnterOther_3() {
         initComponents();
     }
