@@ -30,10 +30,14 @@ public class backend extends JFrame {
 
     private void button2MouseClicked(MouseEvent e) {
         if(e.getSource()==button2){
-            PassengerPage P = new PassengerPage();
-            P.setVisible(true);
+//            PassengerPage P = new PassengerPage();
+//            P.setVisible(true);
+//            this.dispose();
+//            P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            FlightListForThePassenger FL = new FlightListForThePassenger();
+            FL.setVisible(true);
             this.dispose();
-            P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            FL.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     }
 
