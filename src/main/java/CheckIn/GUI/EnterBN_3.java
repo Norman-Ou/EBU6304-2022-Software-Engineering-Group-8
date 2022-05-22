@@ -4,7 +4,6 @@
 
 package CheckIn.GUI;
 
-import DataBase.pDB;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
