@@ -123,7 +123,7 @@ public class cMonitors {
     public static Order getOrderByPassenger(Passenger psn){
         String id= psn.getPassengerId();
         String bookNumber=psn.getBookNumber();
-        String flightNumber =cMonitors.getFlightByBookingNo(bookNumber).getFlightNo();
+        String flightNumber = cMonitors.getFlightByBookingNo(bookNumber).getFlightNo();
         Order order = new Order(id,flightNumber,bookNumber);
         return order;
     }

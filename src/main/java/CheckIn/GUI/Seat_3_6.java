@@ -57,21 +57,49 @@ public class Seat_3_6 extends JFrame {
 
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+            seat=busS.getSelectedItem().toString();
+            System.out.println(seat);
+        }
     }
 
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
+        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            dispose();
+            seat=ecoS.getSelectedItem().toString();
+            System.out.println(seat);
+        }
     }
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
-                Order order = oDB.getOrderByBookingNumber(str);
+//                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
+//                Order order = oDB.getOrderByBookingNumber(str);
+                Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
-                //TODO 取不到seat class
+                if(intTemp==0){
+                    infoText.setText("You can choose form 5 to 40");
+                    busS.setEditable(false);
+                }else if(intTemp==1){
+                    infoText.setText("You can choose form 1 to 3");
+                    ecoS.setEditable(false);
+                }else if(intTemp==-1){
+                    infoText.setText("Seat class is -1 now");
+                }
+                showSeats();
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(EnterBN_3.getPsnTemp()==null){
+            try {
+//                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
+//                Order order = oDB.getOrderByBookingNumber(str);
+                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
+                int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
@@ -97,7 +125,7 @@ public class Seat_3_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
+//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -111,7 +139,7 @@ public class Seat_3_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
+//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -125,9 +153,6 @@ public class Seat_3_6 extends JFrame {
             switch (temp) {
                 case 0:
                     ecoS.addItem(entry.getKey());
-                    break;
-                case 1:
-//                    vip.addItem(entry.getKey());
                     break;
                 case 2:
                     busS.addItem(entry.getKey());
