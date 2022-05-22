@@ -17,8 +17,8 @@ import java.awt.event.MouseEvent;
 /**
  * @author Lingxiao
  */
-public class PassengerPage extends JFrame {
-    public PassengerPage() {
+public class PassengerPage_Discard extends JFrame {
+    public PassengerPage_Discard() {
         initComponents();
     }
 
@@ -60,9 +60,9 @@ public class PassengerPage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        label1 = new JLabel();
-        panel1 = new JPanel();
-        InputBar = new JTextField();
+//        label1 = new JLabel();
+//        panel1 = new JPanel();
+//        InputBar = new JTextField();//原本的查询语句部分
         button1 = new JButton();
         label2 = new JLabel();
         PassengerID = new JTextField();
