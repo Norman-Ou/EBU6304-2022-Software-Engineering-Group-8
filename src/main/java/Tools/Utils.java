@@ -51,10 +51,10 @@ public class Utils {
         //CA8852 Beijing
         Flight flight = flights.get(0);
         //07-09-2022 08:00:00
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Original-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         //获取当前时间
         Calendar time = Calendar.getInstance();
@@ -70,24 +70,24 @@ public class Utils {
         time.add(Calendar.MILLISECOND, Config.Beijing2London_ms);
         flight.setETA(df.format(time.getTime()));
 
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         newFlights.add(flight);
 
         //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         //----------------------------------------------------//
 
         //BA3352 Paris
         flight = flights.get(1);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Original-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         //获取当前时间
         time = Calendar.getInstance();
@@ -103,24 +103,24 @@ public class Utils {
         time.add(Calendar.MILLISECOND, Config.Paris2London_ms);
         flight.setETA(df.format(time.getTime()));
 
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         newFlights.add(flight);
 
         //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         //----------------------------------------------------//
 
         //CX2582 HK
         flight = flights.get(2);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Original-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         //获取当前时间
         time = Calendar.getInstance();
@@ -136,24 +136,24 @@ public class Utils {
         time.add(Calendar.MILLISECOND, Config.HK2London_ms);
         flight.setETA(df.format(time.getTime()));
 
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         newFlights.add(flight);
 
         //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         //----------------------------------------------------//
 
         //EK3588 Dubai
         flight = flights.get(3);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Original-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         //获取当前时间
         time = Calendar.getInstance();
@@ -169,16 +169,16 @@ public class Utils {
         time.add(Calendar.MILLISECOND, Config.Dubai2London_ms);
         flight.setETA(df.format(time.getTime()));
 
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
+//        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
+//        System.out.println("ETC: " + flight.getETC());
+//        System.out.println("ETD: " + flight.getETD());
+//        System.out.println("ETA: " + flight.getETA());
 
         newFlights.add(flight);
 
         //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         //----------------------------------------------------//
 
         try {

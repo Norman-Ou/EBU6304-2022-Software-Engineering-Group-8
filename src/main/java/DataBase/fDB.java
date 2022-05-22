@@ -4,7 +4,9 @@ import Config.Config;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import Exceptions.DataNotFound;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 
 import java.io.IOException;
@@ -60,7 +62,11 @@ public class fDB {
 
     public static void replaceAllFlights(ArrayList<Flight> flights) throws IOException {
         DataBase dataBase = new DataBase(Config.FlightFile);
-        dataBase.replaceAllData(new JSONArray(Collections.singletonList(flights)));
+        JSONArray jsonArray = new JSONArray();
+        dataBase.replaceAllData(jsonArray);
+        for (Flight flight : flights){
+            dataBase.addObject(flight);
+        }
     }
 
     public static Flight loadFlightByFlightNo(String flightNo)/* throws DataNotFound */{
