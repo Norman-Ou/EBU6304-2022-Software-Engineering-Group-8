@@ -18,6 +18,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static CheckIn.GUI.AirPassCse.flightNo;
+
 /**
  * Passenger Control Class
  *
@@ -50,8 +52,8 @@ public class cMonitors {
         return flight;
     }
 
-    public static Flight getFlightByBookingNo(String bookingNo) {
-        String targetFlightNo;
+    public static Flight getFlightByBookingNo(String bookingNo){
+        String targetFlightNo = null;
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();
@@ -116,6 +118,14 @@ public class cMonitors {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Order getOrderByPassenger(Passenger psn){
+        String id= psn.getPassengerId();
+        String bookNumber=psn.getBookNumber();
+        String flightNumber =cMonitors.getFlightByBookingNo(bookNumber).getFlightNo();
+        Order order = new Order(id,flightNumber,bookNumber);
+        return order;
     }
 
     // public BoardingPass generateBoardingPass() {

@@ -5,26 +5,27 @@
 package CheckIn.GUI;
 
 import Beans.Flight.Flight;
-import CheckIn.Monitor.cMonitors;
-import DataBase.pDB;
-import Beans.IDDocument.IDDocument;
 import Beans.Passenger.Passenger;
-import Exceptions.DataNotFound;
+import CheckIn.Monitor.cMonitors;
+//import net.miginfocom.swing.MigLayout;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
-import java.net.IDN;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import net.miginfocom.swing.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * @author Jiayi Wang
  */
 public class EnterOther_3 extends JFrame {
+    public static String ETA= "";
+
     public EnterOther_3() {
         initComponents();
     }
@@ -35,17 +36,27 @@ public class EnterOther_3 extends JFrame {
     public static Passenger psnTemp2;
     public static String BookingNumber;
     public static ArrayList<Flight> fltTemp;
+    public static String nowTime = "07-09-2022 9:42:32";
 
     private void ok(ActionEvent e) throws Exception {
         //open next page
-        new AirPassCse().setVisible(true);
-        dispose();
 
         IDNum=ID.getText();
         surname=Sur.getText();
         ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
         fltTemp = fltList;
         psnTemp1=cMonitors.getPassengerBySurname_ID(surname,IDNum);
+
+        try{
+            firstCheck();
+
+        } catch (IllegalAccessException illegalAccessException) {
+            illegalAccessException.printStackTrace();
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+//        new AirPassCse().setVisible(true);
+        dispose();
     }
     public static ArrayList<Flight> getFlight() {
         try {
@@ -91,11 +102,6 @@ public class EnterOther_3 extends JFrame {
     private void scanID(ActionEvent e) {
         new ConfirmPage_3().setVisible(true);
         dispose();
-//        IDDocument id = new IDDocument("215200","orz");
-//        IDNum=id.getID();
-//        surname=id.getSurname();
-//        Passenger psn = new Passenger();
-//        psnTemp1=psn;
         getPsnTemp2();
     }
 
@@ -105,11 +111,8 @@ public class EnterOther_3 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -118,10 +121,63 @@ public class EnterOther_3 extends JFrame {
         dispose();
         new Error().setVisible(true);
     }
+    public void firstCheck() throws IllegalAccessException, ParseException {
+
+        ArrayList<Flight> list=EnterOther_3.getFlight();
+        if(list==null){
+            JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+            dispose();
+            new CheckIn_2().setVisible(true);
+        }else{
+            for(Flight flt : list) {          //同for(int i = 0;i<list.size();i++)
+                ETA=flt.getETA();
+                System.out.println(ETA);
+                String eta=flt.getETA();
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                Date date1 = format.parse(nowTime);
+                Date date2 = format.parse(eta);
+
+                try{
+                    date2 = format.parse(eta);
+                    new AirPassCse().setVisible(true);
+                } catch (Exception error){
+                    long nowMillisecond = date1.getTime();
+                    long etaMillisecond = date2.getTime();
+                    if(etaMillisecond - nowMillisecond < 1800000){
+                    }else{
+                        throw new IllegalAccessException();
+                    }
+                }
+            }
+        }
+        String eta=ETA;
+        try{
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date date1 = format.parse(nowTime);
+            Date date2 = new Date();
+            try{
+                date2 = format.parse(eta);
+                new AirPassCse().setVisible(true);
+            } catch (Exception error){
+                long nowMillisecond = date1.getTime();
+                long etaMillisecond = date2.getTime();
+                if(etaMillisecond - nowMillisecond < 1800000){
+                    throw new IllegalAccessException();
+                }
+            }
+        } catch (ParseException | IllegalAccessException e) {
+            errorHandel();
+            e.printStackTrace();
+        }
+
+    }
+    public static void errorHandel(){
+        JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
+        new Error().setVisible(true);
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -137,18 +193,16 @@ public class EnterOther_3 extends JFrame {
 
         //======== this ========
         var contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        contentPane.setLayout(new GridBagLayout());
+        ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0};
+        ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)contentPane.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+        ((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -203,14 +257,11 @@ public class EnterOther_3 extends JFrame {
             //======== panel1 ========
             {
                 panel1.setOpaque(false);
-                panel1.setLayout(new MigLayout(
-                    "insets 0,hidemode 3,gap 0 0",
-                    // columns
-                    "[fill]" +
-                    "[grow,fill]" +
-                    "[grow,fill]",
-                    // rows
-                    "[grow,center]"));
+                panel1.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0, 0, 0};
+                ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 1.0, 1.0, 1.0E-4};
+                ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- Sur ----
                 Sur.setToolTipText("Surname");
@@ -218,7 +269,9 @@ public class EnterOther_3 extends JFrame {
                 Sur.setMinimumSize(new Dimension(49, 90));
                 Sur.setPreferredSize(new Dimension(49, 90));
                 Sur.setHorizontalAlignment(SwingConstants.CENTER);
-                panel1.add(Sur, "cell 1 0");
+                panel1.add(Sur, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- ID ----
                 ID.setToolTipText("IDNo");
@@ -226,11 +279,15 @@ public class EnterOther_3 extends JFrame {
                 ID.setMinimumSize(new Dimension(49, 90));
                 ID.setPreferredSize(new Dimension(49, 90));
                 ID.setHorizontalAlignment(SwingConstants.CENTER);
-                panel1.add(ID, "cell 2 0");
+                panel1.add(ID, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel1, BorderLayout.CENTER);
         }
-        contentPane.add(dialogPane2, BorderLayout.CENTER);
+        contentPane.add(dialogPane2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
         setSize(905, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -238,7 +295,6 @@ public class EnterOther_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;

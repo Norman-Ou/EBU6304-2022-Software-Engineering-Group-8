@@ -4,19 +4,18 @@
 
 package CheckIn.GUI;
 
-import DataBase.pDB;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import net.miginfocom.swing.*;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * @author Jiayi Wang
@@ -29,17 +28,28 @@ public class EnterBN_3 extends JFrame {
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
-    public static String nowTime = "07-09-2022 10:42:32";
-    private void ok(ActionEvent e) throws IllegalAccessException, ParseException {
+    public static String nowTime = "07-09-2022 7:02:32";
+
+    private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
 
         String str=textField1.getText();
         bookNum=str;
 //        System.out.println(bookNum);
-        Flight flt = cMonitors.getFlightByBookingNo(bookNum);
-        Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
+        Flight flt = new Flight();
+        try {
+            flt = cMonitors.getFlightByBookingNo(bookNum);
+            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
 //        System.out.println(psn);
-        fltTemp=flt;
-        psnTemp=psn;
+            fltTemp = flt;
+            psnTemp = psn;
+        }catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+        new CheckIn_2().setVisible(true);
+        }
+        if(flt==null){
+            throw new Exception(bookNum);
+        }
+
         try{
             firstCheck();
         } catch (IllegalAccessException illegalAccessException) {
@@ -47,37 +57,39 @@ public class EnterBN_3 extends JFrame {
             errorHandel();
         } catch (ParseException parseException) {
             parseException.printStackTrace();
+        } catch (Exception exception){
+            dispose();
         }
-
-//        new ConfirmPage_3().setVisible(true);
         dispose();
     }
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
         new Error().setVisible(true);
     }
-    public static void firstCheck() throws IllegalAccessException, ParseException {
+    public void firstCheck() throws IllegalAccessException, ParseException {
         String eta=fltTemp.getETA();
-//        try{
-
+        try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
-            Date date2 = format.parse(eta);
-
+            Date date2 = new Date();
+            try{
+            date2 = format.parse(eta);
+                new ConfirmPage_3().setVisible(true);
+            } catch (Exception error){
+                JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+                dispose();
+                new CheckIn_2().setVisible(true);
+            }
             long nowMillisecond = date1.getTime();
             long etaMillisecond = date2.getTime();
-//            System.out.println(etaMillisecond - nowMillisecond < 1800000);
-            if(etaMillisecond - nowMillisecond < 1800000){
-//                return true;
-            }else{
+            if( etaMillisecond - nowMillisecond < 1800000){
                 throw new IllegalAccessException();
             }
-        new ConfirmPage_3().setVisible(true);
-//        } catch (ParseException | IllegalAccessException e) {
-//            errorHandel();
-//            e.printStackTrace();
-//            return;
-//        }
+        } catch (ParseException | IllegalAccessException e) {
+            errorHandel();
+            e.printStackTrace();
+        }
+
     }
     public static Passenger getPsnTemp() {
         try {
@@ -122,9 +134,13 @@ public class EnterBN_3 extends JFrame {
         this.setVisible(true);
     }
 
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -145,11 +161,6 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -164,7 +175,7 @@ public class EnterBN_3 extends JFrame {
                 okButton2.addActionListener(e -> {
                     try {
                         ok(e);
-                    } catch (IllegalAccessException | ParseException ex) {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 });
@@ -189,6 +200,7 @@ public class EnterBN_3 extends JFrame {
 
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_21"));
+                button2.addActionListener(e -> help(e));
                 panel1.add(button2, BorderLayout.EAST);
 
                 //---- label1 ----
@@ -203,17 +215,18 @@ public class EnterBN_3 extends JFrame {
             //======== panel2 ========
             {
                 panel2.setOpaque(false);
-                panel2.setLayout(new MigLayout(
-                    "insets 0,hidemode 3",
-                    // columns
-                    "[grow,fill]",
-                    // rows
-                    "[grow,center]"));
+                panel2.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+                ((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- textField1 ----
                 textField1.setPreferredSize(new Dimension(49, 90));
                 textField1.setHorizontalAlignment(SwingConstants.CENTER);
-                panel2.add(textField1, "cell 0 0");
+                panel2.add(textField1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel2, BorderLayout.CENTER);
         }
@@ -225,7 +238,6 @@ public class EnterBN_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;

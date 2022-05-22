@@ -46,6 +46,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button5"
 						"text": new FormMessage( null, "button5.text_4" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "help", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "East"
 					} )

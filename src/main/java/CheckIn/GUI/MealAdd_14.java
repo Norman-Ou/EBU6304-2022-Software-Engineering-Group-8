@@ -131,16 +131,9 @@ public class MealAdd_14 extends JFrame {
         tempuraPanel.add(labelBurger, BorderLayout.NORTH);
     }
 
-    private void Normal(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void VIPMeal(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void cancelMeal(ActionEvent e) {
-        // TODO add your code here
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
     }
 
     private void initComponents() {
@@ -182,11 +175,12 @@ public class MealAdd_14 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -197,7 +191,6 @@ public class MealAdd_14 extends JFrame {
                 //---- button3 ----
                 button3.setText(bundle.getString("button3.text_10"));
                 button3.setEnabled(false);
-                button3.addActionListener(e -> Normal(e));
                 Nav.add(button3, BorderLayout.NORTH);
 
                 //======== panel5 ========
@@ -206,7 +199,6 @@ public class MealAdd_14 extends JFrame {
 
                     //---- button4 ----
                     button4.setText(bundle.getString("button4.text_4"));
-                    button4.addActionListener(e -> VIPMeal(e));
                     panel5.add(button4, BorderLayout.NORTH);
 
                     //======== panel7 ========
@@ -216,7 +208,6 @@ public class MealAdd_14 extends JFrame {
                         //---- button5 ----
                         button5.setText(bundle.getString("button5.text_2"));
                         button5.setEnabled(false);
-                        button5.addActionListener(e -> cancelMeal(e));
                         panel7.add(button5, BorderLayout.NORTH);
                     }
                     panel5.add(panel7, BorderLayout.CENTER);
@@ -251,6 +242,7 @@ public class MealAdd_14 extends JFrame {
 
                 //---- button6 ----
                 button6.setText(bundle.getString("button6.text_2"));
+                button6.addActionListener(e -> help(e));
                 panel1.add(button6, BorderLayout.EAST);
             }
             dialogPane.add(panel1, BorderLayout.NORTH);

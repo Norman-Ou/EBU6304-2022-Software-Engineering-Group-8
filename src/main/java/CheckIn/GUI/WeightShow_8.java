@@ -35,10 +35,10 @@ public class WeightShow_8 extends JFrame {
         new Baggage_7().setVisible(true);
     }
     public void showWeight(){
-        String str = "Your baggage weighs:";
+        String str = "Your baggage weighs: ";
         if(EnterBN_3.getPsnTemp()==null){
             try {
-                weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight());
+                weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -46,7 +46,7 @@ public class WeightShow_8 extends JFrame {
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight());
+                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -66,6 +66,11 @@ public class WeightShow_8 extends JFrame {
 //        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
     }
 
 
@@ -92,13 +97,13 @@ public class WeightShow_8 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane2. getBorder()));dialogPane2. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder
+            ( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -132,6 +137,7 @@ public class WeightShow_8 extends JFrame {
 
                 //---- button4 ----
                 button4.setText(bundle.getString("button4.text_11"));
+                button4.addActionListener(e -> help(e));
                 panel2.add(button4, BorderLayout.EAST);
             }
             dialogPane2.add(panel2, BorderLayout.NORTH);

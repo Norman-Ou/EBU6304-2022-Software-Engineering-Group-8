@@ -19,7 +19,6 @@ new FormModel {
 						name: "button3"
 						"text": new FormMessage( null, "button3.text_10" )
 						"enabled": false
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Normal", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )
@@ -28,7 +27,6 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "button4"
 							"text": new FormMessage( null, "button4.text_4" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "VIPMeal", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "North"
 						} )
@@ -38,7 +36,6 @@ new FormModel {
 								name: "button5"
 								"text": new FormMessage( null, "button5.text_2" )
 								"enabled": false
-								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelMeal", true ) )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "North"
 							} )
@@ -79,6 +76,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button6"
 						"text": new FormMessage( null, "button6.text_2" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "help", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "East"
 					} )

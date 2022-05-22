@@ -19,6 +19,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import static CheckIn.Monitor.cMonitors.getFlightByBookingNo;
+import static CheckIn.Monitor.cMonitors.getOrderByPassenger;
 
 /**
  * @author Jiayi Wang
@@ -26,45 +27,51 @@ import static CheckIn.Monitor.cMonitors.getFlightByBookingNo;
 public class Seat_1_6 extends JFrame {
     public static String seat;
     private static HashMap<String, Seat> mapNew = new HashMap<>();
+    private static HashMap<String, Seat> map=new HashMap<>();
+    //true for upgrading.
+    private static boolean upgrade=false;
     public Seat_1_6() throws Exception {
         initComponents();
     }
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
         if(EnterOther_3.getPsnTemp1()==null) {
-            try {
-                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
-                setCombox(str);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }else if(EnterBN_3.getPsnTemp()==null){
-            try {
-                String str=Objects.requireNonNull(EnterOther_3.getPsnTemp1().getBookNumber());
-                setCombox(str);
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }
     }
-    public void setCombox(String str) throws Exception {
+    public int getSeatClazz() throws Exception {
+        int clazz;
+        if(EnterBN_3.getPsnTemp() != null){
+            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
+            //TODO
+//            order.setSeatClass(0);
+            clazz =order.getSeatClass();
+            return clazz;
+        }else if(EnterOther_3.getPsnTemp1() != null){
+            Order other2 = getOrderByPassenger(EnterOther_3.getPsnTemp1());
+            //TODO
+//            other2.setSeatClass(0);
+            clazz =other2.getSeatClass();
+            return clazz;
+        }
+        return -1;
+    }
 
-        Order order = oDB.getOrderByBookingNumber(str);
-        int intTemp=order.getSeatClass();
-        System.out.println(intTemp);
-        //TODO 取不到seat class
+    public void setCombox() throws Exception {
+
+        int intTemp=getSeatClazz();
         if(intTemp==0){
             infoText.setText("You can choose form 18 to 30");
-//            busS.setEditable(false);
-            vip.setEditable(false);
+            vip.setEnabled(false);
         }else if(intTemp==1){
             infoText.setText("You can choose form 11 to 17");
-            ecoS.setEditable(false);
-            vip.setEditable(false);
+            ecoS.setEnabled(false);
+            vip.setEnabled(false);
         }else if(intTemp==2){
             infoText.setText("You can choose form 1 to 10");
-            ecoS.setEditable(false);
-//            busS.setEditable(false);
+            ecoS.setEnabled(false);
         }else if(intTemp==-1){
             infoText.setText("Seat class is -1 now");
         }
@@ -72,6 +79,13 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
+//        if(upgrade){
+//            dispose();
+//            new CreditPage().setVisible(true);
+//        }else{
+//            dispose();
+//            new PrintFlight_6().setVisible(true);
+//        }
         dispose();
         new PrintFlight_6().setVisible(true);
     }
@@ -83,14 +97,6 @@ public class Seat_1_6 extends JFrame {
         }seat=vip.getSelectedItem().toString();
 
     }
-    private void busSeat(ItemEvent e) {
-        int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-
-        }
-//        seat=busS.getSelectedItem().toString();
-
-    }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
@@ -99,7 +105,6 @@ public class Seat_1_6 extends JFrame {
     }
 
     public void showSeats() throws Exception {
-        HashMap<String, Seat> map=new HashMap<>();
         if(EnterBN_3.getPsnTemp()==null){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
@@ -140,11 +145,7 @@ public class Seat_1_6 extends JFrame {
                 case 1:
                     vip.addItem(entry.getKey());
                     break;
-//                case 2:
-//                    busS.addItem(entry.getKey());
-//                    break;
             }
-
         }
     }
 
@@ -175,13 +176,20 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void upGrade(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Confirm to pay more for upgrading your seat?","Upgrade", JOptionPane.WARNING_MESSAGE);
+        if(map.isEmpty()){
+            JOptionPane.showMessageDialog(null, "There is no available VIP seats.","No VIP Seats", JOptionPane.WARNING_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Confirm to pay more for upgrading your seat?","Upgrade", JOptionPane.WARNING_MESSAGE);
+            upgrade=true;
+            resetAvSeat();
+        }
     }
-    public void checkUpgradeValid(){
-        EnterBN_3.getFlight().getSeatingList();
-    }
-    public void resetAvSeat(){
-        
+    //乘客选择升舱之后开放所有combox
+    public void resetAvSeat(){vip.setEnabled(true);}
+
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
     }
 
     private void initComponents() throws Exception {
@@ -218,17 +226,19 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border
-            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog"
-            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panel1. getBorder
-            () ) ); panel1. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-            . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException
-            ( ) ;} } );
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             panel1.setLayout(new BorderLayout());
 
             //---- button5 ----
             button5.setText(bundle.getString("button5.text_5"));
+            button5.addActionListener(e -> help(e));
             panel1.add(button5, BorderLayout.EAST);
 
             //---- button3 ----

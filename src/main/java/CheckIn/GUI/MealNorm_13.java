@@ -154,16 +154,9 @@ public class MealNorm_13 extends JFrame {
         this.setVisible(true);
     }
 
-    private void Normal(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void VIPMeal(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void cancelMeal(ActionEvent e) {
-        // TODO add your code here
+    private void help(ActionEvent e) {
+        dispose();
+        new Error().setVisible(true);
     }
 
     private void initComponents() {
@@ -194,7 +187,9 @@ public class MealNorm_13 extends JFrame {
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
+        panel1 = new JPanel();
         label2 = new JLabel();
+        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -204,12 +199,14 @@ public class MealNorm_13 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
+            ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -219,7 +216,6 @@ public class MealNorm_13 extends JFrame {
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_23"));
-                button1.addActionListener(e -> Normal(e));
                 Nav.add(button1, BorderLayout.NORTH);
 
                 //======== panel5 ========
@@ -229,7 +225,6 @@ public class MealNorm_13 extends JFrame {
                     //---- button2 ----
                     button2.setText(bundle.getString("button2.text_15"));
                     button2.setEnabled(false);
-                    button2.addActionListener(e -> VIPMeal(e));
                     panel5.add(button2, BorderLayout.NORTH);
 
                     //======== panel6 ========
@@ -239,7 +234,6 @@ public class MealNorm_13 extends JFrame {
                         //---- button3 ----
                         button3.setText(bundle.getString("button3.text_9"));
                         button3.setEnabled(false);
-                        button3.addActionListener(e -> cancelMeal(e));
                         panel6.add(button3, BorderLayout.NORTH);
                     }
                     panel5.add(panel6, BorderLayout.CENTER);
@@ -329,11 +323,22 @@ public class MealNorm_13 extends JFrame {
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
 
-            //---- label2 ----
-            label2.setText(bundle.getString("label2.text_4"));
-            label2.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-            label2.setHorizontalAlignment(SwingConstants.CENTER);
-            dialogPane.add(label2, BorderLayout.NORTH);
+            //======== panel1 ========
+            {
+                panel1.setLayout(new BorderLayout());
+
+                //---- label2 ----
+                label2.setText(bundle.getString("label2.text_4"));
+                label2.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+                label2.setHorizontalAlignment(SwingConstants.CENTER);
+                panel1.add(label2, BorderLayout.CENTER);
+
+                //---- button4 ----
+                button4.setText(bundle.getString("button4.text_12"));
+                button4.addActionListener(e -> help(e));
+                panel1.add(button4, BorderLayout.EAST);
+            }
+            dialogPane.add(panel1, BorderLayout.NORTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
@@ -367,6 +372,8 @@ public class MealNorm_13 extends JFrame {
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
+    private JPanel panel1;
     private JLabel label2;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
