@@ -75,7 +75,7 @@ public class PrintFlight_6 extends JFrame {
                 Gate.setText(flt.getGate());
                 if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
-                }else{
+                }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
 //                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
@@ -96,7 +96,7 @@ public class PrintFlight_6 extends JFrame {
                 Gate.setText(EnterBN_3.getFlight().getGate());
                 if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
-                }else{
+                }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
 //                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));

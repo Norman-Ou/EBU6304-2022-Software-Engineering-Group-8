@@ -41,7 +41,7 @@ public class Config {
      * */
     public static final int[] flightStep_hour = {0, 3, 24, 26};
 
-    public static final int closeFromNow_min    = 3;
+    public static final int closeFromNow_min    = 0;
     public static final int departureAfterClose = 30;
     //-------------------------------------------------------------//
 }

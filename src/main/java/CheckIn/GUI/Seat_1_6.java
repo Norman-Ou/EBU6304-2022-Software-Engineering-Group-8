@@ -43,14 +43,18 @@ public class Seat_1_6 extends JFrame {
     }
     public int getSeatClazz() throws Exception {
         int clazz;
-        if(EnterBN_3.getPsnTemp() != null){
-            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
+        if(!(EnterBN_3.getPsnTemp().equals(null))){
+
+            Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
+//            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
+            System.out.println(order.toString());
             //TODO
 //            order.setSeatClass(0);
             clazz =order.getSeatClass();
             return clazz;
-        }else if(EnterOther_3.getPsnTemp1() != null){
-            Order other2 = getOrderByPassenger(EnterOther_3.getPsnTemp1());
+        }else if(!(EnterOther_3.getPsnTemp1().equals(null))){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
+            System.out.println(other2.getSeatClass());
             //TODO
 //            other2.setSeatClass(0);
             clazz =other2.getSeatClass();
