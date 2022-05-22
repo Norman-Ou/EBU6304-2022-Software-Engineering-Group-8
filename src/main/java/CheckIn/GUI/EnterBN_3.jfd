@@ -57,10 +57,11 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "insets 0,hidemode 3"
-					"$columnConstraints": "[grow,fill]"
-					"$rowConstraints": "[grow,center]"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0"
+					"$alignTop": true
+					"$alignLeft": true
+					"$rowSpecs": "center:0:1.0"
 				} ) {
 					name: "panel2"
 					"opaque": false
@@ -68,9 +69,7 @@ new FormModel {
 						name: "textField1"
 						"preferredSize": new java.awt.Dimension( 49, 90 )
 						"horizontalAlignment": 0
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 0"
-					} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )

@@ -17,8 +17,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import Exceptions.DataNotFound;
-import net.miginfocom.swing.*;
 
 /**
  * @author Jiayi Wang
@@ -169,12 +167,12 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER
+            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font
+            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order"
+            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -189,12 +187,8 @@ public class EnterBN_3 extends JFrame {
                 okButton2.addActionListener(e -> {
                     try {
                         ok(e);
-                    } catch (IllegalAccessException ex) {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
-                    } catch (ParseException ex) {
-                        ex.printStackTrace();
-                    } catch (Exception dataNotFound) {
-                        dataNotFound.printStackTrace();
                     }
                 });
                 buttonBar2.add(okButton2);
@@ -233,17 +227,18 @@ public class EnterBN_3 extends JFrame {
             //======== panel2 ========
             {
                 panel2.setOpaque(false);
-                panel2.setLayout(new MigLayout(
-                    "insets 0,hidemode 3",
-                    // columns
-                    "[grow,fill]",
-                    // rows
-                    "[grow,center]"));
+                panel2.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+                ((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- textField1 ----
                 textField1.setPreferredSize(new Dimension(49, 90));
                 textField1.setHorizontalAlignment(SwingConstants.CENTER);
-                panel2.add(textField1, "cell 0 0");
+                panel2.add(textField1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel2, BorderLayout.CENTER);
         }
