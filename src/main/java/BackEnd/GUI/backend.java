@@ -30,7 +30,7 @@ public class backend extends JFrame {
 
     private void button2MouseClicked(MouseEvent e) {
         if(e.getSource()==button2){
-//            PassengerPage P = new PassengerPage();
+//            PassengerPage_Demo P = new PassengerPage_Demo();
 //            P.setVisible(true);
 //            this.dispose();
 //            P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

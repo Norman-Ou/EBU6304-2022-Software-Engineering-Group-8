@@ -4,8 +4,10 @@
 
 package BackEnd.GUI;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author unknown
@@ -15,36 +17,129 @@ public class FlightListForThePassenger extends JFrame {
         initComponents();
     }
 
+    public String TransInformation1="";//这个值用于传递查询时输入的PassengerID
+    public String TransInformation2="";//这个值用于传输查询到的该乘客book了的FlightID
+
+    private void ConfirmButtonMouseClicked(MouseEvent e) {
+
+            String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
+            TransInformation1=p_ID;//这里对传递信息赋值了，赋值为乘客ID
+//            bMonitors admin = new bMonitors()；
+//            Passenger psg = admin.searchPassengerById(p_ID);
+//            PassengerID.setText(p_ID);
+//            PassengerName.setText(psg.getSurName());
+//            String FlightNo = psg.getBoardingPass().getFlightNo();
+//            Flight1.setText(FlightNo);
+
+            //这个地方要用p_ID去查询航班，把一个或多个航班写进Flight 1，2，3，4这几个JTextField里面，把对应的目的地写进对应的Destination
+
+
+    }
+
+    private void BackButtonMouseClicked(MouseEvent e) {
+
+            backend B = new backend();
+            B.setVisible(true);
+            B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+
+    }
+
+    private void Fligh1DetailMouseClicked(MouseEvent e) {
+        TransInformation2=Flight1.getText();
+        if(InputBar.getText().equals("")){
+            InputBar.setText("Please input!");
+        }
+        if (Flight1.getText().equals("")){
+            Flight1.setText("Sorry, no such Flight.");
+        }
+        else{
+            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            P.setVisible(true);
+//            this.dispose();
+//            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+
+    }
+
+    private void Flight2DetailMouseClicked(MouseEvent e) {
+        TransInformation2=Flight2.getText();
+        if(InputBar.getText().equals("")){
+            InputBar.setText("Please input!");
+        }
+        if (Flight2.getText().equals("")){
+            Flight2.setText("Sorry, no such Flight.");
+        }
+        else{
+            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            P.setVisible(true);
+//            this.dispose();
+//            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }
+
+    private void Flight3DetailMouseClicked(MouseEvent e) {
+        TransInformation2=Flight3.getText();
+        if(InputBar.getText().equals("")){
+            InputBar.setText("Please input!");
+        }
+        if (Flight3.getText().equals("")){
+            Flight3.setText("Sorry, no such Flight.");
+        }
+        else{
+            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            P.setVisible(true);
+//            this.dispose();
+//            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }
+
+    private void Flight4DetailMouseClicked(MouseEvent e) {
+        TransInformation2=Flight4.getText();
+        if(InputBar.getText().equals("")){
+            InputBar.setText("Please input!");
+        }
+        if (Flight4.getText().equals("")){
+            Flight4.setText("Sorry, no such Flight.");
+        }
+        else{
+            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            P.setVisible(true);
+//            this.dispose();
+//            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
-        textField1 = new JTextField();
-        button1 = new JButton();
+        InputBar = new JTextField();
+        ConfirmButton = new JButton();
         label2 = new JLabel();
-        textField2 = new JTextField();
+        Flight1 = new JTextField();
         label3 = new JLabel();
-        textField3 = new JTextField();
-        button2 = new JButton();
+        Flight1Destination = new JTextField();
+        Fligh1Detail = new JButton();
         label4 = new JLabel();
-        textField4 = new JTextField();
+        Flight2 = new JTextField();
         label5 = new JLabel();
-        textField5 = new JTextField();
-        button3 = new JButton();
+        Flight2Destination = new JTextField();
+        Flight2Detail = new JButton();
         label6 = new JLabel();
-        textField6 = new JTextField();
+        Flight3 = new JTextField();
         label7 = new JLabel();
-        textField7 = new JTextField();
-        button4 = new JButton();
+        Flight3Destination = new JTextField();
+        Flight3Detail = new JButton();
         label8 = new JLabel();
-        textField8 = new JTextField();
+        Flight4 = new JTextField();
         label9 = new JLabel();
-        textField9 = new JTextField();
-        button5 = new JButton();
-        button6 = new JButton();
+        Flight4Destination = new JTextField();
+        Flight4Detail = new JButton();
+        BackButton = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
         ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0};
         ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -56,13 +151,20 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label1, new GridBagConstraints(0, 0, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField1, new GridBagConstraints(0, 1, 6, 1, 0.0, 0.0,
+        contentPane.add(InputBar, new GridBagConstraints(0, 1, 6, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
-        //---- button1 ----
-        button1.setText("Confirm");
-        contentPane.add(button1, new GridBagConstraints(6, 1, 1, 1, 0.0, 0.0,
+        //---- ConfirmButton ----
+        ConfirmButton.setText("Confirm");
+        ConfirmButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ConfirmButtonMouseClicked(e);
+                ConfirmButtonMouseClicked(e);
+            }
+        });
+        contentPane.add(ConfirmButton, new GridBagConstraints(6, 1, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
@@ -71,7 +173,7 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField2, new GridBagConstraints(1, 2, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight1, new GridBagConstraints(1, 2, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
@@ -80,22 +182,28 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label3, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField3, new GridBagConstraints(4, 2, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight1Destination, new GridBagConstraints(4, 2, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
-        //---- button2 ----
-        button2.setText("See Detail");
-        contentPane.add(button2, new GridBagConstraints(6, 2, 1, 1, 0.0, 0.0,
+        //---- Fligh1Detail ----
+        Fligh1Detail.setText("See Detail");
+        Fligh1Detail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Fligh1DetailMouseClicked(e);
+            }
+        });
+        contentPane.add(Fligh1Detail, new GridBagConstraints(7, 2, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 10, 10), 0, 0));
+            new Insets(0, 0, 10, 0), 0, 0));
 
         //---- label4 ----
         label4.setText("Flight 2:");
         contentPane.add(label4, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField4, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight2, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
@@ -104,22 +212,28 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label5, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField5, new GridBagConstraints(4, 3, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight2Destination, new GridBagConstraints(4, 3, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
-        //---- button3 ----
-        button3.setText("See Detail");
-        contentPane.add(button3, new GridBagConstraints(6, 3, 1, 1, 0.0, 0.0,
+        //---- Flight2Detail ----
+        Flight2Detail.setText("See Detail");
+        Flight2Detail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Flight2DetailMouseClicked(e);
+            }
+        });
+        contentPane.add(Flight2Detail, new GridBagConstraints(7, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 10, 10), 0, 0));
+            new Insets(0, 0, 10, 0), 0, 0));
 
         //---- label6 ----
         label6.setText("Flight 3:");
         contentPane.add(label6, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField6, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight3, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
@@ -128,22 +242,28 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label7, new GridBagConstraints(3, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField7, new GridBagConstraints(4, 4, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight3Destination, new GridBagConstraints(4, 4, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
-        //---- button4 ----
-        button4.setText("See Detail");
-        contentPane.add(button4, new GridBagConstraints(6, 4, 1, 1, 0.0, 0.0,
+        //---- Flight3Detail ----
+        Flight3Detail.setText("See Detail");
+        Flight3Detail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Flight3DetailMouseClicked(e);
+            }
+        });
+        contentPane.add(Flight3Detail, new GridBagConstraints(7, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 10, 10), 0, 0));
+            new Insets(0, 0, 10, 0), 0, 0));
 
         //---- label8 ----
         label8.setText("Flight 4:");
         contentPane.add(label8, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField8, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight4, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
@@ -152,50 +272,64 @@ public class FlightListForThePassenger extends JFrame {
         contentPane.add(label9, new GridBagConstraints(3, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
-        contentPane.add(textField9, new GridBagConstraints(4, 5, 2, 1, 0.0, 0.0,
+        contentPane.add(Flight4Destination, new GridBagConstraints(4, 5, 3, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 10), 0, 0));
 
-        //---- button5 ----
-        button5.setText("See Detail");
-        contentPane.add(button5, new GridBagConstraints(6, 5, 1, 1, 0.0, 0.0,
+        //---- Flight4Detail ----
+        Flight4Detail.setText("See Detail");
+        Flight4Detail.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Flight4DetailMouseClicked(e);
+            }
+        });
+        contentPane.add(Flight4Detail, new GridBagConstraints(7, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 10, 10), 0, 0));
+            new Insets(0, 0, 10, 0), 0, 0));
 
-        //---- button6 ----
-        button6.setText("Back");
-        contentPane.add(button6, new GridBagConstraints(6, 6, 1, 1, 0.0, 0.0,
+        //---- BackButton ----
+        BackButton.setText("Back");
+        BackButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                BackButtonMouseClicked(e);
+            }
+        });
+        contentPane.add(BackButton, new GridBagConstraints(7, 6, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 10, 10), 0, 0));
-        setSize(585, 565);
+            new Insets(0, 0, 10, 0), 0, 0));
+        setSize(635, 495);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+    public String getPassengerID(){ return TransInformation1;}
+    public String getFlightID(){ return TransInformation2;}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
-    private JTextField textField1;
-    private JButton button1;
+    private JTextField InputBar;
+    private JButton ConfirmButton;
     private JLabel label2;
-    private JTextField textField2;
+    private JTextField Flight1;
     private JLabel label3;
-    private JTextField textField3;
-    private JButton button2;
+    private JTextField Flight1Destination;
+    private JButton Fligh1Detail;
     private JLabel label4;
-    private JTextField textField4;
+    private JTextField Flight2;
     private JLabel label5;
-    private JTextField textField5;
-    private JButton button3;
+    private JTextField Flight2Destination;
+    private JButton Flight2Detail;
     private JLabel label6;
-    private JTextField textField6;
+    private JTextField Flight3;
     private JLabel label7;
-    private JTextField textField7;
-    private JButton button4;
+    private JTextField Flight3Destination;
+    private JButton Flight3Detail;
     private JLabel label8;
-    private JTextField textField8;
+    private JTextField Flight4;
     private JLabel label9;
-    private JTextField textField9;
-    private JButton button5;
-    private JButton button6;
+    private JTextField Flight4Destination;
+    private JButton Flight4Detail;
+    private JButton BackButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
