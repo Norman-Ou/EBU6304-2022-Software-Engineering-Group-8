@@ -199,12 +199,6 @@ public class CreditPage extends JFrame {
         setSize(900, 555);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-        Passenger psn = pDB.loadPassengerByBookingNo("2019200");
-
-        //TODO get credit information
-        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
-        textArea1.setText(creditInfo);
         init();
     }
 

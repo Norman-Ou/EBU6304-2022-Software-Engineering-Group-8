@@ -1,6 +1,8 @@
 package Tools;
 
 import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
+import CheckIn.GUI.PrintBag_11;
 import DataBase.fDB;
 
 
@@ -12,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Calendar;
+
+import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
+import static CheckIn.GUI.PrintBag_11.writeInBaggage;
 
 /**
  * @author Ruizhe Ou, Jiacheng Li
@@ -190,5 +195,21 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static boolean newPsnFile(){
+        ArrayList<Passenger> newPassenger = new ArrayList<>();
+        newPassenger.add(writeInBoardingPass());
+        newPassenger.add(PrintBag_11.writeInBaggage());
+
+        try {
+            fDB.replaceAllPsn(newPassenger);
+            System.out.println("Updated Passenger JSON file completed!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return false;
     }
 }

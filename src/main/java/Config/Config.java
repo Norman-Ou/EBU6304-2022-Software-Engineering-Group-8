@@ -4,6 +4,7 @@ package Config;
 public class Config {
     //------2020/05/22 data version v6------//
     public static final String PassengerFile = "src/main/resources/passenger_data_v6.json";
+    public static final String PassengerNewFile = "src/main/resources/passengerNew_data_v6.json";
     public static final String FlightFile = "src/main/resources/flight_data_v6.json";
     public static final String OrderFile = "src/main/resources/order_data_v6.json";
     public static final String IDFile = "src/main/resources/id_document.json";

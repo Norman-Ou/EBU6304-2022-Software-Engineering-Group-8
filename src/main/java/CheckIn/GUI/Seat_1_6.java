@@ -29,7 +29,7 @@ public class Seat_1_6 extends JFrame {
     private static HashMap<String, Seat> mapNew = new HashMap<>();
     private static HashMap<String, Seat> map=new HashMap<>();
     //true for upgrading.
-    private static boolean upgrade=false;
+    public static boolean upgrade=false;
     public Seat_1_6() throws Exception {
         initComponents();
     }

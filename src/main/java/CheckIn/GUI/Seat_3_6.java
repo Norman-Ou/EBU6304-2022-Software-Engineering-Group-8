@@ -21,7 +21,7 @@ public class Seat_3_6 extends JFrame {
     public static String seat;
     private static HashMap<String, Seat> mapNew = new HashMap<>();
     private static HashMap<String, Seat> map=new HashMap<>();
-    private static boolean upgrade=false;
+    public static boolean upgrade=false;
     public Seat_3_6() {
         initComponents();
     }
@@ -29,7 +29,7 @@ public class Seat_3_6 extends JFrame {
     private void PrintFlight(ActionEvent e) {
         if(upgrade){
             dispose();
-            new CreditPage().setVisible(true);
+            new PrintFlight_6().setVisible(true);
         }else{
             dispose();
             new PrintFlight_6().setVisible(true);
@@ -117,7 +117,7 @@ public class Seat_3_6 extends JFrame {
         }
     }
     public void showSeats() throws Exception {
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
                 map.forEach((k,v)->{
@@ -131,7 +131,7 @@ public class Seat_3_6 extends JFrame {
             }
         }
         else
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
                 map.forEach((k,v)->{

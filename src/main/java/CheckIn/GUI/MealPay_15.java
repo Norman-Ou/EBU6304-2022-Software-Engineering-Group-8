@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class MealPay_15 extends JFrame {
+    private static int seatFee=0;
     public MealPay_15() {
         initComponents();
     }
@@ -41,7 +42,12 @@ public class MealPay_15 extends JFrame {
         }else{
             setMealTemp(MealAdd_14.VIPmealSelected);
         }
-        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
+        if(Seat_1_6.upgrade){
+            seatFee=100;
+        }else if(Seat_3_6.upgrade){
+            seatFee=100;
+        }
+        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new Exit().setVisible(true);
     }
@@ -49,7 +55,6 @@ public class MealPay_15 extends JFrame {
         dispose();
         new Meal_12().setVisible(true);
     }
-
     private void payAdMeal(ActionEvent e) {
         if(MealAdd_14.VIPmealSelected==null){
             setMealTemp(MealNorm_13.mealSelected);

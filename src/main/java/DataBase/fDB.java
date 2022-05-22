@@ -69,6 +69,15 @@ public class fDB {
         }
     }
 
+    public static void replaceAllPsn(ArrayList<Passenger> passengers) throws IOException {
+        DataBase dataBase = new DataBase(Config.PassengerNewFile);
+        JSONArray jsonArray = new JSONArray();
+        dataBase.replaceAllData(jsonArray);
+        for (Passenger psn : passengers){
+            dataBase.addObject(psn);
+        }
+    }
+
     public static Flight loadFlightByFlightNo(String flightNo)/* throws DataNotFound */{
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {

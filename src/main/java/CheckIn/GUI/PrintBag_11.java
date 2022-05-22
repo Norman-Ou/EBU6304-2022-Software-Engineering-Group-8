@@ -2,6 +2,9 @@ package CheckIn.GUI;/*
  * Created by JFormDesigner on Wed Mar 30 11:36:13 CST 2022
  */
 
+import Beans.Passenger.Passenger;
+import Tools.Utils;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -133,6 +136,22 @@ public class PrintBag_11 extends JFrame {
     private void help(ActionEvent e) {
         dispose();
         new Error().setVisible(true);
+    }
+
+    public static Passenger writeInBaggage(){
+        if(EnterOther_3.getPsnTemp1()==null) {
+            EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStore_8.court+"");
+            EnterBN_3.getPsnTemp().setCheckinStatus(0);
+            return EnterBN_3.getPsnTemp();
+        }else if(EnterBN_3.getPsnTemp()==null){
+            EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStore_8.court+"");
+            EnterOther_3.getPsnTemp1().setCheckinStatus(0);
+            return EnterOther_3.getPsnTemp1();
+        }
+//        System.out.println(EnterBN_3.getPsnTemp().getBoardingPass().toString());
+        return null;
     }
 
     private void initComponents() {
@@ -305,7 +324,9 @@ public class PrintBag_11 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();}
+        Utils.newPsnFile();
+        init();
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
