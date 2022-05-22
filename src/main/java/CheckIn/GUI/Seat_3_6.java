@@ -59,18 +59,18 @@ public class Seat_3_6 extends JFrame {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             dispose();
-            seat=busS.getSelectedItem().toString();
-            System.out.println(seat);
-        }
+
+        } seat=busS.getSelectedItem().toString();
+        System.out.println(seat);
     }
 
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             dispose();
-            seat=ecoS.getSelectedItem().toString();
-            System.out.println(seat);
-        }
+
+        }seat=ecoS.getSelectedItem().toString();
+        System.out.println(seat);
     }
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
@@ -82,10 +82,10 @@ public class Seat_3_6 extends JFrame {
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
-                    busS.setEditable(false);
-                }else if(intTemp==1){
+                    busS.setEnabled(false);
+                }else if(intTemp==2){
                     infoText.setText("You can choose form 1 to 3");
-                    ecoS.setEditable(false);
+                    ecoS.setEnabled(false);
                 }else if(intTemp==-1){
                     infoText.setText("Seat class is -1 now");
                 }
