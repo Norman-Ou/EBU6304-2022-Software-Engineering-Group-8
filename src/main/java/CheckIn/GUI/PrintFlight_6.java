@@ -2,6 +2,7 @@ package CheckIn.GUI;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
+import Beans.Passenger.SubClasses.BoardingPass;
 import DataBase.pDB;
 
 import javax.swing.*;
@@ -75,7 +76,7 @@ public class PrintFlight_6 extends JFrame {
                 Gate.setText(flt.getGate());
                 if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
-                }else{
+                }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
 //                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
@@ -96,7 +97,7 @@ public class PrintFlight_6 extends JFrame {
                 Gate.setText(EnterBN_3.getFlight().getGate());
                 if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
-                }else{
+                }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
 //                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
@@ -104,6 +105,37 @@ public class PrintFlight_6 extends JFrame {
                 e1.printStackTrace();
             }
         }
+    }
+    public void writeInBoardingPass(){
+        if(EnterOther_3.getPsnTemp1()==null) {
+            EnterBN_3.getPsnTemp().getBoardingPass().setETA(EnterBN_3.getFlight().getETA());
+            EnterBN_3.getPsnTemp().getBoardingPass().setETC(EnterBN_3.getFlight().getETC());
+            EnterBN_3.getPsnTemp().getBoardingPass().setETD(EnterBN_3.getFlight().getETD());
+            EnterBN_3.getPsnTemp().getBoardingPass().setFlightNo(EnterBN_3.getFlight().getFlightNo());
+            if (Seat_1_6.seat == null) {
+                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(Seat_3_6.seat);
+            } else if (Seat_3_6.seat == null) {
+                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            }
+            EnterBN_3.getPsnTemp().getBoardingPass().setDeparture(EnterBN_3.getFlight().getDeparture());
+            EnterBN_3.getPsnTemp().getBoardingPass().setDestination(EnterBN_3.getFlight().getDestination());
+            EnterBN_3.getPsnTemp().getBoardingPass().setGate(EnterBN_3.getFlight().getGate());
+        }else if(EnterBN_3.getPsnTemp()==null){
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            if (Seat_1_6.seat == null) {
+                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(Seat_3_6.seat);
+            } else if (Seat_3_6.seat == null) {
+                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            }
+            EnterOther_3.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+        }
+
+        System.out.println(EnterBN_3.getPsnTemp().getBoardingPass().toString());
     }
     
     public void init() {
@@ -414,7 +446,10 @@ public class PrintFlight_6 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-        init(); }
+        init();
+        writeInBoardingPass();
+
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge

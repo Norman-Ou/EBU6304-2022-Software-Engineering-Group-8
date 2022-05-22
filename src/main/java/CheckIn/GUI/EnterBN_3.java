@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -28,9 +29,14 @@ public class EnterBN_3 extends JFrame {
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
-    public static String nowTime = "07-09-2022 9:42:32";
+    public static Calendar time = Calendar.getInstance();
+    public static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    public static String nowTime = format.format(time.getTime());
+//    public static String nowTime = "07-09-2022 7:42:32";
+
 
     private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
+
 
         String str=textField1.getText();
         bookNum=str;
@@ -67,27 +73,25 @@ public class EnterBN_3 extends JFrame {
         new Error().setVisible(true);
     }
     public void firstCheck() throws IllegalAccessException, ParseException {
-        String eta=fltTemp.getETA();
         try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
             Date date2 = new Date();
             try{
-            date2 = format.parse(eta);
+                date2 = format.parse(fltTemp.getETD());
                 new ConfirmPage_3().setVisible(true);
             } catch (Exception error){
                 JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
                 dispose();
                 new CheckIn_2().setVisible(true);
-
-                long nowMillisecond = date1.getTime();
-                long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond < 1800000){
-                }else{
-                    throw new IllegalAccessException();
-                }
             }
-//                new ConfirmPage_3().setVisible(true);
+            long nowMillisecond = date1.getTime();
+            long etdMillisecond = date2.getTime();
+            System.out.println(etdMillisecond);
+            System.out.println(nowMillisecond);
+            if( etdMillisecond - nowMillisecond < 1800000){
+                throw new IllegalAccessException();
+            }
         } catch (ParseException | IllegalAccessException e) {
             errorHandel();
             e.printStackTrace();

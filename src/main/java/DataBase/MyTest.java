@@ -1,9 +1,14 @@
 package DataBase;
 
 import Beans.Flight.Flight;
+import Beans.Order.Order;
+import Exceptions.DataNotFound;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,170 +17,37 @@ import java.util.Date;
 
 public class MyTest {
 
-    final int Beijing2London_ms = 32400000;
-    final int Paris2London_ms   = 5400000;
-    final int HK2London_ms      = 45000000;
-    final int Dubai2London_ms   = 35100000;
+    public String test1() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        File file = new File("src/main/resources/order_data_v6.json");
 
-    final int[] flightStep_hour = {0, 3, 24, 26};
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
 
-    final int closeFromNow_min    = 3;
-    final int departureAfterClose = 30;
+        String data;
 
+        while ((data = reader.readLine()) != null){
+//            JSON.toJSON(data);
+//            System.out.print(data);
+            sb.append(data);
+        }
 
-    public long toTimestamp(String strDate) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-        Date date = df.parse(strDate);
-        return date.getTime();
+        System.out.println(JSON.toJSONString(sb.toString()));
+
+        return null;
     }
 
-    public boolean updateTestData() throws IOException {
-        ArrayList<Flight> flights = fDB.loadAllFlights();
-        ArrayList<Flight> newFlights = new ArrayList<>();
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-
-        //CA8852 Beijing
-        Flight flight = flights.get(0);
-        //07-09-2022 08:00:00
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        //获取当前时间
-        Calendar time = Calendar.getInstance();
-
-        time.add(Calendar.HOUR, flightStep_hour[0]);
-
-        time.add(Calendar.MINUTE, closeFromNow_min);
-        flight.setETC(df.format(time.getTime()));
-
-        time.add(Calendar.MINUTE, departureAfterClose);
-        flight.setETD(df.format(time.getTime()));
-
-        time.add(Calendar.MILLISECOND, Beijing2London_ms);
-        flight.setETA(df.format(time.getTime()));
-
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        newFlights.add(flight);
-
-        //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
-        //----------------------------------------------------//
-
-        //BA3352 Paris
-        flight = flights.get(1);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        //获取当前时间
-        time = Calendar.getInstance();
-
-        time.add(Calendar.HOUR, flightStep_hour[1]);
-
-        time.add(Calendar.MINUTE, closeFromNow_min);
-        flight.setETC(df.format(time.getTime()));
-
-        time.add(Calendar.MINUTE, departureAfterClose);
-        flight.setETD(df.format(time.getTime()));
-
-        time.add(Calendar.MILLISECOND, Paris2London_ms);
-        flight.setETA(df.format(time.getTime()));
-
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        newFlights.add(flight);
-
-        //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
-        //----------------------------------------------------//
-
-        //CX2582 HK
-        flight = flights.get(2);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        //获取当前时间
-        time = Calendar.getInstance();
-
-        time.add(Calendar.HOUR, flightStep_hour[2]);
-
-        time.add(Calendar.MINUTE, closeFromNow_min);
-        flight.setETC(df.format(time.getTime()));
-
-        time.add(Calendar.MINUTE, departureAfterClose);
-        flight.setETD(df.format(time.getTime()));
-
-        time.add(Calendar.MILLISECOND, HK2London_ms);
-        flight.setETA(df.format(time.getTime()));
-
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        newFlights.add(flight);
-
-        //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
-        //----------------------------------------------------//
-
-        //EK3588 Dubai
-        flight = flights.get(3);
-        System.out.println("-------" + flight.getFlightNo() + " Original-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        //获取当前时间
-        time = Calendar.getInstance();
-
-        time.add(Calendar.HOUR, flightStep_hour[3]);
-
-        time.add(Calendar.MINUTE, closeFromNow_min);
-        flight.setETC(df.format(time.getTime()));
-
-        time.add(Calendar.MINUTE, departureAfterClose);
-        flight.setETD(df.format(time.getTime()));
-
-        time.add(Calendar.MILLISECOND, Dubai2London_ms);
-        flight.setETA(df.format(time.getTime()));
-
-        System.out.println("-------" + flight.getFlightNo() + " Updated-------");
-        System.out.println("ETC: " + flight.getETC());
-        System.out.println("ETD: " + flight.getETD());
-        System.out.println("ETA: " + flight.getETA());
-
-        newFlights.add(flight);
-
-        //----------------------------------------------------//
-        System.out.println();
-        System.out.println();
-        //----------------------------------------------------//
-
-        fDB.replaceAllFlights(newFlights);
-        return true;
+    public void test2() throws DataNotFound {
+        Order order = oDB.getOrderByBookingNumber("75375917");
+        System.out.println(order);
     }
 
 
     public static void main(String[] args) throws ParseException, IOException {
         MyTest myTest = new MyTest();
-        myTest.updateTestData();
+        Calendar time = Calendar.getInstance();
+
+        System.out.println(time.getTime());
+//        myTest.test1();
 //        System.out.println(9*60 + 45);
     }
 }

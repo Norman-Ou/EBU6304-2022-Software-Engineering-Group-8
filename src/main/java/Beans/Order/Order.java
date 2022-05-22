@@ -31,7 +31,7 @@ public class Order {
      * <b>2</b> - Business class<br/><br/>
      * Default Value: -1
      */
-    private int seatClass = -1;
+    private int seatClass;
 
     public String getBookNumber() {
         return bookNumber;
@@ -65,5 +65,15 @@ public class Order {
         this.passengerID = passengerID;
         this.flightNo = flightNo;
         this.bookNumber = bookNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "passengerID='" + passengerID + '\'' +
+                ", flightNo='" + flightNo + '\'' +
+                ", bookNumber='" + bookNumber + '\'' +
+                ", seatClass=" + seatClass +
+                '}';
     }
 }

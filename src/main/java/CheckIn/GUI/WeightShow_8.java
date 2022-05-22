@@ -35,10 +35,10 @@ public class WeightShow_8 extends JFrame {
         new Baggage_7().setVisible(true);
     }
     public void showWeight(){
-        String str = "Your baggage weighs:";
+        String str = "Your baggage weighs: ";
         if(EnterBN_3.getPsnTemp()==null){
             try {
-                weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight());
+                weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -46,7 +46,7 @@ public class WeightShow_8 extends JFrame {
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight());
+                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();

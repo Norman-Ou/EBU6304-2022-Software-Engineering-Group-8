@@ -17,7 +17,7 @@ public class Seat {
      * <b>2</b> - Business class<br/><br/>
      * Default Value: -1
      */
-    private int seatClass = -1;
+    private int seatClass;
     /**
      * Seat number.<br/><br/>
      * Default Value: null
