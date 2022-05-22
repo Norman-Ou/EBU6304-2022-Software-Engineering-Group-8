@@ -218,7 +218,13 @@ public class EnterOther_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_3"));
-                okButton2.addActionListener(e -> ok(e));
+                okButton2.addActionListener(e -> {
+                    try {
+                        ok(e);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----

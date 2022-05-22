@@ -16,7 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-//import net.miginfocom.swing.*;
 
 /**
  * @author Jiayi Wang
@@ -61,8 +60,6 @@ public class EnterBN_3 extends JFrame {
         } catch (Exception exception){
             dispose();
         }
-
-//        new ConfirmPage_3().setVisible(true);
         dispose();
     }
     public static void errorHandel(){
@@ -178,7 +175,13 @@ public class EnterBN_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_4"));
-                okButton2.addActionListener(e -> ok(e));
+                okButton2.addActionListener(e -> {
+                    try {
+                        ok(e);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----
