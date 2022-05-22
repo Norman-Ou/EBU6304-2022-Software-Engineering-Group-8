@@ -4,21 +4,19 @@
 
 package CheckIn.GUI;
 
-import DataBase.pDB;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.*;
-
-import Exceptions.DataNotFound;
-import net.miginfocom.swing.*;
+import java.util.Date;
+import java.util.ResourceBundle;
+//import net.miginfocom.swing.*;
 
 /**
  * @author Jiayi Wang
@@ -32,6 +30,7 @@ public class EnterBN_3 extends JFrame {
     public static Passenger psnTemp;
     public static Flight fltTemp;
     public static String nowTime = "07-09-2022 9:42:32";
+
     private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
 
         String str=textField1.getText();
@@ -148,7 +147,6 @@ public class EnterBN_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -169,12 +167,6 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -186,17 +178,7 @@ public class EnterBN_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_4"));
-                okButton2.addActionListener(e -> {
-                    try {
-                        ok(e);
-                    } catch (IllegalAccessException ex) {
-                        ex.printStackTrace();
-                    } catch (ParseException ex) {
-                        ex.printStackTrace();
-                    } catch (Exception dataNotFound) {
-                        dataNotFound.printStackTrace();
-                    }
-                });
+                okButton2.addActionListener(e -> ok(e));
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----
@@ -233,17 +215,18 @@ public class EnterBN_3 extends JFrame {
             //======== panel2 ========
             {
                 panel2.setOpaque(false);
-                panel2.setLayout(new MigLayout(
-                    "insets 0,hidemode 3",
-                    // columns
-                    "[grow,fill]",
-                    // rows
-                    "[grow,center]"));
+                panel2.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+                ((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- textField1 ----
                 textField1.setPreferredSize(new Dimension(49, 90));
                 textField1.setHorizontalAlignment(SwingConstants.CENTER);
-                panel2.add(textField1, "cell 0 0");
+                panel2.add(textField1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel2, BorderLayout.CENTER);
         }
@@ -255,7 +238,6 @@ public class EnterBN_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;
