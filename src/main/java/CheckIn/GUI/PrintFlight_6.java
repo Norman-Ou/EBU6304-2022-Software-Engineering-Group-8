@@ -134,6 +134,7 @@ public class PrintFlight_6 extends JFrame {
             EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
             EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
         }
+
         System.out.println(EnterBN_3.getPsnTemp().getBoardingPass().toString());
     }
     
