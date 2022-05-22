@@ -66,4 +66,14 @@ public class Order {
         this.flightNo = flightNo;
         this.bookNumber = bookNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "passengerID='" + passengerID + '\'' +
+                ", flightNo='" + flightNo + '\'' +
+                ", bookNumber='" + bookNumber + '\'' +
+                ", seatClass=" + seatClass +
+                '}';
+    }
 }
