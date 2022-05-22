@@ -130,6 +130,7 @@ public class PrintFlight_6 extends JFrame {
             } else if (Seat_3_6.seat == null) {
                 EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(Seat_1_6.seat);
             }
+
             EnterOther_3.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
             EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
             EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
