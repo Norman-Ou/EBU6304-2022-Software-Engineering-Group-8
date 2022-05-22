@@ -8,14 +8,15 @@ import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.*;
-
+import java.util.Date;
+import java.util.ResourceBundle;
+//import net.miginfocom.swing.*;
 
 /**
  * @author Jiayi Wang
@@ -29,6 +30,7 @@ public class EnterBN_3 extends JFrame {
     public static Passenger psnTemp;
     public static Flight fltTemp;
     public static String nowTime = "07-09-2022 9:42:32";
+
     private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
 
         String str=textField1.getText();
@@ -145,7 +147,6 @@ public class EnterBN_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -166,12 +167,6 @@ public class EnterBN_3 extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER
-            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font
-            . BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane2. getBorder () ) ); dialogPane2. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order"
-            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -183,13 +178,7 @@ public class EnterBN_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_4"));
-                okButton2.addActionListener(e -> {
-                    try {
-                        ok(e);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                });
+                okButton2.addActionListener(e -> ok(e));
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----
@@ -249,7 +238,6 @@ public class EnterBN_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;

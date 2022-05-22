@@ -7,7 +7,7 @@ package CheckIn.GUI;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -182,7 +182,6 @@ public class EnterOther_3 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
@@ -198,23 +197,16 @@ public class EnterOther_3 extends JFrame {
 
         //======== this ========
         var contentPane = getContentPane();
-        contentPane.setLayout(new MigLayout(
-            "insets 0,hidemode 3",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[grow,fill]"));
+        contentPane.setLayout(new GridBagLayout());
+        ((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {0, 0};
+        ((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)contentPane.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+        ((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
         //======== dialogPane2 ========
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -226,13 +218,7 @@ public class EnterOther_3 extends JFrame {
 
                 //---- okButton2 ----
                 okButton2.setText(bundle.getString("okButton2.text_3"));
-                okButton2.addActionListener(e -> {
-                    try {
-                        ok(e);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                });
+                okButton2.addActionListener(e -> ok(e));
                 buttonBar2.add(okButton2);
 
                 //---- button1 ----
@@ -269,14 +255,11 @@ public class EnterOther_3 extends JFrame {
             //======== panel1 ========
             {
                 panel1.setOpaque(false);
-                panel1.setLayout(new MigLayout(
-                    "insets 0,hidemode 3,gap 0 0",
-                    // columns
-                    "[fill]" +
-                    "[grow,fill]" +
-                    "[grow,fill]",
-                    // rows
-                    "[grow,center]"));
+                panel1.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0, 0, 0};
+                ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 1.0, 1.0, 1.0E-4};
+                ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- Sur ----
                 Sur.setToolTipText("Surname");
@@ -284,7 +267,9 @@ public class EnterOther_3 extends JFrame {
                 Sur.setMinimumSize(new Dimension(49, 90));
                 Sur.setPreferredSize(new Dimension(49, 90));
                 Sur.setHorizontalAlignment(SwingConstants.CENTER);
-                panel1.add(Sur, "cell 1 0");
+                panel1.add(Sur, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- ID ----
                 ID.setToolTipText("IDNo");
@@ -292,11 +277,15 @@ public class EnterOther_3 extends JFrame {
                 ID.setMinimumSize(new Dimension(49, 90));
                 ID.setPreferredSize(new Dimension(49, 90));
                 ID.setHorizontalAlignment(SwingConstants.CENTER);
-                panel1.add(ID, "cell 2 0");
+                panel1.add(ID, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel1, BorderLayout.CENTER);
         }
-        contentPane.add(dialogPane2, "cell 0 0");
+        contentPane.add(dialogPane2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
         setSize(905, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -304,7 +293,6 @@ public class EnterOther_3 extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
     private JButton okButton2;
