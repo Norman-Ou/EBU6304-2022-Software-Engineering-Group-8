@@ -111,11 +111,8 @@ public class EnterOther_3 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -165,7 +162,6 @@ public class EnterOther_3 extends JFrame {
                 long nowMillisecond = date1.getTime();
                 long etaMillisecond = date2.getTime();
                 if(etaMillisecond - nowMillisecond < 1800000){
-                }else{
                     throw new IllegalAccessException();
                 }
             }

@@ -112,18 +112,9 @@ new FormModel {
 					} ) {
 						name: "panel11"
 						"opaque": false
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "labelfir"
-							"text": new FormMessage( null, "labelfir.text_3" )
-							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 18 )
-						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 							name: "panel12"
 							"opaque": false
-							add( new FormComponent( "javax.swing.JComboBox" ) {
-								name: "vip"
-								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "firClass", true ) )
-							} )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label10"

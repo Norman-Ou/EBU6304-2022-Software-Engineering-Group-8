@@ -45,12 +45,14 @@ public class Seat_1_6 extends JFrame {
         int clazz;
         if(EnterBN_3.getPsnTemp() != null){
             Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
-            order.setSeatClass(0);
+            //TODO
+//            order.setSeatClass(0);
             clazz =order.getSeatClass();
             return clazz;
         }else if(EnterOther_3.getPsnTemp1() != null){
             Order other2 = getOrderByPassenger(EnterOther_3.getPsnTemp1());
-            other2.setSeatClass(0);
+            //TODO
+//            other2.setSeatClass(0);
             clazz =other2.getSeatClass();
             return clazz;
         }

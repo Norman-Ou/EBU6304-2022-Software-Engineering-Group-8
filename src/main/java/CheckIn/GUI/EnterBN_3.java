@@ -28,7 +28,7 @@ public class EnterBN_3 extends JFrame {
     public static String bookNum;
     public static Passenger psnTemp;
     public static Flight fltTemp;
-    public static String nowTime = "07-09-2022 9:42:32";
+    public static String nowTime = "07-09-2022 7:02:32";
 
     private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
 
@@ -79,15 +79,12 @@ public class EnterBN_3 extends JFrame {
                 JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
                 dispose();
                 new CheckIn_2().setVisible(true);
-
-                long nowMillisecond = date1.getTime();
-                long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond < 1800000){
-                }else{
-                    throw new IllegalAccessException();
-                }
             }
-//                new ConfirmPage_3().setVisible(true);
+            long nowMillisecond = date1.getTime();
+            long etaMillisecond = date2.getTime();
+            if( etaMillisecond - nowMillisecond < 1800000){
+                throw new IllegalAccessException();
+            }
         } catch (ParseException | IllegalAccessException e) {
             errorHandel();
             e.printStackTrace();

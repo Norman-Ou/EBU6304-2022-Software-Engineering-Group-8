@@ -42,7 +42,8 @@ public class Seat_3_6 extends JFrame {
     }
 
     private void error(ActionEvent e) {
-        // TODO add your code here
+        dispose();
+        new Error().setVisible(true);
     }
 
     private void button3(ActionEvent e) throws Exception {
@@ -70,20 +71,13 @@ public class Seat_3_6 extends JFrame {
                 String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
                 Order order = oDB.getOrderByBookingNumber(str);
                 int intTemp=order.getSeatClass();
-                System.out.println(intTemp);
                 //TODO 取不到seat class
                 if(intTemp==0){
-                    infoText.setText("You can choose form 18 to 30");
+                    infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
-                    vip.setEditable(false);
                 }else if(intTemp==1){
-                    infoText.setText("You can choose form 11 to 17");
+                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEditable(false);
-                    vip.setEditable(false);
-                }else if(intTemp==2){
-                    infoText.setText("You can choose form 1 to 10");
-                    ecoS.setEditable(false);
-                    busS.setEditable(false);
                 }else if(intTemp==-1){
                     infoText.setText("Seat class is -1 now");
                 }
@@ -133,7 +127,7 @@ public class Seat_3_6 extends JFrame {
                     ecoS.addItem(entry.getKey());
                     break;
                 case 1:
-                    vip.addItem(entry.getKey());
+//                    vip.addItem(entry.getKey());
                     break;
                 case 2:
                     busS.addItem(entry.getKey());
@@ -154,7 +148,7 @@ public class Seat_3_6 extends JFrame {
     }
     //乘客选择升舱之后开放vipSeats
     public void resetAvSeat(){
-        vip.setEnabled(true);
+        busS.setEnabled(true);
     }
 
     public void init() {
@@ -195,9 +189,7 @@ public class Seat_3_6 extends JFrame {
         panel10 = new JPanel();
         panel33 = new JPanel();
         panel11 = new JPanel();
-        labelfir = new JLabel();
         panel12 = new JPanel();
-        vip = new JComboBox();
         label10 = new JLabel();
         panel13 = new JPanel();
         busS = new JComboBox();
@@ -211,12 +203,11 @@ public class Seat_3_6 extends JFrame {
         //======== panel2 ========
         {
             panel2.setOpaque(false);
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
@@ -329,19 +320,10 @@ public class Seat_3_6 extends JFrame {
                     panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
 
-                    //---- labelfir ----
-                    labelfir.setText(bundle.getString("labelfir.text_3"));
-                    labelfir.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 18));
-                    panel11.add(labelfir);
-
                     //======== panel12 ========
                     {
                         panel12.setOpaque(false);
                         panel12.setLayout(new BoxLayout(panel12, BoxLayout.X_AXIS));
-
-                        //---- vip ----
-                        vip.addItemListener(e -> firClass(e));
-                        panel12.add(vip);
                     }
                     panel11.add(panel12);
 
@@ -400,9 +382,7 @@ public class Seat_3_6 extends JFrame {
     private JPanel panel10;
     private JPanel panel33;
     private JPanel panel11;
-    private JLabel labelfir;
     private JPanel panel12;
-    private JComboBox vip;
     private JLabel label10;
     private JPanel panel13;
     private JComboBox busS;
