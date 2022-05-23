@@ -1,6 +1,7 @@
 package CheckIn;
 
 import CheckIn.GUI.Airline_1;
+import CheckIn.GUI.Seat_1_6;
 import Tools.Utils;
 
 

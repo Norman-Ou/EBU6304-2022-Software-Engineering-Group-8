@@ -14,6 +14,7 @@ import Exceptions.DataNotFound;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -31,7 +32,6 @@ public class Seat_1_6 extends JFrame {
     //true for upgrading.
     public static boolean upgrade=false;
     public static Map.Entry<String,Seat> entry;
-    public static Iterator<Map.Entry<String,Seat>> iter;
     public Seat_1_6() throws Exception {
         initComponents();
     }
@@ -49,14 +49,14 @@ public class Seat_1_6 extends JFrame {
 
             Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
 //            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
-            System.out.println(order.toString());
+//            System.out.println(order.toString());
             //TODO
 //            order.setSeatClass(0);
             clazz =order.getSeatClass();
             return clazz;
         }else if(EnterOther_3.getPsnTemp1() != null){
             Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
-            System.out.println(other2.getSeatClass());
+//            System.out.println(other2.getSeatClass());
             //TODO
 //            other2.setSeatClass(0);
             clazz =other2.getSeatClass();
@@ -89,6 +89,7 @@ public class Seat_1_6 extends JFrame {
     private void PrintFlight(ActionEvent e) {
         dispose();
         new PrintFlight_6().setVisible(true);
+        sortSeat();
     }
 
     private void firClass(ItemEvent e) {
@@ -134,25 +135,17 @@ public class Seat_1_6 extends JFrame {
             }
         }
 
+        Iterator<Map.Entry<String,Seat>> iter;
         iter = mapNew.entrySet().iterator();
         while(iter.hasNext()){
-
-            Map<String, Seat> treeMap = new TreeMap<>(Comparator.reverseOrder());
 
             entry = iter.next();
             Seat value = entry.getValue();
             int temp=value.getSeatClass();
-            treeMap.put(entry.getKey(), entry.getValue());
-
-            treeMap.forEach((k, v) ->{
-                System.out.println(k + " " +v);
-            });
-
 
             switch (temp) {
                 case 0:
                     ecoS.addItem(entry.getKey());
-                    sortSeat();
                     break;
                 case 1:
                     vip.addItem(entry.getKey());
@@ -160,19 +153,23 @@ public class Seat_1_6 extends JFrame {
             }
         }
     }
-    public void sortSeat(){
+    public static void sortSeat(){
         ArrayList<String> seatList=new ArrayList<>();
-        while(iter.hasNext()){
-            seatList.add(entry.getKey());
-        }
-        for(int i=0; i<seatList.size();i++){
-            Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,1));
-            ArrayList<Integer> arr = new ArrayList<>();
-            arr.add(firSeat);
+        Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(iter1.hasNext()){
+            seatList.add(iter1.next().getKey());
+            for(int i=0; i<seatList.size();i++){
+                Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,2));
 
-            Arrays.sort(new ArrayList[]{arr});
-        }
+                arr.add(firSeat);
 
+                Arrays.sort(new ArrayList[]{arr});
+            }
+        }
+//        System.out.println(seatList);
+        seatList= (ArrayList<String>) seatList.stream().sorted();
+        System.out.println(seatList);
     }
 
     public void init() {
