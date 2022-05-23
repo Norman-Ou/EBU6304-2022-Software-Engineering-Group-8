@@ -65,14 +65,13 @@ public class BagStore_8 extends JFrame {
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         panel1 = new JPanel();
-        label1 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();
+        textField1 = new JTextField();
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
         panel2 = new JPanel();
         button1 = new JButton();
+        label1 = new JLabel();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -82,12 +81,11 @@ public class BagStore_8 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt.Color.
+            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -96,30 +94,13 @@ public class BagStore_8 extends JFrame {
 
                 //======== panel1 ========
                 {
-                    panel1.setLayout(new GridLayout());
+                    panel1.setLayout(new BorderLayout());
 
-                    //---- label1 ----
-                    label1.setText(bundle.getString("label1.text_8"));
-                    label1.setHorizontalAlignment(SwingConstants.CENTER);
-                    label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-                    panel1.add(label1);
+                    //---- textField1 ----
+                    textField1.setHorizontalAlignment(SwingConstants.CENTER);
+                    panel1.add(textField1, BorderLayout.CENTER);
                 }
                 contentPanel.add(panel1);
-
-                //======== scrollPane1 ========
-                {
-
-                    //---- textArea1 ----
-                    textArea1.setEditable(false);
-                    textArea1.addComponentListener(new ComponentAdapter() {
-                        @Override
-                        public void componentShown(ComponentEvent e) {
-                            CourtShown(e);
-                        }
-                    });
-                    scrollPane1.setViewportView(textArea1);
-                }
-                contentPanel.add(scrollPane1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
@@ -151,6 +132,12 @@ public class BagStore_8 extends JFrame {
                 button1.setText(bundle.getString("button1.text_28"));
                 button1.addActionListener(e -> help(e));
                 panel2.add(button1, BorderLayout.EAST);
+
+                //---- label1 ----
+                label1.setText(bundle.getString("label1.text_8"));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                label1.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+                panel2.add(label1, BorderLayout.CENTER);
             }
             dialogPane.add(panel2, BorderLayout.NORTH);
         }
@@ -160,7 +147,7 @@ public class BagStore_8 extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         init();
         court = (int)(Math.random()*100);
-        textArea1.setText(court+"");
+        textField1.setText("Court: "+court+"");
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -168,13 +155,12 @@ public class BagStore_8 extends JFrame {
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
-    private JLabel label1;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
+    private JTextField textField1;
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
     private JPanel panel2;
     private JButton button1;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

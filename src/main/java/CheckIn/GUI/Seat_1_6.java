@@ -30,6 +30,8 @@ public class Seat_1_6 extends JFrame {
     private static HashMap<String, Seat> map=new HashMap<>();
     //true for upgrading.
     public static boolean upgrade=false;
+    public static Map.Entry<String,Seat> entry;
+    public static Iterator<Map.Entry<String,Seat>> iter;
     public Seat_1_6() throws Exception {
         initComponents();
     }
@@ -85,13 +87,6 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
-//        if(upgrade){
-//            dispose();
-//            new CreditPage().setVisible(true);
-//        }else{
-//            dispose();
-//            new PrintFlight_6().setVisible(true);
-//        }
         dispose();
         new PrintFlight_6().setVisible(true);
     }
@@ -119,7 +114,7 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
+//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -133,26 +128,51 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
+//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
 
-        Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
+        iter = mapNew.entrySet().iterator();
         while(iter.hasNext()){
-            Map.Entry<String,Seat> entry = iter.next();
+
+            Map<String, Seat> treeMap = new TreeMap<>(Comparator.reverseOrder());
+
+            entry = iter.next();
             Seat value = entry.getValue();
             int temp=value.getSeatClass();
+            treeMap.put(entry.getKey(), entry.getValue());
+
+            treeMap.forEach((k, v) ->{
+                System.out.println(k + " " +v);
+            });
+
+
             switch (temp) {
                 case 0:
                     ecoS.addItem(entry.getKey());
+                    sortSeat();
                     break;
                 case 1:
                     vip.addItem(entry.getKey());
                     break;
             }
         }
+    }
+    public void sortSeat(){
+        ArrayList<String> seatList=new ArrayList<>();
+        while(iter.hasNext()){
+            seatList.add(entry.getKey());
+        }
+        for(int i=0; i<seatList.size();i++){
+            Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,1));
+            ArrayList<Integer> arr = new ArrayList<>();
+            arr.add(firSeat);
+
+            Arrays.sort(new ArrayList[]{arr});
+        }
+
     }
 
     public void init() {
@@ -232,13 +252,11 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
             ; }} );
             panel1.setLayout(new BorderLayout());
 
@@ -343,7 +361,6 @@ public class Seat_1_6 extends JFrame {
 
                     //======== panel5 ========
                     {
-                        panel5.setOpaque(false);
                         panel5.setLayout(new BoxLayout(panel5, BoxLayout.X_AXIS));
 
                         //---- vip ----
@@ -356,7 +373,6 @@ public class Seat_1_6 extends JFrame {
 
                 //======== panel11 ========
                 {
-                    panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
 
                     //---- label7 ----

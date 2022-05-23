@@ -216,7 +216,6 @@ public class Seat_3_6 extends JFrame {
         panel10 = new JPanel();
         panel33 = new JPanel();
         panel11 = new JPanel();
-        panel12 = new JPanel();
         label10 = new JLabel();
         panel13 = new JPanel();
         busS = new JComboBox();
@@ -230,14 +229,13 @@ public class Seat_3_6 extends JFrame {
         //======== panel2 ========
         {
             panel2.setOpaque(false);
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
@@ -347,15 +345,7 @@ public class Seat_3_6 extends JFrame {
 
                 //======== panel11 ========
                 {
-                    panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
-
-                    //======== panel12 ========
-                    {
-                        panel12.setOpaque(false);
-                        panel12.setLayout(new BoxLayout(panel12, BoxLayout.X_AXIS));
-                    }
-                    panel11.add(panel12);
 
                     //---- label10 ----
                     label10.setText(bundle.getString("label10.text_4"));
@@ -366,7 +356,6 @@ public class Seat_3_6 extends JFrame {
 
                 //======== panel13 ========
                 {
-                    panel13.setOpaque(false);
                     panel13.setLayout(new BoxLayout(panel13, BoxLayout.Y_AXIS));
 
                     //---- busS ----
@@ -412,7 +401,6 @@ public class Seat_3_6 extends JFrame {
     private JPanel panel10;
     private JPanel panel33;
     private JPanel panel11;
-    private JPanel panel12;
     private JLabel label10;
     private JPanel panel13;
     private JComboBox busS;
