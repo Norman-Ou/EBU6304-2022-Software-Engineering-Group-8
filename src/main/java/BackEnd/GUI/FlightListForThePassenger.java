@@ -5,9 +5,15 @@
 package BackEnd.GUI;
 
 import javax.swing.*;
+
+import BackEnd.Monitor.bMonitors;
+import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -19,25 +25,35 @@ public class FlightListForThePassenger extends JFrame {
 
     public String TransInformation1="";//这个值用于传递查询时输入的PassengerID
     public String TransInformation2="";//这个值用于传输查询到的该乘客book了的FlightID
-
+    public Passenger choosePsg;
     private void ConfirmButtonMouseClicked(MouseEvent e) {
 
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
             TransInformation1=p_ID;//这里对传递信息赋值了，赋值为乘客ID
-//            bMonitors admin = new bMonitors()；
-//            Passenger psg = admin.searchPassengerById(p_ID);
-//            PassengerID.setText(p_ID);
-//            PassengerName.setText(psg.getSurName());
-//            String FlightNo = psg.getBoardingPass().getFlightNo();
-//            Flight1.setText(FlightNo);
-
+            bMonitors admin = new bMonitors();
+            ArrayList<Passenger> psgList = admin.searchPassengerById(p_ID);
+            ArrayList<Flight> fltList = admin.searchFlightByPassenger(psgList);
+            int numOfFlight = fltList.size();
+            if(numOfFlight>=1){
+                Flight1.setText(fltList.get(0).getFlightNo());
+                Flight1Destination.setText(fltList.get(0).getDestination());
+            }
+            if(numOfFlight>=2){
+                Flight2.setText(fltList.get(1).getFlightNo());
+                Flight2Destination.setText(fltList.get(1).getDestination());
+            }
+            if(numOfFlight>=3){
+                Flight3.setText(fltList.get(2).getFlightNo());
+                Flight3Destination.setText(fltList.get(2).getDestination());
+            }
+            if(numOfFlight>=4){
+                Flight4.setText(fltList.get(3).getFlightNo());
+                Flight4Destination.setText(fltList.get(3).getDestination());
+            }
             //这个地方要用p_ID去查询航班，把一个或多个航班写进Flight 1，2，3，4这几个JTextField里面，把对应的目的地写进对应的Destination
-
-
     }
 
     private void BackButtonMouseClicked(MouseEvent e) {
-
             backend B = new backend();
             B.setVisible(true);
             B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

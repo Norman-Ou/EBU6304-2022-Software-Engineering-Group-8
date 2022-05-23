@@ -1,5 +1,6 @@
 package BackEnd.Monitor;
 
+import java.lang.annotation.Target;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -134,21 +135,62 @@ public class bMonitors {
     //     }
     // }
 
-    // 通过id查乘客状态
-    public Passenger searchPassengerById(String passengerID){
-        Passenger targetPassenger = new Passenger();
+    // 通过id查乘客和他的航班信息
+    public ArrayList<Passenger> searchPassengerById(String passengerID){
+        ArrayList<Passenger> targetPsglist = new ArrayList<Passenger>();
         try {
-            List<Passenger> psglist = pDB.loadPassengersByIDNum(passengerID);
-            for(int i = 0; i<psglist.size(); i++){
-                if(!(psglist.get(i).getCheckinStatus()==1)){
-                    // 有大问题 先不写
+            ArrayList<Passenger> psglist = pDB.loadPassengersByIDNum(passengerID);
+            targetPsglist = psglist;
+        } catch (DataNotFound e) {
+            e.printStackTrace();
+        }
+        return targetPsglist;
+    }
+
+    public ArrayList<Flight> searchFlightByPassenger(List<Passenger> psgList){
+        ArrayList<Flight> targetFltlist = new ArrayList<Flight>();
+        ArrayList<String> fltNoList = new ArrayList<String>();
+        String psgID = psgList.get(0).getPassengerId();
+        try {
+            List<Order> oList = oDB.getOrdersByPassengerId(psgID);
+            for(int i = 0; i<psgList.size(); i++){
+                String bookNo = psgList.get(i).getBookNumber();
+                for(int j = 0; j<oList.size(); j++){
+                    if(oList.get(j).getBookNumber().equals(bookNo)){
+                        fltNoList.add(oList.get(j).getFlightNo());
+                        break;
+                    }
+                }
+            }
+            for(int k = 0; k<fltNoList.size(); k++){
+                for(int m = 0; m<flightList.size(); m++){
+                    if(flightList.get(m).getFlightNo().equals(fltNoList.get(k))){
+                        targetFltlist.add(flightList.get(m));
+                        break;
+                    }
                 }
             }
         } catch (DataNotFound e) {
             e.printStackTrace();
         }
-        
-        return targetPassenger;
+        return targetFltlist;
+    }
+
+    // 仅仅用于在同ID乘客列表中找到需要的那班航班对应的乘客信息
+    public Passenger searchPassengerByFlight(String flightNo, List<Passenger> psgList){
+        Passenger target = new Passenger();
+        try {
+            for(int i = 0; i<psgList.size(); i++){
+                String bookNum = psgList.get(i).getBookNumber();
+                Order order = oDB.getOrderByBookingNumber(bookNum);
+                if(order.getFlightNo().equals(flightNo)){
+                    target = psgList.get(i);
+                }
+            }
+        } catch (DataNotFound e) {
+            e.printStackTrace();
+        }
+        return target;
     }
 
     public String calculateDiff(String timeToClose){
