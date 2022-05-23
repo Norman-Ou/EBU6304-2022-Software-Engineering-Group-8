@@ -38,7 +38,7 @@ public class MyTest {
 
     @Test
     public void test2() throws DataNotFound {
-        pDB.loadPassengersByIDNum("912843");
+        System.out.println(pDB.loadPassengersByIDNum("912843"));
     }
 
 
