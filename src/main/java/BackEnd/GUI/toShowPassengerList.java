@@ -49,9 +49,11 @@ public class toShowPassengerList extends JFrame{
                 textArea1.setBorder(null);
                 scrollPane1.setViewportView(textArea1);
 
-//                FlightPage buffer = new FlightPage();
-//                String storage = buffer.getPassengerList();
-//                if(fp.getPassengerList().equals(""))
+                // FlightPage buffer = new FlightPage();
+                // String storage = buffer.getPassengerList();
+                // if(fp.getPassengerList().equals("")){
+
+                // }
                 textArea1.setText(trans);
 
             }

@@ -6,9 +6,11 @@ package BackEnd.GUI;
 
 import BackEnd.Monitor.bMonitors;
 import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,9 +34,10 @@ public class FlightPage extends JFrame {
             BoardingTime.setText(targetFlight.getETC());
             TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
             Destination.setText(targetFlight.getDestination());
-            List<String> infoList = bMonitor.printUnboardedPassengerList(bMonitor.getUnboardedPassengerList(f_ID));
-            // TransInformation="这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
-            TransInformation = "";
+            List<Passenger> psgs = bMonitor.getUnboardedPassengerList(f_ID); 
+            List<String> infoList = bMonitor.printUnboardedPassengerList(psgs);
+            // 这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
+            TransInformation = "PassengerId     passengerName\n";
             for(int j = 0; j<infoList.size(); j++){
                 String info = infoList.get(j);
                 TransInformation += info + "\n"; 
@@ -47,7 +50,7 @@ public class FlightPage extends JFrame {
     // button "see more passengerList"
     private void button3MouseClicked(MouseEvent e) {
         if(e.getSource()==button3){
-            //FlightID.setText("???");
+            System.out.println("I'm opening a new page to show the passengerlist.");
             toShowPassengerList T = new toShowPassengerList(this.getPassengerList());
             T.setVisible(true);
             //T.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
