@@ -250,10 +250,10 @@ public class Seat_1_6 extends JFrame {
         {
             panel1.setOpaque(false);
             panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
             . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
             ; }} );
             panel1.setLayout(new BorderLayout());
 
@@ -265,13 +265,7 @@ public class Seat_1_6 extends JFrame {
             //---- button3 ----
             button3.setText(bundle.getString("button3.text_12"));
             button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
-            button3.addActionListener(e -> {
-                try {
-                    button3(e);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
+            button3.addActionListener(e -> button3(e));
             panel1.add(button3, BorderLayout.CENTER);
         }
         contentPane.add(panel1, BorderLayout.NORTH);
