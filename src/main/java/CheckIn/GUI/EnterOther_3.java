@@ -137,17 +137,17 @@ public class EnterOther_3 extends JFrame {
                 Date date1 = format.parse(nowTime);
                 Date date2 = format.parse(eta);
 
-                try{
-                    date2 = format.parse(eta);
-                    new AirPassCse().setVisible(true);
-                } catch (Exception error){
-                    long nowMillisecond = date1.getTime();
-                    long etaMillisecond = date2.getTime();
-                    if(etaMillisecond - nowMillisecond < 1800000){
-                    }else{
-                        throw new IllegalAccessException();
-                    }
-                }
+//                try{
+//                    date2 = format.parse(eta);
+//                    new AirPassCse().setVisible(true);
+//                } catch (Exception error){
+//                    long nowMillisecond = date1.getTime();
+//                    long etaMillisecond = date2.getTime();
+//                    if(etaMillisecond - nowMillisecond < 1800000){
+//                    }else{
+//                        throw new IllegalAccessException();
+//                    }
+//                }
             }
         }
         String eta=ETA;

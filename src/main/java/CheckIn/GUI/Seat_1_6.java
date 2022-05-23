@@ -43,7 +43,7 @@ public class Seat_1_6 extends JFrame {
     }
     public int getSeatClazz() throws Exception {
         int clazz;
-        if(!(EnterBN_3.getPsnTemp().equals(null))){
+        if(EnterBN_3.getPsnTemp() != null){
 
             Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
 //            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
@@ -52,7 +52,7 @@ public class Seat_1_6 extends JFrame {
 //            order.setSeatClass(0);
             clazz =order.getSeatClass();
             return clazz;
-        }else if(!(EnterOther_3.getPsnTemp1().equals(null))){
+        }else if(EnterOther_3.getPsnTemp1() != null){
             Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
             System.out.println(other2.getSeatClass());
             //TODO
@@ -78,6 +78,8 @@ public class Seat_1_6 extends JFrame {
             ecoS.setEnabled(false);
         }else if(intTemp==-1){
             infoText.setText("Seat class is -1 now");
+            ecoS.setEnabled(false);
+            vip.setEnabled(false);
         }
         showSeats();
     }
