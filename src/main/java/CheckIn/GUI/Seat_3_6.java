@@ -14,6 +14,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+
 /**
  * @author Jiayi Wang
  */
@@ -21,9 +22,30 @@ public class Seat_3_6 extends JFrame {
     public static String seat;
     private static HashMap<String, Seat> mapNew = new HashMap<>();
     private static HashMap<String, Seat> map=new HashMap<>();
+    public static Map.Entry<String,Seat> entry1;
     public static boolean upgrade=false;
     public Seat_3_6() {
         initComponents();
+    }
+
+    public static ArrayList<String> sortSeat1(){
+        ArrayList<String> seatList=new ArrayList<>();
+        Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(iter1.hasNext()){
+            seatList.add(iter1.next().getKey());
+            for(int i=0; i<seatList.size();i++){
+                Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,2));
+
+                arr.add(firSeat);
+
+                Arrays.sort(new ArrayList[]{arr});
+            }
+        }
+//        System.out.println(seatList);
+        seatList.sort(Comparator.naturalOrder());
+//        System.out.println(seatList);
+        return seatList;
     }
 
     private void PrintFlight(ActionEvent e) {
@@ -147,21 +169,39 @@ public class Seat_3_6 extends JFrame {
             }
         }
 
-        Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
-        while(iter.hasNext()){
-            Map.Entry<String,Seat> entry = iter.next();
-            Seat value = entry.getValue();
-            int temp=value.getSeatClass();
-            switch (temp) {
-                case 0:
-                    ecoS.addItem(entry.getKey());
-                    break;
-                case 2:
-                    busS.addItem(entry.getKey());
-                    break;
-            }
+        Iterator<Map.Entry<String,Seat>> iter1;
+        iter1 = mapNew.entrySet().iterator();
+        while(iter1.hasNext()){
 
+            entry1 = iter1.next();
+            for(String str : sortSeat1()){
+//                System.out.println(str);
+                String str1=str.substring(0,2);
+                int i = Integer.parseInt(str1);
+                if(i<3){
+                    busS.addItem(str);
+                }else if(i>2&&i<41){
+                    ecoS.addItem(str);
+                }
+            }
+            break;
         }
+
+//        Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
+//        while(iter.hasNext()){
+//            Map.Entry<String,Seat> entry = iter.next();
+//            Seat value = entry.getValue();
+//            int temp=value.getSeatClass();
+//            switch (temp) {
+//                case 0:
+//                    ecoS.addItem(entry.getKey());
+//                    break;
+//                case 2:
+//                    busS.addItem(entry.getKey());
+//                    break;
+//            }
+//
+//        }
     }
 
     private void upGrade(ActionEvent e) {

@@ -115,7 +115,6 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -129,7 +128,6 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -140,20 +138,21 @@ public class Seat_1_6 extends JFrame {
         while(iter.hasNext()){
 
             entry = iter.next();
-            Seat value = entry.getValue();
-            int temp=value.getSeatClass();
-
-            switch (temp) {
-                case 0:
-                    ecoS.addItem(entry.getKey());
-                    break;
-                case 1:
-                    vip.addItem(entry.getKey());
-                    break;
+            for(String str : sortSeat()){
+//                System.out.println(str);
+                String str1=str.substring(0,2);
+                int i = Integer.parseInt(str1);
+                if(i<3){
+                    vip.addItem(str);
+                }else if(i>2&&i<31){
+                    ecoS.addItem(str);
+                }
             }
+            break;
         }
+
     }
-    public static void sortSeat(){
+    public static ArrayList<String> sortSeat(){
         ArrayList<String> seatList=new ArrayList<>();
         Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
         ArrayList<Integer> arr = new ArrayList<>();
@@ -168,8 +167,9 @@ public class Seat_1_6 extends JFrame {
             }
         }
 //        System.out.println(seatList);
-        seatList= (ArrayList<String>) seatList.stream().sorted();
-        System.out.println(seatList);
+        seatList.sort(Comparator.naturalOrder());
+//        System.out.println(seatList);
+        return seatList;
     }
 
     public void init() {
