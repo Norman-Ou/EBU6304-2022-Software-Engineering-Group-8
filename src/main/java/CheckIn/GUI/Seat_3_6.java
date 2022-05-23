@@ -172,7 +172,6 @@ public class Seat_3_6 extends JFrame {
         Iterator<Map.Entry<String,Seat>> iter1;
         iter1 = mapNew.entrySet().iterator();
         while(iter1.hasNext()){
-
             entry1 = iter1.next();
             for(String str : sortSeat1()){
 //                System.out.println(str);
