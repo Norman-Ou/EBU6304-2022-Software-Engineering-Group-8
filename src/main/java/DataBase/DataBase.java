@@ -214,6 +214,7 @@ public class DataBase {
             JSONArray array = getAllObject();
             for (int i = 0; i < (array.size()); i++) {
                 JSONObject ob = (JSONObject) array.get(i);
+                System.out.println(ob);
                 if (ob.get(key).equals(value)) {
                     arrayList.add(ob.toJavaObject(tClass));
                 }

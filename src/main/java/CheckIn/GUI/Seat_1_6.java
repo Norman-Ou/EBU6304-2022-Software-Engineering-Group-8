@@ -265,7 +265,13 @@ public class Seat_1_6 extends JFrame {
             //---- button3 ----
             button3.setText(bundle.getString("button3.text_12"));
             button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
-            button3.addActionListener(e -> button3(e));
+            button3.addActionListener(e -> {
+                try {
+                    button3(e);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            });
             panel1.add(button3, BorderLayout.CENTER);
         }
         contentPane.add(panel1, BorderLayout.NORTH);
