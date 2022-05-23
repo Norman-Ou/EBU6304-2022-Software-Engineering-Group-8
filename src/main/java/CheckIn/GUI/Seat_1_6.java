@@ -14,6 +14,7 @@ import Exceptions.DataNotFound;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -30,6 +31,7 @@ public class Seat_1_6 extends JFrame {
     private static HashMap<String, Seat> map=new HashMap<>();
     //true for upgrading.
     public static boolean upgrade=false;
+    public static Map.Entry<String,Seat> entry;
     public Seat_1_6() throws Exception {
         initComponents();
     }
@@ -47,14 +49,14 @@ public class Seat_1_6 extends JFrame {
 
             Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
 //            Order order = getOrderByPassenger(EnterBN_3.getPsnTemp());
-            System.out.println(order.toString());
+//            System.out.println(order.toString());
             //TODO
 //            order.setSeatClass(0);
             clazz =order.getSeatClass();
             return clazz;
         }else if(EnterOther_3.getPsnTemp1() != null){
             Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
-            System.out.println(other2.getSeatClass());
+//            System.out.println(other2.getSeatClass());
             //TODO
 //            other2.setSeatClass(0);
             clazz =other2.getSeatClass();
@@ -85,15 +87,9 @@ public class Seat_1_6 extends JFrame {
     }
 
     private void PrintFlight(ActionEvent e) {
-//        if(upgrade){
-//            dispose();
-//            new CreditPage().setVisible(true);
-//        }else{
-//            dispose();
-//            new PrintFlight_6().setVisible(true);
-//        }
         dispose();
         new PrintFlight_6().setVisible(true);
+        sortSeat();
     }
 
     private void firClass(ItemEvent e) {
@@ -119,7 +115,6 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -133,26 +128,48 @@ public class Seat_1_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
 
-        Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
+        Iterator<Map.Entry<String,Seat>> iter;
+        iter = mapNew.entrySet().iterator();
         while(iter.hasNext()){
-            Map.Entry<String,Seat> entry = iter.next();
-            Seat value = entry.getValue();
-            int temp=value.getSeatClass();
-            switch (temp) {
-                case 0:
-                    ecoS.addItem(entry.getKey());
-                    break;
-                case 1:
-                    vip.addItem(entry.getKey());
-                    break;
+
+            entry = iter.next();
+            for(String str : sortSeat()){
+//                System.out.println(str);
+                String str1=str.substring(0,2);
+                int i = Integer.parseInt(str1);
+                if(i<3){
+                    vip.addItem(str);
+                }else if(i>2&&i<31){
+                    ecoS.addItem(str);
+                }
+            }
+            break;
+        }
+
+    }
+    public static ArrayList<String> sortSeat(){
+        ArrayList<String> seatList=new ArrayList<>();
+        Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(iter1.hasNext()){
+            seatList.add(iter1.next().getKey());
+            for(int i=0; i<seatList.size();i++){
+                Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,2));
+
+                arr.add(firSeat);
+
+                Arrays.sort(new ArrayList[]{arr});
             }
         }
+//        System.out.println(seatList);
+        seatList.sort(Comparator.naturalOrder());
+//        System.out.println(seatList);
+        return seatList;
     }
 
     public void init() {
@@ -232,13 +249,11 @@ public class Seat_1_6 extends JFrame {
         //======== panel1 ========
         {
             panel1.setOpaque(false);
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
             ; }} );
             panel1.setLayout(new BorderLayout());
 
@@ -253,8 +268,8 @@ public class Seat_1_6 extends JFrame {
             button3.addActionListener(e -> {
                 try {
                     button3(e);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
                 }
             });
             panel1.add(button3, BorderLayout.CENTER);
@@ -343,7 +358,6 @@ public class Seat_1_6 extends JFrame {
 
                     //======== panel5 ========
                     {
-                        panel5.setOpaque(false);
                         panel5.setLayout(new BoxLayout(panel5, BoxLayout.X_AXIS));
 
                         //---- vip ----
@@ -356,7 +370,6 @@ public class Seat_1_6 extends JFrame {
 
                 //======== panel11 ========
                 {
-                    panel11.setOpaque(false);
                     panel11.setLayout(new BoxLayout(panel11, BoxLayout.Y_AXIS));
 
                     //---- label7 ----

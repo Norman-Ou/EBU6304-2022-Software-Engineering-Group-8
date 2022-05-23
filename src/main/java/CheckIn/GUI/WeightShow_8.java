@@ -42,8 +42,6 @@ public class WeightShow_8 extends JFrame {
             dispose();
             new BagStore_8().setVisible(true);
 
-        }else{
-            dispose();
         }
     }
     public void showWeight(){

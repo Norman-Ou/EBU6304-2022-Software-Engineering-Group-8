@@ -104,7 +104,6 @@ new FormModel {
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 							name: "panel5"
-							"opaque": false
 							add( new FormComponent( "javax.swing.JComboBox" ) {
 								name: "vip"
 								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "firClass", true ) )
@@ -115,7 +114,6 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel11"
-						"opaque": false
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label7"
 							"text": new FormMessage( null, "label7.text_4" )

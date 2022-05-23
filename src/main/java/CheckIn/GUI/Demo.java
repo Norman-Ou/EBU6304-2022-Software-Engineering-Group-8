@@ -27,6 +27,7 @@ public class Demo extends JFrame {
 
         pack();
         setResizable(false);
+        setSize(900, 550);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -42,6 +43,7 @@ public class Demo extends JFrame {
         JLabel label = new JLabel();
         label.setText("Click the button for printing your TAG.");
         label.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
+        label.setHorizontalAlignment(SwingConstants.CENTER);
 
         glassPane = new InfiniteProgressPanel("Printing......");
         setGlassPane(glassPane);

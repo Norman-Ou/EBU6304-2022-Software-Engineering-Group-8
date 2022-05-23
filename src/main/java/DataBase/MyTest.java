@@ -36,9 +36,9 @@ public class MyTest {
         return null;
     }
 
+    @Test
     public void test2() throws DataNotFound {
-        Order order = oDB.getOrderByBookingNumber("75375917");
-        System.out.println(order);
+        pDB.loadPassengersByIDNum("912843");
     }
 
 

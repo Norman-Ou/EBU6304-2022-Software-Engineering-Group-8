@@ -111,11 +111,6 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel11"
-						"opaque": false
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
-							name: "panel12"
-							"opaque": false
-						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label10"
 							"text": new FormMessage( null, "label10.text_4" )
@@ -126,7 +121,6 @@ new FormModel {
 						"axis": 1
 					} ) {
 						name: "panel13"
-						"opaque": false
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "busS"
 							addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "busSeat", true ) )
