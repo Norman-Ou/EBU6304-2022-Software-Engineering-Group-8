@@ -32,7 +32,10 @@ public class AirPassCse extends JFrame {
     public static String Dep= "";
     public static String Des= "";
     public static String ETA= "";
-    public static String nowTime = "07-09-2022 7:00:32";
+    public static Calendar time = Calendar.getInstance();
+    public static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    public static String nowTime = format.format(time.getTime());
+//    public static String nowTime = "07-09-2022 7:00:32";
     public AirPassCse() {
         initComponents();
     }
@@ -99,15 +102,17 @@ public class AirPassCse extends JFrame {
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
 //            airLine.addItem(flightNo);
-            System.out.println(flightNo);
 
             if(e.getStateChange()==ItemEvent.SELECTED){
+                String str=e.getItemSelectable().toString();
+                System.out.println(str);
                 state=true;
                 flightChoose=fDB.loadFlightByFlightNo(airLine.getSelectedItem().toString());
                 if (flightChoose.equals(flightNo)) {
                     airlineAdd();
                 }
                 if (state) {
+                    flightNo=flightChoose.getFlightNo();
                     table1.setValueAt(flightNo, 2, 1);
                     table1.setValueAt(Dep, 5, 1);
                     table1.setValueAt(Des, 8, 1);
@@ -301,7 +306,6 @@ public class AirPassCse extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        //TODO add passenger's airline information
         init();
     }
 

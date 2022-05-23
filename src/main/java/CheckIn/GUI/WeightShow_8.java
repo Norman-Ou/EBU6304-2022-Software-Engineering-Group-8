@@ -4,6 +4,7 @@
 
 package CheckIn.GUI;
 
+import Beans.Passenger.Passenger;
 import DataBase.fDB;
 
 import java.awt.*;
@@ -34,9 +35,21 @@ public class WeightShow_8 extends JFrame {
         dispose();
         new Baggage_7().setVisible(true);
     }
+    public void overWeight(Passenger psn){
+        int wei = psn.getBaggage().getBaggageWeight();
+        if(wei>29){
+            JOptionPane.showMessageDialog(null, "Overweight Baggage.","No permission", JOptionPane.WARNING_MESSAGE);
+            dispose();
+            new BagStore_8().setVisible(true);
+
+        }else{
+            dispose();
+        }
+    }
     public void showWeight(){
         String str = "Your baggage weighs: ";
         if(EnterBN_3.getPsnTemp()==null){
+            overWeight(EnterOther_3.getPsnTemp1());
             try {
                 weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
@@ -45,6 +58,7 @@ public class WeightShow_8 extends JFrame {
             }
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
+            overWeight(EnterBN_3.getPsnTemp());
             try {
                 weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
