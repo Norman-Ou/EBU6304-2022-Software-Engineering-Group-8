@@ -29,7 +29,7 @@ public class bMonitors {
 	// 所有航班的列表
 	private List<Flight> flightList = fDB.loadAllFlights();
 	// 所有乘客列表
-    private static List<Passenger> passengerList = pDB.loadAllPassengers();
+    private List<Passenger> passengerList = pDB.loadAllPassengers();
 
     public bMonitors(){}
 
@@ -84,13 +84,13 @@ public class bMonitors {
             List<Passenger> psgList = new ArrayList<Passenger>();
             for(int i = 1; i<oList.size(); i++){
                 for(int j = 0; j<passengerList.size(); j++){
-                    if(oList.get(i).getPassengerID()==passengerList.get(j).getPassengerId()){
+                    if(oList.get(i).getPassengerID().equals(passengerList.get(j).getPassengerId())){
                         psgList.add(passengerList.get(j));
                         System.out.println(oList.get(i).getPassengerID());
                     }
                 }
             }
-            System.out.println("done back");
+            System.out.println("get psgList");
             return psgList;
         } catch (DataNotFound e) {
             e.printStackTrace();
@@ -99,6 +99,7 @@ public class bMonitors {
     }
 
     // 获取某航班上还未登机乘客名单 检查航班上的
+    // 航班号拿到乘客列表
     public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
         List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
         List<Passenger> psgList = this.getPassengerList(targetFlightNo);
@@ -107,17 +108,19 @@ public class bMonitors {
                 unboardedPassengerList.add(psgList.get(i));
             }
         }
+        System.out.println("get target-psgList");
         return unboardedPassengerList;
     }
-        
+    
+    // 乘客列表转化得到乘客信息
     public List<String> printUnboardedPassengerList(List<Passenger> PList){
         List<String> infoList = new ArrayList<String>();
         for(int i = 0; i<PList.size(); i++){
             Passenger psg = PList.get(i);
-            String info = psg.getPassengerId() + psg.getSurName();
-            System.out.println("method");
+            String info = psg.getPassengerId() + "                " + psg.getSurName();
             infoList.add(info);
         }
+        System.out.println("get infoList");
         return infoList;
     }
         
