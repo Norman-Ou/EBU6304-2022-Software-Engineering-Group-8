@@ -20,7 +20,9 @@ import java.util.ResourceBundle;
 public class MealPay_15 extends JFrame {
     private static int seatFee=0;
     public MealPay_15() {
-        initComponents();
+
+        if(Seat_1_6.upgrade||Seat_3_6.upgrade||MealAdd_14.mealState){
+        initComponents();}
     }
 
     private void exit(ActionEvent e) {
@@ -47,7 +49,7 @@ public class MealPay_15 extends JFrame {
         }else if(Seat_3_6.upgrade){
             seatFee=100;
         }
-        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new Exit().setVisible(true);
     }
@@ -61,7 +63,12 @@ public class MealPay_15 extends JFrame {
         }else{
             setMealTemp(MealAdd_14.VIPmealSelected);
         }
-        JOptionPane.showMessageDialog(null, "You have payed for your Meal: "+getMealTemp()+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
+        if(Seat_1_6.upgrade){
+            seatFee=100;
+        }else if(Seat_3_6.upgrade){
+            seatFee=100;
+        }
+        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         new Exit().setVisible(true);
     }
@@ -84,7 +91,7 @@ public class MealPay_15 extends JFrame {
 //        EnterBN_3.getPsnTemp().getBookNumber();
         //TODO get credit information
         String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
-        textArea1.setText(creditInfo);
+        textField1.setText(creditInfo);
     }
 
     private void help(ActionEvent e) {
@@ -101,10 +108,10 @@ public class MealPay_15 extends JFrame {
         contentPanel = new JPanel();
         panel1 = new JPanel();
         panel2 = new JPanel();
-        textArea1 = new JTextArea();
         panel3 = new JPanel();
         button1 = new JButton();
         button3 = new JButton();
+        textField1 = new JTextField();
         buttonBar = new JPanel();
         button2 = new JButton();
         okButton = new JButton();
@@ -118,13 +125,13 @@ public class MealPay_15 extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
+            ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -141,7 +148,6 @@ public class MealPay_15 extends JFrame {
                     {
                         panel2.setOpaque(false);
                         panel2.setLayout(new BorderLayout());
-                        panel2.add(textArea1, BorderLayout.CENTER);
 
                         //======== panel3 ========
                         {
@@ -160,6 +166,10 @@ public class MealPay_15 extends JFrame {
                             panel3.add(button3, BorderLayout.EAST);
                         }
                         panel2.add(panel3, BorderLayout.NORTH);
+
+                        //---- textField1 ----
+                        textField1.setHorizontalAlignment(SwingConstants.CENTER);
+                        panel2.add(textField1, BorderLayout.CENTER);
                     }
                     panel1.add(panel2, BorderLayout.CENTER);
                 }
@@ -205,10 +215,10 @@ public class MealPay_15 extends JFrame {
     private JPanel contentPanel;
     private JPanel panel1;
     private JPanel panel2;
-    private JTextArea textArea1;
     private JPanel panel3;
     private JButton button1;
     private JButton button3;
+    private JTextField textField1;
     private JPanel buttonBar;
     private JButton button2;
     private JButton okButton;

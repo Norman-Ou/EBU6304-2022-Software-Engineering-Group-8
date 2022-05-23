@@ -18,6 +18,7 @@ import javax.swing.border.*;
  */
 public class WeightShow_8 extends JFrame {
     public static int weightPsn;
+    public static int dropCourt;
     public WeightShow_8() {
         initComponents();
     }
@@ -46,8 +47,11 @@ public class WeightShow_8 extends JFrame {
     }
     public void showWeight(){
         String str = "Your baggage weighs: ";
+         dropCourt = (int)(Math.random()*100)+2;
+
         if(EnterBN_3.getPsnTemp()==null){
             overWeight(EnterOther_3.getPsnTemp1());
+            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(dropCourt+"");
             try {
                 weiText.setText(str+EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
@@ -57,6 +61,8 @@ public class WeightShow_8 extends JFrame {
         }
         else if(EnterOther_3.getPsnTemp1()==null) {
             overWeight(EnterBN_3.getPsnTemp());
+            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(dropCourt+"");
+            System.out.println(EnterBN_3.getPsnTemp().getBaggage().getDropCounter());
             try {
                 weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
                 weightPsn=EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();

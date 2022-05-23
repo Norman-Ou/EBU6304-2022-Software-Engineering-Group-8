@@ -22,6 +22,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField1"
 							"horizontalAlignment": 0
+							addEvent( new FormEvent( "java.awt.event.ComponentListener", "componentShown", "CourtShown", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
 						} )

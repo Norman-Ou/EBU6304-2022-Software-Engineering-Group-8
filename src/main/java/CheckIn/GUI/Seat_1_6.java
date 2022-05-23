@@ -69,11 +69,7 @@ public class Seat_1_6 extends JFrame {
 
         int intTemp=getSeatClazz();
         if(intTemp==0){
-            infoText.setText("You can choose form 18 to 30");
-            vip.setEnabled(false);
-        }else if(intTemp==1){
-            infoText.setText("You can choose form 11 to 17");
-            ecoS.setEnabled(false);
+            infoText.setText("You can choose form 11 to 30");
             vip.setEnabled(false);
         }else if(intTemp==2){
             infoText.setText("You can choose form 1 to 10");
@@ -265,7 +261,13 @@ public class Seat_1_6 extends JFrame {
             //---- button3 ----
             button3.setText(bundle.getString("button3.text_12"));
             button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
-            button3.addActionListener(e -> button3(e));
+            button3.addActionListener(e -> {
+                try {
+                    button3(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
             panel1.add(button3, BorderLayout.CENTER);
         }
         contentPane.add(panel1, BorderLayout.NORTH);

@@ -24,6 +24,7 @@ public class MealAdd_14 extends JFrame {
     public static String VIPmealSelected;
     public static ArrayList<ExtraOption> arrayMeal;
     public static int price;
+    public static boolean mealState=false;
 
     public MealAdd_14() {
         initComponents();
@@ -35,6 +36,7 @@ public class MealAdd_14 extends JFrame {
         switch (selectedIndex) {
             case 0:
                 VIPmealSelected="Sashimi";
+                mealState=true;
                 System.out.println("Sashimi");
                 if(!(EnterBN_3.getPsnTemp()==null)) {
                     arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
@@ -54,6 +56,7 @@ public class MealAdd_14 extends JFrame {
                 }
                 break;
             case 1:
+                mealState=true;
                 VIPmealSelected="Steak";
                 System.out.println("Steak");
                 if(!(EnterBN_3.getPsnTemp()==null)) {
@@ -74,6 +77,7 @@ public class MealAdd_14 extends JFrame {
                 }
                 break;
             case 2:
+                mealState=true;
                 VIPmealSelected="Tempura";
                 System.out.println("Tempura");
                 if(!(EnterBN_3.getPsnTemp()==null)) {

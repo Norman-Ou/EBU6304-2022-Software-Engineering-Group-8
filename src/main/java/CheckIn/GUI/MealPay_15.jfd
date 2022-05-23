@@ -21,11 +21,6 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 							name: "panel2"
 							"opaque": false
-							add( new FormComponent( "javax.swing.JTextArea" ) {
-								name: "textArea1"
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 								name: "panel3"
 								"opaque": false
@@ -46,6 +41,12 @@ new FormModel {
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "North"
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField1"
+								"horizontalAlignment": 0
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "Center"
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
