@@ -43,6 +43,6 @@ public class oDB {
 
     public static ArrayList<Order> getOrdersByPassengerId(String passengerId) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
-        return dataBase.getObjects("passengerId", passengerId, Order.class);
+        return dataBase.getObjects("passengerID", passengerId, Order.class);
     }
 }
