@@ -216,6 +216,7 @@ public class DataBase {
                 JSONObject ob = (JSONObject) array.get(i);
                 if (ob.get(key).equals(value)) {
                     arrayList.add(ob.toJavaObject(tClass));
+                    System.out.println(arrayList.get(0));
                 }
             }
         } catch (IOException e) {

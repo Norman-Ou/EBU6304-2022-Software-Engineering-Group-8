@@ -6,8 +6,15 @@ package BackEnd.GUI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import BackEnd.Monitor.bMonitors;
+import Beans.Flight.Flight;
+import Beans.Passenger.Passenger;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.lang.ProcessHandle.Info;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -32,6 +39,9 @@ public class PassengerPage1 extends JFrame {
 
     private void initComponents(String trans1,String trans2) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        bMonitors admin = new bMonitors();
+        ArrayList<Passenger> psgList = admin.searchPassengerById(trans1);
+        Passenger psg = admin.searchPassengerByFlight(trans2, psgList);
         label1 = new JLabel();
         IDBar = new JTextField();
         IDBar.setText(trans1);
@@ -42,13 +52,36 @@ public class PassengerPage1 extends JFrame {
         FlightID.setText(trans2);
         label3 = new JLabel();
         PassengerName = new JTextField();
+        PassengerName.setText(psg.getSurName());
         label5 = new JLabel();
         BaggageStatus = new JTextField();
+        if(psg.getBaggage().getDropCounter().equals(null)){
+                BaggageStatus.setText("The passenger doesn't store her/his baggage in the counter");
+        }else{
+                BaggageStatus.setText("Baggage is in the counter "+ psg.getBaggage().getDropCounter());
+        }
         label6 = new JLabel();
         BoardingStatus = new JTextField();
+        if(psg.getCheckinStatus()==-1){
+                BoardingStatus.setText("Not check in yet!");
+        }else if(psg.getCheckinStatus()==0){
+                BoardingStatus.setText("Not on board!");
+        }else if(psg.getCheckinStatus()==1){
+                BoardingStatus.setText("Already on board!");
+        }
         label8 = new JLabel();
         MealOption = new JTextField();
-
+        String Info = "";
+        if(psg.getExtraOptions().size()==0){
+                Info += "The passenger doesn't choose any extra options yet.";
+        }else{
+                Info += "The extra options of the passenger:\n";
+                Info += "Kind          Description          Price:\n";
+                for(int k = 0; k<psg.getExtraOptions().size(); k++){
+                        Info += psg.getExtraOptions().get(k).getKind() + "    " +psg.getExtraOptions().get(k).getDescription() + "    " +psg.getExtraOptions().get(k).getPrice()+"\n";
+                }
+        }
+        MealOption.setText(Info);
         //======== this ========
         setTitle("Passenger enquiry page");
         Container contentPane = getContentPane();

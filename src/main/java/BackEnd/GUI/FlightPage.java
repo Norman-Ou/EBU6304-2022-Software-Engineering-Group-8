@@ -50,7 +50,6 @@ public class FlightPage extends JFrame {
     // button "see more passengerList"
     private void button3MouseClicked(MouseEvent e) {
         if(e.getSource()==button3){
-            System.out.println("I'm opening a new page to show the passengerlist.");
             toShowPassengerList T = new toShowPassengerList(this.getPassengerList());
             T.setVisible(true);
             //T.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

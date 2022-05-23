@@ -35,11 +35,11 @@ public class PassengerPage_Discard extends JFrame {
         if(e.getSource()==button1){
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
             bMonitors admin = new bMonitors();
-            Passenger psg = admin.searchPassengerById(p_ID);
+            // Passenger psg = admin.searchPassengerById(p_ID);
             PassengerID.setText(p_ID);
-            PassengerName.setText(psg.getSurName());
-            String FlightNo = psg.getBoardingPass().getFlightNo();
-            FlightID.setText(FlightNo);
+            // PassengerName.setText(psg.getSurName());
+            // String FlightNo = psg.getBoardingPass().getFlightNo();
+            // FlightID.setText(FlightNo);
             // BaggageStatus.setText(psg.getBaggage().getDropCounter());
             // List<Passenger> unboardedPassengerList = admin.getUnboardedPassengerList(FlightNo);
             // String status = "Already on Board";
