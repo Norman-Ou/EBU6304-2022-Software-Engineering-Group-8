@@ -87,7 +87,7 @@ public class PrintBag_11 extends JFrame {
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1);
+                CounterNo.setText(str1+WeightShow_8.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -100,7 +100,7 @@ public class PrintBag_11 extends JFrame {
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1);
+                CounterNo.setText(str1+WeightShow_8.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -112,7 +112,7 @@ public class PrintBag_11 extends JFrame {
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1);
+                CounterNo.setText(str1+WeightShow_8.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

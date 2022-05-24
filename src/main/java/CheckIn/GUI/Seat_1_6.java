@@ -69,11 +69,7 @@ public class Seat_1_6 extends JFrame {
 
         int intTemp=getSeatClazz();
         if(intTemp==0){
-            infoText.setText("You can choose form 18 to 30");
-            vip.setEnabled(false);
-        }else if(intTemp==1){
-            infoText.setText("You can choose form 11 to 17");
-            ecoS.setEnabled(false);
+            infoText.setText("You can choose form 11 to 30");
             vip.setEnabled(false);
         }else if(intTemp==2){
             infoText.setText("You can choose form 1 to 10");
@@ -268,8 +264,8 @@ public class Seat_1_6 extends JFrame {
             button3.addActionListener(e -> {
                 try {
                     button3(e);
-                } catch (Exception exception) {
-                    exception.printStackTrace();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             });
             panel1.add(button3, BorderLayout.CENTER);
