@@ -38,7 +38,6 @@ public class MealPay_15 extends JFrame {
         return this.mealTemp;
     }
     private void payMeal(ActionEvent e) {
-
         if(MealAdd_14.VIPmealSelected==null){
             setMealTemp(MealNorm_13.mealSelected);
         }else{
