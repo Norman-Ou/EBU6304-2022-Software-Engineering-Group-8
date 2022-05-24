@@ -55,7 +55,7 @@ public class PassengerPage1 extends JFrame {
         PassengerName.setText(psg.getSurName());
         label5 = new JLabel();
         BaggageStatus = new JTextField();
-        if(psg.getBaggage().getDropCounter().equals(null)){
+        if(psg.getBaggage().getDropCounter().equals("-1")){
                 BaggageStatus.setText("The passenger doesn't store her/his baggage in the counter");
         }else{
                 BaggageStatus.setText("Baggage is in the counter "+ psg.getBaggage().getDropCounter());
