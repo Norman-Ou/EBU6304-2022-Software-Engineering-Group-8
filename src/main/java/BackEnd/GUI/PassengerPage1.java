@@ -78,9 +78,9 @@ public class PassengerPage1 extends JFrame {
                 Info += "The passenger doesn't choose any extra options yet.";
         }else{
                 Info += "The extra options of the passenger:\n";
-                Info += "Kind          Description          Price:\n";
+                Info += "Kind          Description              Price:\n";
                 for(int k = 0; k<psg.getExtraOptions().size(); k++){
-                        Info += psg.getExtraOptions().get(k).getKind() + "    " +psg.getExtraOptions().get(k).getDescription() + "    " +psg.getExtraOptions().get(k).getPrice()+"\n";
+                        Info += psg.getExtraOptions().get(k).getKind() + "               " +psg.getExtraOptions().get(k).getDescription() + "         " +psg.getExtraOptions().get(k).getPrice()+"\n";
                 }
         }
         MealOption.setText(Info);
