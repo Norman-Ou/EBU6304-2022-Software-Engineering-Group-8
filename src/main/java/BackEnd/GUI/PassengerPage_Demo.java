@@ -46,7 +46,8 @@ public class PassengerPage_Demo extends JFrame {
         label6 = new JLabel();
         BoardingStatus = new JTextField();
         label8 = new JLabel();
-        MealOption = new JTextField();
+        scrollPane1 = new JScrollPane();
+        MealOption = new JTextArea();
 
         //======== this ========
         setTitle("Passenger enquiry page");
@@ -99,7 +100,7 @@ public class PassengerPage_Demo extends JFrame {
         contentPane.add(label5, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(BaggageStatus, new GridBagConstraints(1, 4, 4, 1, 0.0, 0.0,
+        contentPane.add(BaggageStatus, new GridBagConstraints(1, 4, 4, 1, 2.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 0), 0, 0));
 
@@ -109,7 +110,7 @@ public class PassengerPage_Demo extends JFrame {
         contentPane.add(label6, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(BoardingStatus, new GridBagConstraints(1, 5, 4, 1, 0.0, 0.0,
+        contentPane.add(BoardingStatus, new GridBagConstraints(1, 5, 4, 1, 2.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 0), 0, 0));
 
@@ -119,10 +120,15 @@ public class PassengerPage_Demo extends JFrame {
         contentPane.add(label8, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 5), 0, 0));
-        contentPane.add(MealOption, new GridBagConstraints(1, 6, 4, 1, 0.0, 0.0,
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setViewportView(MealOption);
+        }
+        contentPane.add(scrollPane1, new GridBagConstraints(1, 6, 4, 1, 0.0, 3.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 0), 0, 0));
-        setSize(420, 540);
+        setSize(500, 540);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -141,6 +147,7 @@ public class PassengerPage_Demo extends JFrame {
     private JLabel label6;
     private JTextField BoardingStatus;
     private JLabel label8;
-    private JTextField MealOption;
+    private JScrollPane scrollPane1;
+    private JTextArea MealOption;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -80,6 +80,7 @@ new FormModel {
 				"gridx": 1
 				"gridy": 4
 				"gridwidth": 4
+				"weightx": 2.0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
@@ -94,6 +95,7 @@ new FormModel {
 				"gridx": 1
 				"gridy": 5
 				"gridwidth": 4
+				"weightx": 2.0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
@@ -102,16 +104,20 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 6
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "MealOption"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "MealOption"
+				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 1
 				"gridy": 6
 				"gridwidth": 4
+				"weighty": 3.0
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 15, 35 )
-			"size": new java.awt.Dimension( 420, 540 )
+			"size": new java.awt.Dimension( 500, 540 )
 		} )
 	}
 }
