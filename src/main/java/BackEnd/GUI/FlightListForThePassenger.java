@@ -21,11 +21,15 @@ import java.util.ArrayList;
 public class FlightListForThePassenger extends JFrame {
     public FlightListForThePassenger() {
         initComponents();
+        Flight1Detail.setEnabled(false);
+        Flight2Detail.setEnabled(false);
+        Flight3Detail.setEnabled(false);
+        Flight4Detail.setEnabled(false);
     }
 
     public String TransInformation1="";//这个值用于传递查询时输入的PassengerID
     public String TransInformation2="";//这个值用于传输查询到的该乘客book了的FlightID
-    public Passenger choosePsg;
+    
     private void ConfirmButtonMouseClicked(MouseEvent e) {
 
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
@@ -37,18 +41,22 @@ public class FlightListForThePassenger extends JFrame {
             if(numOfFlight>=1){
                 Flight1.setText(fltList.get(0).getFlightNo());
                 Flight1Destination.setText(fltList.get(0).getDestination());
+                Flight1Detail.setEnabled(true);
             }
             if(numOfFlight>=2){
                 Flight2.setText(fltList.get(1).getFlightNo());
                 Flight2Destination.setText(fltList.get(1).getDestination());
+                Flight2Detail.setEnabled(true);
             }
             if(numOfFlight>=3){
                 Flight3.setText(fltList.get(2).getFlightNo());
                 Flight3Destination.setText(fltList.get(2).getDestination());
+                Flight3Detail.setEnabled(true);
             }
             if(numOfFlight>=4){
                 Flight4.setText(fltList.get(3).getFlightNo());
                 Flight4Destination.setText(fltList.get(3).getDestination());
+                Flight4Detail.setEnabled(true);
             }
             //这个地方要用p_ID去查询航班，把一个或多个航班写进Flight 1，2，3，4这几个JTextField里面，把对应的目的地写进对应的Destination
     }
@@ -61,7 +69,7 @@ public class FlightListForThePassenger extends JFrame {
 
     }
 
-    private void Fligh1DetailMouseClicked(MouseEvent e) {
+    private void Flight1DetailMouseClicked(MouseEvent e) {
         TransInformation2=Flight1.getText();
         if(InputBar.getText().equals("")){
             InputBar.setText("Please input!");
@@ -135,7 +143,7 @@ public class FlightListForThePassenger extends JFrame {
         Flight1 = new JTextField();
         label3 = new JLabel();
         Flight1Destination = new JTextField();
-        Fligh1Detail = new JButton();
+        Flight1Detail = new JButton();
         label4 = new JLabel();
         Flight2 = new JTextField();
         label5 = new JLabel();
@@ -203,14 +211,14 @@ public class FlightListForThePassenger extends JFrame {
             new Insets(0, 0, 10, 10), 0, 0));
 
         //---- Fligh1Detail ----
-        Fligh1Detail.setText("See Detail");
-        Fligh1Detail.addMouseListener(new MouseAdapter() {
+        Flight1Detail.setText("See Detail");
+        Flight1Detail.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Fligh1DetailMouseClicked(e);
+                Flight1DetailMouseClicked(e);
             }
         });
-        contentPane.add(Fligh1Detail, new GridBagConstraints(7, 2, 1, 1, 0.0, 0.0,
+        contentPane.add(Flight1Detail, new GridBagConstraints(7, 2, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 10, 0), 0, 0));
 
@@ -330,7 +338,7 @@ public class FlightListForThePassenger extends JFrame {
     private JTextField Flight1;
     private JLabel label3;
     private JTextField Flight1Destination;
-    private JButton Fligh1Detail;
+    private JButton Flight1Detail;
     private JLabel label4;
     private JTextField Flight2;
     private JLabel label5;
