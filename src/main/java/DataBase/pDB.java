@@ -19,7 +19,10 @@ import java.util.ArrayList;
 public class pDB{
 
     /**
-     * Get Passenger Object by bookingNumber attr
+     * Get the passenger object from the database based on the booking number
+     *
+     * @param bookingNum the booking number
+     * @return Passenger Object
      * */
     public static Passenger loadPassengerByBookingNo(String bookingNum){
         DataBase dataBase = new DataBase(Config.PassengerFile);
@@ -27,31 +30,10 @@ public class pDB{
             return dataBase.getObject("bookNumber", bookingNum, Passenger.class);
         } catch (IOException | DataNotFound e) {
             e.printStackTrace();
-        } /*catch (DataNotFound dataNotFound) {
-            throw new DataNotFound("No reservation with booking number " + bookingNum);
-        }*/
+        }
         return null;
     }
 
-
-    /**
-     * Get Passenger Object by Surname and ID number
-     * */
-    @Deprecated
-    public static Passenger loadPassengerBySurname_ID(String surName, String passengerId) throws Exception {
-        DataBase dataBase = new DataBase(Config.PassengerFile);
-        Passenger p1 = dataBase.getObject("surName", surName, Passenger.class);
-        Passenger p2 = dataBase.getObject("passengerId", passengerId, Passenger.class);
-        if (p2 == null){
-            throw new Exception("SurName doesn't exist");
-        }else if (p1 == null){
-            throw new Exception("ID Number doesn't exist");
-        }else if(p1.equals(p2)){
-            return p1;
-        }else{
-            throw new Exception("Surname does not match the ID number");
-        }
-    }
 
     public static ArrayList<Passenger> loadPassengersBySurname_ID(String surName, String passengerId) throws DataNotFound {
         DataBase dataBase = new DataBase(Config.PassengerFile);
@@ -78,20 +60,24 @@ public class pDB{
         }
     }
 
+    /**
+     * Get the passenger object from the database based on the passenger ID number
+     *
+     * @param passengerId the booking number
+     * @return Passenger Object
+     * */
     public static ArrayList<Passenger> loadPassengersByIDNum(String passengerId) throws DataNotFound{
-        //new
         return new DataBase(Config.PassengerFile).getObjects("passengerId", passengerId, Passenger.class);
     }
 
-    //TODO 完成这个方法
     /**
      * Get Passenger Object by ID document Object from Passenger Data Base
      * */
-    public static Passenger loadPassengerByIDDocument(IDDocument idDocument) throws Exception {
+    public static ArrayList<Passenger> loadPassengerByIDDocument(IDDocument idDocument) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
         String surname = idDocument.getSurname();
         String ID = idDocument.getID();
-        return loadPassengerBySurname_ID(surname,ID);
+        return loadPassengersBySurname_ID(surname,ID);
     }
 
     public static ArrayList loadAllPassengers(){
@@ -102,6 +88,15 @@ public class pDB{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void replaceAllPsn(ArrayList<Passenger> passengers) throws IOException {
+        DataBase dataBase = new DataBase(Config.PassengerNewFile);
+        JSONArray jsonArray = new JSONArray();
+        dataBase.replaceAllData(jsonArray);
+        for (Passenger psn : passengers){
+            dataBase.addObject(psn);
+        }
     }
 
     //TODO 后期返回值改为 boolean 成功返回 true

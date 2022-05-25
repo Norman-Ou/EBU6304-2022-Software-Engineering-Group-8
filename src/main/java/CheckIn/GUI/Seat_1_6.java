@@ -20,7 +20,6 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import static CheckIn.Monitor.cMonitors.getFlightByBookingNo;
-import static CheckIn.Monitor.cMonitors.getOrderByPassenger;
 
 /**
  * @author Jiayi Wang

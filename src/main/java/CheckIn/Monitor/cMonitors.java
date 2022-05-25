@@ -29,10 +29,7 @@ import static CheckIn.GUI.AirPassCse.flightNo;
  */
 public class cMonitors {
 
-    final String bookingNum = "2019200";
-    final String id = "215200";
-    final String surname = "orz";
-    final IDDocument idDocument = new IDDocument("215200", "orz");
+
     // 所有航班的列表
     public static List<Flight> flightList = fDB.loadAllFlights();
     // list consisting of all passengers
@@ -64,7 +61,7 @@ public class cMonitors {
         return targetFlight;
     }
 
-    public static Flight getFlightByIDDocument(IDDocument idDocument){
+/*    public static Flight getFlightByIDDocument(IDDocument idDocument){
         String targetFlightNo;
         Flight targetFlight = new Flight();
         try {
@@ -76,7 +73,7 @@ public class cMonitors {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     public static ArrayList<Flight> getFlightBySurname_ID(String surName, String IDnum) {
         try {

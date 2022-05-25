@@ -20,10 +20,10 @@ import java.util.ArrayList;
  */
 public class fDB {
 
-    ArrayList<Passenger> arrayList = new ArrayList<Passenger>();
-
     /**
-     * Add a flight Object into Beans.Flight data base
+     * Add a flight Object into Flight data base
+     *
+     * @param flight the flight to be store
      * */
     public static void storeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
@@ -35,20 +35,24 @@ public class fDB {
     }
 
     /**
-     * Remove the flight object in Beans.Flight data base
+     * Remove the flight object in Flight data base
+     *
+     * @param flight the flight to be remove
      * */
     public static void removeFlight(Flight flight){
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {
             dataBase.removeObject(flight, Flight.class);
-        } catch (IOException e) {
+        } catch (IOException | DataNotFound e) {
             e.printStackTrace();
-        } catch (DataNotFound e){
-            e.printStackTrace();
-//            throw new DataNotFound("Not Found flight with flight number " + flight.getFlightNo());
         }
     }
 
+    /**
+     * Get all the flight objects in Flight data base
+     *
+     * @return a ArrayList containing all flight objects
+     * */
     public static ArrayList loadAllFlights(){
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {
@@ -59,6 +63,11 @@ public class fDB {
         return null;
     }
 
+    /**
+     * Replace all the data in the Flight data base with the incoming flights list.
+     *
+     * @param flights flights data used to replace data in a database
+     * */
     public static void replaceAllFlights(ArrayList<Flight> flights) throws IOException {
         DataBase dataBase = new DataBase(Config.FlightFile);
         JSONArray jsonArray = new JSONArray();
@@ -68,26 +77,20 @@ public class fDB {
         }
     }
 
-    public static void replaceAllPsn(ArrayList<Passenger> passengers) throws IOException {
-        DataBase dataBase = new DataBase(Config.PassengerNewFile);
-        JSONArray jsonArray = new JSONArray();
-        dataBase.replaceAllData(jsonArray);
-        for (Passenger psn : passengers){
-            dataBase.addObject(psn);
-        }
-    }
 
-    public static Flight loadFlightByFlightNo(String flightNo)/* throws DataNotFound */{
+    /**
+     * Get the flight object from the database based on the flight number
+     *
+     * @param flightNo the flight number
+     * @return Flight Object
+     * */
+    public static Flight loadFlightByFlightNo(String flightNo){
         DataBase dataBase = new DataBase(Config.FlightFile);
         try {
             return dataBase.getObject("flightNo", flightNo, Flight.class);
-        } catch (IOException e) {
+        } catch (IOException | DataNotFound e) {
             e.printStackTrace();
             return null;
-        } catch (DataNotFound dataNotFound) {
-            dataNotFound.printStackTrace();
-            return null;
-//            throw new DataNotFound("Flight " + flightNo + " Not Found");
         }
     }
 }

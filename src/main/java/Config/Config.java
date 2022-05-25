@@ -1,6 +1,8 @@
 package Config;
 
 
+import Beans.IDDocument.IDDocument;
+
 public class Config {
     //------2020/05/22 data version v6------//
     public static final String PassengerFile = "src/main/resources/passenger_data_v6.json";
@@ -9,6 +11,9 @@ public class Config {
     public static final String OrderFile = "src/main/resources/order_data_v6.json";
     public static final String IDFile = "src/main/resources/id_document.json";
     public static final String CHECK_IN_GUI_FILE = "src/main/java/CheckIn/GUI";
+
+    public static final IDDocument idDocument1 = new IDDocument("619531", "Harris");//The passenger booked two flights
+    public static final IDDocument idDocument2 = new IDDocument("493807", "Miller");//3 col test
 
 
     //------ Configuration used in updating data in real time ------//

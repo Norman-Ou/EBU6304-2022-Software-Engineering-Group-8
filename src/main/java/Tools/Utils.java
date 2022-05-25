@@ -3,6 +3,7 @@ package Tools;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.GUI.PrintBag_11;
+import DataBase.pDB;
 import DataBase.fDB;
 
 
@@ -204,7 +205,7 @@ public class Utils {
         newPassenger.add(PrintBag_11.writeInBaggage());
 
         try {
-            fDB.replaceAllPsn(newPassenger);
+            pDB.replaceAllPsn(newPassenger);
             System.out.println("Updated Passenger JSON file completed!");
         } catch (IOException e) {
             e.printStackTrace();
