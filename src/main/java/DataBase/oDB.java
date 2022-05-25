@@ -10,6 +10,12 @@ import com.alibaba.fastjson.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Order Database interface class
+ * @since April 14th, 2022
+ * @author Ruizhe Ou
+ * @version 0.2
+ */
 public class oDB {
 
     /**

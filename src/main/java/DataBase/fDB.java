@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Passenger Database operation class
+ * Passenger Database interface class
  *
  * @author Ruizhe Ou
  * @version 0.2 April 9th, 2022

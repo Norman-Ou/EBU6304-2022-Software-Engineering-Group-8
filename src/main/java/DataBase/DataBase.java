@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * The method with Access Modifier <b>Private<b/> is the <b>root method<b/> for the database <br><br/>
  * The method with Access Modifier <b>Protected<b/> is the <b>Interface<b/> for the Passenger Database class and Beans.Flight Database<br><br/>
  *
- * @author Jiayi Wang
  * @author Ruizhe Ou
  * @version 1.1 April 24th, 2022
  */
