@@ -19,7 +19,9 @@ import java.util.ArrayList;
 public class oDB {
 
     /**
-     * Add a passenger into Passenger data base
+     * Add a order into order data base
+     *
+     * @param order incoming order object
      * */
     public static void addOrder(Order order){
         DataBase dataBase = new DataBase(Config.OrderFile);
@@ -30,6 +32,12 @@ public class oDB {
         }
     }
 
+    /**
+     * Get a order object in order data base based on booking number
+     *
+     * @param bookNumber booking order
+     * @return Order object
+     * */
     public static Order getOrderByBookingNumber(String bookNumber) throws DataNotFound {
         DataBase dataBase = new DataBase(Config.OrderFile);
         try {
@@ -42,13 +50,25 @@ public class oDB {
         }
     }
 
+    /**
+     * Get a order objects in order data base based on flight number
+     *
+     * @param flightNo flight number
+     * @return A ArrayList contains order objects
+     * */
     public static ArrayList<Order> getOrdersByFlightNo(String flightNo) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
         return dataBase.getObjects("flightNo", flightNo, Order.class);
     }
 
-    public static ArrayList<Order> getOrdersByPassengerId(String passengerId) throws DataNotFound{
+    /**
+     * Get a order objects in order data base based on passenger ID
+     *
+     * @param passengerID passenger ID
+     * @return A ArrayList contains order objects
+     * */
+    public static ArrayList<Order> getOrdersByPassengerId(String passengerID) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
-        return dataBase.getObjects("passengerID", passengerId, Order.class);
+        return dataBase.getObjects("passengerID", passengerID, Order.class);
     }
 }
