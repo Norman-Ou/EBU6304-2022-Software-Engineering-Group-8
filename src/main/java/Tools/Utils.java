@@ -231,6 +231,7 @@ public class Utils {
         try {
             return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName)).getPath();
         } catch (NullPointerException e){
+            System.out.println("No " + fileName + " in Resource.");
             return null;
         }
     }
