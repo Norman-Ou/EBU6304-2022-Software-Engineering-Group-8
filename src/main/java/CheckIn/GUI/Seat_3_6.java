@@ -57,8 +57,6 @@ public class Seat_3_6 extends JFrame {
 
     private void button3(ActionEvent e) throws Exception {checkClass();}
 
-    private void firClass(ItemEvent e) {int stateChange = e.getStateChange();if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}}
-
     private void upGrade(ActionEvent e) {setUpgrade();}
 
     private void help(ActionEvent e) {dispose();new Error().setVisible(true);}

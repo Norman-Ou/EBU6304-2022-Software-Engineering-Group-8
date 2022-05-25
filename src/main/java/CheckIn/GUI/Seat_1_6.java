@@ -4,19 +4,16 @@
 
 package CheckIn.GUI;
 
-import Beans.Flight.Flight;
 import Beans.Flight.SubClasses.Seat;
 import Beans.Order.Order;
-import Beans.Passenger.SubClasses.BoardingPass;
-import CheckIn.Monitor.cMonitors;
 import DataBase.oDB;
-import Exceptions.DataNotFound;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.util.*;
 
 
 /**
@@ -61,9 +58,7 @@ public class Seat_1_6 extends JFrame {
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-
-        }seat=vip.getSelectedItem().toString();
-
+        }
     }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
@@ -170,14 +165,12 @@ public class Seat_1_6 extends JFrame {
                 e1.printStackTrace();
             }
         }
-
         Iterator<Map.Entry<String,Seat>> iter;
         iter = mapNew.entrySet().iterator();
         while(iter.hasNext()){
 
             entry = iter.next();
             for(String str : sortSeat()){
-//                System.out.println(str);
                 String str1=str.substring(0,2);
                 int i = Integer.parseInt(str1);
                 if(i<3){

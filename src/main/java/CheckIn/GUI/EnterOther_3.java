@@ -55,10 +55,6 @@ public class EnterOther_3 extends JFrame {
      */
     public static ArrayList<Flight> fltTemp;
     /**
-     * The Flt temp2.
-     */
-    public static ArrayList<Flight> fltTemp2;
-    /**
      * The constant nowTime.
      */
     public static String nowTime = "07-09-2022 7:42:32";
@@ -67,23 +63,23 @@ public class EnterOther_3 extends JFrame {
 
     private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
-    private void scanID(ActionEvent e) throws Exception {getPsnTemp2();openNext(); new AirPassCse().setVisible(true);dispose();}
+    private void scanID(ActionEvent e) throws Exception {openNext(); new AirPassCse().setVisible(true);dispose();}
 
-    private void ok(ActionEvent e) throws Exception {
-        getPsnTemp2();
+    private void ok(ActionEvent e) throws Exception {openNext();}
 
-        openNext();
-    }
-
+    /**
+     * Open next page.
+     *
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ParseException         the parse exception
+     */
     public void openNext()throws Exception{
         if(psnTemp1==null){
             String IDNum = Config.Config.idDocument1.getID();
             String surname=Config.Config.idDocument1.getSurname();
             psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
-            System.out.println(IDNum+surname+"44444444");
             ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
             fltTemp=fltList;
-            System.out.println(fltList+"22222222222");
         }else if(psnTemp2==null){
             String IDNum1=ID.getText();
             String surname1=Sur.getText();
@@ -171,20 +167,7 @@ public class EnterOther_3 extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void firstCheck() throws IllegalAccessException, ParseException {
-
-        ArrayList<Flight> list = null;
-        if(psnTemp1==null){
-            String IDNum = Config.Config.idDocument1.getID();
-            String surname=Config.Config.idDocument1.getSurname();
-            psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
-            System.out.println(IDNum+surname+"44444444");
-            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
-            System.out.println(fltTemp+"22222222222");
-        }else if(psnTemp2==null){
-            String IDNum1=ID.getText();
-            String surname1=Sur.getText();
-            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
-        }
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         if(list==null){
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();

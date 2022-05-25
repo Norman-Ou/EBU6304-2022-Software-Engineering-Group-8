@@ -72,6 +72,7 @@ public class PrintFlight_6 extends JFrame {
 
     /**
      * Info.
+     * Fill in information.
      */
     public void info(){
         if(EnterBN_3.getPsnTemp()==null){
@@ -111,7 +112,6 @@ public class PrintFlight_6 extends JFrame {
                 }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
-//                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

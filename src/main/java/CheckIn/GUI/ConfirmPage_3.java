@@ -37,14 +37,13 @@ public class ConfirmPage_3 extends JFrame {
 
     private void Back2Init(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
-    private void showInitialInfo(ActionEvent e) {
-        info();
-    }
+    private void showInitialInfo(ActionEvent e) {info();}
 
     private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Confirm info.
+     * Confirm steps, and judging airline type, jump to selection of seats.
      */
     public void confirmInfo(){
         int temp=JOptionPane.showInternalConfirmDialog(null,
@@ -86,11 +85,8 @@ public class ConfirmPage_3 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -98,6 +94,7 @@ public class ConfirmPage_3 extends JFrame {
 
     /**
      * Info.
+     * Fill in information.
      */
     public void info(){
         if(EnterBN_3.getPsnTemp()==null){

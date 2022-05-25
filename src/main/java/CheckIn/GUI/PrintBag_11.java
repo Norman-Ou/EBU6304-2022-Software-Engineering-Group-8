@@ -361,13 +361,7 @@ public class PrintBag_11 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-//        Utils.newPsnFile();
-//        ArrayList<Passenger> newPassenger = new ArrayList<>();
-//        newPassenger.add(writeInBoardingPass());
-//        newPassenger.add(PrintBag_11.writeInBaggage());
-        //            pDB.replaceAllPsn(newPassenger);
         pDB.updatePassengerInfo(PrintBag_11.writeInBaggage());
-
         setBackground();
     }
 
