@@ -20,12 +20,20 @@ import java.util.concurrent.TimeUnit;
  */
 
 
-
 /**
+ * The type Print flight 6.
+ *
  * @author Jiayi Wang
  */
 public class PrintFlight_6 extends JFrame {
+    /**
+     * The constant stage.
+     */
     public static String stage;
+
+    /**
+     * Instantiates a new Print flight 6.
+     */
     public PrintFlight_6() {
         initComponents();
     }
@@ -34,7 +42,18 @@ public class PrintFlight_6 extends JFrame {
         info();
     }
 
-    private void printThenBag(ActionEvent e) throws InterruptedException {
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    private void printThenBag(ActionEvent e) throws InterruptedException {bagInformation();}
+
+    /**
+     * Bag information.
+     */
+    public void bagInformation(){
         int temp=JOptionPane.showInternalConfirmDialog(null,
                 "Ready for Baggage?", "Double check",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -44,24 +63,16 @@ public class PrintFlight_6 extends JFrame {
             dispose();
             new Demo().setVisible(true);
             stage="BoardingPass";
-//            new Baggage_7().setVisible(true);
+            //            new Baggage_7().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
             new Error().setVisible(true);
         }dispose();
-
     }
 
-    private void Back2Confirm(ActionEvent e) {
-        dispose();
-        new ConfirmPage_3().setVisible(true);
-    }
-
-    private void error(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
-
+    /**
+     * Info.
+     */
     public void info(){
         if(EnterBN_3.getPsnTemp()==null){
             try{
@@ -80,7 +91,6 @@ public class PrintFlight_6 extends JFrame {
                 }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
-//                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -105,8 +115,34 @@ public class PrintFlight_6 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+        }else{
+            try{
+                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                Flight flt=AirPassCse.flightChoose;
+                Depar.setText(flt.getDeparture());
+                Desti.setText(flt.getDestination());
+                ETA.setText(flt.getETA());
+                ETC.setText(flt.getETC());
+                ETD.setText(flt.getETD());
+                Gate.setText(flt.getGate());
+                if(Seat_1_6.seat==null){
+                    Seat.setText(Seat_3_6.seat);
+                }else if(Seat_3_6.seat==null){
+                    Seat.setText(Seat_1_6.seat);
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
+
+    /**
+     * Write in boarding pass passenger.
+     *
+     * @return the passenger
+     */
     public static Passenger writeInBoardingPass(){
         if(EnterOther_3.getPsnTemp1()==null) {
             EnterBN_3.getPsnTemp().getBoardingPass().setETA(EnterBN_3.getFlight().getETA());
@@ -136,13 +172,28 @@ public class PrintFlight_6 extends JFrame {
             EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
             EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
             return EnterOther_3.getPsnTemp1();
+        }else{
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            if (Seat_1_6.seat == null) {
+                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(Seat_3_6.seat);
+            } else if (Seat_3_6.seat == null) {
+                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            }
+            EnterOther_3.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+            return EnterOther_3.getPsnTemp2();
         }
-        System.out.println(EnterBN_3.getPsnTemp().getBoardingPass().toString());
-        return null;
     }
-    
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -156,10 +207,6 @@ public class PrintFlight_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -208,13 +255,13 @@ public class PrintFlight_6 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+                    new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
+                    , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+                    , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
+                    , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
+                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                        ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -264,8 +311,8 @@ public class PrintFlight_6 extends JFrame {
                         label1.setForeground(Color.black);
                         label1.setBackground(Color.white);
                         panel2.add(label1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label3 ----
                         label3.setText(bundle.getString("label3.text_3"));
@@ -275,8 +322,8 @@ public class PrintFlight_6 extends JFrame {
                         label3.setForeground(Color.black);
                         label3.setBackground(Color.white);
                         panel2.add(label3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label2 ----
                         label2.setText(bundle.getString("label2.text_9"));
@@ -285,11 +332,11 @@ public class PrintFlight_6 extends JFrame {
                         label2.setBackground(Color.white);
                         label2.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label2, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(BookNum, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label10 ----
                         label10.setText(bundle.getString("label10.text_2"));
@@ -298,11 +345,11 @@ public class PrintFlight_6 extends JFrame {
                         label10.setBackground(Color.white);
                         label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label10, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Surname, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label4 ----
                         label4.setText(bundle.getString("label4.text_2"));
@@ -311,11 +358,11 @@ public class PrintFlight_6 extends JFrame {
                         label4.setBackground(Color.white);
                         label4.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label4, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(IDNum, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label5 ----
                         label5.setText(bundle.getString("label5.text_3"));
@@ -324,11 +371,11 @@ public class PrintFlight_6 extends JFrame {
                         label5.setBackground(Color.white);
                         label5.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label5, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Depar, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label6 ----
                         label6.setText(bundle.getString("label6.text_3"));
@@ -337,11 +384,11 @@ public class PrintFlight_6 extends JFrame {
                         label6.setBackground(Color.white);
                         label6.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label6, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Desti, new GridBagConstraints(2, 5, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label7 ----
                         label7.setText(bundle.getString("label7.text_3"));
@@ -350,11 +397,11 @@ public class PrintFlight_6 extends JFrame {
                         label7.setBackground(Color.white);
                         label7.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label7, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETA, new GridBagConstraints(2, 6, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label8 ----
                         label8.setText(bundle.getString("label8.text_3"));
@@ -363,11 +410,11 @@ public class PrintFlight_6 extends JFrame {
                         label8.setBackground(Color.white);
                         label8.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label8, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETC, new GridBagConstraints(2, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label9 ----
                         label9.setText(bundle.getString("label9.text_2"));
@@ -376,11 +423,11 @@ public class PrintFlight_6 extends JFrame {
                         label9.setBackground(Color.white);
                         label9.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label9, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETD, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label11 ----
                         label11.setText(bundle.getString("label11.text_2"));
@@ -389,11 +436,11 @@ public class PrintFlight_6 extends JFrame {
                         label11.setBackground(Color.white);
                         label11.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label11, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Gate, new GridBagConstraints(2, 9, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label12 ----
                         label12.setText(bundle.getString("label12.text"));
@@ -402,11 +449,11 @@ public class PrintFlight_6 extends JFrame {
                         label12.setBackground(Color.white);
                         label12.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label12, new GridBagConstraints(1, 10, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                                new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Seat, new GridBagConstraints(2, 10, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                                new Insets(0, 0, 0, 0), 0, 0));
                     }
                     panel4.add(panel2, BorderLayout.CENTER);
                 }
@@ -449,7 +496,7 @@ public class PrintFlight_6 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-        init();
+        setBackground();
         writeInBoardingPass();
 //        Utils.newPsnFile();
 

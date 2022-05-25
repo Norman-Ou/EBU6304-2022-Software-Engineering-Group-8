@@ -73,7 +73,6 @@ public class cMonitors {
         try {
             ArrayList<Flight> targetFlightList = new ArrayList<Flight>();
             ArrayList<Passenger> psgs = pDB.loadPassengersBySurname_ID(surName, IDnum);
-            System.out.println("here2");
             // bookingNumber应该是一个订单号的列表
             ArrayList<String> bookingNoList = new ArrayList<String>();
             for(int i=0;i<psgs.size();i++){
@@ -110,37 +109,4 @@ public class cMonitors {
         }
         return null;
     }
-
-    public static Order getOrderByPassenger(Passenger psn){
-        String id= psn.getPassengerId();
-        String bookNumber=psn.getBookNumber();
-        String flightNumber = cMonitors.getFlightByBookingNo(bookNumber).getFlightNo();
-        Order order = new Order(id,flightNumber,bookNumber);
-        return order;
-    }
-
-    // public BoardingPass generateBoardingPass() {
-    //     passenger = this.passenger;
-    //     return passenger.getBoardingPass();
-    // }
-
-    // public void setMeal(String mealName) {
-    //     ExtraOption eo1 = new ExtraOption();
-    //     ArrayList<ExtraOption> eos = this.flight.getExtraOptions();
-    //     for (int i = 0; i < eos.size(); i++) {
-    //         if (mealName == eos.get(i).getDescription()) {
-    //             eo1 = eos.get(i);
-    //         }
-    //     }
-    //     ExtraOption eo2 = new ExtraOption();
-    //     eo2.setKind(1);
-    //     eo2.setDescription(mealName);
-    //     eo2.setPrice(eo1.getPrice());
-    //     this.passenger.getExtraOptions().add(eo2);
-    //     this.passenger.setExtraOptions(this.passenger.getExtraOptions());
-    // }
-
-    // public void setSeat(String seat) {
-    //     this.passenger.getBoardingPass().setSeatNo(seat);
-    // }
 }

@@ -15,35 +15,51 @@ import java.util.ResourceBundle;
  */
 
 
-
 /**
+ * The type Meal norm 13.
+ *
  * @author Jiayi Wang
  */
 public class MealNorm_13 extends JFrame {
+    /**
+     * The constant mealSelected.
+     */
     public static String mealSelected="";
+    /**
+     * The Array meal add.
+     */
     public static ArrayList<ExtraOption> arrayMealAdd;
+    /**
+     * The constant price.
+     */
     public static int price;
+
+    /**
+     * Instantiates a new Meal norm 13.
+     */
     public MealNorm_13() {
         initComponents();
     }
 
-    private void exit(ActionEvent e) {
-        dispose();
+    private void exit(ActionEvent e) {dispose();
         JOptionPane.showMessageDialog(null, "You have chosen your meal. Enjoy your flight.","Safe exit.", JOptionPane.QUESTION_MESSAGE);
-        new Exit().setVisible(true);
-    }
+        new Exit().setVisible(true);}
 
-    private void BackToMeal(ActionEvent e) {
-        dispose();
-        new Meal_12().setVisible(true);
-    }
+    private void BackToMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
-    private void NorMealStateChanged(ChangeEvent e) {
-        JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    private void NorMealStateChanged(ChangeEvent e) {JTabbedPane tabbedPane = (JTabbedPane) e.getSource();addMealNormContent(tabbedPane);}
+
+    /**
+     * Add meal norm content.
+     *
+     * @param tabbedPane the tabbed pane
+     */
+    public void addMealNormContent(JTabbedPane tabbedPane){
         int selectedIndex = tabbedPane.getSelectedIndex();
         switch (selectedIndex) {
             case 0:
-//                setMealSelected("Burger");
                 mealSelected="Burger";
                 System.out.println("Burger");
                 if(!(EnterBN_3.getPsnTemp()==null)) {
@@ -62,6 +78,14 @@ public class MealNorm_13 extends JFrame {
                         price = 6;
                     }
                 }
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Burger");
+                        arrayMealAdd.get(0).setPrice(6);
+                        price = 6;
+                    }
+                }
                 break;
             case 1:
                 mealSelected="Cheese toast";
@@ -70,7 +94,7 @@ public class MealNorm_13 extends JFrame {
                     arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Cheese toast");
-                        arrayMealAdd.get(0).setPrice(6);
+                        arrayMealAdd.get(0).setPrice(7);
                         price = 7;
                     }
                 }
@@ -78,7 +102,15 @@ public class MealNorm_13 extends JFrame {
                     arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Cheese toast");
-                        arrayMealAdd.get(0).setPrice(6);
+                        arrayMealAdd.get(0).setPrice(7);
+                        price = 7;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Cheese toast");
+                        arrayMealAdd.get(0).setPrice(7);
                         price = 7;
                     }
                 }
@@ -96,6 +128,14 @@ public class MealNorm_13 extends JFrame {
                 }
                 if(!(EnterOther_3.getPsnTemp1()==null)){
                     arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Hot dog");
+                        arrayMealAdd.get(0).setPrice(8);
+                        price = 8;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Hot dog");
                         arrayMealAdd.get(0).setPrice(8);
@@ -122,10 +162,21 @@ public class MealNorm_13 extends JFrame {
                         price = 9;
                     }
                 }
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                    if (arrayMealAdd.get(0).getKind() == 1) {
+                        arrayMealAdd.get(0).setDescription("Salad");
+                        arrayMealAdd.get(0).setPrice(9);
+                        price = 9;
+                    }
+                }
                 break;
         }
     }
 
+    /**
+     * Set meal pic.
+     */
     public void setMealPic(){
         JLabel jl1=new JLabel(new ImageIcon("src/main/resources/burger.png"));
         panelBurger.add(jl1,BorderLayout.CENTER);
@@ -139,8 +190,12 @@ public class MealNorm_13 extends JFrame {
         JLabel jl4=new JLabel(new ImageIcon("src/main/resources/salad.png"));
         panelSa.add(jl4,BorderLayout.CENTER);
     }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -154,10 +209,6 @@ public class MealNorm_13 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
 
     private void initComponents() {
 
@@ -200,13 +251,13 @@ public class MealNorm_13 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
-            new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-            ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
-            ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+                    new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+                    ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+                    ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
+                    ,java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(
+                new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+                ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+                        ;}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== Nav ========
@@ -345,7 +396,7 @@ public class MealNorm_13 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setMealPic();
-        init();}
+        setBackground();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge

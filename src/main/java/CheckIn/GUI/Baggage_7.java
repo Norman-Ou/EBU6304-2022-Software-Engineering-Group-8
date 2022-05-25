@@ -11,32 +11,34 @@ import java.util.concurrent.TimeUnit;
  */
 
 /**
+ * The type Baggage 7.
+ *
  * @author Jiayi Wang
  */
 public class Baggage_7 extends JFrame {
+    /**
+     * Instantiates a new Baggage 7.
+     */
     public Baggage_7() {
         initComponents();
     }
 
-    private void weight(ActionEvent e) {
-        dispose();
-        new WeightShow_8().setVisible(true);
-    }
+    private void weight(ActionEvent e) {dispose();new WeightShow_8().setVisible(true);}
 
-    private void storeBaggage(ActionEvent e) {
-        dispose();
-        new BagStore_8().setVisible(true);
-    }
+    private void storeBaggage(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
-    private void BagAdd(ActionEvent e) {
-//        JOptionPane.showMessageDialog(null, "Confirm more payment for baggage?","Baggage extra payment check", JOptionPane.WARNING_MESSAGE);
-        dispose();
-        new BagStore_8().setVisible(true);
-//        new BaggageAdd_10().setVisible(true);
-    }
+    private void BagAdd(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    private void seatAgain(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -50,21 +52,7 @@ public class Baggage_7 extends JFrame {
         this.setVisible(true);
     }
 
-    private void seatAgain(ActionEvent e) throws Exception {
-        dispose();
-//        new SeatFirst_5().setVisible(true);
-        new ConfirmPage_3().setVisible(true);
-    }
 
-    private void error(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
-
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -91,12 +79,12 @@ public class Baggage_7 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+                    . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
+                    .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+                    Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
             ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+        ) ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -147,11 +135,11 @@ public class Baggage_7 extends JFrame {
             buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
             buttonBar.setOpaque(false);
             buttonBar.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,buttonBar. getBorder( )) ); buttonBar. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+                    . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
+                    . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
+                    12 ), java. awt. Color. red) ,buttonBar. getBorder( )) ); buttonBar. addPropertyChangeListener (new java. beans
+                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
+                getPropertyName () )) throw new RuntimeException( ); }} );
             buttonBar.setLayout(new FlowLayout());
 
             //---- cancelButton ----
@@ -171,7 +159,7 @@ public class Baggage_7 extends JFrame {
             buttonBar.add(button4);
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

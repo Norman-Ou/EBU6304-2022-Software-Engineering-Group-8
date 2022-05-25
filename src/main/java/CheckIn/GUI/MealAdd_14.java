@@ -8,30 +8,57 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 21:14:55 CST 2022
- */
-
-
 
 /**
+ * The type Meal add 14.
+ *
  * @author Jiayi Wang
  */
 public class MealAdd_14 extends JFrame {
+    /**
+     * The constant VIPmealSelected.
+     */
     public static String VIPmealSelected;
+    /**
+     * The Array meal.
+     */
     public static ArrayList<ExtraOption> arrayMeal;
+    /**
+     * The constant price.
+     */
     public static int price;
+    /**
+     * The constant mealState.
+     */
     public static boolean mealState=false;
 
+    /**
+     * Instantiates a new Meal add 14.
+     */
     public MealAdd_14() {
         initComponents();
     }
 
-    private void adMealState(ChangeEvent e) {
-        JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
+    private void adMealState(ChangeEvent e) {JTabbedPane tabbedPane = (JTabbedPane) e.getSource();addMealAddContent(tabbedPane);}
+
+    private void MealPay(ActionEvent e) throws IOException {
+        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        dispose();new MealPay_15().setVisible(true);}
+
+    private void Back2Meal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    /**
+     * Add meal add content.
+     *
+     * @param tabbedPane the tabbed pane
+     */
+    public void addMealAddContent(JTabbedPane tabbedPane){
         int selectedIndex = tabbedPane.getSelectedIndex();
         switch (selectedIndex) {
             case 0:
@@ -48,6 +75,14 @@ public class MealAdd_14 extends JFrame {
                 }
                 if(!(EnterOther_3.getPsnTemp1()==null)){
                     arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Sashimi");
+                        arrayMeal.get(0).setPrice(10);
+                        price = 10;
+                    }
+                }
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Sashimi");
                         arrayMeal.get(0).setPrice(10);
@@ -75,6 +110,14 @@ public class MealAdd_14 extends JFrame {
                         price = 11;
                     }
                 }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Steak");
+                        arrayMeal.get(0).setPrice(11);
+                        price = 11;
+                    }
+                }
                 break;
             case 2:
                 mealState=true;
@@ -96,22 +139,25 @@ public class MealAdd_14 extends JFrame {
                         price = 12;
                     }
                 }
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                    if (arrayMeal.get(0).getKind() == 1) {
+                        arrayMeal.get(0).setDescription("Tempura");
+                        arrayMeal.get(0).setPrice(12);
+                        price = 12;
+                    }
+                }
                 break;
         }
     }
-    private void MealPay(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        dispose();
-        new MealPay_15().setVisible(true);
-    }
-    private void Back2Meal(ActionEvent e) {
-        dispose();
-        new Meal_12().setVisible(true);
-    }
-    public void init() {
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
         JLabel jl3=new JLabel(new ImageIcon("src/main/resources/burger.png"));
         this.labelBurger.add(jl3);
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -121,6 +167,10 @@ public class MealAdd_14 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    /**
+     * Set meal ad pic.
+     */
     public void setMealAdPic(){
         JLabel jl1=new JLabel(new ImageIcon("src/main/resources/salmon_sashimi.png"));
         sahsimiPanel.add(jl1,BorderLayout.CENTER);
@@ -133,11 +183,6 @@ public class MealAdd_14 extends JFrame {
         JLabel jl3=new JLabel(new ImageIcon("src/main/resources/tempura.png"));
         tempuraPanel.add(jl3,BorderLayout.CENTER);
         tempuraPanel.add(labelBurger, BorderLayout.NORTH);
-    }
-
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
     }
 
     private void initComponents() {
@@ -180,10 +225,10 @@ public class MealAdd_14 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
+                    EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+                    . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+                    java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+        { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )
             throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
@@ -259,7 +304,13 @@ public class MealAdd_14 extends JFrame {
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_9"));
-                button1.addActionListener(e -> MealPay(e));
+                button1.addActionListener(e -> {
+                    try {
+                        MealPay(e);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 panel6.add(button1);
 
                 //---- button2 ----
@@ -328,7 +379,7 @@ public class MealAdd_14 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setMealAdPic();
-        init();}
+        setBackground();}
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
