@@ -73,7 +73,7 @@ public class pDB{
     /**
      * Get Passenger Object by ID document Object from Passenger Data Base
      * */
-    public static ArrayList<Passenger> loadPassengerByIDDocument(IDDocument idDocument) throws Exception {
+    public static ArrayList<Passenger> loadPassengersByIDDocument(IDDocument idDocument) throws Exception {
         DataBase dataBase = new DataBase(Config.PassengerFile);
         String surname = idDocument.getSurname();
         String ID = idDocument.getID();

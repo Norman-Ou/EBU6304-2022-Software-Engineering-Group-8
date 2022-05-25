@@ -55,7 +55,7 @@ public class cMonitors {
         return targetFlight;
     }
 
-    public static Flight getFlightByIDDocument(IDDocument idDocument){
+/*    public static Flight getFlightByIDDocument(IDDocument idDocument){
         String targetFlightNo;
         Flight targetFlight = new Flight();
         try {
@@ -67,7 +67,7 @@ public class cMonitors {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     public static ArrayList<Flight> getFlightBySurname_ID(String surName, String IDnum) {
         try {
