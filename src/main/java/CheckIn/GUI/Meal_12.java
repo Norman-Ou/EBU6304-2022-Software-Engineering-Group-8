@@ -10,48 +10,42 @@ import java.util.ResourceBundle;
  */
 
 
-
 /**
+ * The type Meal 12.
+ *
  * @author Jiayi Wang
  */
 public class Meal_12 extends JFrame {
+    /**
+     * Instantiates a new Meal 12.
+     */
     public Meal_12() {
         initComponents();
     }
 
-    private void Normal(ActionEvent e) {
-        dispose();
-        new MealNorm_13().setVisible(true);
-    }
+    private void Normal(ActionEvent e) {dispose();new MealNorm_13().setVisible(true);}
 
-    private void VIPMeal(ActionEvent e) {
-        dispose();
-        new MealAdd_14().setVisible(true);
-    }
+    private void VIPMeal(ActionEvent e) {dispose();new MealAdd_14().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void cancelMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Confirm cancel your meal?","Cancel meal check", JOptionPane.WARNING_MESSAGE);
-        dispose();
-        new Exit().setVisible(true);
-    }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+        dispose();new Exit().setVisible(true);}
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-    }
-
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
     }
 
     private void initComponents() {
@@ -84,12 +78,12 @@ public class Meal_12 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
-            awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
+                    .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
+                    .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
+                    awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
             ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+        ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
+        ;
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -173,7 +167,7 @@ public class Meal_12 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();}
+        setBackground();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Gabirella Cambridge

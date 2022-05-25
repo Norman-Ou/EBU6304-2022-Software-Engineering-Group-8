@@ -12,32 +12,44 @@ import java.util.ResourceBundle;
  */
 
 
-
 /**
+ * The type Bag store 8.
+ *
  * @author Jiayi Wang
  */
 public class BagStore_8 extends JFrame {
+    /**
+     * The constant court.
+     */
     public static int court;
+
+    /**
+     * Instantiates a new Bag store 8.
+     */
     public BagStore_8() {
         initComponents();
     }
 
-    private void ToMeal(ActionEvent e) {
-        dispose();
-        new PrintBag_11().setVisible(true);
-    }
+    private void ToMeal(ActionEvent e) {dispose();new PrintBag_11().setVisible(true);}
 
-    private void Return2Baggage(ActionEvent e) {
-        dispose();
-        new Baggage_7().setVisible(true);
-    }
+    private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
 
-    private void CourtShown(ComponentEvent e) {
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    /**
+     * Court shown.
+     *
+     * @param e the e
+     */
+    public void CourtShown(ComponentEvent e) {
         court = (int)(Math.random()*100)+2;
         e.setSource(court);
     }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -51,10 +63,7 @@ public class BagStore_8 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
+
 
     private void initComponents() {
 
@@ -81,12 +90,12 @@ public class BagStore_8 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+                    . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing
+                    .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+                    Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
             ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName (
+        ) ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -152,7 +161,7 @@ public class BagStore_8 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
         court = (int)(Math.random()*100);
         textField1.setText("Court: "+court+"");
     }

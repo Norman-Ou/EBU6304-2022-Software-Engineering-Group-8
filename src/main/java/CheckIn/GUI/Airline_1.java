@@ -1,46 +1,46 @@
 package CheckIn.GUI;
 
+import Config.Config;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
 import java.util.ResourceBundle;
 
-/*
- * Created by JFormDesigner on Tue Mar 29 18:18:09 CST 2022
- */
-
 /**
+ * The type Airline 1.
+ *
  * @author Jiayi Wang
  */
 public class Airline_1 extends JFrame {
+    /**
+     * Instantiates a new Airline 1.
+     */
     public Airline_1() {
         initComponents();
     }
 
-    private void ok(ActionEvent e) {
-        dispose();
-        new CheckIn_2().setVisible(true);
-    }
+    private void ok(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
     private void exit(ActionEvent e) throws InterruptedException { dispose();}
 
-    public void init() {
-    ImageIcon background = new ImageIcon("src/main/resources/img.png");
-    JLabel label3 = new JLabel(background);
-    label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
-    JPanel myPanel = (JPanel)this.getContentPane();
-    myPanel.setOpaque(false);
-    this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
-    this.setTitle("Passenger check-in system");
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setVisible(true);
-    }
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
+
+    /**
+     * Sets background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.bgPic);
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
+        this.setTitle("Passenger check-in system");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     private void initComponents() {
@@ -69,13 +69,13 @@ public class Airline_1 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
-            new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
-            , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
-            ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-            ;} } );
+                    new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+                    , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+                    , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
+                    ,java . awt. Color .red ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener(
+                new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+                ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+                        ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -158,7 +158,7 @@ public class Airline_1 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

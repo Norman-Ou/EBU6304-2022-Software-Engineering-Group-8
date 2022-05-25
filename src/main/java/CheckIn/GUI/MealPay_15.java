@@ -1,62 +1,80 @@
 package CheckIn.GUI;
 
+import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
+import DataBase.fDB;
 import DataBase.pDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 21:17:26 CST 2022
  */
 
 
-
 /**
+ * The type Meal pay 15.
+ *
  * @author Jiayi Wang
  */
 public class MealPay_15 extends JFrame {
     private static int seatFee=0;
-    public MealPay_15() {
+    private String mealTemp="";
 
+    /**
+     * Instantiates a new Meal pay 15.
+     */
+    public MealPay_15() throws IOException {
         if(Seat_1_6.upgrade||Seat_3_6.upgrade||MealAdd_14.mealState){
-        initComponents();}
+            initComponents();}
     }
 
     private void exit(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Thanks for using. Enjoy your flight!","Goodbye", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new Exit().setVisible(true);
-    }
-    private String mealTemp="";
+        dispose();new Exit().setVisible(true);}
+
+
+    /**
+     * Set meal temp.
+     *
+     * @param str the str
+     */
     public void setMealTemp(String str){
         this.mealTemp=str;
     }
+
+    /**
+     * Get meal temp string.
+     *
+     * @return the string
+     */
     public String getMealTemp(){
         return this.mealTemp;
     }
+
     private void payMeal(ActionEvent e) {
-        if(MealAdd_14.VIPmealSelected==null){
-            setMealTemp(MealNorm_13.mealSelected);
-        }else{
-            setMealTemp(MealAdd_14.VIPmealSelected);
-        }
-        if(Seat_1_6.upgrade){
-            seatFee=100;
-        }else if(Seat_3_6.upgrade){
-            seatFee=100;
-        }
+        pay4MealContent();
         JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new Exit().setVisible(true);
-    }
-    private void BackMeal(ActionEvent e) {
-        dispose();
-        new Meal_12().setVisible(true);
-    }
+        dispose();new Exit().setVisible(true);}
+
     private void payAdMeal(ActionEvent e) {
+        pay4MealContent();
+        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
+        dispose();new Exit().setVisible(true);}
+
+    private void BackMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    /**
+     * Pay 4 meal content.
+     */
+    public void pay4MealContent(){
         if(MealAdd_14.VIPmealSelected==null){
             setMealTemp(MealNorm_13.mealSelected);
         }else{
@@ -67,12 +85,22 @@ public class MealPay_15 extends JFrame {
         }else if(Seat_3_6.upgrade){
             seatFee=100;
         }
-        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
-        dispose();
-        new Exit().setVisible(true);
     }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Credit.
+     */
+    public void credit(){
+        Passenger psn = pDB.loadPassengerByBookingNo(EnterBN_3.getPsnTemp().getBookNumber());
+        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
+        textField1.setText(creditInfo);
+    }
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -85,20 +113,10 @@ public class MealPay_15 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-    public void credit(){
-        Passenger psn = pDB.loadPassengerByBookingNo(EnterBN_3.getPsnTemp().getBookNumber());
-//        EnterBN_3.getPsnTemp().getBookNumber();
-        //TODO get credit information
-        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
-        textField1.setText(creditInfo);
-    }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
 
-    private void initComponents() {
+
+    private void initComponents() throws IOException {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
@@ -125,12 +143,12 @@ public class MealPay_15 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
-            ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+                    swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+                    . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
+                    ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
+                    ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                                                                                                                                                             .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -205,7 +223,11 @@ public class MealPay_15 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         credit();
-        init();
+        setBackground();
+        ArrayList<Flight> newFlight = new ArrayList<>();
+        newFlight.add(EnterBN_3.fltTemp);
+        newFlight.add(AirPassCse.flightChoose);
+        fDB.replaceAllFlights(newFlight);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

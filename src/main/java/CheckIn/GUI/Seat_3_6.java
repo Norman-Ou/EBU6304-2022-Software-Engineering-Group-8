@@ -16,37 +16,52 @@ import javax.swing.border.*;
 
 
 /**
+ * The type Seat 3 6.
+ *
  * @author Jiayi Wang
  */
 public class Seat_3_6 extends JFrame {
+    /**
+     * The constant seat.
+     */
     public static String seat;
     private static HashMap<String, Seat> mapNew = new HashMap<>();
     private static HashMap<String, Seat> map=new HashMap<>();
+    /**
+     * The Entry 1.
+     */
     public static Map.Entry<String,Seat> entry1;
+    /**
+     * The constant upgrade.
+     */
     public static boolean upgrade=false;
+
+    /**
+     * Instantiates a new Seat 3 6.
+     */
     public Seat_3_6() {
         initComponents();
     }
 
-    public static ArrayList<String> sortSeat1(){
-        ArrayList<String> seatList=new ArrayList<>();
-        Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
-        ArrayList<Integer> arr = new ArrayList<>();
-        while(iter1.hasNext()){
-            seatList.add(iter1.next().getKey());
-            for(int i=0; i<seatList.size();i++){
-                Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,2));
-
-                arr.add(firSeat);
-
-                Arrays.sort(new ArrayList[]{arr});
-            }
-        }
-//        System.out.println(seatList);
-        seatList.sort(Comparator.naturalOrder());
-//        System.out.println(seatList);
-        return seatList;
+    /**
+     * Reset all seat avaliable.
+     * Open all combox after upgrading.
+     */
+    public void resetAvSeat(){
+        busS.setEnabled(true);
     }
+
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    private void button3(ActionEvent e) throws Exception {checkClass();}
+
+    private void firClass(ItemEvent e) {int stateChange = e.getStateChange();if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}}
+
+    private void upGrade(ActionEvent e) {setUpgrade();}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void PrintFlight(ActionEvent e) {
         if(upgrade){
@@ -58,32 +73,12 @@ public class Seat_3_6 extends JFrame {
         }
     }
 
-    private void Back2Confirm(ActionEvent e) {
-        dispose();
-        new ConfirmPage_3().setVisible(true);
-    }
-
-    private void error(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
-
-    private void button3(ActionEvent e) throws Exception {
-        checkClass();
-    }
-
-    private void firClass(ItemEvent e) {
-        int stateChange = e.getStateChange();
-        if (stateChange == ItemEvent.ITEM_STATE_CHANGED){dispose();}
-    }
-
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             dispose();
 
         } seat=busS.getSelectedItem().toString();
-        System.out.println(seat);
     }
 
     private void ecoSeat(ItemEvent e) {
@@ -92,14 +87,36 @@ public class Seat_3_6 extends JFrame {
             dispose();
 
         }seat=ecoS.getSelectedItem().toString();
-        System.out.println(seat);
     }
+
+    /**
+     * Sort seat 1 array list.
+     *
+     * @return the array list
+     */
+    public static ArrayList<String> sortSeat1(){
+        ArrayList<String> seatList=new ArrayList<>();
+        Iterator<Map.Entry<String,Seat>> iter1 = mapNew.entrySet().iterator();
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(iter1.hasNext()){
+            seatList.add(iter1.next().getKey());
+            for(int i=0; i<seatList.size();i++){
+                Integer firSeat=Integer.parseInt(seatList.get(i).substring(0,2));
+                arr.add(firSeat);
+                Arrays.sort(new ArrayList[]{arr});
+            }
+        }
+        seatList.sort(Comparator.naturalOrder());
+        return seatList;
+    }
+
+    /**
+     * Check class.
+     */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
         if(EnterOther_3.getPsnTemp1()==null) {
             try {
-//                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
-//                Order order = oDB.getOrderByBookingNumber(str);
                 Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
@@ -118,8 +135,6 @@ public class Seat_3_6 extends JFrame {
             }
         }else if(EnterBN_3.getPsnTemp()==null){
             try {
-//                String str=Objects.requireNonNull(EnterBN_3.getPsnTemp().getBookNumber());
-//                Order order = oDB.getOrderByBookingNumber(str);
                 Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
@@ -138,8 +153,33 @@ public class Seat_3_6 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+        }else{
+            try {
+                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
+                int intTemp=order.getSeatClass();
+                if(intTemp==0){
+                    infoText.setText("You can choose form 5 to 40");
+                    busS.setEditable(false);
+                }else if(intTemp==1){
+                    infoText.setText("You can choose form 1 to 3");
+                    ecoS.setEditable(false);
+                }else if(intTemp==-1){
+                    infoText.setText("Seat class is -1 now");
+                    ecoS.setEditable(false);
+                    busS.setEditable(false);
+                }
+                showSeats();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
+
+    /**
+     * Show seats.
+     *
+     * @throws Exception the exception
+     */
     public void showSeats() throws Exception {
         if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
@@ -149,13 +189,10 @@ public class Seat_3_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-//                System.out.println(mapNew);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }
-        else
-        if(!(EnterBN_3.getPsnTemp()==null)) {
+        } else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
                 map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
@@ -163,7 +200,17 @@ public class Seat_3_6 extends JFrame {
                         mapNew.put(k,v);
                     }
                 });
-//                System.out.println(mapNew);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else{
+            try {
+                map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
+                map.forEach((k,v)->{
+                    if (!mapNew.containsValue(v)){
+                        mapNew.put(k,v);
+                    }
+                });
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -174,7 +221,6 @@ public class Seat_3_6 extends JFrame {
         while(iter1.hasNext()){
             entry1 = iter1.next();
             for(String str : sortSeat1()){
-//                System.out.println(str);
                 String str1=str.substring(0,2);
                 int i = Integer.parseInt(str1);
                 if(i<3){
@@ -185,25 +231,12 @@ public class Seat_3_6 extends JFrame {
             }
             break;
         }
-
-//        Iterator<Map.Entry<String,Seat>> iter = mapNew.entrySet().iterator();
-//        while(iter.hasNext()){
-//            Map.Entry<String,Seat> entry = iter.next();
-//            Seat value = entry.getValue();
-//            int temp=value.getSeatClass();
-//            switch (temp) {
-//                case 0:
-//                    ecoS.addItem(entry.getKey());
-//                    break;
-//                case 2:
-//                    busS.addItem(entry.getKey());
-//                    break;
-//            }
-//
-//        }
     }
 
-    private void upGrade(ActionEvent e) {
+    /**
+     * Set upgrade.
+     */
+    public void setUpgrade(){
         if(map.isEmpty()){
             JOptionPane.showMessageDialog(null, "There is no available VIP seats.","No VIP Seats", JOptionPane.WARNING_MESSAGE);
         }else{
@@ -212,13 +245,13 @@ public class Seat_3_6 extends JFrame {
             resetAvSeat();
         }
     }
-    //乘客选择升舱之后开放vipSeats
-    public void resetAvSeat(){
-        busS.setEnabled(true);
-    }
 
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -229,10 +262,6 @@ public class Seat_3_6 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -269,12 +298,12 @@ public class Seat_3_6 extends JFrame {
         {
             panel2.setOpaque(false);
             panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+                    javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
+                    .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+                    .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+                    .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
+                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+                equals(e.getPropertyName()))throw new RuntimeException();}});
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
@@ -418,7 +447,7 @@ public class Seat_3_6 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
