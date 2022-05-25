@@ -20,6 +20,7 @@ public class Config {
     public static final IDDocument idDocument1 = new IDDocument("912843", "Statham");//The passenger booked two flights
     public static final IDDocument idDocument2 = new IDDocument("493807", "Miller");//3 col test
     public static final String bgPic = Utils.getRsrFile("Img.png");
+    public static final String backEndPic1 = Utils.getRsrFile("icon.png");
 
     /**
      * ==flightStep_hour==
