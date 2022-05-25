@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Calendar;
+import java.util.Objects;
 
 import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
 import static CheckIn.GUI.PrintBag_11.writeInBaggage;
@@ -213,7 +214,21 @@ public class Utils {
         return false;
     }
 
-    public static void genDirTree(String path, int level, String dir) {
+    /**
+     * Get the file path in fold resource
+     *
+     * @param fileName the file name
+     * @return File path for the argument
+     * */
+    public static String getRsrFile(String fileName){
+        try {
+            return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName)).getPath();
+        } catch (NullPointerException e){
+            return null;
+        }
+    }
+
+    public static void genDirTree(int level, String dir) {
         level++;
         File file = new File("D:\\Java_Code\\SE_Project_G8\\src");
         File[] files = file.listFiles();
@@ -226,7 +241,7 @@ public class Utils {
                 if (f.isDirectory()) {
                     dir = f.getName();
                     System.out.println(levelSign(level) + dir);
-                    genDirTree(f.getAbsolutePath(), level, dir);
+                    genDirTree(level, dir);
                 } else {
                     System.out.println(levelSign(level) + f.getName());
                 }
