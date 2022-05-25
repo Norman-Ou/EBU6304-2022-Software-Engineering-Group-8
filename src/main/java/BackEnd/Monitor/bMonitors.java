@@ -1,14 +1,11 @@
 package BackEnd.Monitor;
 
-import java.lang.annotation.Target;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-
-import Beans.Flight.SubClasses.Seat;
+import org.junit.Test;
 import Beans.Order.Order;
 import Beans.Passenger.Passenger;
 import Beans.Flight.*;
@@ -17,28 +14,35 @@ import DataBase.oDB;
 import DataBase.pDB;
 import Exceptions.DataNotFound;
 
-
 /**
- * This is the control class for admin end operations
+ * This is the control class for Admin end 
  *
  * @author Yao Wang
- * @version 1.3 April 16th, 2022
- * @version x.x May 24th, 2022
+ * @since 27th March, 2022 
+ * last modification date: May 24th, 2022
  */
 
 public class bMonitors {
-    
-	// 所有航班的列表
+	
+    // load the list of all flights stored in the database
 	private List<Flight> flightList = fDB.loadAllFlights();
-	// 所有乘客列表
+	
+    // load the list of all passengers stored in the database
     private List<Passenger> passengerList = pDB.loadAllPassengers();
 
+    /**
+     * Default constructor
+     */
     public bMonitors(){}
 
-    // 根据航班号查询航班信息 获得对应的乘客列表
+    /**
+     * This function is designed to search 
+     * the target flight by the known flight number.
+     * @param targetFlightNo the flight number used to find the target flight.
+     * @return the list of target flight.
+     */
+    @Test
     public Flight getFlightList(String targetFlightNo){
-        // get flight information and passenger list through flight number
-        // 目标航班的航班列表
         Flight targetFlight = new Flight();
         for (int i = 0; i < flightList.size(); i++) {
             Flight flight = flightList.get(i);
@@ -49,10 +53,14 @@ public class bMonitors {
         return targetFlight;
     }
 
-    // 根据时间查询航班信息 获得对应的乘客列表
+    /**
+     * This function is designed to find all flights 
+     * whose ETD equal to the input time.
+     * @param targetTime the flight ETD used to find the target flight.
+     * @return the list of target flight.
+     */
+    @Test
     public List<Flight> getFlightListByTime(String targetTime){
-        // get flight information and passenger list through current time
-        // 目标航班的航班列表
         List<Flight> targetFlightList = new ArrayList<Flight>();
         for (int i = 0; i < flightList.size(); i++) {
             Flight flight = flightList.get(i);
@@ -63,9 +71,14 @@ public class bMonitors {
         return targetFlightList;
     }
     
-    // 获取 即将起飞（15分钟后，也就是ETC）的航班 列表 (也叫做紧急列表)
+    /**
+     * This function is designed to find all urgent flights 
+     * which will take off 15 mins later.
+     * @return the list of urgent flights.
+     */
+    @Test
     public List<String> getUrgenList(){
-    	// 获取当前时间
+    	// get current time
     	SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); 
         String currentTime = sdf.format(System.currentTimeMillis());
         List<String> urgentFlighList = new ArrayList<String>();
@@ -78,7 +91,13 @@ public class bMonitors {
         return urgentFlighList;
     }
 
-    // 获取某航班上所有乘客的名单
+    /**
+     * This function is designed to 
+     * get all passengers on a certain flight.
+     * @param targetFlightNo the flight number used to find all passengers.
+     * @return the list of all passengers on this flight.
+     */
+    @Test
     public List<Passenger> getPassengerList(String targetFlightNo) {
         List<Order> oList;
         try {
@@ -100,8 +119,13 @@ public class bMonitors {
         return null;
     }
 
-    // 获取某航班上还未登机乘客名单 检查航班上的
-    // 航班号拿到乘客列表
+    /**
+     * This function is designed to get the list of unboarded passengers 
+     * on a certain flight through the flight number.
+     * @param targetFlightNo the flight number used to find unboarded passengers.
+     * @return the list of unboarded passengers on this flight.
+     */
+    @Test
     public List<Passenger> getUnboardedPassengerList(String targetFlightNo){
         List<Passenger> unboardedPassengerList = new ArrayList<Passenger>();
         List<Passenger> psgList = this.getPassengerList(targetFlightNo);
@@ -114,7 +138,13 @@ public class bMonitors {
         return unboardedPassengerList;
     }
     
-    // 乘客列表转化得到乘客信息
+    /**
+     * This function is designed to get the list of
+     * passenger basic information throught passenger list.
+     * @param PList the list of all unboarded passengers.
+     * @return the list of information of all unboarded passengers.
+     */
+    @Test
     public List<String> printUnboardedPassengerList(List<Passenger> PList){
         List<String> infoList = new ArrayList<String>();
         for(int i = 0; i<PList.size(); i++){
@@ -126,17 +156,13 @@ public class bMonitors {
         return infoList;
     }
         
-    // 紧急提醒
-    // public void pumpWarning(List<String> urgentFlighList){
-    //     System.out.println("马上起飞了！！！！");
-    //     for(int i = 0; i < urgentFlighList.size(); i++){
-    //         String flightNo = this.getFlightList(urgentFlighList.get(i)).get(i).getFlightNo();
-    //         System.out.println("下面是航班号为： "+flightNo+"的航班还未登机的乘客名单：");
-    //         System.out.println(this.getUnboardedPassengerList(flightNo));
-    //     }
-    // }
-
-    // 通过id查乘客和他的航班信息
+    /**
+     * This function is designed to get the list of passenger objects 
+     * ordered by a certain passenger.
+     * @param passengerID the ID of an passenger.
+     * @return the list of passenger objects related with the same passenger ID.
+     */
+    @Test
     public ArrayList<Passenger> searchPassengerById(String passengerID){
         ArrayList<Passenger> targetPsglist = new ArrayList<Passenger>();
         try {
@@ -148,6 +174,13 @@ public class bMonitors {
         return targetPsglist;
     }
 
+    /**
+     * This function is designed to get the list of flights 
+     * ordered by a certain passenger.
+     * @param psgList the list of passenger objects related with the same passenger ID.
+     * @return the list of flights ordered by a certain passenger.
+     */
+    @Test
     public ArrayList<Flight> searchFlightByPassenger(List<Passenger> psgList){
         ArrayList<Flight> targetFltlist = new ArrayList<Flight>();
         ArrayList<String> fltNoList = new ArrayList<String>();
@@ -177,7 +210,14 @@ public class bMonitors {
         return targetFltlist;
     }
 
-    // 仅仅用于在同ID乘客列表中找到需要的那班航班对应的乘客信息
+    /**
+     * This function is designed to get the list of flights 
+     * ordered by a certain passenger.
+     * @param psgList the list of passenger objects related with the same passenger ID.
+     * @param flightNo the target flight number.
+     * @return the passenger object corresponds to the target flight. 
+     */
+    @Test
     public Passenger searchPassengerByFlight(String flightNo, List<Passenger> psgList){
         Passenger target = new Passenger();
         try {
@@ -194,8 +234,15 @@ public class bMonitors {
         return target;
     }
 
+    /**
+     * This function is designed to get the list of flights 
+     * ordered by a certain passenger.
+     * @param timeToClose the time to close the gate.
+     * @return the information showing how much time left.
+     */
+    @Test
     public String calculateDiff(String timeToClose){
-        // 获取当前时间
+        // get current time
     	SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); 
         String currentTime = sdf.format(System.currentTimeMillis());
         Date current;
@@ -207,8 +254,7 @@ public class bMonitors {
 			long hour = (between / (60 * 60 * 1000) - day * 24);
 			long min = ((between / (60 * 1000)) - day * 24 * 60 - hour * 60);
 			long s = (between / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
-			// System.out.println(day + "天" + hour + "小时" + min + "分" + s + "秒");
-            return day + "天" + hour + "小时" + min + "分" + s + "秒";
+            return day + "Day(s)" + hour + "Hour(s)" + min + "Minute(s)" + s + "Second(s)";
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
