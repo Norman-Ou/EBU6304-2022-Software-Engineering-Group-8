@@ -82,7 +82,7 @@ public class pDB{
      * @param idDocument the ID document
      * @return Passenger Objects List
      * */
-    public static ArrayList<Passenger> loadPassengersByIDDocument(IDDocument idDocument) throws Exception {
+    public static ArrayList<Passenger> loadPassengersByIDDocument(IDDocument idDocument) throws DataNotFound {
         String surname = idDocument.getSurname();
         String ID = idDocument.getID();
         return loadPassengersBySurname_ID(surname,ID);
