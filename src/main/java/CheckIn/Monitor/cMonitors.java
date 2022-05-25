@@ -18,31 +18,25 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static CheckIn.GUI.AirPassCse.flightNo;
 
 /**
- * Passenger Control Class
+ * This is the control class for CheckIn end 
  *
- * @author Ruizhe Ou, Yao Wang, Mingze Wu
- * @version 0.1 April 4th, 2022
- * @since April 4th, 2022
+ * @author Yao Wang, Ruizhe Ou, Mingze Wu
+ * @since 4th April, 2022
+ * last modification date: May 24th, 2022
  */
+
 public class cMonitors {
 
-
-    // 所有航班的列表
+    // load the list of all flights stored in the database
     public static List<Flight> flightList = fDB.loadAllFlights();
-    // list consisting of all passengers
+    
+    // load the list of all passengers stored in the database
     private List<Passenger> psgList = pDB.loadAllPassengers(); 
 
     Passenger passenger;
-    // Flight flight;
     Order order;
-
-    // public String findPassengerFlight(IDDocument idDocument) throws Exception {
-    //     passenger = pDB.loadPassengerByIDDocument(idDocument);
-    //     return passenger.getBoardingPass().getFlightNo();
-    // }
 
     public static Flight findFlight(String flightNo) {
         Flight flight = fDB.loadFlightByFlightNo(flightNo);
@@ -61,7 +55,7 @@ public class cMonitors {
         return targetFlight;
     }
 
-/*    public static Flight getFlightByIDDocument(IDDocument idDocument){
+    public static Flight getFlightByIDDocument(IDDocument idDocument){
         String targetFlightNo;
         Flight targetFlight = new Flight();
         try {
@@ -73,7 +67,7 @@ public class cMonitors {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
     public static ArrayList<Flight> getFlightBySurname_ID(String surName, String IDnum) {
         try {
