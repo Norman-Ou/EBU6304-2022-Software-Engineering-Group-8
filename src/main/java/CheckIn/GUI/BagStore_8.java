@@ -7,9 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 18:41:24 CST 2022
- */
 
 
 /**
@@ -20,6 +17,7 @@ import java.util.ResourceBundle;
 public class BagStore_8 extends JFrame {
     /**
      * The constant court.
+     * Store or additional baggage amount or court in destination.
      */
     public static int court;
 
@@ -54,15 +52,18 @@ public class BagStore_8 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
+    /**
+     * Set court.
+     */
+    public void setCourt(){
+        court = (int)(Math.random()*100);
+        textField1.setText("Court: "+court+"");
+    }
 
 
     private void initComponents() {
@@ -162,8 +163,7 @@ public class BagStore_8 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setBackground();
-        court = (int)(Math.random()*100);
-        textField1.setText("Court: "+court+"");
+        setCourt();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

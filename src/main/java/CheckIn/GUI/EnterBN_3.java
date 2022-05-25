@@ -63,15 +63,17 @@ public class EnterBN_3 extends JFrame {
 
     private void ok(ActionEvent e) throws Exception {bookNumHandel();}
 
+    /**
+     * BookNumber handel.
+     * Initialize fltTemp and psnTemp with error input detection.
+     */
     public void bookNumHandel()throws Exception{
         String str=textField1.getText();
         bookNum=str;
         Flight flt = new Flight();
         try {
             flt = cMonitors.getFlightByBookingNo(bookNum);
-
             Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
-            System.out.println(flt+"00000000000000");
             fltTemp = flt;
             psnTemp = psn;
         }catch (Exception exception) {
@@ -106,18 +108,16 @@ public class EnterBN_3 extends JFrame {
     /**
      * First check.
      *
-     * @throws IllegalAccessException the illegal access exception
-     * @throws ParseException         the parse exception
+     * @throws IllegalAccessException the illegal access exception for overtime
+     * @throws ParseException         the parse exception for invalid input
      */
     public void firstCheck() throws IllegalAccessException, ParseException {
         try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
             Date date2 = new Date();
-            System.out.println(); System.out.println(fltTemp+"99999999999");
             try{
                 date2 = format.parse(fltTemp.getETD());
-
                 new ConfirmPage_3().setVisible(true);
             } catch (Exception error){
                 JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
@@ -173,11 +173,8 @@ public class EnterBN_3 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

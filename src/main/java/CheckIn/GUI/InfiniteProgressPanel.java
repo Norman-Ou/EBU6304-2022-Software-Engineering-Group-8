@@ -1,7 +1,6 @@
 package CheckIn.GUI;/**
  * @program: EBU6304-2022-Software-Engineering-Group-8
- * @description:
- * @author: Mr.Wang
+ * @author: Jiayi Wang
  * @create: 2022-05-07 20:53
  **/
 

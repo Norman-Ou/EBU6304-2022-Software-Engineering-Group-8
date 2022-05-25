@@ -72,9 +72,10 @@ public class PrintFlight_6 extends JFrame {
 
     /**
      * Info.
+     * Fill in information.
      */
     public void info(){
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
@@ -95,7 +96,7 @@ public class PrintFlight_6 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
                 BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
                 Surname.setText(EnterBN_3.getPsnTemp().getSurName());
@@ -111,15 +112,14 @@ public class PrintFlight_6 extends JFrame {
                 }else if(Seat_3_6.seat==null){
                     Seat.setText(Seat_1_6.seat);
                 }
-//                Seat.setText(Objects.requireNonNull(Seat_1_6.seat)+Objects.requireNonNull(Seat_3_6.seat));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -144,7 +144,7 @@ public class PrintFlight_6 extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBoardingPass(){
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(!(EnterBN_3.getPsnTemp()==null))  {
             EnterBN_3.getPsnTemp().getBoardingPass().setETA(EnterBN_3.getFlight().getETA());
             EnterBN_3.getPsnTemp().getBoardingPass().setETC(EnterBN_3.getFlight().getETC());
             EnterBN_3.getPsnTemp().getBoardingPass().setETD(EnterBN_3.getFlight().getETD());
@@ -158,7 +158,7 @@ public class PrintFlight_6 extends JFrame {
             EnterBN_3.getPsnTemp().getBoardingPass().setDestination(EnterBN_3.getFlight().getDestination());
             EnterBN_3.getPsnTemp().getBoardingPass().setGate(EnterBN_3.getFlight().getGate());
             return EnterBN_3.getPsnTemp();
-        }else if(EnterBN_3.getPsnTemp()==null){
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
             EnterOther_3.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
             EnterOther_3.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
             EnterOther_3.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
@@ -172,7 +172,7 @@ public class PrintFlight_6 extends JFrame {
             EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
             EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
             return EnterOther_3.getPsnTemp1();
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)) {
             EnterOther_3.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
             EnterOther_3.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
             EnterOther_3.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
@@ -187,6 +187,7 @@ public class PrintFlight_6 extends JFrame {
             EnterOther_3.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
             return EnterOther_3.getPsnTemp2();
         }
+        return null;
     }
 
     /**

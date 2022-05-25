@@ -4,25 +4,22 @@
 
 package CheckIn.GUI;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.table.*;
-
 import Beans.Flight.Flight;
-import Beans.Flight.SubClasses.Seat;
-import Beans.Passenger.Passenger;
-import Beans.Passenger.SubClasses.BoardingPass;
-import CheckIn.Monitor.cMonitors;
 import DataBase.fDB;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.border.*;
-
-import static CheckIn.GUI.EnterOther_3.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * The type Air pass cse.
@@ -36,6 +33,7 @@ public class AirPassCse extends JFrame {
     public static Flight flightChoose;
     /**
      * The constant state.
+     * True for chosen airline.
      */
     public static boolean state;
     /**
@@ -43,11 +41,11 @@ public class AirPassCse extends JFrame {
      */
     public static String flightNo = "";
     /**
-     * The constant Dep.
+     * The constant Departure.
      */
     public static String Dep= "";
     /**
-     * The constant Des.
+     * The constant Destination.
      */
     public static String Des= "";
     /**
@@ -90,29 +88,13 @@ public class AirPassCse extends JFrame {
 
     /**
      * Airline add.
-     * If the remaining time is less than 30min, then the passenger would be rejected to checkin.
+     * If the remaining time is less than 30min, then the passenger would be rejected from checkin.
      *
      * @throws IllegalAccessException the illegal access exception
      * @throws ParseException         the parse exception
      */
     public void airlineAdd() throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = null;
-        if(psnTemp1==null){
-            String IDNum = Config.Config.idDocument1.getID();
-            String surname=Config.Config.idDocument1.getSurname();
-            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
-            System.out.println(list+"22222222222");
-        }else if(psnTemp2==null){
-            String IDNum1=psnTemp1.getPassengerId();
-            String surname1=psnTemp1.getSurName();
-            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
-        }
-
-        String sur =EnterOther_3.getPsnTemp2().getSurName();
-        System.out.println(sur+"1111111111111111111111111");
-//        String id = EnterOther_3.getPsnTemp2().getPassengerId();
-//        ArrayList<Flight> list=cMonitors.getFlightBySurname_ID(sur,id);
-        System.out.println(fltTemp+"33333333333");
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             Dep=flt.getDeparture();
@@ -141,7 +123,7 @@ public class AirPassCse extends JFrame {
     /**
      * Test do. Detect exceptions from overtime.
      *
-     * @param e the e
+     * @param e the top button action event.
      */
     public void testDO(ActionEvent e) {
         try{
@@ -156,30 +138,16 @@ public class AirPassCse extends JFrame {
      * Air line item state changed.
      * Fill in the information in the shown table.
      *
-     * @param e the e
+     * @param e to fill in top combox, for choosing airline.
      * @throws IllegalAccessException the illegal access exception
      * @throws ParseException         the parse exception
      */
     public void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = null;
-        if(psnTemp2!=null){
-            String IDNum = Config.Config.idDocument1.getID();
-            String surname=Config.Config.idDocument1.getSurname();
-            psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
-            System.out.println(IDNum+surname+"44444444");
-            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
-            System.out.println(fltTemp+"22222222222");
-        }else if(psnTemp1!=null){
-            String IDNum1=psnTemp1.getPassengerId();
-            String surname1=psnTemp1.getSurName();
-            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
-        }
-        System.out.println(list);
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             if(e.getStateChange()==ItemEvent.SELECTED){
                 String str=e.getItemSelectable().toString();
-                System.out.println(str);
                 state=true;
                 flightChoose=fDB.loadFlightByFlightNo(airLine.getSelectedItem().toString());
                 if (flightChoose.equals(flightNo)) {
@@ -210,8 +178,6 @@ public class AirPassCse extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

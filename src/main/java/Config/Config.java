@@ -2,6 +2,7 @@ package Config;
 
 import Beans.IDDocument.IDDocument;
 import Tools.Utils;
+import org.junit.Test;
 
 /**
  * Project Configuration class. Containing all the final value used in the project.
@@ -14,7 +15,7 @@ public class Config {
     public static final String PassengerFile = Utils.getRsrFile("passenger_data_v6.json");
     public static final String PassengerNewFile = Utils.getRsrFile("passengerNew_data_v6.json");
     public static final String FlightFile = Utils.getRsrFile("flight_data_v6.json");
-    public static final String OrderFile = Utils.getRsrFile("order_data_v6.json)");
+    public static final String OrderFile = Utils.getRsrFile("order_data_v6.json");
     public static final String IDFile = Utils.getRsrFile("id_document.json");
 
     public static final IDDocument idDocument1 = new IDDocument("912843", "Statham");//The passenger booked two flights

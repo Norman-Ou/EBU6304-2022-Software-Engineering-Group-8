@@ -1,6 +1,7 @@
 package CheckIn.GUI;
 
 import Beans.Flight.SubClasses.ExtraOption;
+import Tools.Utils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,11 +11,6 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 18:58:58 CST 2022
- */
-
-
 /**
  * The type Meal norm 13.
  *
@@ -178,16 +174,16 @@ public class MealNorm_13 extends JFrame {
      * Set meal pic.
      */
     public void setMealPic(){
-        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/burger.png"));
+        JLabel jl1=new JLabel(new ImageIcon(Utils.getRsrFile("burger.png")));
         panelBurger.add(jl1,BorderLayout.CENTER);
 
-        JLabel jl2=new JLabel(new ImageIcon("src/main/resources/cheese_toast.png"));
+        JLabel jl2=new JLabel(new ImageIcon(Utils.getRsrFile("cheese_toast.png")));
         panelCheese.add(jl2,BorderLayout.CENTER);
 
-        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/hotdog.png"));
+        JLabel jl3=new JLabel(new ImageIcon(Utils.getRsrFile("hotdog.png")));
         panelHot.add(jl3,BorderLayout.CENTER);
 
-        JLabel jl4=new JLabel(new ImageIcon("src/main/resources/salad.png"));
+        JLabel jl4=new JLabel(new ImageIcon(Utils.getRsrFile("salad.png")));
         panelSa.add(jl4,BorderLayout.CENTER);
     }
 
@@ -200,11 +196,8 @@ public class MealNorm_13 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
