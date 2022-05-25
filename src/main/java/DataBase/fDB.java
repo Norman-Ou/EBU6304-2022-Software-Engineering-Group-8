@@ -93,4 +93,23 @@ public class fDB {
             return null;
         }
     }
+
+    /**
+     * Update the flight information in data base after check in
+     *
+     * @param newFlight the flight object completed check in
+     * @return true means update successfully
+     * */
+    public static boolean updateFlightInfo(Flight newFlight){
+        DataBase dataBase = new DataBase(Config.FlightFile);
+        String flightNo = newFlight.getFlightNo();
+        try {
+            dataBase.removeObject("flightNo", flightNo, Flight.class);
+            dataBase.addObject(newFlight);
+            return true;
+        } catch (IOException | DataNotFound e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
