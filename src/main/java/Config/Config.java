@@ -10,6 +10,7 @@ public class Config {
     public static final String IDFile = "src/main/resources/id_document.json";
     public static final String CHECK_IN_GUI_FILE = "src/main/java/CheckIn/GUI";
 
+
     //------ Configuration used in updating data in real time ------//
     //------ DO NOT CHANGE ------//
     public static final int Beijing2London_ms = 32400000;

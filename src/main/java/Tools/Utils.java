@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Calendar;
+import java.util.Objects;
 
 import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
 import static CheckIn.GUI.PrintBag_11.writeInBaggage;
@@ -211,5 +212,49 @@ public class Utils {
         }
 
         return false;
+    }
+
+    /**
+     * Get the file path in fold resource
+     *
+     * @param fileName the file name
+     * @return File path for the argument
+     * */
+    public static String getRsrFile(String fileName){
+        try {
+            return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName)).getPath();
+        } catch (NullPointerException e){
+            return null;
+        }
+    }
+
+    public static void genDirTree(int level, String dir) {
+        level++;
+        File file = new File("D:\\Java_Code\\SE_Project_G8\\src");
+        File[] files = file.listFiles();
+        if (!file.exists()) {
+            System.out.println("File Doesn't exist");
+            return;
+        }
+        if (files.length != 0) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    dir = f.getName();
+                    System.out.println(levelSign(level) + dir);
+                    genDirTree(level, dir);
+                } else {
+                    System.out.println(levelSign(level) + f.getName());
+                }
+            }
+        }
+    }
+
+    private static String levelSign(int level) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" ├─");
+        for (int x = 0; x < level; x++) {
+            sb.insert(0, " │   ");
+        }
+        return sb.toString();
     }
 }
