@@ -158,6 +158,7 @@ public class Airline_1 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
         setBackground();
     }
 
