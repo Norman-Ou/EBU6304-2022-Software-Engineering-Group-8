@@ -53,11 +53,14 @@ public class ConfirmPage_3 extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             String str1 = "";
-            if (EnterBN_3.getPsnTemp() == null) {
+            if(!(EnterOther_3.getPsnTemp1()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
             }
-            if (EnterOther_3.getPsnTemp1() == null) {
+            if(!(EnterBN_3.getPsnTemp()==null))  {
                 str1= Objects.requireNonNull(EnterBN_3.getFlight()).getFlightType();
+            }
+            if(!(EnterOther_3.getPsnTemp2()==null)) {
+                str1=AirPassCse.flightChoose.getFlightType();
             }
             try {
                 if (Objects.equals(str1, "A")) {
@@ -97,7 +100,7 @@ public class ConfirmPage_3 extends JFrame {
      * Fill in information.
      */
     public void info(){
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
@@ -113,7 +116,7 @@ public class ConfirmPage_3 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
                 BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
                 Surname.setText(EnterBN_3.getPsnTemp().getSurName());
@@ -127,7 +130,7 @@ public class ConfirmPage_3 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp2().getSurName());

@@ -63,7 +63,7 @@ public class EnterOther_3 extends JFrame {
 
     private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
-    private void scanID(ActionEvent e) throws Exception {openNext(); new AirPassCse().setVisible(true);dispose();}
+    private void scanID(ActionEvent e) throws Exception {openNext(); dispose();}
 
     private void ok(ActionEvent e) throws Exception {openNext();}
 

@@ -69,11 +69,11 @@ public class Seat_1_6 extends JFrame {
      */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(!(EnterOther_3.getPsnTemp1()==null)) {
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else if(EnterBN_3.getPsnTemp()==null){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }
     }
@@ -92,6 +92,10 @@ public class Seat_1_6 extends JFrame {
             return clazz;
         }else if(EnterOther_3.getPsnTemp1() != null){
             Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
+            clazz =other2.getSeatClass();
+            return clazz;
+        }else if(EnterOther_3.getPsnTemp2() != null){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
             clazz =other2.getSeatClass();
             return clazz;
         }

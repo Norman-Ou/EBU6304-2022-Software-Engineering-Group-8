@@ -82,19 +82,19 @@ public class PrintBag_11 extends JFrame {
             }
         }
 
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(!(EnterBN_3.getPsnTemp()==null))  {
             try {
                 EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(EnterBN_3.getPsnTemp()==null) {
+        }else if(!(EnterOther_3.getPsnTemp1()==null)) {
             try {
                 EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try {
                 EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
@@ -110,7 +110,7 @@ public class PrintBag_11 extends JFrame {
      */
     public void showBag(){
         setBagNo();
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
                 int weightPsn = WeightShow_8.weightPsn;
                 String str=weightPsn+"";
@@ -123,7 +123,7 @@ public class PrintBag_11 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        else if(!(EnterBN_3.getPsnTemp()==null))  {
             try{
                 int weightPsn = WeightShow_8.weightPsn;
                 String str=weightPsn+"";
@@ -135,7 +135,7 @@ public class PrintBag_11 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
                 int weightPsn = WeightShow_8.weightPsn;
                 String str=weightPsn+"";
@@ -173,22 +173,23 @@ public class PrintBag_11 extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBaggage(){
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(!(EnterBN_3.getPsnTemp()==null)) {
             EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
             EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterBN_3.getPsnTemp().setCheckinStatus(0);
             return EnterBN_3.getPsnTemp();
-        }else if(EnterBN_3.getPsnTemp()==null){
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
             EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
             EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterOther_3.getPsnTemp1().setCheckinStatus(0);
             return EnterOther_3.getPsnTemp1();
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
             EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterOther_3.getPsnTemp2().setCheckinStatus(0);
             return EnterOther_3.getPsnTemp2();
         }
+        return null;
     }
 
     private void initComponents() {
