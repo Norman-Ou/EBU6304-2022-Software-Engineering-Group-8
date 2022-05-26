@@ -88,8 +88,17 @@ public class MealPay_15 extends JFrame {
      * Credit.
      */
     public void credit(){
-        Passenger psn = pDB.loadPassengerByBookingNo(EnterBN_3.getPsnTemp().getBookNumber());
-        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
+        String creditInfo = null;
+        if(!(EnterBN_3.getPsnTemp()==null)) {
+            creditInfo = "Your credit card number:" + EnterBN_3.getPsnTemp().getCreditCard().getCardNo();
+        }
+        if(!(EnterOther_3.getPsnTemp1()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp1().getCreditCard().getCardNo();
+        }
+        if(!(EnterOther_3.getPsnTemp2()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp2().getCreditCard().getCardNo();
+        }
+        
         textField1.setText(creditInfo);
     }
 
