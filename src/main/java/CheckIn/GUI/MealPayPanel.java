@@ -1,9 +1,7 @@
 package CheckIn.GUI;
 
 import Beans.Flight.Flight;
-import Beans.Passenger.Passenger;
 import DataBase.fDB;
-import DataBase.pDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -19,21 +17,21 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealPay_15 extends JFrame {
+public class MealPayPanel extends JFrame {
     private static int seatFee=0;
     private String mealTemp="";
 
     /**
      * Instantiates a new Meal pay 15.
      */
-    public MealPay_15() throws IOException {
-        if(Seat_1_6.upgrade||Seat_3_6.upgrade||MealAdd_14.mealState){
+    public MealPayPanel() throws IOException {
+        if(Seat_1_6.upgrade||Seat_3_6.upgrade|| MealAddPanel.mealState){
             initComponents();}
     }
 
     private void exit(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Thanks for using. Enjoy your flight!","Goodbye", JOptionPane.QUESTION_MESSAGE);
-        dispose();new Exit().setVisible(true);}
+        dispose();new ExitWindow().setVisible(true);}
 
 
     /**
@@ -56,26 +54,26 @@ public class MealPay_15 extends JFrame {
 
     private void payMeal(ActionEvent e) {
         pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
-        dispose();new Exit().setVisible(true);}
+        JOptionPane.showMessageDialog(null, "You have payed "+ MealAddPanel.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
+        dispose();new ExitWindow().setVisible(true);}
 
     private void payAdMeal(ActionEvent e) {
         pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
-        dispose();new Exit().setVisible(true);}
+        JOptionPane.showMessageDialog(null, "You have payed "+ MealAddPanel.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
+        dispose();new ExitWindow().setVisible(true);}
 
-    private void BackMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
+    private void BackMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     /**
      * Pay 4 meal content.
      */
     public void pay4MealContent(){
-        if(MealAdd_14.VIPmealSelected==null){
-            setMealTemp(MealNorm_13.mealSelected);
+        if(MealAddPanel.VIPmealSelected==null){
+            setMealTemp(MealNormPanel.mealSelected);
         }else{
-            setMealTemp(MealAdd_14.VIPmealSelected);
+            setMealTemp(MealAddPanel.VIPmealSelected);
         }
         if(Seat_1_6.upgrade){
             seatFee=100;
@@ -89,14 +87,14 @@ public class MealPay_15 extends JFrame {
      */
     public void credit(){
         String creditInfo = null;
-        if(!(EnterBN_3.getPsnTemp()==null)) {
-            creditInfo = "Your credit card number:" + EnterBN_3.getPsnTemp().getCreditCard().getCardNo();
+        if(!(EnterBookingNumber.getPsnTemp()==null)) {
+            creditInfo = "Your credit card number:" + EnterBookingNumber.getPsnTemp().getCreditCard().getCardNo();
         }
-        if(!(EnterOther_3.getPsnTemp1()==null)) {
-            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp1().getCreditCard().getCardNo();
+        if(!(EnterOther.getPsnTemp1()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther.getPsnTemp1().getCreditCard().getCardNo();
         }
-        if(!(EnterOther_3.getPsnTemp2()==null)) {
-            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp2().getCreditCard().getCardNo();
+        if(!(EnterOther.getPsnTemp2()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther.getPsnTemp2().getCreditCard().getCardNo();
         }
         
         textField1.setText(creditInfo);
@@ -228,7 +226,7 @@ public class MealPay_15 extends JFrame {
         credit();
         setBackground();
         ArrayList<Flight> newFlight = new ArrayList<>();
-        newFlight.add(EnterBN_3.fltTemp);
+        newFlight.add(EnterBookingNumber.fltTemp);
         newFlight.add(AirPassCse.flightChoose);
         fDB.replaceAllFlights(newFlight);
     }

@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class EnterOther_3 extends JFrame {
+public class EnterOther extends JFrame {
     /**
      * The constant ETA.
      */
@@ -34,7 +34,7 @@ public class EnterOther_3 extends JFrame {
     /**
      * Instantiates a new Enter other 3.
      */
-    public EnterOther_3() {
+    public EnterOther() {
         initComponents();
     }
 
@@ -59,9 +59,9 @@ public class EnterOther_3 extends JFrame {
      */
     public static String nowTime = "07-09-2022 7:42:32";
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
+    private void cancel(ActionEvent e) {new AirlineWindow().setVisible(true);dispose();}
 
     private void scanID(ActionEvent e) throws Exception {openNext(); dispose();}
 
@@ -167,11 +167,11 @@ public class EnterOther_3 extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void firstCheck() throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther_3.getFlight();
+        ArrayList<Flight> list = EnterOther.getFlight();
         if(list==null){
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
-            new CheckIn_2().setVisible(true);
+            new CheckInWindow().setVisible(true);
         }else{
             for(Flight flt : list) {
                 ETA=flt.getETA();
@@ -204,11 +204,11 @@ public class EnterOther_3 extends JFrame {
     }
 
     /**
-     * Error handel.
+     * ErrorWindow handel.
      */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-        new Error().setVisible(true);
+        new ErrorWindow().setVisible(true);
     }
 
     private void initComponents() {

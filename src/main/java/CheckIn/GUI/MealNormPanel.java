@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealNorm_13 extends JFrame {
+public class MealNormPanel extends JFrame {
     /**
      * The constant mealSelected.
      */
@@ -33,17 +33,17 @@ public class MealNorm_13 extends JFrame {
     /**
      * Instantiates a new Meal norm 13.
      */
-    public MealNorm_13() {
+    public MealNormPanel() {
         initComponents();
     }
 
     private void exit(ActionEvent e) {dispose();
         JOptionPane.showMessageDialog(null, "You have chosen your meal. Enjoy your flight.","Safe exit.", JOptionPane.QUESTION_MESSAGE);
-        new Exit().setVisible(true);}
+        new ExitWindow().setVisible(true);}
 
-    private void BackToMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
+    private void BackToMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void NorMealStateChanged(ChangeEvent e) {JTabbedPane tabbedPane = (JTabbedPane) e.getSource();addMealNormContent(tabbedPane);}
 
@@ -58,24 +58,24 @@ public class MealNorm_13 extends JFrame {
             case 0:
                 mealSelected="Burger";
                 System.out.println("Burger");
-                if(!(EnterBN_3.getPsnTemp()==null)) {
-                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                if(!(EnterBookingNumber.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Burger");
                         arrayMealAdd.get(0).setPrice(6);
                         price = 6;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Burger");
                         arrayMealAdd.get(0).setPrice(6);
                         price = 6;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp2()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Burger");
                         arrayMealAdd.get(0).setPrice(6);
@@ -86,24 +86,24 @@ public class MealNorm_13 extends JFrame {
             case 1:
                 mealSelected="Cheese toast";
                 System.out.println("Cheese toast");
-                if(!(EnterBN_3.getPsnTemp()==null)) {
-                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                if(!(EnterBookingNumber.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Cheese toast");
                         arrayMealAdd.get(0).setPrice(7);
                         price = 7;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Cheese toast");
                         arrayMealAdd.get(0).setPrice(7);
                         price = 7;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp2()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Cheese toast");
                         arrayMealAdd.get(0).setPrice(7);
@@ -114,24 +114,24 @@ public class MealNorm_13 extends JFrame {
             case 2:
                 mealSelected="Hot dog";
                 System.out.println("Hot dog");
-                if(!(EnterBN_3.getPsnTemp()==null)) {
-                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                if(!(EnterBookingNumber.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Hot dog");
                         arrayMealAdd.get(0).setPrice(8);
                         price = 8;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Hot dog");
                         arrayMealAdd.get(0).setPrice(8);
                         price = 8;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp2()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Hot dog");
                         arrayMealAdd.get(0).setPrice(8);
@@ -142,24 +142,24 @@ public class MealNorm_13 extends JFrame {
             case 3:
                 mealSelected="Salad";
                 System.out.println("Salad");
-                if(!(EnterBN_3.getPsnTemp()==null)) {
-                    arrayMealAdd = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
+                if(!(EnterBookingNumber.getPsnTemp()==null)) {
+                    arrayMealAdd = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Salad");
                         arrayMealAdd.get(0).setPrice(9);
                         price = 9;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp1()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Salad");
                         arrayMealAdd.get(0).setPrice(9);
                         price = 9;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp2()==null)){
-                    arrayMealAdd=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther.getPsnTemp2()==null)){
+                    arrayMealAdd=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
                     if (arrayMealAdd.get(0).getKind() == 1) {
                         arrayMealAdd.get(0).setDescription("Salad");
                         arrayMealAdd.get(0).setPrice(9);

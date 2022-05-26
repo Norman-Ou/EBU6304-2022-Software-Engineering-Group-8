@@ -51,23 +51,23 @@ public class Seat_3_6 extends JFrame {
         busS.setEnabled(true);
     }
 
-    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void button3(ActionEvent e) throws Exception {checkClass();}
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void PrintFlight(ActionEvent e) {
         if(upgrade){
             dispose();
-            new PrintFlight_6().setVisible(true);
+            new PrintFlightWindow().setVisible(true);
         }else{
             dispose();
-            new PrintFlight_6().setVisible(true);
+            new PrintFlightWindow().setVisible(true);
         }
     }
 
@@ -113,9 +113,9 @@ public class Seat_3_6 extends JFrame {
      */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
-        if(EnterOther_3.getPsnTemp1()==null) {
+        if(EnterOther.getPsnTemp1()==null) {
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterBookingNumber.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -131,9 +131,9 @@ public class Seat_3_6 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(EnterBN_3.getPsnTemp()==null){
+        }else if(EnterBookingNumber.getPsnTemp()==null){
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp1().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -153,7 +153,7 @@ public class Seat_3_6 extends JFrame {
             }
         }else{
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp2().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -179,7 +179,7 @@ public class Seat_3_6 extends JFrame {
      * @throws Exception the exception
      */
     public void showSeats() throws Exception {
-        if(!(EnterOther_3.getPsnTemp1()==null)){
+        if(!(EnterOther.getPsnTemp1()==null)){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
                 map.forEach((k,v)->{
@@ -190,9 +190,9 @@ public class Seat_3_6 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        } else if(!(EnterBN_3.getPsnTemp()==null)) {
+        } else if(!(EnterBookingNumber.getPsnTemp()==null)) {
             try {
-                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+                map= Objects.requireNonNull(EnterBookingNumber.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
                     if (!mapNew.containsValue(v)){
                         mapNew.put(k,v);

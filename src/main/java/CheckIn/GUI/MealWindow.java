@@ -11,23 +11,23 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class Meal_12 extends JFrame {
+public class MealWindow extends JFrame {
     /**
      * Instantiates a new Meal 12.
      */
-    public Meal_12() {
+    public MealWindow() {
         initComponents();
     }
 
-    private void Normal(ActionEvent e) {dispose();new MealNorm_13().setVisible(true);}
+    private void Normal(ActionEvent e) {dispose();new MealNormPanel().setVisible(true);}
 
-    private void VIPMeal(ActionEvent e) {dispose();new MealAdd_14().setVisible(true);}
+    private void VIPMeal(ActionEvent e) {dispose();new MealAddPanel().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void cancelMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Confirm cancel your meal?","Cancel meal check", JOptionPane.WARNING_MESSAGE);
-        dispose();new Exit().setVisible(true);}
+        dispose();new ExitWindow().setVisible(true);}
 
     /**
      * Set background.

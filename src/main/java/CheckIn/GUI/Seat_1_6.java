@@ -45,15 +45,15 @@ public class Seat_1_6 extends JFrame {
      */
     public Seat_1_6() throws Exception {initComponents();}
 
-    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void button3(ActionEvent e) throws Exception {checkClass();}
 
-    private void Return(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void Return(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
@@ -69,11 +69,11 @@ public class Seat_1_6 extends JFrame {
      */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
-        if(!(EnterOther_3.getPsnTemp1()==null)) {
+        if(!(EnterOther.getPsnTemp1()==null)) {
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+        }else if(!(EnterOther.getPsnTemp2()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else if(!(EnterOther_3.getPsnTemp1()==null)){
+        }else if(!(EnterOther.getPsnTemp1()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }
     }
@@ -86,16 +86,16 @@ public class Seat_1_6 extends JFrame {
      */
     public int getSeatClazz() throws Exception {
         int clazz;
-        if(EnterBN_3.getPsnTemp() != null){
-            Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
+        if(EnterBookingNumber.getPsnTemp() != null){
+            Order order = oDB.getOrderByBookingNumber(EnterBookingNumber.getPsnTemp().getBookNumber());
             clazz =order.getSeatClass();
             return clazz;
-        }else if(EnterOther_3.getPsnTemp1() != null){
-            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
+        }else if(EnterOther.getPsnTemp1() != null){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp1().getBookNumber());
             clazz =other2.getSeatClass();
             return clazz;
-        }else if(EnterOther_3.getPsnTemp2() != null){
-            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
+        }else if(EnterOther.getPsnTemp2() != null){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp2().getBookNumber());
             clazz =other2.getSeatClass();
             return clazz;
         }
@@ -124,7 +124,7 @@ public class Seat_1_6 extends JFrame {
         showSeats();
     }
 
-    private void PrintFlight(ActionEvent e) {dispose();new PrintFlight_6().setVisible(true);sortSeat();}
+    private void PrintFlight(ActionEvent e) {dispose();new PrintFlightWindow().setVisible(true);sortSeat();}
 
 
 
@@ -134,7 +134,7 @@ public class Seat_1_6 extends JFrame {
      * @throws Exception the exception
      */
     public void showSeats() throws Exception {
-        if(EnterBN_3.getPsnTemp()==null){
+        if(EnterBookingNumber.getPsnTemp()==null){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
                 map.forEach((k,v)->{
@@ -146,9 +146,9 @@ public class Seat_1_6 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        else if(EnterOther.getPsnTemp1()==null) {
             try {
-                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
+                map= Objects.requireNonNull(EnterBookingNumber.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
                     if (!mapNew.containsValue(v)){
                         mapNew.put(k,v);

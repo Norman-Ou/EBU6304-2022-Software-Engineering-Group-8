@@ -2,19 +2,12 @@ package CheckIn.GUI;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
-import Beans.Passenger.SubClasses.BoardingPass;
-import DataBase.pDB;
-import Tools.Utils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.Serializable;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 /*
  * Created by JFormDesigner on Tue Mar 29 20:34:40 CST 2022
  */
@@ -25,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Jiayi Wang
  */
-public class PrintFlight_6 extends JFrame {
+public class PrintFlightWindow extends JFrame {
     /**
      * The constant stage.
      */
@@ -34,7 +27,7 @@ public class PrintFlight_6 extends JFrame {
     /**
      * Instantiates a new Print flight 6.
      */
-    public PrintFlight_6() {
+    public PrintFlightWindow() {
         initComponents();
     }
 
@@ -42,11 +35,11 @@ public class PrintFlight_6 extends JFrame {
         info();
     }
 
-    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void printThenBag(ActionEvent e) throws InterruptedException {bagInformation();}
 
@@ -63,10 +56,10 @@ public class PrintFlight_6 extends JFrame {
             dispose();
             new Demo().setVisible(true);
             stage="BoardingPass";
-            //            new Baggage_7().setVisible(true);
+            //            new BaggageWindow().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
-            new Error().setVisible(true);
+            new ErrorWindow().setVisible(true);
         }dispose();
     }
 
@@ -75,11 +68,11 @@ public class PrintFlight_6 extends JFrame {
      * Fill in information.
      */
     public void info(){
-        if(!(EnterOther_3.getPsnTemp1()==null)){
+        if(!(EnterOther.getPsnTemp1()==null)){
             try{
-                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                BookNum.setText(EnterOther.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther.getPsnTemp1().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -96,17 +89,17 @@ public class PrintFlight_6 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(!(EnterBN_3.getPsnTemp()==null)) {
+        else if(!(EnterBookingNumber.getPsnTemp()==null)) {
             try {
-                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
-                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
-                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBN_3.getFlight().getDeparture());
-                Desti.setText(EnterBN_3.getFlight().getDestination());
-                ETA.setText(EnterBN_3.getFlight().getETA());
-                ETC.setText(EnterBN_3.getFlight().getETC());
-                ETD.setText(EnterBN_3.getFlight().getETD());
-                Gate.setText(EnterBN_3.getFlight().getGate());
+                BookNum.setText(EnterBookingNumber.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBookingNumber.getPsnTemp().getSurName());
+                IDNum.setText(EnterBookingNumber.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBookingNumber.getFlight().getDeparture());
+                Desti.setText(EnterBookingNumber.getFlight().getDestination());
+                ETA.setText(EnterBookingNumber.getFlight().getETA());
+                ETC.setText(EnterBookingNumber.getFlight().getETC());
+                ETD.setText(EnterBookingNumber.getFlight().getETD());
+                Gate.setText(EnterBookingNumber.getFlight().getGate());
                 if(Seat_1_6.seat==null){
                     Seat.setText(Seat_3_6.seat);
                 }else if(Seat_3_6.seat==null){
@@ -115,11 +108,11 @@ public class PrintFlight_6 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+        }else if(!(EnterOther.getPsnTemp2()==null)){
             try{
-                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
+                BookNum.setText(EnterOther.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther.getPsnTemp2().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -144,48 +137,48 @@ public class PrintFlight_6 extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBoardingPass(){
-        if(!(EnterBN_3.getPsnTemp()==null))  {
-            EnterBN_3.getPsnTemp().getBoardingPass().setETA(EnterBN_3.getFlight().getETA());
-            EnterBN_3.getPsnTemp().getBoardingPass().setETC(EnterBN_3.getFlight().getETC());
-            EnterBN_3.getPsnTemp().getBoardingPass().setETD(EnterBN_3.getFlight().getETD());
-            EnterBN_3.getPsnTemp().getBoardingPass().setFlightNo(EnterBN_3.getFlight().getFlightNo());
+        if(!(EnterBookingNumber.getPsnTemp()==null))  {
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setETA(EnterBookingNumber.getFlight().getETA());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setETC(EnterBookingNumber.getFlight().getETC());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setETD(EnterBookingNumber.getFlight().getETD());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setFlightNo(EnterBookingNumber.getFlight().getFlightNo());
             if (Seat_1_6.seat == null) {
-                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(Seat_3_6.seat);
+                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(Seat_3_6.seat);
             } else if (Seat_3_6.seat == null) {
-                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(Seat_1_6.seat);
+                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(Seat_1_6.seat);
             }
-            EnterBN_3.getPsnTemp().getBoardingPass().setDeparture(EnterBN_3.getFlight().getDeparture());
-            EnterBN_3.getPsnTemp().getBoardingPass().setDestination(EnterBN_3.getFlight().getDestination());
-            EnterBN_3.getPsnTemp().getBoardingPass().setGate(EnterBN_3.getFlight().getGate());
-            return EnterBN_3.getPsnTemp();
-        }else if(!(EnterOther_3.getPsnTemp1()==null)){
-            EnterOther_3.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
-            EnterOther_3.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
-            EnterOther_3.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
-            EnterOther_3.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setDeparture(EnterBookingNumber.getFlight().getDeparture());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setDestination(EnterBookingNumber.getFlight().getDestination());
+            EnterBookingNumber.getPsnTemp().getBoardingPass().setGate(EnterBookingNumber.getFlight().getGate());
+            return EnterBookingNumber.getPsnTemp();
+        }else if(!(EnterOther.getPsnTemp1()==null)){
+            EnterOther.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
             if (Seat_1_6.seat == null) {
-                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(Seat_3_6.seat);
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(Seat_3_6.seat);
             } else if (Seat_3_6.seat == null) {
-                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(Seat_1_6.seat);
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(Seat_1_6.seat);
             }
-            EnterOther_3.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
-            EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
-            EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
-            return EnterOther_3.getPsnTemp1();
-        }else if(!(EnterOther_3.getPsnTemp2()==null)) {
-            EnterOther_3.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
-            EnterOther_3.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
-            EnterOther_3.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
-            EnterOther_3.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            EnterOther.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+            return EnterOther.getPsnTemp1();
+        }else if(!(EnterOther.getPsnTemp2()==null)) {
+            EnterOther.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
             if (Seat_1_6.seat == null) {
-                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(Seat_3_6.seat);
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(Seat_3_6.seat);
             } else if (Seat_3_6.seat == null) {
-                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(Seat_1_6.seat);
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(Seat_1_6.seat);
             }
-            EnterOther_3.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
-            EnterOther_3.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
-            EnterOther_3.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
-            return EnterOther_3.getPsnTemp2();
+            EnterOther.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+            return EnterOther.getPsnTemp2();
         }
         return null;
     }

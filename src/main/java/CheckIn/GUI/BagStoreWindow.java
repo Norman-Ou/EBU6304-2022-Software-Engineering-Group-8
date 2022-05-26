@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class BagStore_8 extends JFrame {
+public class BagStoreWindow extends JFrame {
     /**
      * The constant court.
      * Store or additional baggage amount or court in destination.
@@ -24,15 +24,15 @@ public class BagStore_8 extends JFrame {
     /**
      * Instantiates a new Bag store 8.
      */
-    public BagStore_8() {
+    public BagStoreWindow() {
         initComponents();
     }
 
-    private void ToMeal(ActionEvent e) {dispose();new PrintBag_11().setVisible(true);}
+    private void ToMeal(ActionEvent e) {dispose();new PrintBaggageWindow().setVisible(true);}
 
-    private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
+    private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**
      * Court shown.
      *

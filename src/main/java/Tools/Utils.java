@@ -2,7 +2,7 @@ package Tools;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
-import CheckIn.GUI.PrintBag_11;
+import CheckIn.GUI.PrintBaggageWindow;
 import DataBase.pDB;
 import DataBase.fDB;
 
@@ -17,8 +17,7 @@ import java.util.Base64;
 import java.util.Calendar;
 import java.util.Objects;
 
-import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
-import static CheckIn.GUI.PrintBag_11.writeInBaggage;
+import static CheckIn.GUI.PrintFlightWindow.writeInBoardingPass;
 
 /**
  * @author Ruizhe Ou, Jiacheng Li
@@ -210,7 +209,7 @@ public class Utils {
     public static boolean newPsnFile(){
         ArrayList<Passenger> newPassenger = new ArrayList<>();
         newPassenger.add(writeInBoardingPass());
-        newPassenger.add(PrintBag_11.writeInBaggage());
+        newPassenger.add(PrintBaggageWindow.writeInBaggage());
         try {
             pDB.replaceAllPsn(newPassenger);
             System.out.println("Updated Passenger JSON file completed!");

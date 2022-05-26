@@ -23,12 +23,12 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class EnterBN_3 extends JFrame {
+public class EnterBookingNumber extends JFrame {
 
     /**
      * Instantiates a new Enter bn 3.
      */
-    public EnterBN_3() {initComponents();}
+    public EnterBookingNumber() {initComponents();}
 
     /**
      * The constant bookNum.
@@ -55,11 +55,11 @@ public class EnterBN_3 extends JFrame {
      */
     public static String nowTime = format.format(time.getTime());
 
-    private void forgetBN(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
+    private void forgetBN(ActionEvent e) {new EnterOther().setVisible(true);dispose();}
 
-    private void back(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
+    private void back(ActionEvent e) {new AirlineWindow().setVisible(true);dispose();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void ok(ActionEvent e) throws Exception {bookNumHandel();}
 
@@ -78,7 +78,7 @@ public class EnterBN_3 extends JFrame {
             psnTemp = psn;
         }catch (Exception exception) {
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-            new CheckIn_2().setVisible(true);
+            new CheckInWindow().setVisible(true);
         }
         if(flt==null){
             throw new Exception(bookNum);
@@ -98,11 +98,11 @@ public class EnterBN_3 extends JFrame {
     }
 
     /**
-     * Error handel.
+     * ErrorWindow handel.
      */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-        new Error().setVisible(true);
+        new ErrorWindow().setVisible(true);
     }
 
     /**
@@ -118,11 +118,11 @@ public class EnterBN_3 extends JFrame {
             Date date2 = new Date();
             try{
                 date2 = format.parse(fltTemp.getETD());
-                new ConfirmPage_3().setVisible(true);
+                new ConfirmWindow().setVisible(true);
             } catch (Exception error){
                 JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
                 dispose();
-                new CheckIn_2().setVisible(true);
+                new CheckInWindow().setVisible(true);
             }
             long nowMillisecond = date1.getTime();
             long etdMillisecond = date2.getTime();

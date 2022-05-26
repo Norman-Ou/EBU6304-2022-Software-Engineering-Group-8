@@ -1,8 +1,6 @@
 package CheckIn.GUI;
 
 import Beans.Flight.Flight;
-import Beans.Order.Order;
-import DataBase.oDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -23,23 +21,23 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class ConfirmPage_3 extends JFrame {
+public class ConfirmWindow extends JFrame {
     /**
      * Instantiates a new Confirm page 3.
      */
-    public ConfirmPage_3() {
+    public ConfirmWindow() {
         initComponents();
     }
 
-    private void ErrorPage(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void ErrorPage(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void confirm1B(ActionEvent e){confirmInfo();}
 
-    private void Back2Init(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
+    private void Back2Init(ActionEvent e) {dispose();new CheckInWindow().setVisible(true);}
 
     private void showInitialInfo(ActionEvent e) {info();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     /**
      * Confirm info.
@@ -53,13 +51,13 @@ public class ConfirmPage_3 extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             String str1 = "";
-            if(!(EnterOther_3.getPsnTemp1()==null)) {
+            if(!(EnterOther.getPsnTemp1()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
             }
-            if(!(EnterBN_3.getPsnTemp()==null))  {
-                str1= Objects.requireNonNull(EnterBN_3.getFlight()).getFlightType();
+            if(!(EnterBookingNumber.getPsnTemp()==null))  {
+                str1= Objects.requireNonNull(EnterBookingNumber.getFlight()).getFlightType();
             }
-            if(!(EnterOther_3.getPsnTemp2()==null)) {
+            if(!(EnterOther.getPsnTemp2()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
             }
             try {
@@ -75,7 +73,7 @@ public class ConfirmPage_3 extends JFrame {
             }
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
-            new Error().setVisible(true);
+            new ErrorWindow().setVisible(true);
         }
     }
 
@@ -100,11 +98,11 @@ public class ConfirmPage_3 extends JFrame {
      * Fill in information.
      */
     public void info(){
-        if(!(EnterOther_3.getPsnTemp1()==null)){
+        if(!(EnterOther.getPsnTemp1()==null)){
             try{
-                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                BookNum.setText(EnterOther.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther.getPsnTemp1().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -116,25 +114,25 @@ public class ConfirmPage_3 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(!(EnterBN_3.getPsnTemp()==null)) {
+        else if(!(EnterBookingNumber.getPsnTemp()==null)) {
             try {
-                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
-                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
-                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBN_3.getFlight().getDeparture());
-                Desti.setText(EnterBN_3.getFlight().getDestination());
-                ETA.setText(EnterBN_3.getFlight().getETA());
-                ETC.setText(EnterBN_3.getFlight().getETC());
-                ETD.setText(EnterBN_3.getFlight().getETD());
-                Gate.setText(EnterBN_3.getFlight().getGate());
+                BookNum.setText(EnterBookingNumber.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBookingNumber.getPsnTemp().getSurName());
+                IDNum.setText(EnterBookingNumber.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBookingNumber.getFlight().getDeparture());
+                Desti.setText(EnterBookingNumber.getFlight().getDestination());
+                ETA.setText(EnterBookingNumber.getFlight().getETA());
+                ETC.setText(EnterBookingNumber.getFlight().getETC());
+                ETD.setText(EnterBookingNumber.getFlight().getETD());
+                Gate.setText(EnterBookingNumber.getFlight().getGate());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+        }else if(!(EnterOther.getPsnTemp2()==null)){
             try{
-                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
+                BookNum.setText(EnterOther.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther.getPsnTemp2().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());

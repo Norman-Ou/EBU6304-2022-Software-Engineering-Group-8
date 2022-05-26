@@ -72,18 +72,18 @@ public class AirPassCse extends JFrame {
         initComponents();
     }
 
-    private void cancel(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
+    private void cancel(ActionEvent e) {new EnterOther().setVisible(true);dispose();}
 
-    private void ok(ActionEvent e) {new ConfirmPage_3().setVisible(true);dispose();}
+    private void ok(ActionEvent e) {new ConfirmWindow().setVisible(true);dispose();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     /**
-     * Error handle.
+     * ErrorWindow handle.
      */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-        new Error().setVisible(true);
+        new ErrorWindow().setVisible(true);
     }
 
     /**
@@ -94,7 +94,7 @@ public class AirPassCse extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void airlineAdd() throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther_3.getFlight();
+        ArrayList<Flight> list = EnterOther.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             Dep=flt.getDeparture();
@@ -143,7 +143,7 @@ public class AirPassCse extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther_3.getFlight();
+        ArrayList<Flight> list = EnterOther.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             if(e.getStateChange()==ItemEvent.SELECTED){

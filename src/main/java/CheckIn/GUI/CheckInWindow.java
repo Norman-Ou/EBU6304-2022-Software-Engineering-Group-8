@@ -15,19 +15,19 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class CheckIn_2 extends JFrame {
+public class CheckInWindow extends JFrame {
     /**
      * Instantiates a new Check in 2.
      */
-    public CheckIn_2() {
+    public CheckInWindow() {
         initComponents();
     }
 
-    private void CheckInButton(ActionEvent e) {dispose();new EnterBN_3().setVisible(true);}
+    private void CheckInButton(ActionEvent e) {dispose();new EnterBookingNumber().setVisible(true);}
 
-    private void AirlineRe(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
+    private void AirlineRe(ActionEvent e) {dispose();new AirlineWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**
      * Set background.
      */

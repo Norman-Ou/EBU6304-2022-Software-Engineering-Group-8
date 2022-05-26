@@ -4,25 +4,19 @@ package CheckIn.GUI;/*
 
 import Beans.Passenger.Passenger;
 import DataBase.pDB;
-import Tools.Utils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
-
-import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
 
 /**
  * The type Print bag 11.
  *
  * @author Jiayi Wang
  */
-public class PrintBag_11 extends JFrame {
+public class PrintBaggageWindow extends JFrame {
     /**
      * The constant bagNo.
      */
@@ -35,15 +29,15 @@ public class PrintBag_11 extends JFrame {
     /**
      * Instantiates a new Print bag 11.
      */
-    public PrintBag_11() {
+    public PrintBaggageWindow() {
         initComponents();
     }
 
     private void ToMeal(ActionEvent e) {toMealPage();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
+    private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
 
     private void showBagTag(ActionEvent e) {showBag();}
 
@@ -82,21 +76,21 @@ public class PrintBag_11 extends JFrame {
             }
         }
 
-        if(!(EnterBN_3.getPsnTemp()==null))  {
+        if(!(EnterBookingNumber.getPsnTemp()==null))  {
             try {
-                EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+                EnterBookingNumber.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther_3.getPsnTemp1()==null)) {
+        }else if(!(EnterOther.getPsnTemp1()==null)) {
             try {
-                EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+                EnterOther.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+        }else if(!(EnterOther.getPsnTemp2()==null)){
             try {
-                EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
+                EnterOther.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -110,40 +104,40 @@ public class PrintBag_11 extends JFrame {
      */
     public void showBag(){
         setBagNo();
-        if(!(EnterOther_3.getPsnTemp1()==null)){
+        if(!(EnterOther.getPsnTemp1()==null)){
             try{
-                int weightPsn = WeightShow_8.weightPsn;
+                int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court=BagStore_8.court;
+                int court= BagStoreWindow.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1+WeightShow_8.dropCourt);
+                CounterNo.setText(str1+ WeightShowWindow.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
-        else if(!(EnterBN_3.getPsnTemp()==null))  {
+        else if(!(EnterBookingNumber.getPsnTemp()==null))  {
             try{
-                int weightPsn = WeightShow_8.weightPsn;
+                int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court=BagStore_8.court;
+                int court= BagStoreWindow.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1+WeightShow_8.dropCourt);
+                CounterNo.setText(str1+ WeightShowWindow.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+        }else if(!(EnterOther.getPsnTemp2()==null)){
             try{
-                int weightPsn = WeightShow_8.weightPsn;
+                int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court=BagStore_8.court;
+                int court= BagStoreWindow.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
-                CounterNo.setText(str1+WeightShow_8.dropCourt);
+                CounterNo.setText(str1+ WeightShowWindow.dropCourt);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -173,21 +167,21 @@ public class PrintBag_11 extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBaggage(){
-        if(!(EnterBN_3.getPsnTemp()==null)) {
-            EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
-            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStore_8.court+"");
-            EnterBN_3.getPsnTemp().setCheckinStatus(0);
-            return EnterBN_3.getPsnTemp();
-        }else if(!(EnterOther_3.getPsnTemp1()==null)){
-            EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStore_8.court+"");
-            EnterOther_3.getPsnTemp1().setCheckinStatus(0);
-            return EnterOther_3.getPsnTemp1();
-        }else if(!(EnterOther_3.getPsnTemp2()==null)){
-            EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(BagStore_8.court+"");
-            EnterOther_3.getPsnTemp2().setCheckinStatus(0);
-            return EnterOther_3.getPsnTemp2();
+        if(!(EnterBookingNumber.getPsnTemp()==null)) {
+            EnterBookingNumber.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+            EnterBookingNumber.getPsnTemp().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterBookingNumber.getPsnTemp().setCheckinStatus(0);
+            return EnterBookingNumber.getPsnTemp();
+        }else if(!(EnterOther.getPsnTemp1()==null)){
+            EnterOther.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+            EnterOther.getPsnTemp1().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther.getPsnTemp1().setCheckinStatus(0);
+            return EnterOther.getPsnTemp1();
+        }else if(!(EnterOther.getPsnTemp2()==null)){
+            EnterOther.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
+            EnterOther.getPsnTemp2().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther.getPsnTemp2().setCheckinStatus(0);
+            return EnterOther.getPsnTemp2();
         }
         return null;
     }
@@ -362,7 +356,7 @@ public class PrintBag_11 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        pDB.updatePassengerInfo(PrintBag_11.writeInBaggage());
+        pDB.updatePassengerInfo(PrintBaggageWindow.writeInBaggage());
         setBackground();
     }
 

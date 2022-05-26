@@ -11,25 +11,25 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class Baggage_7 extends JFrame {
+public class BaggageWindow extends JFrame {
     /**
      * Instantiates a new Baggage 7.
      */
-    public Baggage_7() {
+    public BaggageWindow() {
         initComponents();
     }
 
-    private void weight(ActionEvent e) {dispose();new WeightShow_8().setVisible(true);}
+    private void weight(ActionEvent e) {dispose();new WeightShowWindow().setVisible(true);}
 
-    private void storeBaggage(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
+    private void storeBaggage(ActionEvent e) {dispose();new BagStoreWindow().setVisible(true);}
 
-    private void BagAdd(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
+    private void BagAdd(ActionEvent e) {dispose();new BagStoreWindow().setVisible(true);}
 
-    private void seatAgain(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void seatAgain(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**
      * Set background.
      */

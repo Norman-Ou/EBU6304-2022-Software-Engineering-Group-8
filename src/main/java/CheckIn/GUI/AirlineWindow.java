@@ -13,19 +13,19 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class Airline_1 extends JFrame {
+public class AirlineWindow extends JFrame {
     /**
      * Instantiates a new Airline 1.
      */
-    public Airline_1() {
+    public AirlineWindow() {
         initComponents();
     }
 
-    private void ok(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
+    private void ok(ActionEvent e) {dispose();new CheckInWindow().setVisible(true);}
 
     private void exit(ActionEvent e) throws InterruptedException { dispose();}
 
-    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
 
     /**
