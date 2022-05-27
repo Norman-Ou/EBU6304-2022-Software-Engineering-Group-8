@@ -5,10 +5,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 18:56:09 CST 2022
- */
-
 
 /**
  * The type Meal 12.

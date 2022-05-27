@@ -68,7 +68,7 @@ public class WeightShow_8 extends JFrame {
         String str = "Your baggage weighs: ";
         dropCourt = (int)(Math.random()*100)+2;
 
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             overWeight(EnterOther_3.getPsnTemp1());
             EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(dropCourt+"");
             try {
@@ -77,7 +77,7 @@ public class WeightShow_8 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        } else if(EnterOther_3.getPsnTemp1()==null) {
+        } else if(!(EnterBN_3.getPsnTemp()==null))  {
             overWeight(EnterBN_3.getPsnTemp());
             EnterBN_3.getPsnTemp().getBaggage().setDropCounter(dropCourt+"");
             System.out.println(EnterBN_3.getPsnTemp().getBaggage().getDropCounter());
@@ -87,7 +87,7 @@ public class WeightShow_8 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             overWeight(EnterOther_3.getPsnTemp2());
             EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(dropCourt+"");
             try {

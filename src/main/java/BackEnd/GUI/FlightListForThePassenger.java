@@ -4,12 +4,11 @@
 
 package BackEnd.GUI;
 
-import javax.swing.*;
-
 import BackEnd.Monitor.bMonitors;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,6 +31,10 @@ public class FlightListForThePassenger extends JFrame {
     
     private void ConfirmButtonMouseClicked(MouseEvent e) {
 
+        Flight1.setText("");
+        Flight2.setText("");
+        Flight3.setText("");
+        Flight4.setText("");
             String p_ID=InputBar.getText();//Use p_ID as a key to search for information in DB
             TransInformation1=p_ID;//这里对传递信息赋值了，赋值为乘客ID
             bMonitors admin = new bMonitors();

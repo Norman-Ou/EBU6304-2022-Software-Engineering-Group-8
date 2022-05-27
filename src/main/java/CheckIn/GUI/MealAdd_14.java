@@ -2,6 +2,7 @@ package CheckIn.GUI;
 
 import Beans.Flight.SubClasses.ExtraOption;
 import CheckIn.Monitor.cMonitors;
+import Tools.Utils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -110,7 +111,7 @@ public class MealAdd_14 extends JFrame {
                         price = 11;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
+                if(!(EnterOther_3.getPsnTemp2()==null)){
                     arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Steak");
@@ -139,7 +140,7 @@ public class MealAdd_14 extends JFrame {
                         price = 12;
                     }
                 }
-                if(!(EnterOther_3.getPsnTemp1()==null)){
+                if(!(EnterOther_3.getPsnTemp2()==null)){
                     arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Tempura");
@@ -155,7 +156,8 @@ public class MealAdd_14 extends JFrame {
      * Set background.
      */
     public void setBackground() {
-        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/burger.png"));
+
+        JLabel jl3=new JLabel(new ImageIcon(Utils.getRsrFile("burger.png")));
         this.labelBurger.add(jl3);
         ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
@@ -172,15 +174,15 @@ public class MealAdd_14 extends JFrame {
      * Set meal ad pic.
      */
     public void setMealAdPic(){
-        JLabel jl1=new JLabel(new ImageIcon("src/main/resources/salmon_sashimi.png"));
+        JLabel jl1=new JLabel(new ImageIcon(Utils.getRsrFile("salmon_sashimi.png")));
         sahsimiPanel.add(jl1,BorderLayout.CENTER);
         sahsimiPanel.add(labelBurger, BorderLayout.NORTH);
 
-        JLabel jl2=new JLabel(new ImageIcon("src/main/resources/steak.png"));
+        JLabel jl2=new JLabel(new ImageIcon(Utils.getRsrFile("steak.png")));
         steakPanel.add(jl2,BorderLayout.CENTER);
         steakPanel.add(labelBurger, BorderLayout.NORTH);
 
-        JLabel jl3=new JLabel(new ImageIcon("src/main/resources/tempura.png"));
+        JLabel jl3=new JLabel(new ImageIcon(Utils.getRsrFile("tempura.png")));
         tempuraPanel.add(jl3,BorderLayout.CENTER);
         tempuraPanel.add(labelBurger, BorderLayout.NORTH);
     }

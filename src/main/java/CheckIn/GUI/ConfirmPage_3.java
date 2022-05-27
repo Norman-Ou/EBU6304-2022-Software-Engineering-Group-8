@@ -37,14 +37,13 @@ public class ConfirmPage_3 extends JFrame {
 
     private void Back2Init(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
-    private void showInitialInfo(ActionEvent e) {
-        info();
-    }
+    private void showInitialInfo(ActionEvent e) {info();}
 
     private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Confirm info.
+     * Confirm steps, and judging airline type, jump to selection of seats.
      */
     public void confirmInfo(){
         int temp=JOptionPane.showInternalConfirmDialog(null,
@@ -54,11 +53,14 @@ public class ConfirmPage_3 extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             String str1 = "";
-            if (EnterBN_3.getPsnTemp() == null) {
+            if(!(EnterOther_3.getPsnTemp1()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
             }
-            if (EnterOther_3.getPsnTemp1() == null) {
+            if(!(EnterBN_3.getPsnTemp()==null))  {
                 str1= Objects.requireNonNull(EnterBN_3.getFlight()).getFlightType();
+            }
+            if(!(EnterOther_3.getPsnTemp2()==null)) {
+                str1=AirPassCse.flightChoose.getFlightType();
             }
             try {
                 if (Objects.equals(str1, "A")) {
@@ -86,11 +88,8 @@ public class ConfirmPage_3 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -98,9 +97,10 @@ public class ConfirmPage_3 extends JFrame {
 
     /**
      * Info.
+     * Fill in information.
      */
     public void info(){
-        if(EnterBN_3.getPsnTemp()==null){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
@@ -116,7 +116,7 @@ public class ConfirmPage_3 extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
                 BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
                 Surname.setText(EnterBN_3.getPsnTemp().getSurName());
@@ -130,7 +130,7 @@ public class ConfirmPage_3 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else{
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
                 BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
                 Surname.setText(EnterOther_3.getPsnTemp2().getSurName());

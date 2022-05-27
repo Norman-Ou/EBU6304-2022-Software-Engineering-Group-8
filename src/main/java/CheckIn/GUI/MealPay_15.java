@@ -12,9 +12,6 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 21:17:26 CST 2022
- */
 
 
 /**
@@ -91,8 +88,17 @@ public class MealPay_15 extends JFrame {
      * Credit.
      */
     public void credit(){
-        Passenger psn = pDB.loadPassengerByBookingNo(EnterBN_3.getPsnTemp().getBookNumber());
-        String creditInfo = "Your credit card number:"+psn.getCreditCard().getCardNo();
+        String creditInfo = null;
+        if(!(EnterBN_3.getPsnTemp()==null)) {
+            creditInfo = "Your credit card number:" + EnterBN_3.getPsnTemp().getCreditCard().getCardNo();
+        }
+        if(!(EnterOther_3.getPsnTemp1()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp1().getCreditCard().getCardNo();
+        }
+        if(!(EnterOther_3.getPsnTemp2()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp2().getCreditCard().getCardNo();
+        }
+        
         textField1.setText(creditInfo);
     }
 
@@ -105,11 +111,8 @@ public class MealPay_15 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
