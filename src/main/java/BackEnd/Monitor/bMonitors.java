@@ -98,7 +98,7 @@ public class bMonitors {
      * @return the list of all passengers on this flight.
      */
     @Test
-    public List<Passenger> getPassengerList(String targetFlightNo) {
+    public List<Passenger> getPassengerList(String targetFlightNo){
         List<Order> oList;
         try {
             oList = oDB.getOrdersByFlightNo(targetFlightNo);
