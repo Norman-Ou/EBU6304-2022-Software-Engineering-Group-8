@@ -20,7 +20,7 @@ import javax.swing.border.*;
  *
  * @author Jiayi Wang
  */
-public class Seat_3_6 extends JFrame {
+public class SeatTripleWindow extends JFrame {
     /**
      * The constant seat.
      */
@@ -39,7 +39,7 @@ public class Seat_3_6 extends JFrame {
     /**
      * Instantiates a new Seat 3 6.
      */
-    public Seat_3_6() {
+    public SeatTripleWindow() {
         initComponents();
     }
 

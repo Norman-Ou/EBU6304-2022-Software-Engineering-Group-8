@@ -81,7 +81,7 @@ public class FlightListForThePassenger extends JFrame {
             Flight1.setText("Sorry, no such Flight.");
         }
         else{
-            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            PassengerPage P = new PassengerPage(this.getPassengerID(),this.getFlightID());
             P.setVisible(true);
 //            this.dispose();
 //            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -98,7 +98,7 @@ public class FlightListForThePassenger extends JFrame {
             Flight2.setText("Sorry, no such Flight.");
         }
         else{
-            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            PassengerPage P = new PassengerPage(this.getPassengerID(),this.getFlightID());
             P.setVisible(true);
 //            this.dispose();
 //            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -114,7 +114,7 @@ public class FlightListForThePassenger extends JFrame {
             Flight3.setText("Sorry, no such Flight.");
         }
         else{
-            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            PassengerPage P = new PassengerPage(this.getPassengerID(),this.getFlightID());
             P.setVisible(true);
 //            this.dispose();
 //            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -130,7 +130,7 @@ public class FlightListForThePassenger extends JFrame {
             Flight4.setText("Sorry, no such Flight.");
         }
         else{
-            PassengerPage1 P = new PassengerPage1(this.getPassengerID(),this.getFlightID());
+            PassengerPage P = new PassengerPage(this.getPassengerID(),this.getFlightID());
             P.setVisible(true);
 //            this.dispose();
 //            P.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -17,15 +17,15 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealPayPanel extends JFrame {
+public class MealPay extends JFrame {
     private static int seatFee=0;
     private String mealTemp="";
 
     /**
      * Instantiates a new Meal pay 15.
      */
-    public MealPayPanel() throws IOException {
-        if(Seat_1_6.upgrade||Seat_3_6.upgrade|| MealAddPanel.mealState){
+    public MealPay() throws IOException {
+        if(SeatDoubleWindow.upgrade|| SeatTripleWindow.upgrade|| MealAdd.mealState){
             initComponents();}
     }
 
@@ -54,12 +54,12 @@ public class MealPayPanel extends JFrame {
 
     private void payMeal(ActionEvent e) {
         pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+ MealAddPanel.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
         dispose();new ExitWindow().setVisible(true);}
 
     private void payAdMeal(ActionEvent e) {
         pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+ MealAddPanel.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
         dispose();new ExitWindow().setVisible(true);}
 
     private void BackMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
@@ -70,14 +70,14 @@ public class MealPayPanel extends JFrame {
      * Pay 4 meal content.
      */
     public void pay4MealContent(){
-        if(MealAddPanel.VIPmealSelected==null){
-            setMealTemp(MealNormPanel.mealSelected);
+        if(MealAdd.VIPmealSelected==null){
+            setMealTemp(MealNorm.mealSelected);
         }else{
-            setMealTemp(MealAddPanel.VIPmealSelected);
+            setMealTemp(MealAdd.VIPmealSelected);
         }
-        if(Seat_1_6.upgrade){
+        if(SeatDoubleWindow.upgrade){
             seatFee=100;
-        }else if(Seat_3_6.upgrade){
+        }else if(SeatTripleWindow.upgrade){
             seatFee=100;
         }
     }

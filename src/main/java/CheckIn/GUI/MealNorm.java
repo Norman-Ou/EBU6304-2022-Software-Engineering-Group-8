@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealNormPanel extends JFrame {
+public class MealNorm extends JFrame {
     /**
      * The constant mealSelected.
      */
@@ -33,7 +33,7 @@ public class MealNormPanel extends JFrame {
     /**
      * Instantiates a new Meal norm 13.
      */
-    public MealNormPanel() {
+    public MealNorm() {
         initComponents();
     }
 

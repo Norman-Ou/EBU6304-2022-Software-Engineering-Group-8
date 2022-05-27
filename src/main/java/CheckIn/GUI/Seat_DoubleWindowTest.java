@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author: Jiayi Wang
  * @create: 2022-05-23 08:48
  **/
-class Seat_1_6Test {
+class Seat_DoubleWindowTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {

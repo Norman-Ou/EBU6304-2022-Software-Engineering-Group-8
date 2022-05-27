@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealAddPanel extends JFrame {
+public class MealAdd extends JFrame {
     /**
      * The constant VIPmealSelected.
      */
@@ -39,7 +39,7 @@ public class MealAddPanel extends JFrame {
     /**
      * Instantiates a new Meal add 14.
      */
-    public MealAddPanel() {
+    public MealAdd() {
         initComponents();
     }
 
@@ -47,7 +47,7 @@ public class MealAddPanel extends JFrame {
 
     private void MealPay(ActionEvent e) throws IOException {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        dispose();new MealPayPanel().setVisible(true);}
+        dispose();new MealPay().setVisible(true);}
 
     private void Back2Meal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
 

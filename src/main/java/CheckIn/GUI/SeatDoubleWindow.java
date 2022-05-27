@@ -21,7 +21,7 @@ import java.util.*;
  *
  * @author Jiayi Wang
  */
-public class Seat_1_6 extends JFrame {
+public class SeatDoubleWindow extends JFrame {
     /**
      * The constant seat.
      */
@@ -43,7 +43,7 @@ public class Seat_1_6 extends JFrame {
      *
      * @throws Exception the exception
      */
-    public Seat_1_6() throws Exception {initComponents();}
+    public SeatDoubleWindow() throws Exception {initComponents();}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 

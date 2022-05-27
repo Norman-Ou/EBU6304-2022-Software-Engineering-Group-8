@@ -80,10 +80,10 @@ public class PrintFlightWindow extends JFrame {
                 ETC.setText(flt.getETC());
                 ETD.setText(flt.getETD());
                 Gate.setText(flt.getGate());
-                if(Seat_1_6.seat==null){
-                    Seat.setText(Seat_3_6.seat);
-                }else if(Seat_3_6.seat==null){
-                    Seat.setText(Seat_1_6.seat);
+                if(SeatDoubleWindow.seat==null){
+                    Seat.setText(SeatTripleWindow.seat);
+                }else if(SeatTripleWindow.seat==null){
+                    Seat.setText(SeatDoubleWindow.seat);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -100,10 +100,10 @@ public class PrintFlightWindow extends JFrame {
                 ETC.setText(EnterBookingNumber.getFlight().getETC());
                 ETD.setText(EnterBookingNumber.getFlight().getETD());
                 Gate.setText(EnterBookingNumber.getFlight().getGate());
-                if(Seat_1_6.seat==null){
-                    Seat.setText(Seat_3_6.seat);
-                }else if(Seat_3_6.seat==null){
-                    Seat.setText(Seat_1_6.seat);
+                if(SeatDoubleWindow.seat==null){
+                    Seat.setText(SeatTripleWindow.seat);
+                }else if(SeatTripleWindow.seat==null){
+                    Seat.setText(SeatDoubleWindow.seat);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -120,10 +120,10 @@ public class PrintFlightWindow extends JFrame {
                 ETC.setText(flt.getETC());
                 ETD.setText(flt.getETD());
                 Gate.setText(flt.getGate());
-                if(Seat_1_6.seat==null){
-                    Seat.setText(Seat_3_6.seat);
-                }else if(Seat_3_6.seat==null){
-                    Seat.setText(Seat_1_6.seat);
+                if(SeatDoubleWindow.seat==null){
+                    Seat.setText(SeatTripleWindow.seat);
+                }else if(SeatTripleWindow.seat==null){
+                    Seat.setText(SeatDoubleWindow.seat);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -142,10 +142,10 @@ public class PrintFlightWindow extends JFrame {
             EnterBookingNumber.getPsnTemp().getBoardingPass().setETC(EnterBookingNumber.getFlight().getETC());
             EnterBookingNumber.getPsnTemp().getBoardingPass().setETD(EnterBookingNumber.getFlight().getETD());
             EnterBookingNumber.getPsnTemp().getBoardingPass().setFlightNo(EnterBookingNumber.getFlight().getFlightNo());
-            if (Seat_1_6.seat == null) {
-                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(Seat_3_6.seat);
-            } else if (Seat_3_6.seat == null) {
-                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            if (SeatDoubleWindow.seat == null) {
+                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+            } else if (SeatTripleWindow.seat == null) {
+                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
             EnterBookingNumber.getPsnTemp().getBoardingPass().setDeparture(EnterBookingNumber.getFlight().getDeparture());
             EnterBookingNumber.getPsnTemp().getBoardingPass().setDestination(EnterBookingNumber.getFlight().getDestination());
@@ -156,10 +156,10 @@ public class PrintFlightWindow extends JFrame {
             EnterOther.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
             EnterOther.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
             EnterOther.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
-            if (Seat_1_6.seat == null) {
-                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(Seat_3_6.seat);
-            } else if (Seat_3_6.seat == null) {
-                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            if (SeatDoubleWindow.seat == null) {
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+            } else if (SeatTripleWindow.seat == null) {
+                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
             EnterOther.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
             EnterOther.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
@@ -170,10 +170,10 @@ public class PrintFlightWindow extends JFrame {
             EnterOther.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
             EnterOther.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
             EnterOther.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
-            if (Seat_1_6.seat == null) {
-                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(Seat_3_6.seat);
-            } else if (Seat_3_6.seat == null) {
-                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(Seat_1_6.seat);
+            if (SeatDoubleWindow.seat == null) {
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+            } else if (SeatTripleWindow.seat == null) {
+                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
             EnterOther.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
             EnterOther.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());

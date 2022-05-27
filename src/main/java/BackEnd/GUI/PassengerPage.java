@@ -16,8 +16,8 @@ import java.util.ArrayList;
 /**
  * @author unknown
  */
-public class PassengerPage1 extends JFrame {
-    public PassengerPage1(String trans1, String trans2) {
+public class PassengerPage extends JFrame {
+    public PassengerPage(String trans1, String trans2) {
         initComponents(trans1,trans2);
     }
 

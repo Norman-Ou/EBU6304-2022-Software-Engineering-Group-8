@@ -19,9 +19,9 @@ public class MealWindow extends JFrame {
         initComponents();
     }
 
-    private void Normal(ActionEvent e) {dispose();new MealNormPanel().setVisible(true);}
+    private void Normal(ActionEvent e) {dispose();new MealNorm().setVisible(true);}
 
-    private void VIPMeal(ActionEvent e) {dispose();new MealAddPanel().setVisible(true);}
+    private void VIPMeal(ActionEvent e) {dispose();new MealAdd().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
