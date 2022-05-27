@@ -22,87 +22,161 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import static CheckIn.GUI.EnterOther_3.*;
+
 /**
+ * The type Air pass cse.
+ *
  * @author Jiayi Wang
  */
 public class AirPassCse extends JFrame {
+    /**
+     * The constant flightChoose.
+     */
     public static Flight flightChoose;
+    /**
+     * The constant state.
+     */
     public static boolean state;
+    /**
+     * The constant flightNo.
+     */
     public static String flightNo = "";
+    /**
+     * The constant Dep.
+     */
     public static String Dep= "";
+    /**
+     * The constant Des.
+     */
     public static String Des= "";
+    /**
+     * The constant ETA.
+     */
     public static String ETA= "";
+    /**
+     * The constant time.
+     */
     public static Calendar time = Calendar.getInstance();
+    /**
+     * The constant format.
+     */
     public static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    /**
+     * The constant nowTime.
+     */
     public static String nowTime = format.format(time.getTime());
-//    public static String nowTime = "07-09-2022 7:00:32";
+
+    /**
+     * Instantiates a new Air pass cse.
+     */
     public AirPassCse() {
         initComponents();
     }
 
+    private void cancel(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
+
+    private void ok(ActionEvent e) {new ConfirmPage_3().setVisible(true);dispose();}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    /**
+     * Error handle.
+     */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
         new Error().setVisible(true);
     }
 
+    /**
+     * Airline add.
+     * If the remaining time is less than 30min, then the passenger would be rejected to checkin.
+     *
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ParseException         the parse exception
+     */
     public void airlineAdd() throws IllegalAccessException, ParseException {
-            ArrayList<Flight> list=EnterOther_3.getFlight();
-            System.out.println(list);
-            for(Flight flt : list) {          //同for(int i = 0;i<list.size();i++)
-                flightNo=flt.getFlightNo();
-                Dep=flt.getDeparture();
-                Des=flt.getDestination();
-                ETA=flt.getETA();
-                System.out.println(ETA);
-                String eta=flt.getETA();
-                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                Date date1 = format.parse(nowTime);
-                Date date2 = format.parse(eta);
+        ArrayList<Flight> list = null;
+        if(psnTemp1==null){
+            String IDNum = Config.Config.idDocument1.getID();
+            String surname=Config.Config.idDocument1.getSurname();
+            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
+            System.out.println(list+"22222222222");
+        }else if(psnTemp2==null){
+            String IDNum1=psnTemp1.getPassengerId();
+            String surname1=psnTemp1.getSurName();
+            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
+        }
 
-                long nowMillisecond = date1.getTime();
-                long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond >  1800000) {
-                    setContent();
-                }else{
-                    throw new IllegalAccessException();
-                }
+        String sur =EnterOther_3.getPsnTemp2().getSurName();
+        System.out.println(sur+"1111111111111111111111111");
+//        String id = EnterOther_3.getPsnTemp2().getPassengerId();
+//        ArrayList<Flight> list=cMonitors.getFlightBySurname_ID(sur,id);
+        System.out.println(fltTemp+"33333333333");
+        for(Flight flt : list) {
+            flightNo=flt.getFlightNo();
+            Dep=flt.getDeparture();
+            Des=flt.getDestination();
+            ETA=flt.getETA();
+            String eta=flt.getETA();
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date date1 = format.parse(nowTime);
+            Date date2 = format.parse(eta);
 
+            long nowMillisecond = date1.getTime();
+            long etaMillisecond = date2.getTime();
+            if(etaMillisecond - nowMillisecond >  1800000) {
+                setContent();
+            }else{
+                throw new IllegalAccessException();
             }
-
+        }
     }
 
-    private void setContent(){
-        airLine.addItem(flightNo);
-    }
+    /**
+     * Set content in the airline combox.
+     */
+    public void setContent(){airLine.addItem(flightNo);}
 
-    private void cancel(ActionEvent e) {
-        new EnterOther_3().setVisible(true);
-        dispose();
-    }
-
-    private void ok(ActionEvent e) {
-        new ConfirmPage_3().setVisible(true);
-        dispose();
-    }
-
-    private void testDO(ActionEvent e) {
-
+    /**
+     * Test do. Detect exceptions from overtime.
+     *
+     * @param e the e
+     */
+    public void testDO(ActionEvent e) {
         try{
             airlineAdd();
         } catch (IllegalAccessException | ParseException e1) {
             errorHandel();
             e1.printStackTrace();
         }
-//        dispose();
     }
 
-    private void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list=EnterOther_3.getFlight();
+    /**
+     * Air line item state changed.
+     * Fill in the information in the shown table.
+     *
+     * @param e the e
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ParseException         the parse exception
+     */
+    public void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
+        ArrayList<Flight> list = null;
+        if(psnTemp2!=null){
+            String IDNum = Config.Config.idDocument1.getID();
+            String surname=Config.Config.idDocument1.getSurname();
+            psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
+            System.out.println(IDNum+surname+"44444444");
+            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
+            System.out.println(fltTemp+"22222222222");
+        }else if(psnTemp1!=null){
+            String IDNum1=psnTemp1.getPassengerId();
+            String surname1=psnTemp1.getSurName();
+            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
+        }
         System.out.println(list);
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
-//            airLine.addItem(flightNo);
-
             if(e.getStateChange()==ItemEvent.SELECTED){
                 String str=e.getItemSelectable().toString();
                 System.out.println(str);
@@ -122,8 +196,11 @@ public class AirPassCse extends JFrame {
         }
     }
 
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    /**
+     * Sets background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -134,10 +211,7 @@ public class AirPassCse extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -169,10 +243,10 @@ public class AirPassCse extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-            , 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-            dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+                    , 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+                    , new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
+                    dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -195,24 +269,24 @@ public class AirPassCse extends JFrame {
 
                         //---- table1 ----
                         table1.setModel(new DefaultTableModel(
-                            new Object[][] {
-                                {null, null},
-                                {null, null},
-                                {"Flight number", null},
-                                {null, null},
-                                {null, null},
-                                {"Departure", null},
-                                {null, null},
-                                {null, null},
-                                {"Destination", null},
-                                {null, null},
-                                {null, null},
-                                {"ETA", null},
-                                {"", null},
-                            },
-                            new String[] {
-                                "Title", "Information"
-                            }
+                                new Object[][] {
+                                        {null, null},
+                                        {null, null},
+                                        {"Flight number", null},
+                                        {null, null},
+                                        {null, null},
+                                        {"Departure", null},
+                                        {null, null},
+                                        {null, null},
+                                        {"Destination", null},
+                                        {null, null},
+                                        {null, null},
+                                        {"ETA", null},
+                                        {"", null},
+                                },
+                                new String[] {
+                                        "Title", "Information"
+                                }
                         ));
                         {
                             TableColumnModel cm = table1.getColumnModel();
@@ -267,7 +341,7 @@ public class AirPassCse extends JFrame {
 
                     //---- airLine ----
                     airLine.setModel(new DefaultComboBoxModel<>(new String[] {
-                        "Airline"
+                            "Airline"
                     }));
                     airLine.addItemListener(e -> {
                         try {
@@ -306,7 +380,7 @@ public class AirPassCse extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

@@ -3,30 +3,45 @@ package Tools;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * JSON Comparator tool class. Use to compare whether two JSON files are the same
+ *
+ * @author Ruizhe
+ * @version 1.0
+ * */
 public class JSONComparator {
-    public String compareJsonObject(String oldJsonStr, String newJsonStr1) {
-        //将字符串转换为json对象
-        JSON oldJson = JSON.parseObject(oldJsonStr);
-        JSON newJson = JSON.parseObject(newJsonStr1);
-        //递归遍历json对象所有的key-value，将其封装成path:value格式进行比较
+
+    /**
+     * Main function
+     *
+     * @param json1 input json 1
+     * @param json2 input json 2
+     * @return JSON String containing data with unequal key-value pairs in json1 and json2
+     * */
+    public String compareJsonObject(String json1, String json2) {
+        //Convert a string to a JSON object
+        JSON oldJson = JSON.parseObject(json1);
+        JSON newJson = JSON.parseObject(json2);
+        //All key-values of a JSON object are recursively traversed and encapsulated in path:value format for comparison
         Map<String, Object> oldMap = new LinkedHashMap<>();
         Map<String, Object> newMap = new LinkedHashMap<>();
         convertJsonToMap(oldJson, "", oldMap);
         convertJsonToMap(newJson, "", newMap);
         Map<String, Object> differenceMap = compareMap(oldMap, newMap);
-        //将最终的比较结果把不相同的转换为json对象返回
+        //The final comparison results are converted to json objects that are not identical
         String jsonObject = convertMapToJson(differenceMap);
         return jsonObject;
     }
 
     /**
-     * 将json数据转换为map存储用于比较
+     * Convert JSON data to map storage for comparison
      *
      * @param json
      * @param root
@@ -61,27 +76,27 @@ public class JSONComparator {
     }
 
     /**
-     * 比较两个map，返回不同数据
+     * Compare two maps and return different data
      *
      * @param oldMap
      * @param newMap
-     * @return
+     * @return Map containing different data
      */
     private Map<String, Object> compareMap(Map<String, Object> oldMap, Map<String, Object> newMap) {
-        //遍历newMap，将newMap的不同数据装进oldMap，同时删除oldMap中与newMap相同的数据
+        //Iterate over newMap, load different data of newMap into oldMap, and delete the same data in oldMap
         compareNewToOld(oldMap, newMap);
-        //將舊的有新的沒有的數據封裝數據結構存在舊的裡面
+        //Encapsulate old data with new data structures inside old data
         compareOldToNew(oldMap);
         return oldMap;
     }
 
     /**
-     * 將舊的有新的沒有的數據封裝數據結構存在舊的裡面
+     * Encapsulate old data with new data structures inside old data
+     *
      * @param oldMap
-     * @return
      */
     private void compareOldToNew(Map<String, Object> oldMap) {
-        //统一oldMap中newMap不存在的数据的数据结构，便于解析
+        //Unify data structures for oldMap data that does not exist in newMap for easy parsing
         for (Iterator<Map.Entry<String, Object>> it = oldMap.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry<String, Object> item = it.next();
             String key = item.getKey();
@@ -97,7 +112,7 @@ public class JSONComparator {
     }
 
     /**
-     * 將新的map與舊的比較，並將數據統一存在舊的裡面
+     * Compare the new map to the old one and unify the data into the old one
      * @param oldMap
      * @param newMap
      */
@@ -128,7 +143,7 @@ public class JSONComparator {
     }
 
     /**
-     * 将已经找出不同数据的map根据key的层级结构封装成json返回
+     * The map that has found different data is returned wrapped in JSON according to the hierarchy of keys
      *
      * @param map
      * @return
@@ -141,12 +156,12 @@ public class JSONComparator {
             Object value = item.getValue();
             String[] paths = key.split("\\.");
             int i = 0;
-            Object remarkObject = null;//用於深度標識對象
+            Object remarkObject = null;// Used for depth identification objects
             int indexAll = paths.length - 1;
             while (i <= paths.length - 1) {
                 String path = paths[i];
                 if (i == 0) {
-                    //初始化对象标识
+                    //Initializes the object identity
                     if (resultJSONObject.containsKey(path)) {
                         remarkObject = resultJSONObject.get(path);
                     } else {
@@ -164,7 +179,7 @@ public class JSONComparator {
                     i++;
                     continue;
                 }
-                if (path.matches("\\[[0-9]+\\]")) {//匹配集合对象
+                if (path.matches("\\[[0-9]+\\]")) {//Matching set object
                     int startIndex = path.lastIndexOf("[");
                     int endIndext = path.lastIndexOf("]");
                     int index = Integer.parseInt(path.substring(startIndex + 1, endIndext));
@@ -218,9 +233,10 @@ public class JSONComparator {
         return JSON.toJSONString(resultJSONObject);
     }
 
-/*    public static void main(String[] args){
+    @Test
+    public void test1(){
         String oldStr= "{a:'aaa',b:'bbb'}";
-        String newStr= "{a:'aaa',b:'bbb'}";
+        String newStr= "{a:'aa',b:'bbb'}";
         System.out.println(new JSONComparator().compareJsonObject(oldStr,newStr));
-    }*/
+    }
 }

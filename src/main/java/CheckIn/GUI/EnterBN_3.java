@@ -19,38 +19,64 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
+ * The type Enter bn 3.
+ *
  * @author Jiayi Wang
  */
 public class EnterBN_3 extends JFrame {
 
-    public EnterBN_3() {
-        initComponents();
-    }
+    /**
+     * Instantiates a new Enter bn 3.
+     */
+    public EnterBN_3() {initComponents();}
+
+    /**
+     * The constant bookNum.
+     */
     public static String bookNum;
+    /**
+     * The constant psnTemp.
+     */
     public static Passenger psnTemp;
+    /**
+     * The constant fltTemp.
+     */
     public static Flight fltTemp;
+    /**
+     * The constant time.
+     */
     public static Calendar time = Calendar.getInstance();
+    /**
+     * The constant format.
+     */
     public static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    /**
+     * The constant nowTime.
+     */
     public static String nowTime = format.format(time.getTime());
-//    public static String nowTime = "07-09-2022 7:42:32";
 
+    private void forgetBN(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
-    private void ok(ActionEvent e) throws IllegalAccessException, ParseException, Exception {
+    private void back(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
+    private void ok(ActionEvent e) throws Exception {bookNumHandel();}
+
+    public void bookNumHandel()throws Exception{
         String str=textField1.getText();
         bookNum=str;
-//        System.out.println(bookNum);
         Flight flt = new Flight();
         try {
             flt = cMonitors.getFlightByBookingNo(bookNum);
+
             Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
-//        System.out.println(psn);
+            System.out.println(flt+"00000000000000");
             fltTemp = flt;
             psnTemp = psn;
         }catch (Exception exception) {
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-        new CheckIn_2().setVisible(true);
+            new CheckIn_2().setVisible(true);
         }
         if(flt==null){
             throw new Exception(bookNum);
@@ -68,17 +94,30 @@ public class EnterBN_3 extends JFrame {
         }
         dispose();
     }
+
+    /**
+     * Error handel.
+     */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
         new Error().setVisible(true);
     }
+
+    /**
+     * First check.
+     *
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ParseException         the parse exception
+     */
     public void firstCheck() throws IllegalAccessException, ParseException {
         try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
             Date date2 = new Date();
+            System.out.println(); System.out.println(fltTemp+"99999999999");
             try{
                 date2 = format.parse(fltTemp.getETD());
+
                 new ConfirmPage_3().setVisible(true);
             } catch (Exception error){
                 JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
@@ -87,8 +126,6 @@ public class EnterBN_3 extends JFrame {
             }
             long nowMillisecond = date1.getTime();
             long etdMillisecond = date2.getTime();
-            System.out.println(etdMillisecond);
-            System.out.println(nowMillisecond);
             if( etdMillisecond - nowMillisecond < 1800000){
                 throw new IllegalAccessException();
             }
@@ -98,6 +135,12 @@ public class EnterBN_3 extends JFrame {
         }
 
     }
+
+    /**
+     * Gets psn temp.
+     *
+     * @return the psn temp
+     */
     public static Passenger getPsnTemp() {
         try {
             return psnTemp;
@@ -107,6 +150,11 @@ public class EnterBN_3 extends JFrame {
         return null;
     }
 
+    /**
+     * Gets flight.
+     *
+     * @return the flight
+     */
     public static Flight getFlight() {
         try {
             return fltTemp;
@@ -116,18 +164,11 @@ public class EnterBN_3 extends JFrame {
         return null;
     }
 
-    private void forgetBN(ActionEvent e) {
-        new EnterOther_3().setVisible(true);
-        dispose();
-    }
-
-    private void back(ActionEvent e) {
-        new Airline_1().setVisible(true);
-        dispose();
-    }
-
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -141,10 +182,6 @@ public class EnterBN_3 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -232,8 +269,8 @@ public class EnterBN_3 extends JFrame {
                 textField1.setPreferredSize(new Dimension(49, 90));
                 textField1.setHorizontalAlignment(SwingConstants.CENTER);
                 panel2.add(textField1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel2, BorderLayout.CENTER);
         }
@@ -241,7 +278,7 @@ public class EnterBN_3 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

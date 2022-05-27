@@ -10,27 +10,29 @@ import java.util.ResourceBundle;
  */
 
 
-
 /**
+ * The type Check in 2.
+ *
  * @author Jiayi Wang
  */
 public class CheckIn_2 extends JFrame {
+    /**
+     * Instantiates a new Check in 2.
+     */
     public CheckIn_2() {
         initComponents();
     }
 
-    private void CheckInButton(ActionEvent e) {
-        dispose();
-        new EnterBN_3().setVisible(true);
-    }
+    private void CheckInButton(ActionEvent e) {dispose();new EnterBN_3().setVisible(true);}
 
-    private void AirlineRe(ActionEvent e) {
-        dispose();
-        new Airline_1().setVisible(true);
-    }
+    private void AirlineRe(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -44,10 +46,7 @@ public class CheckIn_2 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
+
 
 
     private void initComponents() {
@@ -73,11 +72,11 @@ public class CheckIn_2 extends JFrame {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
             dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+                    ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+                    . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+                    . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+        propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -130,7 +129,7 @@ public class CheckIn_2 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

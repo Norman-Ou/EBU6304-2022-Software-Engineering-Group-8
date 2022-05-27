@@ -21,43 +21,92 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
+ * The type Enter other 3.
+ *
  * @author Jiayi Wang
  */
 public class EnterOther_3 extends JFrame {
+    /**
+     * The constant ETA.
+     */
     public static String ETA= "";
 
+    /**
+     * Instantiates a new Enter other 3.
+     */
     public EnterOther_3() {
         initComponents();
     }
 
-    public static String IDNum;
-    public static String surname;
+    /**
+     * The constant psnTemp1.
+     */
     public static Passenger psnTemp1;
+    /**
+     * The constant psnTemp2.
+     */
     public static Passenger psnTemp2;
+    /**
+     * The constant BookingNumber.
+     */
     public static String BookingNumber;
+    /**
+     * The Flt temp1.
+     */
     public static ArrayList<Flight> fltTemp;
+    /**
+     * The Flt temp2.
+     */
+    public static ArrayList<Flight> fltTemp2;
+    /**
+     * The constant nowTime.
+     */
     public static String nowTime = "07-09-2022 7:42:32";
 
-    private void ok(ActionEvent e) throws Exception {
-        //open next page
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
-        IDNum=ID.getText();
-        surname=Sur.getText();
-        ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
-        fltTemp = fltList;
-        psnTemp1=cMonitors.getPassengerBySurname_ID(surname,IDNum);
+    private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
+
+    private void scanID(ActionEvent e) throws Exception {getPsnTemp2();openNext(); new AirPassCse().setVisible(true);dispose();}
+
+    private void ok(ActionEvent e) throws Exception {
+        getPsnTemp2();
+
+        openNext();
+    }
+
+    public void openNext()throws Exception{
+        if(psnTemp1==null){
+            String IDNum = Config.Config.idDocument1.getID();
+            String surname=Config.Config.idDocument1.getSurname();
+            psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
+            System.out.println(IDNum+surname+"44444444");
+            ArrayList<Flight> fltList = cMonitors.getFlightBySurname_ID(surname,IDNum);
+            fltTemp=fltList;
+            System.out.println(fltList+"22222222222");
+        }else if(psnTemp2==null){
+            String IDNum1=ID.getText();
+            String surname1=Sur.getText();
+            ArrayList<Flight> fltList1 = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
+            fltTemp = fltList1;
+            psnTemp1=cMonitors.getPassengerBySurname_ID(surname1,IDNum1);
+        }
 
         try{
             firstCheck();
-
         } catch (IllegalAccessException illegalAccessException) {
             illegalAccessException.printStackTrace();
         } catch (ParseException parseException) {
             parseException.printStackTrace();
         }
-//        new AirPassCse().setVisible(true);
         dispose();
     }
+
+    /**
+     * Gets flight.
+     *
+     * @return the flight
+     */
     public static ArrayList<Flight> getFlight() {
         try {
             return fltTemp;
@@ -66,47 +115,44 @@ public class EnterOther_3 extends JFrame {
         }
         return null;
     }
+
+    /**
+     * Gets psn temp 1.
+     *
+     * @return the psn temp 1
+     */
     public static Passenger getPsnTemp1() {
         try{
             BookingNumber=psnTemp1.getBookNumber();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return psnTemp1;
-    }
-
-    public static Passenger getPsnTemp2() {
-        //Scan a passenger
-        try{
-            BookingNumber=psnTemp1.getBookNumber();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return psnTemp1;
-    }
-
-    public static ArrayList<Flight> getFlightList() {
-        try {
-            return fltTemp;
+            return psnTemp1;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private void cancel(ActionEvent e) {
-        new Airline_1().setVisible(true);
-        dispose();
+    /**
+     * Gets psn temp 2.
+     *
+     * @return the psn temp 2
+     */
+    public static Passenger getPsnTemp2(){
+        String IDNum = Config.Config.idDocument1.getID();
+        String surname=Config.Config.idDocument1.getSurname();
+        psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
+        try{
+            return psnTemp2;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    private void scanID(ActionEvent e) {
-        new ConfirmPage_3().setVisible(true);
-        dispose();
-        getPsnTemp2();
-    }
-
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
@@ -117,37 +163,39 @@ public class EnterOther_3 extends JFrame {
         this.setVisible(true);
     }
 
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
+
+    /**
+     * First check.
+     *
+     * @throws IllegalAccessException the illegal access exception
+     * @throws ParseException         the parse exception
+     */
     public void firstCheck() throws IllegalAccessException, ParseException {
 
-        ArrayList<Flight> list=EnterOther_3.getFlight();
+        ArrayList<Flight> list = null;
+        if(psnTemp1==null){
+            String IDNum = Config.Config.idDocument1.getID();
+            String surname=Config.Config.idDocument1.getSurname();
+            psnTemp2 = cMonitors.getPassengerBySurname_ID(surname,IDNum);
+            System.out.println(IDNum+surname+"44444444");
+            list = cMonitors.getFlightBySurname_ID(surname,IDNum);
+            System.out.println(fltTemp+"22222222222");
+        }else if(psnTemp2==null){
+            String IDNum1=ID.getText();
+            String surname1=Sur.getText();
+            list = cMonitors.getFlightBySurname_ID(surname1,IDNum1);
+        }
         if(list==null){
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
             new CheckIn_2().setVisible(true);
         }else{
-            for(Flight flt : list) {          //同for(int i = 0;i<list.size();i++)
+            for(Flight flt : list) {
                 ETA=flt.getETA();
-                System.out.println(ETA);
                 String eta=flt.getETA();
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 Date date1 = format.parse(nowTime);
                 Date date2 = format.parse(eta);
-
-//                try{
-//                    date2 = format.parse(eta);
-//                    new AirPassCse().setVisible(true);
-//                } catch (Exception error){
-//                    long nowMillisecond = date1.getTime();
-//                    long etaMillisecond = date2.getTime();
-//                    if(etaMillisecond - nowMillisecond < 1800000){
-//                    }else{
-//                        throw new IllegalAccessException();
-//                    }
-//                }
             }
         }
         String eta=ETA;
@@ -171,6 +219,10 @@ public class EnterOther_3 extends JFrame {
         }
 
     }
+
+    /**
+     * Error handel.
+     */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
         new Error().setVisible(true);
@@ -205,10 +257,10 @@ public class EnterOther_3 extends JFrame {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
             dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
+                    EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
+                    . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
+                    java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
             throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
@@ -232,7 +284,13 @@ public class EnterOther_3 extends JFrame {
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_18"));
-                button1.addActionListener(e -> scanID(e));
+                button1.addActionListener(e -> {
+                    try {
+                        scanID(e);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar2.add(button1);
 
                 //---- cancelButton2 ----
@@ -277,8 +335,8 @@ public class EnterOther_3 extends JFrame {
                 Sur.setPreferredSize(new Dimension(49, 90));
                 Sur.setHorizontalAlignment(SwingConstants.CENTER);
                 panel1.add(Sur, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- ID ----
                 ID.setToolTipText("IDNo");
@@ -287,18 +345,18 @@ public class EnterOther_3 extends JFrame {
                 ID.setPreferredSize(new Dimension(49, 90));
                 ID.setHorizontalAlignment(SwingConstants.CENTER);
                 panel1.add(ID, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel1, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 0), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
         setSize(905, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

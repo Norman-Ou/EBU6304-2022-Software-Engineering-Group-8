@@ -1,6 +1,5 @@
 package DataBase;
 
-import Beans.Order.Order;
 import Exceptions.DataNotFound;
 import Tools.JSONComparator;
 import com.alibaba.fastjson.JSON;
@@ -8,7 +7,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -17,12 +15,6 @@ import java.util.ArrayList;
  *
  * The method with Access Modifier <b>Private<b/> is the <b>root method<b/> for the database <br><br/>
  * The method with Access Modifier <b>Protected<b/> is the <b>Interface<b/> for the Passenger Database class and Beans.Flight Database<br><br/>
- *
- * @author Jiayi Wang
- * @version 0.1 March 22th, 2022
- *
- * @author Ruizhe Ou
- * @version 1.0 March 24th, 2022
  *
  * @author Ruizhe Ou
  * @version 1.1 April 24th, 2022
@@ -54,15 +46,6 @@ public class DataBase {
      * */
     private JSONArray readFile() throws IOException{
         File file = new File(this.filePath);
-        if (!file.exists()) {
-            if (file.createNewFile()){
-                System.out.println("Initialization File Successfully");
-            } else {
-                System.out.println("Initialization File Failed");
-            }
-            writeFile(new JSONArray());
-        }
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
         return JSON.parseArray(reader.readLine());
     }
@@ -90,7 +73,6 @@ public class DataBase {
         write.close();
     }
 
-    //TODO 添加前要检查是否已经存在有一样的，如果有一样时，是再存一个新的还是不存新的了
     /**
      * <b>Interface<b/> <br><br/>
      * Adding a java object to JSON file
@@ -169,8 +151,6 @@ public class DataBase {
         throw new DataNotFound("DataNotFound");
     }
 
-
-
     /**
      * <b>Interface<b/> <br><br/>
      * Removing a java object in JSON file according the attribute name and the attribute's value of it.
@@ -207,6 +187,16 @@ public class DataBase {
         return searchObject(key, value, tClass, false);
     }
 
+    /**
+     * <b>Interface<b/> <br><br/>
+     * Get all Java Objects in the file according the attribute name and the attribute's value of it.
+     *
+     * @param key attribute name of the Java Object
+     * @param value attribute's value of the Java Object
+     * @param tClass The class of the Java Object
+     *
+     * @return Java Objects with attribute name and the attribute's value same with arguments
+     * */
     protected <T, K> ArrayList<T> getObjects(String key, K value, Class<T> tClass) throws DataNotFound{
         ArrayList<T> arrayList = new ArrayList<>();
 
@@ -253,6 +243,10 @@ public class DataBase {
         return readFile();
     }
 
+    /**
+     * <b>Interface<b/> <br><br/>
+     * Replace all the data in the JSON document with the incoming data
+     * */
     protected void replaceAllData(JSONArray jsonArray) throws IOException {
         writeFile(jsonArray);
     }

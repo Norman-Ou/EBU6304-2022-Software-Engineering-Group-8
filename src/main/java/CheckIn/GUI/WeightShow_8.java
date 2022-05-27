@@ -5,6 +5,7 @@
 package CheckIn.GUI;
 
 import Beans.Passenger.Passenger;
+import Config.Config;
 import DataBase.fDB;
 
 import java.awt.*;
@@ -14,11 +15,23 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
+ * The type Weight show 8.
+ *
  * @author Gabirella
  */
 public class WeightShow_8 extends JFrame {
+    /**
+     * The constant weightPsn.
+     */
     public static int weightPsn;
+    /**
+     * The constant dropCourt.
+     */
     public static int dropCourt;
+
+    /**
+     * Instantiates a new Weight show 8.
+     */
     public WeightShow_8() {
         initComponents();
     }
@@ -27,15 +40,17 @@ public class WeightShow_8 extends JFrame {
         showWeight();
     }
 
-    private void button3(ActionEvent e) {
-        dispose();
-        new PrintBag_11().setVisible(true);
-    }
+    private void button3(ActionEvent e) {dispose();new PrintBag_11().setVisible(true);}
 
-    private void Back2Bag(ActionEvent e) {
-        dispose();
-        new Baggage_7().setVisible(true);
-    }
+    private void Back2Bag(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
+
+    /**
+     * Over weight.
+     *
+     * @param psn the psn
+     */
     public void overWeight(Passenger psn){
         int wei = psn.getBaggage().getBaggageWeight();
         if(wei>29){
@@ -45,9 +60,13 @@ public class WeightShow_8 extends JFrame {
 
         }
     }
+
+    /**
+     * Show weight.
+     */
     public void showWeight(){
         String str = "Your baggage weighs: ";
-         dropCourt = (int)(Math.random()*100)+2;
+        dropCourt = (int)(Math.random()*100)+2;
 
         if(EnterBN_3.getPsnTemp()==null){
             overWeight(EnterOther_3.getPsnTemp1());
@@ -58,8 +77,7 @@ public class WeightShow_8 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }
-        else if(EnterOther_3.getPsnTemp1()==null) {
+        } else if(EnterOther_3.getPsnTemp1()==null) {
             overWeight(EnterBN_3.getPsnTemp());
             EnterBN_3.getPsnTemp().getBaggage().setDropCounter(dropCourt+"");
             System.out.println(EnterBN_3.getPsnTemp().getBaggage().getDropCounter());
@@ -69,28 +87,32 @@ public class WeightShow_8 extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+        }else{
+            overWeight(EnterOther_3.getPsnTemp2());
+            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(dropCourt+"");
+            try {
+                weiText.setText(str+EnterOther_3.getPsnTemp2().getBaggage().getBaggageWeight()+" kg");
+                weightPsn=EnterOther_3.getPsnTemp2().getBaggage().getBaggageWeight();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
-    public void init() {
-        ImageIcon background = new ImageIcon("src/main/resources/img.png");
+
+    /**
+     * Sets background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.bgPic);
         JLabel label3 = new JLabel(background);
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
-    private void help(ActionEvent e) {
-        dispose();
-        new Error().setVisible(true);
-    }
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -116,12 +138,12 @@ public class WeightShow_8 extends JFrame {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
             dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder
-            ( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+                    swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+                    . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+                    ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane2. getBorder
+                    ( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                                                                                                                                                              .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== contentPanel2 ========
@@ -182,7 +204,7 @@ public class WeightShow_8 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        init();
+        setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

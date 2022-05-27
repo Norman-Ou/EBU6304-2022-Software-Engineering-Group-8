@@ -3,6 +3,7 @@ package Tools;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.GUI.PrintBag_11;
+import DataBase.pDB;
 import DataBase.fDB;
 
 
@@ -30,6 +31,9 @@ public class Utils {
 
     /**
      * Base64 Encoder
+     *
+     * @param rawData unencoded data
+     * @return encoded data
      * */
     public static <T> String encoder(T rawData){
         String rawStr = rawData.toString();
@@ -39,6 +43,9 @@ public class Utils {
 
     /**
      * Base64 Decoder
+     *
+     * @param encodedData encoded data
+     * @return decoded data
      * */
     public static String decoder(String encodedData){
         final Base64.Decoder decoder = Base64.getDecoder();
@@ -47,6 +54,8 @@ public class Utils {
 
     /**
      * Update Test Data
+     *
+     * @return true means update successfully
      * */
     public static boolean updateTestData(){
         ArrayList<Flight> flights = fDB.loadAllFlights();
@@ -62,7 +71,7 @@ public class Utils {
 //        System.out.println("ETD: " + flight.getETD());
 //        System.out.println("ETA: " + flight.getETA());
 
-        //获取当前时间
+        //Get the current time
         Calendar time = Calendar.getInstance();
 
         time.add(Calendar.HOUR, Config.flightStep_hour[0]);
@@ -95,7 +104,7 @@ public class Utils {
 //        System.out.println("ETD: " + flight.getETD());
 //        System.out.println("ETA: " + flight.getETA());
 
-        //获取当前时间
+        //Get the current time
         time = Calendar.getInstance();
 
         time.add(Calendar.HOUR, Config.flightStep_hour[1]);
@@ -128,7 +137,7 @@ public class Utils {
 //        System.out.println("ETD: " + flight.getETD());
 //        System.out.println("ETA: " + flight.getETA());
 
-        //获取当前时间
+        //Get the current time
         time = Calendar.getInstance();
 
         time.add(Calendar.HOUR, Config.flightStep_hour[2]);
@@ -161,7 +170,7 @@ public class Utils {
 //        System.out.println("ETD: " + flight.getETD());
 //        System.out.println("ETA: " + flight.getETA());
 
-        //获取当前时间
+        //Get the current time
         time = Calendar.getInstance();
 
         time.add(Calendar.HOUR, Config.flightStep_hour[3]);
@@ -202,15 +211,13 @@ public class Utils {
         ArrayList<Passenger> newPassenger = new ArrayList<>();
         newPassenger.add(writeInBoardingPass());
         newPassenger.add(PrintBag_11.writeInBaggage());
-
         try {
-            fDB.replaceAllPsn(newPassenger);
+            pDB.replaceAllPsn(newPassenger);
             System.out.println("Updated Passenger JSON file completed!");
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-
         return false;
     }
 
@@ -224,6 +231,7 @@ public class Utils {
         try {
             return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName)).getPath();
         } catch (NullPointerException e){
+            System.out.println("No " + fileName + " in Resource.");
             return null;
         }
     }
