@@ -33,7 +33,7 @@ public class cMonitors {
     /**
      * This function is designed to search 
      * the target flight by the known flight number.
-     * @param targetFlightNo the flight number used to find the target flight.
+     * @param flightNo the flight number used to find the target flight.
      * @return the target flight.
      */
     @Test
