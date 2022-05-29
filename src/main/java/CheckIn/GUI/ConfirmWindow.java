@@ -63,10 +63,10 @@ public class ConfirmWindow extends JFrame {
             try {
                 if (Objects.equals(str1, "A")) {
                     dispose();
-                    new SeatDoubleWindow().setVisible(true);
+                    new Seat_1_6().setVisible(true);
                 } else if (Objects.equals(str1, "B")) {
                     dispose();
-                    new SeatTripleWindow().setVisible(true);
+                    new Seat_3_6().setVisible(true);
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();

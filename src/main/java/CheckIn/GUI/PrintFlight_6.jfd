@@ -283,14 +283,19 @@ new FormModel {
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "printThenBag", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "cancelButton"
-						"text": new FormMessage( null, "cancelButton.text_12" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
+						name: "button4"
+						"text": new FormMessage( null, "button4.text_13" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "scanIDAction", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button1"
 						"text": new FormMessage( null, "button1.text_4" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "error", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "cancelButton"
+						"text": new FormMessage( null, "cancelButton.text_12" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Back2Confirm", true ) )
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"

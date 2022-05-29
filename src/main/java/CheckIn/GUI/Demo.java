@@ -8,6 +8,7 @@ package CheckIn.GUI;/**
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -66,7 +67,7 @@ public class Demo extends JFrame {
                         try {
                             Thread.sleep(3000);
                             dispose();
-                            JOptionPane.showMessageDialog(null, "Ready for next step?","Next step", JOptionPane.QUESTION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Ready for paying?","Final payment", JOptionPane.QUESTION_MESSAGE);
 //                            if(PrintFlight_6.stage.equals("BoardingPass")){
 //                                new BaggageWindow().setVisible(true);
 //                                PrintFlight_6.stage="false";
@@ -74,8 +75,8 @@ public class Demo extends JFrame {
 //                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
 //                                new MealWindow().setVisible(true);
 //                            }
-                            new ExitWindow().setVisible(true);
-                        } catch (InterruptedException ie) {
+                            new FinalPay_15().setVisible(true);
+                        } catch (InterruptedException | IOException ie) {
                         }
                         glassPane.stop();
                     }

@@ -65,22 +65,27 @@ public class Airline_1 extends JFrame {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
+            dialogPane.setOpaque(false);
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
+                contentPanel.setOpaque(false);
                 contentPanel.setLayout(new BorderLayout());
 
                 //======== panel1 ========
                 {
+                    panel1.setOpaque(false);
                     panel1.setLayout(new BorderLayout());
 
                     //======== panel2 ========
                     {
+                        panel2.setOpaque(false);
                         panel2.setLayout(new BorderLayout());
 
                         //======== panel3 ========
                         {
+                            panel3.setOpaque(false);
                             panel3.setLayout(new BorderLayout());
 
                             //---- label1 ----
@@ -107,7 +112,6 @@ public class Airline_1 extends JFrame {
                             label2.setMinimumSize(new Dimension(0, 100));
                             label2.setPreferredSize(new Dimension(0, 100));
                             label2.setMaximumSize(new Dimension(0, 100));
-                            label2.setOpaque(true);
                             panel3.add(label2, BorderLayout.SOUTH);
                         }
                         panel2.add(panel3, BorderLayout.CENTER);
@@ -123,6 +127,7 @@ public class Airline_1 extends JFrame {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setMinimumSize(new Dimension(168, 60));
                 buttonBar.setPreferredSize(new Dimension(168, 90));
+                buttonBar.setOpaque(false);
                 buttonBar.setLayout(new GridLayout());
 
                 //---- okButton ----

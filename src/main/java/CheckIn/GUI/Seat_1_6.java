@@ -21,7 +21,7 @@ import java.util.*;
  *
  * @author Jiayi Wang
  */
-public class SeatDoubleWindow extends JFrame {
+public class Seat_1_6 extends JFrame {
     /**
      * The constant seat.
      */
@@ -46,7 +46,7 @@ public class SeatDoubleWindow extends JFrame {
      *
      * @throws Exception the exception
      */
-    public SeatDoubleWindow() throws Exception {initComponents();}
+    public Seat_1_6() throws Exception {initComponents();}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
@@ -70,6 +70,29 @@ public class SeatDoubleWindow extends JFrame {
         int stateChange = e.getStateChange();
         stateChangeTemp2=stateChange;
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){}seat=ecoS.getSelectedItem().toString();
+    }
+
+    private void PrintFlight(ActionEvent e) throws Exception {dispose();
+        sortSeat();
+//        if(!(stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)){
+//            if(!(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
+//                JOptionPane.showMessageDialog(null,"Please choose a seat","Choose a seat", JOptionPane.QUESTION_MESSAGE);
+//                new Seat_1_6().setVisible(true);
+//            }
+//        }else if((stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)||(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
+            if(upgrade){
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+                new MealWindow().setVisible(true);
+            }else{
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+
+                new MealWindow().setVisible(true);
+            }
+//        }
     }
     /**
      * Check class.
@@ -131,25 +154,7 @@ public class SeatDoubleWindow extends JFrame {
         showSeats();
     }
 
-    private void PrintFlight(ActionEvent e) {dispose();
 
-//        new PrintFlightWindow().setVisible(true);
-        if((stateChangeTemp1!=ItemEvent.ITEM_STATE_CHANGED)&&(stateChangeTemp2!=ItemEvent.ITEM_STATE_CHANGED)){
-            JOptionPane.showMessageDialog(null, "Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
-        }else{
-            if(upgrade){
-                dispose();
-//            new PrintFlightWindow().setVisible(true);
-                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
-                new MealWindow().setVisible(true);
-            }else{
-                dispose();
-//            new PrintFlightWindow().setVisible(true);
-                new MealWindow().setVisible(true);
-            }
-        }
-        sortSeat();
-    }
 
 
 
@@ -349,7 +354,13 @@ public class SeatDoubleWindow extends JFrame {
 
             //---- button2 ----
             button2.setText(bundle.getString("button2.text_16"));
-            button2.addActionListener(e -> PrintFlight(e));
+            button2.addActionListener(e -> {
+                try {
+                    PrintFlight(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
             panel3.add(button2);
 
             //---- button1 ----

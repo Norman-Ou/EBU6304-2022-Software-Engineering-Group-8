@@ -11,14 +11,19 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "contentPanel"
+					"opaque": false
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panel1"
+						"opaque": false
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 							name: "panel2"
+							"opaque": false
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 								name: "panel3"
+								"opaque": false
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "label1"
 									"text": new FormMessage( null, "label1.text_5" )
@@ -47,7 +52,6 @@ new FormModel {
 									"minimumSize": new java.awt.Dimension( 0, 100 )
 									"preferredSize": new java.awt.Dimension( 0, 100 )
 									"maximumSize": new java.awt.Dimension( 0, 100 )
-									"opaque": true
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "South"
 								} )
@@ -68,6 +72,7 @@ new FormModel {
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
 					"minimumSize": new java.awt.Dimension( 168, 60 )
 					"preferredSize": new java.awt.Dimension( 168, 90 )
+					"opaque": false
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton"
 						"text": new FormMessage( null, "okButton.text_5" )

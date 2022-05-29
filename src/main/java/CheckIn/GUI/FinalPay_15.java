@@ -17,21 +17,17 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealPay_15 extends JFrame {
+public class FinalPay_15 extends JFrame {
     private static int seatFee=0;
     private String mealTemp="";
 
     /**
      * Instantiates a new Meal pay 15.
      */
-    public MealPay_15() throws IOException {
-        if(SeatDoubleWindow.upgrade|| SeatTripleWindow.upgrade|| MealAdd.mealState){
+    public FinalPay_15() throws IOException {
+        if(Seat_1_6.upgrade|| Seat_3_6.upgrade|| MealAdd_14.mealState){
             initComponents();}
     }
-
-    private void exit(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Thanks for using. Enjoy your flight!","Goodbye", JOptionPane.QUESTION_MESSAGE);
-        dispose();new ExitWindow().setVisible(true);}
 
 
     /**
@@ -54,12 +50,12 @@ public class MealPay_15 extends JFrame {
 
     private void payAdMeal(ActionEvent e) {
         pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new BaggageWindow().setVisible(true);
+        new ExitWindow().setVisible(true);
     }
 
-    private void BackMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
+    private void BackMeal(ActionEvent e) {dispose();new AirlineWindow().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
@@ -67,14 +63,14 @@ public class MealPay_15 extends JFrame {
      * Pay for meal content.
      */
     public void pay4MealContent(){
-        if(MealAdd.VIPmealSelected==null){
+        if(MealAdd_14.VIPmealSelected==null){
             setMealTemp(MealNorm.mealSelected);
         }else{
-            setMealTemp(MealAdd.VIPmealSelected);
+            setMealTemp(MealAdd_14.VIPmealSelected);
         }
-        if(SeatDoubleWindow.upgrade){
+        if(Seat_1_6.upgrade){
             seatFee=100;
-        }else if(SeatTripleWindow.upgrade){
+        }else if(Seat_3_6.upgrade){
             seatFee=100;
         }
     }
@@ -127,7 +123,6 @@ public class MealPay_15 extends JFrame {
         button3 = new JButton();
         textField1 = new JTextField();
         buttonBar = new JPanel();
-        baggageBtn = new JButton();
         cancelButton = new JButton();
 
         //======== this ========
@@ -190,11 +185,6 @@ public class MealPay_15 extends JFrame {
                 buttonBar.setPreferredSize(new Dimension(260, 90));
                 buttonBar.setLayout(new GridLayout());
 
-                //---- baggageBtn ----
-                baggageBtn.setText(bundle.getString("baggageBtn.text_6"));
-                baggageBtn.addActionListener(e -> exit(e));
-                buttonBar.add(baggageBtn);
-
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_13"));
                 cancelButton.addActionListener(e -> BackMeal(e));
@@ -224,7 +214,6 @@ public class MealPay_15 extends JFrame {
     private JButton button3;
     private JTextField textField1;
     private JPanel buttonBar;
-    private JButton baggageBtn;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

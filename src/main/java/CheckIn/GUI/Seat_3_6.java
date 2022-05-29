@@ -20,7 +20,7 @@ import javax.swing.border.*;
  *
  * @author Jiayi Wang
  */
-public class SeatTripleWindow extends JFrame {
+public class Seat_3_6 extends JFrame {
     /**
      * The constant seat.
      */
@@ -39,7 +39,7 @@ public class SeatTripleWindow extends JFrame {
     /**
      * Instantiates a new Seat 3 6.
      */
-    public SeatTripleWindow() {
+    public Seat_3_6() {
         initComponents();
     }
 
@@ -64,8 +64,12 @@ public class SeatTripleWindow extends JFrame {
 
     private void PrintFlight(ActionEvent e) {
 
-        if((stateChangeTemp1!=ItemEvent.ITEM_STATE_CHANGED)&&(stateChangeTemp2!=ItemEvent.ITEM_STATE_CHANGED)){
-            JOptionPane.showMessageDialog(null, "Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
+        if(!(stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)){
+            if(!(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
+                JOptionPane.showInternalConfirmDialog(null,"Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
+                new Seat_3_6().setVisible(true);
+            }
+
         }else{
             if(upgrade){
                 dispose();
@@ -78,6 +82,8 @@ public class SeatTripleWindow extends JFrame {
                 new MealWindow().setVisible(true);
             }
         }
+
+
     }
     public static int stateChangeTemp1;
     public static int stateChangeTemp2;

@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 /**
@@ -54,6 +55,7 @@ public class EnterBN_3 extends JFrame {
      * The constant nowTime.
      */
     public static String nowTime = format.format(time.getTime());
+    public static boolean firState=false;
 
     private void forgetBN(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
@@ -100,9 +102,22 @@ public class EnterBN_3 extends JFrame {
     /**
      * ErrorWindow handle.
      */
-    public static void errorHandel(){
+    public static void errorHandel() throws Exception {
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-        new ErrorWindow().setVisible(true);
+//        new ErrorWindow().setVisible(true);
+//        new Seat_1_6().setVisible(true);
+        new Seat_3_6().setVisible(true);
+    }
+
+    public void inputValid() throws InputMismatchException {
+        if (psnTemp == null) {
+//            JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+//            dispose();
+//            new CheckInWindow().setVisible(true);
+            throw new InputMismatchException();
+        }else{
+            firState=true;
+        }
     }
 
     /**
@@ -111,28 +126,29 @@ public class EnterBN_3 extends JFrame {
      * @throws IllegalAccessException the illegal access exception for overtime
      * @throws ParseException         the parse exception for invalid input
      */
-    public void firstCheck() throws IllegalAccessException, ParseException {
+    public void firstCheck() throws Exception {
         try{
-            if (fltTemp == null) {
-                JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-                dispose();
-                new CheckInWindow().setVisible(true);
-            }else{
-                new ConfirmWindow().setVisible(true);
-            }
 //            fltTemp.getETD();
-        } catch (Exception error){
+            inputValid();
+//            fltTemp.getETD();
+        }
+        catch (InputMismatchException error){
             JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
             new CheckInWindow().setVisible(true);
         }
 
-        try{
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Date date1 = format.parse(nowTime);
-            Date date2 = new Date();
+        secondCheck();
+    }
 
-            date2 = format.parse(fltTemp.getETD());
+    public static void secondCheck() throws Exception {
+        if(firState){
+            try{
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                Date date1 = format.parse(nowTime);
+                Date date2 = new Date();
+
+                date2 = format.parse(fltTemp.getETD());
 //            try{
 //                date2 = format.parse(fltTemp.getETD());
 //                new ConfirmWindow().setVisible(true);
@@ -141,14 +157,15 @@ public class EnterBN_3 extends JFrame {
 //                dispose();
 //                new CheckInWindow().setVisible(true);
 //            }
-            long nowMillisecond = date1.getTime();
-            long etdMillisecond = date2.getTime();
-            if( etdMillisecond - nowMillisecond < 1800000){
-                throw new IllegalAccessException();
+                long nowMillisecond = date1.getTime();
+                long etdMillisecond = date2.getTime();
+                if( etdMillisecond - nowMillisecond < 1800000){
+                    throw new IllegalAccessException();
+                }
+            } catch (ParseException | IllegalAccessException e) {
+                errorHandel();
+                e.printStackTrace();
             }
-        } catch (ParseException | IllegalAccessException e) {
-            errorHandel();
-            e.printStackTrace();
         }
 
     }

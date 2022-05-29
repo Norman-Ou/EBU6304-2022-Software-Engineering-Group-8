@@ -43,7 +43,7 @@ public class PrintBaggageWindow extends JFrame {
 
     public void toMealPage(){
         int temp=JOptionPane.showInternalConfirmDialog(null,
-                "Ready for choosing Meal?", "Double check",
+                "Ready for printing?", "Double check",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (temp == JOptionPane.NO_OPTION) {
             return;

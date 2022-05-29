@@ -61,11 +61,6 @@ new FormModel {
 					"opaque": false
 					"preferredSize": new java.awt.Dimension( 260, 90 )
 					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "baggageBtn"
-						"text": new FormMessage( null, "baggageBtn.text_6" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exit", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "cancelButton"
 						"text": new FormMessage( null, "cancelButton.text_13" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BackMeal", true ) )

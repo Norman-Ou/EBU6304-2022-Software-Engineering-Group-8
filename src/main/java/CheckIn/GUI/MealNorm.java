@@ -38,7 +38,7 @@ public class MealNorm extends JFrame {
     }
 
     private void exit(ActionEvent e) {dispose();
-        JOptionPane.showMessageDialog(null, "You have chosen your meal. Enjoy your flight.","Safe exit.", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have chosen your meal: "+mealSelected+", and you need to pay"+price+". Now handle your baggage.","Baggage next.", JOptionPane.QUESTION_MESSAGE);
         new ExitWindow().setVisible(true);}
 
     private void BackToMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
