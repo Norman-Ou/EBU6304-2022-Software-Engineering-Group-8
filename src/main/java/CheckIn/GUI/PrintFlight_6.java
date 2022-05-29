@@ -40,7 +40,7 @@ public class PrintFlight_6 extends JFrame {
         info();
     }
 
-    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 

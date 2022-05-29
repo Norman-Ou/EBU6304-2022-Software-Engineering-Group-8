@@ -1,44 +1,153 @@
-/*
- * Created by JFormDesigner on Sun May 29 21:05:55 CST 2022
- */
-
 package CheckIn.GUI;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import Beans.Flight.Flight;
+
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
+
+
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.Objects;
+import java.util.ResourceBundle;
+/*
+ * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
+ */
+
 
 /**
- * @author unknown
+ * The type Confirm page 3.
+ *
+ * @author Jiayi Wang
  */
 public class ConfirmPage_3 extends JFrame {
+    /**
+     * Instantiates a new Confirm page 3.
+     */
     public ConfirmPage_3() {
         initComponents();
     }
 
-    private void confirm1B(ActionEvent e) {
-        // TODO add your code here
+    private void ErrorPage(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+
+    private void confirm1B(ActionEvent e){confirmInfo();}
+
+    private void Back2Init(ActionEvent e) {dispose();new CheckInWindow().setVisible(true);}
+
+    private void showInitialInfo(ActionEvent e) {info();}
+
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+
+    /**
+     * Confirm info.
+     * Confirm steps, and judging airline type, jump to selection of seats.
+     */
+    public void confirmInfo(){
+        int temp=JOptionPane.showInternalConfirmDialog(null,
+                "Ready for choosing seat?", "Double check",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (temp == JOptionPane.NO_OPTION) {
+            return;
+        }if(temp == JOptionPane.YES_OPTION){
+            String str1 = "";
+            if(!(EnterOther_3.getPsnTemp1()==null)) {
+                str1=AirPassCse.flightChoose.getFlightType();
+            }
+            if(!(EnterBN_3.getPsnTemp()==null))  {
+                str1= EnterBN_3.getFlight().getFlightType();
+            }
+            if(!(EnterOther_3.getPsnTemp2()==null)) {
+                str1=AirPassCse.flightChoose.getFlightType();
+            }
+            try {
+                if (Objects.equals(str1, "A")) {
+                    dispose();
+                    new Seat_1_6().setVisible(true);
+                } else if (Objects.equals(str1, "B")) {
+                    dispose();
+                    new Seat_3_6().setVisible(true);
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }if(temp == JOptionPane.CANCEL_OPTION){
+            dispose();
+            new ErrorWindow().setVisible(true);
+        }
     }
 
-    private void Back2Init(ActionEvent e) {
-        // TODO add your code here
+    /**
+     * Set background.
+     */
+    public void setBackground() {
+        ImageIcon background = new ImageIcon(Config.Config.bgPic);
+        JLabel label3 = new JLabel(background);
+        label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel myPanel = (JPanel)this.getContentPane();
+        myPanel.setOpaque(false);
+        this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
+        this.setTitle("Passenger check-in system");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
-    private void ErrorPage(ActionEvent e) {
-        // TODO add your code here
-    }
 
-    private void showInitialInfo(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void help(ActionEvent e) {
-        // TODO add your code here
+    /**
+     * Info.
+     * Fill in information.
+     */
+    public void info(){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
+            try{
+                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
+                Flight flt=AirPassCse.flightChoose;
+                Depar.setText(flt.getDeparture());
+                Desti.setText(flt.getDestination());
+                ETA.setText(flt.getETA());
+                ETC.setText(flt.getETC());
+                ETD.setText(flt.getETD());
+                Gate.setText(flt.getGate());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
+            try {
+                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
+                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBN_3.getFlight().getDeparture());
+                Desti.setText(EnterBN_3.getFlight().getDestination());
+                ETA.setText(EnterBN_3.getFlight().getETA());
+                ETC.setText(EnterBN_3.getFlight().getETC());
+                ETD.setText(EnterBN_3.getFlight().getETD());
+                Gate.setText(EnterBN_3.getFlight().getGate());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+            try{
+                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
+                Flight flt=AirPassCse.flightChoose;
+                Depar.setText(flt.getDeparture());
+                Desti.setText(flt.getDestination());
+                ETA.setText(flt.getETA());
+                ETC.setText(flt.getETC());
+                ETD.setText(flt.getETD());
+                Gate.setText(flt.getGate());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     private void initComponents() {
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
@@ -290,7 +399,10 @@ public class ConfirmPage_3 extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    }
+
+        //Read input passenger
+
+        setBackground();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel dialogPane;
@@ -326,4 +438,5 @@ public class ConfirmPage_3 extends JFrame {
     private JButton onfirm;
     private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }

@@ -52,7 +52,7 @@ public class Seat_3_6 extends JFrame {
         ecoS.setEnabled(false);
     }
 
-    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
+    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 

@@ -25,8 +25,7 @@ public class FinalPay_15 extends JFrame {
      * Instantiates a new Meal pay 15.
      */
     public FinalPay_15() throws IOException {
-        if(Seat_1_6.upgrade|| Seat_3_6.upgrade|| MealAdd_14.mealState){
-            initComponents();}
+            initComponents();
     }
 
 

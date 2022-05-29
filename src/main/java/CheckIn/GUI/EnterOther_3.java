@@ -159,6 +159,19 @@ public class EnterOther_3 extends JFrame {
         this.setVisible(true);
     }
 
+    public void checkTime() throws ParseException, IllegalAccessException {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date1 = format.parse(nowTime);
+        Date date2 = new Date();
+            date2 = format.parse(ETA);
+            new AirPassCse().setVisible(true);
+            long nowMillisecond = date1.getTime();
+            long etaMillisecond = date2.getTime();
+            if(etaMillisecond - nowMillisecond > 1800000) {
+                throw new IllegalAccessException();
+            }
+    }
+
 
     /**
      * First check.
@@ -174,33 +187,13 @@ public class EnterOther_3 extends JFrame {
             new CheckInWindow().setVisible(true);
         }else{
             for(Flight flt : list) {
-                try{
                 ETA=flt.getETA();
-                String eta=flt.getETA();
-                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                Date date1 = format.parse(nowTime);
-                Date date2 = format.parse(eta);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
             }
         }
-        String eta=ETA;
+
         try{
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Date date1 = format.parse(nowTime);
-            Date date2 = new Date();
-            try{
-                date2 = format.parse(eta);
-                new AirPassCse().setVisible(true);
-            } catch (Exception error){
-                long nowMillisecond = date1.getTime();
-                long etaMillisecond = date2.getTime();
-                if(etaMillisecond - nowMillisecond < 1800000){
-                    throw new IllegalAccessException();
-                }
-            }
-        } catch (ParseException | IllegalAccessException e) {
+            checkTime();
+        } catch ( IllegalAccessException e) {
             errorHandel();
             e.printStackTrace();
         }

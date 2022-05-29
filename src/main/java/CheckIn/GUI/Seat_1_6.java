@@ -54,7 +54,7 @@ public class Seat_1_6 extends JFrame {
 
     private void Return(ActionEvent e) {dispose();
 
-        new ConfirmWindow().setVisible(true);}
+        new ConfirmPage_3().setVisible(true);}
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 

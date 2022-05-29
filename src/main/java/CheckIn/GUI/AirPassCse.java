@@ -74,7 +74,7 @@ public class AirPassCse extends JFrame {
 
     private void cancel(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
-    private void ok(ActionEvent e) {new ConfirmWindow().setVisible(true);dispose();}
+    private void ok(ActionEvent e) {new ConfirmPage_3().setVisible(true);dispose();}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
