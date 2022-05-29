@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class PrintFlightWindow extends JFrame {
+public class PrintFlight_6 extends JFrame {
     /**
      * The constant stage.
      */
@@ -32,7 +32,7 @@ public class PrintFlightWindow extends JFrame {
     /**
      * Instantiates a new Print flight 6.
      */
-    public PrintFlightWindow() {
+    public PrintFlight_6() {
         initComponents();
     }
 
@@ -61,26 +61,26 @@ public class PrintFlightWindow extends JFrame {
     }
 
     public void finalCheckFlight(){
-        if(!(EnterOther.getPsnTemp1()==null)){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
-                surname1 = EnterOther.getPsnTemp1().getSurName();
-                psnID1 = EnterOther.getPsnTemp1().getPassengerId();
+                surname1 = EnterOther_3.getPsnTemp1().getSurName();
+                psnID1 = EnterOther_3.getPsnTemp1().getPassengerId();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
 
         }
-        else if(!(EnterBookingNumber.getPsnTemp()==null)) {
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
-                surname1 = EnterBookingNumber.getPsnTemp().getSurName();
-                psnID1 = EnterBookingNumber.getPsnTemp().getPassengerId();
+                surname1 = EnterBN_3.getPsnTemp().getSurName();
+                psnID1 = EnterBN_3.getPsnTemp().getPassengerId();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp2()==null)){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
-                surname1 = EnterOther.getPsnTemp2().getSurName();
-                psnID1 = EnterOther.getPsnTemp2().getPassengerId();
+                surname1 = EnterOther_3.getPsnTemp2().getSurName();
+                psnID1 = EnterOther_3.getPsnTemp2().getPassengerId();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -98,7 +98,7 @@ public class PrintFlightWindow extends JFrame {
             return;
         }if(temp == JOptionPane.YES_OPTION){
             dispose();
-            new Demo().setVisible(true);
+//            new Demo().setVisible(true);
             stage="BoardingPass";
             //            new BaggageWindow().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
@@ -112,11 +112,11 @@ public class PrintFlightWindow extends JFrame {
      * Fill in information.
      */
     public void info(){
-        if(!(EnterOther.getPsnTemp1()==null)){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
-                BookNum.setText(EnterOther.getPsnTemp1().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp1().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp1().getPassengerId());
+                BookNum.setText(EnterOther_3.getPsnTemp1().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp1().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp1().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -133,17 +133,17 @@ public class PrintFlightWindow extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(!(EnterBookingNumber.getPsnTemp()==null)) {
+        else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
-                BookNum.setText(EnterBookingNumber.getPsnTemp().getBookNumber());
-                Surname.setText(EnterBookingNumber.getPsnTemp().getSurName());
-                IDNum.setText(EnterBookingNumber.getPsnTemp().getPassengerId());
-                Depar.setText(EnterBookingNumber.getFlight().getDeparture());
-                Desti.setText(EnterBookingNumber.getFlight().getDestination());
-                ETA.setText(EnterBookingNumber.getFlight().getETA());
-                ETC.setText(EnterBookingNumber.getFlight().getETC());
-                ETD.setText(EnterBookingNumber.getFlight().getETD());
-                Gate.setText(EnterBookingNumber.getFlight().getGate());
+                BookNum.setText(EnterBN_3.getPsnTemp().getBookNumber());
+                Surname.setText(EnterBN_3.getPsnTemp().getSurName());
+                IDNum.setText(EnterBN_3.getPsnTemp().getPassengerId());
+                Depar.setText(EnterBN_3.getFlight().getDeparture());
+                Desti.setText(EnterBN_3.getFlight().getDestination());
+                ETA.setText(EnterBN_3.getFlight().getETA());
+                ETC.setText(EnterBN_3.getFlight().getETC());
+                ETD.setText(EnterBN_3.getFlight().getETD());
+                Gate.setText(EnterBN_3.getFlight().getGate());
                 if(SeatDoubleWindow.seat==null){
                     Seat.setText(SeatTripleWindow.seat);
                 }else if(SeatTripleWindow.seat==null){
@@ -152,11 +152,11 @@ public class PrintFlightWindow extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp2()==null)){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
-                BookNum.setText(EnterOther.getPsnTemp2().getBookNumber());
-                Surname.setText(EnterOther.getPsnTemp2().getSurName());
-                IDNum.setText(EnterOther.getPsnTemp2().getPassengerId());
+                BookNum.setText(EnterOther_3.getPsnTemp2().getBookNumber());
+                Surname.setText(EnterOther_3.getPsnTemp2().getSurName());
+                IDNum.setText(EnterOther_3.getPsnTemp2().getPassengerId());
                 Flight flt=AirPassCse.flightChoose;
                 Depar.setText(flt.getDeparture());
                 Desti.setText(flt.getDestination());
@@ -181,48 +181,48 @@ public class PrintFlightWindow extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBoardingPass(){
-        if(!(EnterBookingNumber.getPsnTemp()==null))  {
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setETA(EnterBookingNumber.getFlight().getETA());
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setETC(EnterBookingNumber.getFlight().getETC());
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setETD(EnterBookingNumber.getFlight().getETD());
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setFlightNo(EnterBookingNumber.getFlight().getFlightNo());
+        if(!(EnterBN_3.getPsnTemp()==null))  {
+            EnterBN_3.getPsnTemp().getBoardingPass().setETA(EnterBN_3.getFlight().getETA());
+            EnterBN_3.getPsnTemp().getBoardingPass().setETC(EnterBN_3.getFlight().getETC());
+            EnterBN_3.getPsnTemp().getBoardingPass().setETD(EnterBN_3.getFlight().getETD());
+            EnterBN_3.getPsnTemp().getBoardingPass().setFlightNo(EnterBN_3.getFlight().getFlightNo());
             if (SeatDoubleWindow.seat == null) {
-                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
             } else if (SeatTripleWindow.seat == null) {
-                EnterBookingNumber.getPsnTemp().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
+                EnterBN_3.getPsnTemp().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setDeparture(EnterBookingNumber.getFlight().getDeparture());
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setDestination(EnterBookingNumber.getFlight().getDestination());
-            EnterBookingNumber.getPsnTemp().getBoardingPass().setGate(EnterBookingNumber.getFlight().getGate());
-            return EnterBookingNumber.getPsnTemp();
-        }else if(!(EnterOther.getPsnTemp1()==null)){
-            EnterOther.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
-            EnterOther.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
-            EnterOther.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
-            EnterOther.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            EnterBN_3.getPsnTemp().getBoardingPass().setDeparture(EnterBN_3.getFlight().getDeparture());
+            EnterBN_3.getPsnTemp().getBoardingPass().setDestination(EnterBN_3.getFlight().getDestination());
+            EnterBN_3.getPsnTemp().getBoardingPass().setGate(EnterBN_3.getFlight().getGate());
+            return EnterBN_3.getPsnTemp();
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
             if (SeatDoubleWindow.seat == null) {
-                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
             } else if (SeatTripleWindow.seat == null) {
-                EnterOther.getPsnTemp1().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
+                EnterOther_3.getPsnTemp1().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
-            EnterOther.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
-            EnterOther.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
-            EnterOther.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
-            return EnterOther.getPsnTemp1();
-        }else if(!(EnterOther.getPsnTemp2()==null)) {
-            EnterOther.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
-            EnterOther.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
-            EnterOther.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
-            EnterOther.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther_3.getPsnTemp1().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+            return EnterOther_3.getPsnTemp1();
+        }else if(!(EnterOther_3.getPsnTemp2()==null)) {
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETA(AirPassCse.flightChoose.getETA());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETC(AirPassCse.flightChoose.getETC());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setETD(AirPassCse.flightChoose.getETD());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setFlightNo(AirPassCse.flightChoose.getFlightNo());
             if (SeatDoubleWindow.seat == null) {
-                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
+                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(SeatTripleWindow.seat);
             } else if (SeatTripleWindow.seat == null) {
-                EnterOther.getPsnTemp2().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
+                EnterOther_3.getPsnTemp2().getBoardingPass().setSeatNo(SeatDoubleWindow.seat);
             }
-            EnterOther.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
-            EnterOther.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
-            EnterOther.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
-            return EnterOther.getPsnTemp2();
+            EnterOther_3.getPsnTemp2().getBoardingPass().setGate(AirPassCse.flightChoose.getGate());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setDeparture(AirPassCse.flightChoose.getDeparture());
+            EnterOther_3.getPsnTemp2().getBoardingPass().setDestination(AirPassCse.flightChoose.getDestination());
+            return EnterOther_3.getPsnTemp2();
         }
         return null;
     }
@@ -248,7 +248,6 @@ public class PrintFlightWindow extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         panel1 = new JPanel();
@@ -283,7 +282,6 @@ public class PrintFlightWindow extends JFrame {
         PrintButton = new JButton();
         cancelButton = new JButton();
         button1 = new JButton();
-        ScanButton = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -293,14 +291,6 @@ public class PrintFlightWindow extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-                    new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-                    , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-                    , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-                    , java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-                        ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== panel1 ========
@@ -350,8 +340,8 @@ public class PrintFlightWindow extends JFrame {
                         label1.setForeground(Color.black);
                         label1.setBackground(Color.white);
                         panel2.add(label1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label3 ----
                         label3.setText(bundle.getString("label3.text_3"));
@@ -361,8 +351,8 @@ public class PrintFlightWindow extends JFrame {
                         label3.setForeground(Color.black);
                         label3.setBackground(Color.white);
                         panel2.add(label3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label2 ----
                         label2.setText(bundle.getString("label2.text_9"));
@@ -371,11 +361,11 @@ public class PrintFlightWindow extends JFrame {
                         label2.setBackground(Color.white);
                         label2.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label2, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(BookNum, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label10 ----
                         label10.setText(bundle.getString("label10.text_2"));
@@ -384,11 +374,11 @@ public class PrintFlightWindow extends JFrame {
                         label10.setBackground(Color.white);
                         label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label10, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Surname, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label4 ----
                         label4.setText(bundle.getString("label4.text_2"));
@@ -397,11 +387,11 @@ public class PrintFlightWindow extends JFrame {
                         label4.setBackground(Color.white);
                         label4.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label4, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(IDNum, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label5 ----
                         label5.setText(bundle.getString("label5.text_3"));
@@ -410,11 +400,11 @@ public class PrintFlightWindow extends JFrame {
                         label5.setBackground(Color.white);
                         label5.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label5, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Depar, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label6 ----
                         label6.setText(bundle.getString("label6.text_3"));
@@ -423,11 +413,11 @@ public class PrintFlightWindow extends JFrame {
                         label6.setBackground(Color.white);
                         label6.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label6, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Desti, new GridBagConstraints(2, 5, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label7 ----
                         label7.setText(bundle.getString("label7.text_3"));
@@ -436,11 +426,11 @@ public class PrintFlightWindow extends JFrame {
                         label7.setBackground(Color.white);
                         label7.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label7, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETA, new GridBagConstraints(2, 6, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label8 ----
                         label8.setText(bundle.getString("label8.text_3"));
@@ -449,11 +439,11 @@ public class PrintFlightWindow extends JFrame {
                         label8.setBackground(Color.white);
                         label8.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label8, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETC, new GridBagConstraints(2, 7, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label9 ----
                         label9.setText(bundle.getString("label9.text_2"));
@@ -462,11 +452,11 @@ public class PrintFlightWindow extends JFrame {
                         label9.setBackground(Color.white);
                         label9.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label9, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(ETD, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label11 ----
                         label11.setText(bundle.getString("label11.text_2"));
@@ -475,11 +465,11 @@ public class PrintFlightWindow extends JFrame {
                         label11.setBackground(Color.white);
                         label11.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label11, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Gate, new GridBagConstraints(2, 9, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
 
                         //---- label12 ----
                         label12.setText(bundle.getString("label12.text"));
@@ -488,11 +478,11 @@ public class PrintFlightWindow extends JFrame {
                         label12.setBackground(Color.white);
                         label12.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                         panel2.add(label12, new GridBagConstraints(1, 10, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                            new Insets(0, 0, 0, 0), 0, 0));
                         panel2.add(Seat, new GridBagConstraints(2, 10, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
+                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                            new Insets(0, 0, 0, 0), 0, 0));
                     }
                     panel4.add(panel2, BorderLayout.CENTER);
                 }
@@ -518,18 +508,6 @@ public class PrintFlightWindow extends JFrame {
                 });
                 buttonBar.add(PrintButton);
 
-                //---- PrintButton ----
-                ScanButton.setText("Scan");
-                ScanButton.addActionListener(e -> {
-                    try {
-                        scanID(e);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                buttonBar.add(ScanButton);
-
-
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_12"));
                 cancelButton.addActionListener(e -> Back2Confirm(e));
@@ -554,7 +532,6 @@ public class PrintFlightWindow extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel panel1;
     private JButton button2;
@@ -588,11 +565,10 @@ public class PrintFlightWindow extends JFrame {
     private JButton PrintButton;
     private JButton cancelButton;
     private JButton button1;
-    private JButton ScanButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String[] args) throws Exception {
 
 
-        new PrintFlightWindow().setVisible(true);
+        new PrintFlight_6().setVisible(true);
     }
 }

@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class EnterOther extends JFrame {
+public class EnterOther_3 extends JFrame {
     /**
      * The constant ETA.
      */
@@ -34,7 +34,7 @@ public class EnterOther extends JFrame {
     /**
      * Instantiates a new Enter other 3.
      */
-    public EnterOther() {
+    public EnterOther_3() {
         initComponents();
     }
 
@@ -167,7 +167,7 @@ public class EnterOther extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void firstCheck() throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther.getFlight();
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         if(list==null){
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
@@ -217,12 +217,11 @@ public class EnterOther extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();
         buttonBar2 = new JPanel();
-        okButton2 = new JButton();
         button1 = new JButton();
+        okButton2 = new JButton();
         cancelButton2 = new JButton();
         panel2 = new JPanel();
         label1 = new JLabel();
@@ -243,12 +242,6 @@ public class EnterOther extends JFrame {
         {
             dialogPane2.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane2.setOpaque(false);
-            dialogPane2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-                    EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
-                    . border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ),
-                    java. awt. Color. red) ,dialogPane2. getBorder( )) ); dialogPane2. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
             dialogPane2.setLayout(new BorderLayout());
 
             //======== buttonBar2 ========
@@ -257,17 +250,6 @@ public class EnterOther extends JFrame {
                 buttonBar2.setOpaque(false);
                 buttonBar2.setPreferredSize(new Dimension(254, 90));
                 buttonBar2.setLayout(new GridLayout());
-
-                //---- okButton2 ----
-                okButton2.setText(bundle.getString("okButton2.text_3"));
-                okButton2.addActionListener(e -> {
-                    try {
-                        ok(e);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                buttonBar2.add(okButton2);
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_18"));
@@ -279,6 +261,17 @@ public class EnterOther extends JFrame {
                     }
                 });
                 buttonBar2.add(button1);
+
+                //---- okButton2 ----
+                okButton2.setText(bundle.getString("okButton2.text_3"));
+                okButton2.addActionListener(e -> {
+                    try {
+                        ok(e);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                buttonBar2.add(okButton2);
 
                 //---- cancelButton2 ----
                 cancelButton2.setText(bundle.getString("cancelButton2.text_3"));
@@ -322,8 +315,8 @@ public class EnterOther extends JFrame {
                 Sur.setPreferredSize(new Dimension(49, 90));
                 Sur.setHorizontalAlignment(SwingConstants.CENTER);
                 panel1.add(Sur, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                        new Insets(0, 0, 0, 0), 0, 0));
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- ID ----
                 ID.setToolTipText("IDNo");
@@ -332,14 +325,14 @@ public class EnterOther extends JFrame {
                 ID.setPreferredSize(new Dimension(49, 90));
                 ID.setHorizontalAlignment(SwingConstants.CENTER);
                 panel1.add(ID, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                        new Insets(0, 0, 0, 0), 0, 0));
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane2.add(panel1, BorderLayout.CENTER);
         }
         contentPane.add(dialogPane2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
         setSize(905, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -347,11 +340,10 @@ public class EnterOther extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane2;
     private JPanel buttonBar2;
-    private JButton okButton2;
     private JButton button1;
+    private JButton okButton2;
     private JButton cancelButton2;
     private JPanel panel2;
     private JLabel label1;

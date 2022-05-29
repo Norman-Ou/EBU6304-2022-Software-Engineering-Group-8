@@ -47,7 +47,7 @@ public class MealAdd extends JFrame {
 
     private void MealPay(ActionEvent e) throws IOException {
         JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
-        dispose();new MealPay().setVisible(true);}
+        dispose();new MealPay_15().setVisible(true);}
 
     private void Back2Meal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
 
@@ -65,24 +65,24 @@ public class MealAdd extends JFrame {
                 VIPmealSelected="Sashimi";
                 mealState=true;
                 System.out.println("Sashimi");
-                if(!(EnterBookingNumber.getPsnTemp()==null)) {
-                    arrayMeal = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Sashimi");
                         arrayMeal.get(0).setPrice(10);
                         price = 10;
                     }
                 }
-                if(!(EnterOther.getPsnTemp1()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Sashimi");
                         arrayMeal.get(0).setPrice(10);
                         price = 10;
                     }
                 }
-                if(!(EnterOther.getPsnTemp2()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Sashimi");
                         arrayMeal.get(0).setPrice(10);
@@ -94,24 +94,24 @@ public class MealAdd extends JFrame {
                 mealState=true;
                 VIPmealSelected="Steak";
                 System.out.println("Steak");
-                if(!(EnterBookingNumber.getPsnTemp()==null)) {
-                    arrayMeal = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Steak");
                         arrayMeal.get(0).setPrice(11);
                         price = 11;
                     }
                 }
-                if(!(EnterOther.getPsnTemp1()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Steak");
                         arrayMeal.get(0).setPrice(11);
                         price = 11;
                     }
                 }
-                if(!(EnterOther.getPsnTemp2()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Steak");
                         arrayMeal.get(0).setPrice(11);
@@ -123,24 +123,24 @@ public class MealAdd extends JFrame {
                 mealState=true;
                 VIPmealSelected="Tempura";
                 System.out.println("Tempura");
-                if(!(EnterBookingNumber.getPsnTemp()==null)) {
-                    arrayMeal = Objects.requireNonNull(EnterBookingNumber.getPsnTemp()).getExtraOptions();
+                if(!(EnterBN_3.getPsnTemp()==null)) {
+                    arrayMeal = Objects.requireNonNull(EnterBN_3.getPsnTemp()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Tempura");
                         arrayMeal.get(0).setPrice(12);
                         price = 12;
                     }
                 }
-                if(!(EnterOther.getPsnTemp1()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp1()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp1()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp1()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Tempura");
                         arrayMeal.get(0).setPrice(12);
                         price = 12;
                     }
                 }
-                if(!(EnterOther.getPsnTemp2()==null)){
-                    arrayMeal=Objects.requireNonNull(EnterOther.getPsnTemp2()).getExtraOptions();
+                if(!(EnterOther_3.getPsnTemp2()==null)){
+                    arrayMeal=Objects.requireNonNull(EnterOther_3.getPsnTemp2()).getExtraOptions();
                     if (arrayMeal.get(0).getKind() == 1) {
                         arrayMeal.get(0).setDescription("Tempura");
                         arrayMeal.get(0).setPrice(12);

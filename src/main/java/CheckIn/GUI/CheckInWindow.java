@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 19:11:34 CST 2022
@@ -23,7 +24,7 @@ public class CheckInWindow extends JFrame {
         initComponents();
     }
 
-    private void CheckInButton(ActionEvent e) {dispose();new EnterBookingNumber().setVisible(true);}
+    private void CheckInButton(ActionEvent e) throws ParseException {dispose();new EnterBN_3().setVisible(true);}
 
     private void AirlineRe(ActionEvent e) {dispose();new AirlineWindow().setVisible(true);}
 
@@ -85,7 +86,13 @@ public class CheckInWindow extends JFrame {
                 button1.setText(bundle.getString("button1.text_6"));
                 button1.setFont(new Font("Lucida Grande", Font.BOLD, 24));
                 button1.setOpaque(false);
-                button1.addActionListener(e -> CheckInButton(e));
+                button1.addActionListener(e -> {
+                    try {
+                        CheckInButton(e);
+                    } catch (ParseException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 contentPanel.add(button1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);

@@ -49,6 +49,7 @@ public class SeatTripleWindow extends JFrame {
      */
     public void resetAvSeat(){
         busS.setEnabled(true);
+        ecoS.setEnabled(false);
     }
 
     private void Back2Confirm(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
@@ -62,28 +63,41 @@ public class SeatTripleWindow extends JFrame {
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void PrintFlight(ActionEvent e) {
-        if(upgrade){
-            dispose();
-            new PrintFlightWindow().setVisible(true);
+
+        if((stateChangeTemp1!=ItemEvent.ITEM_STATE_CHANGED)&&(stateChangeTemp2!=ItemEvent.ITEM_STATE_CHANGED)){
+            JOptionPane.showMessageDialog(null, "Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
         }else{
-            dispose();
-            new PrintFlightWindow().setVisible(true);
+            if(upgrade){
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+                new MealWindow().setVisible(true);
+            }else{
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                new MealWindow().setVisible(true);
+            }
         }
     }
+    public static int stateChangeTemp1;
+    public static int stateChangeTemp2;
 
     private void busSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            stateChangeTemp1=stateChange;
             dispose();
 
-        } seat=busS.getSelectedItem().toString();
+        }
+        seat=busS.getSelectedItem().toString();
+
     }
 
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
+            stateChangeTemp2=stateChange;
             dispose();
-
         }seat=ecoS.getSelectedItem().toString();
     }
 
@@ -113,9 +127,9 @@ public class SeatTripleWindow extends JFrame {
      */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
-        if(EnterOther.getPsnTemp1()==null) {
+        if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterBookingNumber.getPsnTemp().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -131,9 +145,9 @@ public class SeatTripleWindow extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(EnterBookingNumber.getPsnTemp()==null){
+        }else if(EnterBN_3.getPsnTemp()==null){
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp1().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -153,7 +167,7 @@ public class SeatTripleWindow extends JFrame {
             }
         }else{
             try {
-                Order order = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp2().getBookNumber());
+                Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
                     infoText.setText("You can choose form 5 to 40");
@@ -179,7 +193,7 @@ public class SeatTripleWindow extends JFrame {
      * @throws Exception the exception
      */
     public void showSeats() throws Exception {
-        if(!(EnterOther.getPsnTemp1()==null)){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
                 map.forEach((k,v)->{
@@ -190,9 +204,9 @@ public class SeatTripleWindow extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        } else if(!(EnterBookingNumber.getPsnTemp()==null)) {
+        } else if(!(EnterBN_3.getPsnTemp()==null)) {
             try {
-                map= Objects.requireNonNull(EnterBookingNumber.getFlight()).getSeatingList();
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
                     if (!mapNew.containsValue(v)){
                         mapNew.put(k,v);

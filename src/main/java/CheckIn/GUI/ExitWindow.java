@@ -19,7 +19,7 @@ public class ExitWindow extends JFrame {
         initComponents();
     }
 
-    private void exit(ActionEvent e) {dispose();}
+    private void exit(ActionEvent e) {dispose(); new AirlineWindow().setVisible(true);}
 
     /**
      * Set background.
@@ -111,7 +111,6 @@ public class ExitWindow extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setBackground();
-        System.exit(0);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

@@ -39,7 +39,10 @@ public class WeightShowWindow extends JFrame {
         showWeight();
     }
 
-    private void button3(ActionEvent e) {dispose();new PrintBaggageWindow().setVisible(true);}
+    private void button3(ActionEvent e) {dispose();
+//        new PrintBaggageWindow().setVisible(true);
+        new PrintFlight_6().setVisible(true);
+    }
 
     private void Back2Bag(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
 
@@ -67,31 +70,31 @@ public class WeightShowWindow extends JFrame {
         String str = "Your baggage weighs: ";
         dropCourt = (int)(Math.random()*100)+2;
 
-        if(!(EnterOther.getPsnTemp1()==null)){
-            overWeight(EnterOther.getPsnTemp1());
-            EnterOther.getPsnTemp1().getBaggage().setDropCounter(dropCourt+"");
+        if(!(EnterOther_3.getPsnTemp1()==null)){
+            overWeight(EnterOther_3.getPsnTemp1());
+            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(dropCourt+"");
             try {
-                weiText.setText(str+ EnterOther.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
-                weightPsn= EnterOther.getPsnTemp1().getBaggage().getBaggageWeight();
+                weiText.setText(str+ EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight()+" kg");
+                weightPsn= EnterOther_3.getPsnTemp1().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        } else if(!(EnterBookingNumber.getPsnTemp()==null))  {
-            overWeight(EnterBookingNumber.getPsnTemp());
-            EnterBookingNumber.getPsnTemp().getBaggage().setDropCounter(dropCourt+"");
-            System.out.println(EnterBookingNumber.getPsnTemp().getBaggage().getDropCounter());
+        } else if(!(EnterBN_3.getPsnTemp()==null))  {
+            overWeight(EnterBN_3.getPsnTemp());
+            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(dropCourt+"");
+            System.out.println(EnterBN_3.getPsnTemp().getBaggage().getDropCounter());
             try {
-                weiText.setText(str+ EnterBookingNumber.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
-                weightPsn= EnterBookingNumber.getPsnTemp().getBaggage().getBaggageWeight();
+                weiText.setText(str+ EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight()+" kg");
+                weightPsn= EnterBN_3.getPsnTemp().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp2()==null)){
-            overWeight(EnterOther.getPsnTemp2());
-            EnterOther.getPsnTemp2().getBaggage().setDropCounter(dropCourt+"");
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+            overWeight(EnterOther_3.getPsnTemp2());
+            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(dropCourt+"");
             try {
-                weiText.setText(str+ EnterOther.getPsnTemp2().getBaggage().getBaggageWeight()+" kg");
-                weightPsn= EnterOther.getPsnTemp2().getBaggage().getBaggageWeight();
+                weiText.setText(str+ EnterOther_3.getPsnTemp2().getBaggage().getBaggageWeight()+" kg");
+                weightPsn= EnterOther_3.getPsnTemp2().getBaggage().getBaggageWeight();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

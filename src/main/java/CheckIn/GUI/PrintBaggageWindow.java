@@ -76,21 +76,21 @@ public class PrintBaggageWindow extends JFrame {
             }
         }
 
-        if(!(EnterBookingNumber.getPsnTemp()==null))  {
+        if(!(EnterBN_3.getPsnTemp()==null))  {
             try {
-                EnterBookingNumber.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+                EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp1()==null)) {
+        }else if(!(EnterOther_3.getPsnTemp1()==null)) {
             try {
-                EnterOther.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+                EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp2()==null)){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try {
-                EnterOther.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
+                EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -104,7 +104,7 @@ public class PrintBaggageWindow extends JFrame {
      */
     public void showBag(){
         setBagNo();
-        if(!(EnterOther.getPsnTemp1()==null)){
+        if(!(EnterOther_3.getPsnTemp1()==null)){
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
@@ -117,7 +117,7 @@ public class PrintBaggageWindow extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(!(EnterBookingNumber.getPsnTemp()==null))  {
+        else if(!(EnterBN_3.getPsnTemp()==null))  {
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
@@ -129,7 +129,7 @@ public class PrintBaggageWindow extends JFrame {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        }else if(!(EnterOther.getPsnTemp2()==null)){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
@@ -167,21 +167,21 @@ public class PrintBaggageWindow extends JFrame {
      * @return the passenger
      */
     public static Passenger writeInBaggage(){
-        if(!(EnterBookingNumber.getPsnTemp()==null)) {
-            EnterBookingNumber.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
-            EnterBookingNumber.getPsnTemp().getBaggage().setDropCounter(BagStoreWindow.court+"");
-            EnterBookingNumber.getPsnTemp().setCheckinStatus(0);
-            return EnterBookingNumber.getPsnTemp();
-        }else if(!(EnterOther.getPsnTemp1()==null)){
-            EnterOther.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther.getPsnTemp1().getBaggage().setDropCounter(BagStoreWindow.court+"");
-            EnterOther.getPsnTemp1().setCheckinStatus(0);
-            return EnterOther.getPsnTemp1();
-        }else if(!(EnterOther.getPsnTemp2()==null)){
-            EnterOther.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther.getPsnTemp2().getBaggage().setDropCounter(BagStoreWindow.court+"");
-            EnterOther.getPsnTemp2().setCheckinStatus(0);
-            return EnterOther.getPsnTemp2();
+        if(!(EnterBN_3.getPsnTemp()==null)) {
+            EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
+            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterBN_3.getPsnTemp().setCheckinStatus(0);
+            return EnterBN_3.getPsnTemp();
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
+            EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
+            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther_3.getPsnTemp1().setCheckinStatus(0);
+            return EnterOther_3.getPsnTemp1();
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
+            EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
+            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther_3.getPsnTemp2().setCheckinStatus(0);
+            return EnterOther_3.getPsnTemp2();
         }
         return null;
     }

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -61,13 +61,8 @@ new FormModel {
 					"opaque": false
 					"preferredSize": new java.awt.Dimension( 260, 90 )
 					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "button2"
-						"text": new FormMessage( null, "button2.text_17" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "payMeal", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "okButton"
-						"text": new FormMessage( null, "okButton.text_6" )
+						name: "baggageBtn"
+						"text": new FormMessage( null, "baggageBtn.text_6" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exit", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {

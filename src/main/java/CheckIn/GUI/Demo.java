@@ -41,7 +41,7 @@ public class Demo extends JFrame {
 
         JPanel pane = new JPanel(new BorderLayout());
         JLabel label = new JLabel();
-        label.setText("Click the button for printing your TAG.");
+        label.setText("Click the button for printing your Boarding Pass and Baggage Tags.");
         label.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -67,13 +67,14 @@ public class Demo extends JFrame {
                             Thread.sleep(3000);
                             dispose();
                             JOptionPane.showMessageDialog(null, "Ready for next step?","Next step", JOptionPane.QUESTION_MESSAGE);
-                            if(PrintFlightWindow.stage.equals("BoardingPass")){
-                                new BaggageWindow().setVisible(true);
-                                PrintFlightWindow.stage="false";
-                            }else if(PrintBaggageWindow.stage0.equals("BagTag")){
-                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
-                                new MealWindow().setVisible(true);
-                            }
+//                            if(PrintFlight_6.stage.equals("BoardingPass")){
+//                                new BaggageWindow().setVisible(true);
+//                                PrintFlight_6.stage="false";
+//                            }else if(PrintBaggageWindow.stage0.equals("BagTag")){
+//                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+//                                new MealWindow().setVisible(true);
+//                            }
+                            new ExitWindow().setVisible(true);
                         } catch (InterruptedException ie) {
                         }
                         glassPane.stop();

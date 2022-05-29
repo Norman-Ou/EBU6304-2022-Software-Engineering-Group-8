@@ -17,7 +17,7 @@ import java.util.Base64;
 import java.util.Calendar;
 import java.util.Objects;
 
-import static CheckIn.GUI.PrintFlightWindow.writeInBoardingPass;
+import static CheckIn.GUI.PrintFlight_6.writeInBoardingPass;
 
 /**
  * @author Ruizhe Ou, Jiacheng Li

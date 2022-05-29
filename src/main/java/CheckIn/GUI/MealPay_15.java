@@ -17,14 +17,14 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealPay extends JFrame {
+public class MealPay_15 extends JFrame {
     private static int seatFee=0;
     private String mealTemp="";
 
     /**
      * Instantiates a new Meal pay 15.
      */
-    public MealPay() throws IOException {
+    public MealPay_15() throws IOException {
         if(SeatDoubleWindow.upgrade|| SeatTripleWindow.upgrade|| MealAdd.mealState){
             initComponents();}
     }
@@ -52,22 +52,19 @@ public class MealPay extends JFrame {
         return this.mealTemp;
     }
 
-    private void payMeal(ActionEvent e) {
-        pay4MealContent();
-        JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Click confirm for exiting.","Safe pay for meal.", JOptionPane.QUESTION_MESSAGE);
-        dispose();new ExitWindow().setVisible(true);}
-
     private void payAdMeal(ActionEvent e) {
         pay4MealContent();
         JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
-        dispose();new ExitWindow().setVisible(true);}
+        dispose();
+        new BaggageWindow().setVisible(true);
+    }
 
     private void BackMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     /**
-     * Pay 4 meal content.
+     * Pay for meal content.
      */
     public void pay4MealContent(){
         if(MealAdd.VIPmealSelected==null){
@@ -87,14 +84,14 @@ public class MealPay extends JFrame {
      */
     public void credit(){
         String creditInfo = null;
-        if(!(EnterBookingNumber.getPsnTemp()==null)) {
-            creditInfo = "Your credit card number:" + EnterBookingNumber.getPsnTemp().getCreditCard().getCardNo();
+        if(!(EnterBN_3.getPsnTemp()==null)) {
+            creditInfo = "Your credit card number:" + EnterBN_3.getPsnTemp().getCreditCard().getCardNo();
         }
-        if(!(EnterOther.getPsnTemp1()==null)) {
-            creditInfo = "Your credit card number:" + EnterOther.getPsnTemp1().getCreditCard().getCardNo();
+        if(!(EnterOther_3.getPsnTemp1()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp1().getCreditCard().getCardNo();
         }
-        if(!(EnterOther.getPsnTemp2()==null)) {
-            creditInfo = "Your credit card number:" + EnterOther.getPsnTemp2().getCreditCard().getCardNo();
+        if(!(EnterOther_3.getPsnTemp2()==null)) {
+            creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp2().getCreditCard().getCardNo();
         }
         
         textField1.setText(creditInfo);
@@ -120,7 +117,6 @@ public class MealPay extends JFrame {
     private void initComponents() throws IOException {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -131,8 +127,7 @@ public class MealPay extends JFrame {
         button3 = new JButton();
         textField1 = new JTextField();
         buttonBar = new JPanel();
-        button2 = new JButton();
-        okButton = new JButton();
+        baggageBtn = new JButton();
         cancelButton = new JButton();
 
         //======== this ========
@@ -143,13 +138,6 @@ public class MealPay extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-                    swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
-                    . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
-                    ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
-                    ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-                                                                                                                                                             .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
-                ( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -202,15 +190,10 @@ public class MealPay extends JFrame {
                 buttonBar.setPreferredSize(new Dimension(260, 90));
                 buttonBar.setLayout(new GridLayout());
 
-                //---- button2 ----
-                button2.setText(bundle.getString("button2.text_17"));
-                button2.addActionListener(e -> payMeal(e));
-                buttonBar.add(button2);
-
-                //---- okButton ----
-                okButton.setText(bundle.getString("okButton.text_6"));
-                okButton.addActionListener(e -> exit(e));
-                buttonBar.add(okButton);
+                //---- baggageBtn ----
+                baggageBtn.setText(bundle.getString("baggageBtn.text_6"));
+                baggageBtn.addActionListener(e -> exit(e));
+                buttonBar.add(baggageBtn);
 
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_13"));
@@ -226,13 +209,12 @@ public class MealPay extends JFrame {
         credit();
         setBackground();
         ArrayList<Flight> newFlight = new ArrayList<>();
-        newFlight.add(EnterBookingNumber.fltTemp);
+        newFlight.add(EnterBN_3.fltTemp);
         newFlight.add(AirPassCse.flightChoose);
         fDB.replaceAllFlights(newFlight);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
@@ -242,8 +224,7 @@ public class MealPay extends JFrame {
     private JButton button3;
     private JTextField textField1;
     private JPanel buttonBar;
-    private JButton button2;
-    private JButton okButton;
+    private JButton baggageBtn;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

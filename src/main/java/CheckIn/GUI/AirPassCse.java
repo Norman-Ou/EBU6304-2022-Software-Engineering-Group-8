@@ -72,7 +72,7 @@ public class AirPassCse extends JFrame {
         initComponents();
     }
 
-    private void cancel(ActionEvent e) {new EnterOther().setVisible(true);dispose();}
+    private void cancel(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
     private void ok(ActionEvent e) {new ConfirmWindow().setVisible(true);dispose();}
 
@@ -94,7 +94,7 @@ public class AirPassCse extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void airlineAdd() throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther.getFlight();
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             Dep=flt.getDeparture();
@@ -143,7 +143,7 @@ public class AirPassCse extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void airLineItemStateChanged(ItemEvent e) throws IllegalAccessException, ParseException {
-        ArrayList<Flight> list = EnterOther.getFlight();
+        ArrayList<Flight> list = EnterOther_3.getFlight();
         for(Flight flt : list) {
             flightNo=flt.getFlightNo();
             if(e.getStateChange()==ItemEvent.SELECTED){

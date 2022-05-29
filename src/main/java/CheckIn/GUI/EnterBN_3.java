@@ -23,12 +23,12 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class EnterBookingNumber extends JFrame {
+public class EnterBN_3 extends JFrame {
 
     /**
      * Instantiates a new Enter bn 3.
      */
-    public EnterBookingNumber() {initComponents();}
+    public EnterBN_3() throws ParseException {initComponents();}
 
     /**
      * The constant bookNum.
@@ -55,7 +55,7 @@ public class EnterBookingNumber extends JFrame {
      */
     public static String nowTime = format.format(time.getTime());
 
-    private void forgetBN(ActionEvent e) {new EnterOther().setVisible(true);dispose();}
+    private void forgetBN(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
     private void back(ActionEvent e) {new AirlineWindow().setVisible(true);dispose();}
 
@@ -70,20 +70,19 @@ public class EnterBookingNumber extends JFrame {
     public void bookNumHandel()throws Exception{
         String str=textField1.getText();
         bookNum=str;
-//        Flight flt = new Flight();
-        fltTemp = cMonitors.getFlightByBookingNo(bookNum);
-        psnTemp = cMonitors.getPassengerByBookingNo(bookNum);
+        Flight flt = new Flight();
+//        fltTemp = cMonitors.getFlightByBookingNo(bookNum);
+//        psnTemp = cMonitors.getPassengerByBookingNo(bookNum);
 
-
-//        try {
-//            flt = cMonitors.getFlightByBookingNo(bookNum);
-//            fltTemp = cMonitors.getFlightByBookingNo(bookNum);
-//            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
-////            fltTemp = flt;
-//            psnTemp = psn;
-//        } catch (Exception exception) {
-//            exception.printStackTrace();
-//        }
+        try {
+            flt = cMonitors.getFlightByBookingNo(bookNum);
+            fltTemp = cMonitors.getFlightByBookingNo(bookNum);
+            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
+//            fltTemp = flt;
+            psnTemp = psn;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
 
         try{
             firstCheck();
@@ -99,7 +98,7 @@ public class EnterBookingNumber extends JFrame {
     }
 
     /**
-     * ErrorWindow handel.
+     * ErrorWindow handle.
      */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
@@ -114,17 +113,34 @@ public class EnterBookingNumber extends JFrame {
      */
     public void firstCheck() throws IllegalAccessException, ParseException {
         try{
+            if (fltTemp == null) {
+                JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+                dispose();
+                new CheckInWindow().setVisible(true);
+            }else{
+                new ConfirmWindow().setVisible(true);
+            }
+//            fltTemp.getETD();
+        } catch (Exception error){
+            JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+            dispose();
+            new CheckInWindow().setVisible(true);
+        }
+
+        try{
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Date date1 = format.parse(nowTime);
             Date date2 = new Date();
-            try{
-                date2 = format.parse(fltTemp.getETD());
-                new ConfirmWindow().setVisible(true);
-            } catch (Exception error){
-                JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-                dispose();
-                new CheckInWindow().setVisible(true);
-            }
+
+            date2 = format.parse(fltTemp.getETD());
+//            try{
+//                date2 = format.parse(fltTemp.getETD());
+//                new ConfirmWindow().setVisible(true);
+//            } catch (Exception error){
+//                JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
+//                dispose();
+//                new CheckInWindow().setVisible(true);
+//            }
             long nowMillisecond = date1.getTime();
             long etdMillisecond = date2.getTime();
             if( etdMillisecond - nowMillisecond < 1800000){
@@ -181,7 +197,7 @@ public class EnterBookingNumber extends JFrame {
     }
 
 
-    private void initComponents() {
+    private void initComponents() throws ParseException {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane2 = new JPanel();

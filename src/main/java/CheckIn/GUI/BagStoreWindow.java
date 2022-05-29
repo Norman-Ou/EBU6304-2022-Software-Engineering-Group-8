@@ -28,7 +28,10 @@ public class BagStoreWindow extends JFrame {
         initComponents();
     }
 
-    private void ToMeal(ActionEvent e) {dispose();new PrintBaggageWindow().setVisible(true);}
+    private void ToMeal(ActionEvent e) {dispose();
+        new PrintFlight_6().setVisible(true);
+//        new PrintBaggageWindow().setVisible(true);
+    }
 
     private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
 

@@ -38,6 +38,9 @@ public class SeatDoubleWindow extends JFrame {
      */
     public static Map.Entry<String,Seat> entry;
 
+    public static int stateChangeTemp1;
+    public static int stateChangeTemp2;
+
     /**
      * Instantiates a new Seat 1 6.
      *
@@ -49,7 +52,9 @@ public class SeatDoubleWindow extends JFrame {
 
     private void button3(ActionEvent e) throws Exception {checkClass();}
 
-    private void Return(ActionEvent e) {dispose();new ConfirmWindow().setVisible(true);}
+    private void Return(ActionEvent e) {dispose();
+
+        new ConfirmWindow().setVisible(true);}
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 
@@ -57,11 +62,13 @@ public class SeatDoubleWindow extends JFrame {
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
+        stateChangeTemp1=stateChange;
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
         }
     }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
+        stateChangeTemp2=stateChange;
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){}seat=ecoS.getSelectedItem().toString();
     }
     /**
@@ -69,11 +76,11 @@ public class SeatDoubleWindow extends JFrame {
      */
     public void checkClass(){
         Iterator<Map.Entry<String,Seat>> itTemp = mapNew.entrySet().iterator();
-        if(!(EnterOther.getPsnTemp1()==null)) {
+        if(!(EnterOther_3.getPsnTemp1()==null)) {
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else if(!(EnterOther.getPsnTemp2()==null)){
+        }else if(!(EnterOther_3.getPsnTemp2()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
-        }else if(!(EnterOther.getPsnTemp1()==null)){
+        }else if(!(EnterOther_3.getPsnTemp1()==null)){
             try {setCombox();} catch (Exception e1) {e1.printStackTrace();}
         }
     }
@@ -86,16 +93,16 @@ public class SeatDoubleWindow extends JFrame {
      */
     public int getSeatClazz() throws Exception {
         int clazz;
-        if(EnterBookingNumber.getPsnTemp() != null){
-            Order order = oDB.getOrderByBookingNumber(EnterBookingNumber.getPsnTemp().getBookNumber());
+        if(EnterBN_3.getPsnTemp() != null){
+            Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
             clazz =order.getSeatClass();
             return clazz;
-        }else if(EnterOther.getPsnTemp1() != null){
-            Order other2 = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp1().getBookNumber());
+        }else if(EnterOther_3.getPsnTemp1() != null){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
             clazz =other2.getSeatClass();
             return clazz;
-        }else if(EnterOther.getPsnTemp2() != null){
-            Order other2 = oDB.getOrderByBookingNumber(EnterOther.getPsnTemp2().getBookNumber());
+        }else if(EnterOther_3.getPsnTemp2() != null){
+            Order other2 = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
             clazz =other2.getSeatClass();
             return clazz;
         }
@@ -124,7 +131,25 @@ public class SeatDoubleWindow extends JFrame {
         showSeats();
     }
 
-    private void PrintFlight(ActionEvent e) {dispose();new PrintFlightWindow().setVisible(true);sortSeat();}
+    private void PrintFlight(ActionEvent e) {dispose();
+
+//        new PrintFlightWindow().setVisible(true);
+        if((stateChangeTemp1!=ItemEvent.ITEM_STATE_CHANGED)&&(stateChangeTemp2!=ItemEvent.ITEM_STATE_CHANGED)){
+            JOptionPane.showMessageDialog(null, "Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
+        }else{
+            if(upgrade){
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+                new MealWindow().setVisible(true);
+            }else{
+                dispose();
+//            new PrintFlightWindow().setVisible(true);
+                new MealWindow().setVisible(true);
+            }
+        }
+        sortSeat();
+    }
 
 
 
@@ -134,7 +159,7 @@ public class SeatDoubleWindow extends JFrame {
      * @throws Exception the exception
      */
     public void showSeats() throws Exception {
-        if(EnterBookingNumber.getPsnTemp()==null){
+        if(EnterBN_3.getPsnTemp()==null){
             try {
                 map= Objects.requireNonNull(AirPassCse.flightChoose.getSeatingList());
                 map.forEach((k,v)->{
@@ -146,9 +171,9 @@ public class SeatDoubleWindow extends JFrame {
                 e1.printStackTrace();
             }
         }
-        else if(EnterOther.getPsnTemp1()==null) {
+        else if(EnterOther_3.getPsnTemp1()==null) {
             try {
-                map= Objects.requireNonNull(EnterBookingNumber.getFlight()).getSeatingList();
+                map= Objects.requireNonNull(EnterBN_3.getFlight()).getSeatingList();
                 map.forEach((k,v)->{
                     if (!mapNew.containsValue(v)){
                         mapNew.put(k,v);
@@ -231,7 +256,11 @@ public class SeatDoubleWindow extends JFrame {
      * Reset av seat.
      * Open all combox after upgrading.
      */
-    public void resetAvSeat(){vip.setEnabled(true);}
+    public void resetAvSeat(){
+        vip.setEnabled(true);
+        ecoS.setEnabled(false);
+
+    }
 
     /**
      * Set upgrade.
