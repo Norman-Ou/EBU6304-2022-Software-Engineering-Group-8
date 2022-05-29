@@ -74,6 +74,7 @@ public class EnterBookingNumber extends JFrame {
         fltTemp = cMonitors.getFlightByBookingNo(bookNum);
         psnTemp = cMonitors.getPassengerByBookingNo(bookNum);
 
+
 //        try {
 //            flt = cMonitors.getFlightByBookingNo(bookNum);
 //            fltTemp = cMonitors.getFlightByBookingNo(bookNum);
