@@ -7,6 +7,7 @@ import Exceptions.DataNotFound;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.junit.Test;
 
 
 import java.io.IOException;
@@ -93,6 +94,12 @@ public class fDB {
             return null;
         }
     }
+
+    @Test
+    public void test1(){
+        System.out.println(this.loadFlightByFlightNo("BA3352"));
+    }
+
 
     /**
      * Update the flight information in data base after check in

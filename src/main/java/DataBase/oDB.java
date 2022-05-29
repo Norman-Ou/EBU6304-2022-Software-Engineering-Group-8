@@ -51,6 +51,15 @@ public class oDB {
         }
     }
 
+    @Test
+    public void test1(){
+        try {
+            System.out.println(this.getOrderByBookingNumber("46921248"));
+        } catch (DataNotFound dataNotFound) {
+            dataNotFound.printStackTrace();
+        }
+    }
+
     /**
      * Get a order objects in order data base based on flight number
      *
@@ -71,13 +80,5 @@ public class oDB {
     public static ArrayList<Order> getOrdersByPassengerId(String passengerID) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
         return dataBase.getObjects("passengerID", passengerID, Order.class);
-    }
-    @Test
-    public void test1(){
-        try {
-            System.out.println(this.getOrderByBookingNumber("46921248"));
-        } catch (DataNotFound dataNotFound) {
-            dataNotFound.printStackTrace();
-        }
     }
 }

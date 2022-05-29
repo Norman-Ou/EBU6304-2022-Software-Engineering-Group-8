@@ -11,7 +11,7 @@ public class EnterCheckIn {
 
     public static void main(String[] args) throws Exception {
 
-//        Utils.updateTestData();
+        Utils.updateTestData();
         new Airline_1().setVisible(true);
     }
 }
