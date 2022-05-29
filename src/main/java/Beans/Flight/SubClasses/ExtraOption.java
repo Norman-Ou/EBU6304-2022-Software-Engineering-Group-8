@@ -1,12 +1,14 @@
 package Beans.Flight.SubClasses;
 
+import java.io.Serializable;
+
 /**
- * This is the basic Passenger information class
+ * This is abstraction for an extra option
  *
  * @author Jiacheng Li
- * @version 0.2 March 24th, 2022
+ * @version 1.0 May 2nd, 2022
  */
-public class ExtraOption {
+public class ExtraOption  implements Serializable {
     /**
      * Kind of a certain extra option.<br/><br/>
      * Kind No: <br/>

@@ -1,6 +1,8 @@
 package Beans.IDDocument;
 
-public class IDDocument {
+import java.io.Serializable;
+
+public class IDDocument  implements Serializable {
     private final String ID;
     private final String surname;
 

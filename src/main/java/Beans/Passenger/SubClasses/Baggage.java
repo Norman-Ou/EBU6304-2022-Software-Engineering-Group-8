@@ -1,6 +1,8 @@
 package Beans.Passenger.SubClasses;
 
 
+import java.io.Serializable;
+
 /**
  * This is the basic Passenger information class
  *
@@ -9,7 +11,7 @@ package Beans.Passenger.SubClasses;
  * @author Jiacheng Li
  * @version 0.2 March 24th, 2022
  */
-public class Baggage {
+public class Baggage  implements Serializable {
     /**
      * Baggage number.<br/><br/>
      * Default Value: null

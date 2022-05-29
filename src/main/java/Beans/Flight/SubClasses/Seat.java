@@ -2,13 +2,15 @@ package Beans.Flight.SubClasses;
 
 import Beans.Passenger.Passenger;
 
+import java.io.Serializable;
+
 /**
  * This is the basic Seat information class
  *
  * @author Jiacheng Li
  * @version 1.3 April 16th, 2022
  */
-public class Seat {
+public class Seat  implements Serializable {
     /**
      * Class of a certain seat.<br/><br/>
      * Class No:<br/>

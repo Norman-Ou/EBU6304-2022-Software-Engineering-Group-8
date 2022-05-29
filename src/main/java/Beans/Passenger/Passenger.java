@@ -5,6 +5,8 @@ import Beans.Passenger.SubClasses.Baggage;
 import Beans.Passenger.SubClasses.BoardingPass;
 import Beans.Passenger.SubClasses.CreditCard;
 import Beans.Flight.SubClasses.ExtraOption;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -15,7 +17,7 @@ import java.util.*;
  * @author Jiacheng Li
  * @version 1.0 March 24th, 2022
  */
-public class Passenger {
+public class Passenger  implements Serializable {
     /**
      * Booking number of the passenger.<br/><br/>
      * Default Value: null

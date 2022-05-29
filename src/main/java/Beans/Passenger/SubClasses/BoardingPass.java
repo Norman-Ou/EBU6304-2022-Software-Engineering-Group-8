@@ -1,6 +1,8 @@
 package Beans.Passenger.SubClasses;
 
 
+import java.io.Serializable;
+
 /**
  * This is the basic Passenger information class
  *
@@ -9,7 +11,7 @@ package Beans.Passenger.SubClasses;
  * @author Jiacheng Li
  * @version 0.2 March 24th, 2022
  */
-public class BoardingPass {
+public class BoardingPass implements Serializable {
     /**
      * Number of the flight.<br/><br/>
      * Default Value: null

@@ -1,13 +1,15 @@
 package Beans.Passenger.SubClasses;
 
 
+import java.io.Serializable;
+
 /**
  * This is the basic Passenger information class
  *
  * @author Jiacheng Li
  * @version 0.2 March 24th, 2022
  */
-public class CreditCard {
+public class CreditCard implements Serializable {
     /**
      * Number of the credit card.<br/><br/>
      * Default Value: null

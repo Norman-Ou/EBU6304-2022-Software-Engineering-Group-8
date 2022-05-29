@@ -1,5 +1,7 @@
 package Beans.Order;
 
+import java.io.Serializable;
+
 /**
  * This is the class definition of booking order
  *
@@ -7,7 +9,7 @@ package Beans.Order;
  * @author Jiacheng Li
  * @version 1.0 May 2nd, 2022
  */
-public class Order {
+public class Order  implements Serializable {
     /**
      * Personal id of the passenger.<br/><br/>
      * Default Value: null
