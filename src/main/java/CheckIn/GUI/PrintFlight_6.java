@@ -63,9 +63,6 @@ public class PrintFlight_6 extends JFrame {
 
     }
 
-    private void scanIDAction(ActionEvent e) throws InterruptedException {
-    }
-
     public void finalCheckFlight(){
         if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
