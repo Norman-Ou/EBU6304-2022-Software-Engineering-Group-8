@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ResourceBundle;
 /*
  * Created by JFormDesigner on Tue Mar 29 20:34:40 CST 2022
@@ -40,13 +41,14 @@ public class PrintFlight_6 extends JFrame {
         info();
     }
 
-    private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void Back2Confirm(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void printThenBag(ActionEvent e) throws InterruptedException {
+    private void printThenBag(ActionEvent e) throws InterruptedException, IOException {
+        scanCheck();
         if(finalState){
             bagInformation();
         }else{
@@ -54,10 +56,14 @@ public class PrintFlight_6 extends JFrame {
         }
     }
 
-    private void scanIDAction(ActionEvent e) throws InterruptedException {
+    public void scanCheck(){
         finalCheckFlight();
         finalState=pDB.finalCheck(surname1,psnID1);
         JOptionPane.showMessageDialog(null, "Confirmed, please check your Boarding Information","CONFIRM", JOptionPane.WARNING_MESSAGE);
+
+    }
+
+    private void scanIDAction(ActionEvent e) throws InterruptedException {
     }
 
     public void finalCheckFlight(){
@@ -90,7 +96,7 @@ public class PrintFlight_6 extends JFrame {
     /**
      * Bag information.
      */
-    public void bagInformation(){
+    public void bagInformation() throws IOException {
         int temp=JOptionPane.showInternalConfirmDialog(null,
                 "Ready for printing your Baggage Tag?", "Double check",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -100,11 +106,19 @@ public class PrintFlight_6 extends JFrame {
             dispose();
 //            new Demo().setVisible(true);
             stage="BoardingPass";
-            new PrintBaggageWindow().setVisible(true);
+            new PrintBag_11().setVisible(true);
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
             new ErrorWindow().setVisible(true);
-        }dispose();
+        }
+        if(FinalPay_15.priceState){
+            new BaggageWindow().setVisible(true);
+//            PrintFlight_6.stage="false";
+        }else{
+            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+            new ExitWindow().setVisible(true);
+        }
+        dispose();
     }
 
     /**
@@ -282,7 +296,6 @@ public class PrintFlight_6 extends JFrame {
         Seat = new JTextField();
         buttonBar = new JPanel();
         PrintButton = new JButton();
-        button4 = new JButton();
         button1 = new JButton();
         cancelButton = new JButton();
 
@@ -304,7 +317,6 @@ public class PrintFlight_6 extends JFrame {
                 //---- button2 ----
                 button2.setText(bundle.getString("button2.text_12"));
                 button2.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 20));
-                button2.addActionListener(e -> printBoardingpass(e));
                 panel1.add(button2, BorderLayout.CENTER);
 
                 //---- button3 ----
@@ -505,22 +517,11 @@ public class PrintFlight_6 extends JFrame {
                 PrintButton.addActionListener(e -> {
                     try {
                         printThenBag(e);
-                    } catch (InterruptedException ex) {
+                    } catch (InterruptedException | IOException ex) {
                         ex.printStackTrace();
                     }
                 });
                 buttonBar.add(PrintButton);
-
-                //---- button4 ----
-                button4.setText(bundle.getString("button4.text_13"));
-                button4.addActionListener(e -> {
-                    try {
-                        scanIDAction(e);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                buttonBar.add(button4);
 
                 //---- button1 ----
                 button1.setText(bundle.getString("button1.text_4"));
@@ -541,6 +542,7 @@ public class PrintFlight_6 extends JFrame {
 
         setBackground();
         writeInBoardingPass();
+        info();
 //        Utils.newPsnFile();
 
     }
@@ -577,13 +579,7 @@ public class PrintFlight_6 extends JFrame {
     private JTextField Seat;
     private JPanel buttonBar;
     private JButton PrintButton;
-    private JButton button4;
     private JButton button1;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-    public static void main(String[] args) throws Exception {
-
-
-        new PrintFlight_6().setVisible(true);
-    }
 }

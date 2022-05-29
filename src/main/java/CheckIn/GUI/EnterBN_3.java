@@ -60,7 +60,7 @@ public class EnterBN_3 extends JFrame {
 
     private void forgetBN(ActionEvent e) {new EnterOther_3().setVisible(true);dispose();}
 
-    private void back(ActionEvent e) {new AirlineWindow().setVisible(true);dispose();}
+    private void back(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
@@ -148,8 +148,8 @@ public class EnterBN_3 extends JFrame {
             try{
                 checkTime();
 
-//                new ConfirmPage_3().setVisible(true);
-                new Seat_1_6().setVisible(true);
+                new ConfirmPage_3().setVisible(true);
+//                new Seat_1_6().setVisible(true);
             } catch (IllegalAccessException e) {
                 errorHandel();
                 e.printStackTrace();

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -54,6 +54,13 @@ new FormModel {
 										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelMeal", true ) )
 									}, new FormLayoutConstraints( class java.lang.String ) {
 										"value": "North"
+									} )
+									add( new FormComponent( "javax.swing.JButton" ) {
+										name: "button5"
+										"text": new FormMessage( null, "button5.text_6" )
+										addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "return2Init", true ) )
+									}, new FormLayoutConstraints( class java.lang.String ) {
+										"value": "South"
 									} )
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "Center"

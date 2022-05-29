@@ -53,11 +53,10 @@ public class ConfirmPage_3 extends JFrame {
             String str1 = "";
             if(!(EnterOther_3.getPsnTemp1()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
-            }
-            if(!(EnterBN_3.getPsnTemp()==null))  {
+            }else if(!(EnterBN_3.getPsnTemp()==null))  {
                 str1= EnterBN_3.getFlight().getFlightType();
-            }
-            if(!(EnterOther_3.getPsnTemp2()==null)) {
+                System.out.println(str1+"111111");
+            }else if(!(EnterOther_3.getPsnTemp2()==null)) {
                 str1=AirPassCse.flightChoose.getFlightType();
             }
             try {
@@ -385,7 +384,6 @@ public class ConfirmPage_3 extends JFrame {
                 //---- onfirm ----
                 onfirm.setText(bundle.getString("onfirm.text_3"));
                 onfirm.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 22));
-                onfirm.addActionListener(e -> showInitialInfo(e));
                 panel5.add(onfirm, BorderLayout.CENTER);
 
                 //---- button4 ----
@@ -402,7 +400,11 @@ public class ConfirmPage_3 extends JFrame {
 
         //Read input passenger
 
-        setBackground();}
+
+        setBackground();
+        info();
+
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel dialogPane;

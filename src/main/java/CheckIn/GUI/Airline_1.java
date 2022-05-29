@@ -50,7 +50,9 @@ public class Airline_1 extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
+        panel5 = new JPanel();
         label1 = new JLabel();
+        label3 = new JLabel();
         panel4 = new JPanel();
         button1 = new JButton();
         label2 = new JLabel();
@@ -88,13 +90,27 @@ public class Airline_1 extends JFrame {
                             panel3.setOpaque(false);
                             panel3.setLayout(new BorderLayout());
 
-                            //---- label1 ----
-                            label1.setText(bundle.getString("label1.text_5"));
-                            label1.setHorizontalAlignment(SwingConstants.CENTER);
-                            label1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
-                            label1.setForeground(Color.black);
-                            label1.setBackground(new Color(0, 127, 255, 191));
-                            panel3.add(label1, BorderLayout.CENTER);
+                            //======== panel5 ========
+                            {
+                                panel5.setOpaque(false);
+                                panel5.setLayout(new BorderLayout());
+
+                                //---- label1 ----
+                                label1.setText(bundle.getString("label1.text_5"));
+                                label1.setHorizontalAlignment(SwingConstants.CENTER);
+                                label1.setFont(new Font("Lucida Grande", Font.BOLD, 40));
+                                label1.setForeground(Color.black);
+                                label1.setBackground(new Color(0, 127, 255, 191));
+                                panel5.add(label1, BorderLayout.CENTER);
+
+                                //---- label3 ----
+                                label3.setText(bundle.getString("label3.text_9"));
+                                label3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 30));
+                                label3.setHorizontalAlignment(SwingConstants.CENTER);
+                                label3.setForeground(Color.black);
+                                panel5.add(label3, BorderLayout.NORTH);
+                            }
+                            panel3.add(panel5, BorderLayout.CENTER);
 
                             //======== panel4 ========
                             {
@@ -109,8 +125,8 @@ public class Airline_1 extends JFrame {
                             panel3.add(panel4, BorderLayout.NORTH);
 
                             //---- label2 ----
-                            label2.setMinimumSize(new Dimension(0, 100));
-                            label2.setPreferredSize(new Dimension(0, 100));
+                            label2.setMinimumSize(new Dimension(0, 150));
+                            label2.setPreferredSize(new Dimension(0, 150));
                             label2.setMaximumSize(new Dimension(0, 100));
                             panel3.add(label2, BorderLayout.SOUTH);
                         }
@@ -163,7 +179,9 @@ public class Airline_1 extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
+    private JPanel panel5;
     private JLabel label1;
+    private JLabel label3;
     private JPanel panel4;
     private JButton button1;
     private JLabel label2;

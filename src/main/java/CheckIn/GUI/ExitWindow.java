@@ -19,7 +19,7 @@ public class ExitWindow extends JFrame {
         initComponents();
     }
 
-    private void exit(ActionEvent e) {dispose(); new AirlineWindow().setVisible(true);}
+    private void exit(ActionEvent e) {dispose(); new Airline_1().setVisible(true);}
 
     /**
      * Set background.

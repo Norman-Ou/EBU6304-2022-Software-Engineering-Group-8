@@ -26,7 +26,7 @@ public class CheckInWindow extends JFrame {
 
     private void CheckInButton(ActionEvent e) throws ParseException {dispose();new EnterBN_3().setVisible(true);}
 
-    private void AirlineRe(ActionEvent e) {dispose();new AirlineWindow().setVisible(true);}
+    private void AirlineRe(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**

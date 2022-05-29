@@ -5,14 +5,13 @@ package CheckIn.GUI;/**
  * @create: 2022-05-07 20:53
  **/
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.*;
-
-public class Demo extends JFrame {
+public class Demo1 extends JFrame {
 
     /**
      *
@@ -21,8 +20,8 @@ public class Demo extends JFrame {
 
     protected InfiniteProgressPanel glassPane;
 
-    public Demo() {
-        super("Printing page");
+    public Demo1() {
+        super("Scanning...");
 
         build();
 
@@ -42,11 +41,11 @@ public class Demo extends JFrame {
 
         JPanel pane = new JPanel(new BorderLayout());
         JLabel label = new JLabel();
-        label.setText("Click the button for printing your Boarding Pass and Baggage Tags.");
+        label.setText("Scanning.");
         label.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        glassPane = new InfiniteProgressPanel("Printing......");
+        glassPane = new InfiniteProgressPanel("Scanning......");
         setGlassPane(glassPane);
 
         JTable table = new JTable();
@@ -65,18 +64,10 @@ public class Demo extends JFrame {
                 Thread performer = new Thread(new Runnable() {
                     public void run() {
                         try {
-                            Thread.sleep(3000);
                             dispose();
-                            JOptionPane.showMessageDialog(null, "Ready for paying?","Final payment", JOptionPane.QUESTION_MESSAGE);
-                            if(FinalPay_15.priceState){
-                                new BaggageWindow().setVisible(true);
-                                PrintFlight_6.stage="false";
-                            }else{
-                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
-                                new ExitWindow().setVisible(true);
-                            }
-                            new FinalPay_15().setVisible(true);
-                        } catch (InterruptedException | IOException ie) {
+                            EnterOther_3.scanState=true;
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ie) {
                         }
                         glassPane.stop();
                     }
@@ -90,7 +81,7 @@ public class Demo extends JFrame {
     }
 
     public static void main(String[] args) {
-        Demo d = new Demo();
+        Demo1 d = new Demo1();
         d.setVisible(true);
     }
 }

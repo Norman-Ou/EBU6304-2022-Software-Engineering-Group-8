@@ -39,6 +39,7 @@ public class cMonitors {
     @Test
     public static Flight findFlight(String flightNo){
         Flight flight = fDB.loadFlightByFlightNo(flightNo);
+        System.out.println(flightNo);
         return flight;
     }
 

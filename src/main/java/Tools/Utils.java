@@ -2,7 +2,7 @@ package Tools;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
-import CheckIn.GUI.PrintBaggageWindow;
+import CheckIn.GUI.PrintBag_11;
 import DataBase.pDB;
 import DataBase.fDB;
 
@@ -209,7 +209,7 @@ public class Utils {
     public static boolean newPsnFile(){
         ArrayList<Passenger> newPassenger = new ArrayList<>();
         newPassenger.add(writeInBoardingPass());
-        newPassenger.add(PrintBaggageWindow.writeInBaggage());
+        newPassenger.add(PrintBag_11.writeInBaggage());
         try {
             pDB.replaceAllPsn(newPassenger);
             System.out.println("Updated Passenger JSON file completed!");

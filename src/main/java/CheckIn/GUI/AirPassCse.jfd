@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -147,7 +147,6 @@ new FormModel {
 							name: "testDO"
 							"text": new FormMessage( null, "testDO.text_26" )
 							"font": new java.awt.Font( ".AppleSystemUIFont", 0, 30 )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "testDO", true ) )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"
 						} )

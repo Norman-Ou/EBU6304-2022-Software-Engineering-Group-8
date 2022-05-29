@@ -14,11 +14,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import static CheckIn.GUI.EnterBN_3.format;
+import static CheckIn.GUI.EnterBN_3.time;
 
 /**
  * The type Enter other 3.
@@ -26,10 +31,11 @@ import java.util.ResourceBundle;
  * @author Jiayi Wang
  */
 public class EnterOther_3 extends JFrame {
+    protected InfiniteProgressPanel glassPane;
     /**
      * The constant ETA.
      */
-    public static String ETA= "";
+    public static String ETC = "";
 
     /**
      * Instantiates a new Enter other 3.
@@ -57,13 +63,20 @@ public class EnterOther_3 extends JFrame {
     /**
      * The constant nowTime.
      */
-    public static String nowTime = "07-09-2022 7:42:32";
+//    public static String nowTime = "07-09-2022 7:42:32";
+    public static String nowTime = format.format(time.getTime());
+    public static boolean scanState;
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void cancel(ActionEvent e) {new AirlineWindow().setVisible(true);dispose();}
+    private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
-    private void scanID(ActionEvent e) throws Exception {openNext(); dispose();}
+    private void scanID(ActionEvent e) throws Exception {
+        new Demo1().setVisible(true);
+
+        openNext();
+
+        dispose();}
 
     private void ok(ActionEvent e) throws Exception {openNext();}
 
@@ -74,6 +87,7 @@ public class EnterOther_3 extends JFrame {
      * @throws ParseException         the parse exception
      */
     public void openNext()throws Exception{
+
         if(psnTemp1==null){
             String IDNum = Config.Config.idDocument1.getID();
             String surname=Config.Config.idDocument1.getSurname();
@@ -163,11 +177,12 @@ public class EnterOther_3 extends JFrame {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date1 = format.parse(nowTime);
         Date date2 = new Date();
-            date2 = format.parse(ETA);
+            date2 = format.parse(ETC);
             new AirPassCse().setVisible(true);
             long nowMillisecond = date1.getTime();
             long etaMillisecond = date2.getTime();
             if(etaMillisecond - nowMillisecond > 1800000) {
+                System.out.println(etaMillisecond+"11111"+nowMillisecond);
                 throw new IllegalAccessException();
             }
     }
@@ -187,7 +202,7 @@ public class EnterOther_3 extends JFrame {
             new CheckInWindow().setVisible(true);
         }else{
             for(Flight flt : list) {
-                ETA=flt.getETA();
+                ETC =flt.getETC();
             }
         }
 

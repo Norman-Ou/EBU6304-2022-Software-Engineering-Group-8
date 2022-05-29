@@ -52,7 +52,7 @@ public class MealAdd_14 extends JFrame {
         new BaggageWindow().setVisible(true);
     }
 
-    private void Back2Meal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
+    private void Back2Meal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 

@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
  */
 public class FinalPay_15 extends JFrame {
     private static int seatFee=0;
+    public static boolean priceState;
+    private static int totalPrice=0;
     private String mealTemp="";
 
     /**
@@ -51,10 +53,13 @@ public class FinalPay_15 extends JFrame {
         pay4MealContent();
         JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
         dispose();
-        new ExitWindow().setVisible(true);
+        totalPrice=seatFee+MealAdd_14.price;
+        new Demo().setVisible(true);
+//        new ExitWindow().setVisible(true);
+
     }
 
-    private void BackMeal(ActionEvent e) {dispose();new AirlineWindow().setVisible(true);}
+    private void BackMeal(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
@@ -72,6 +77,11 @@ public class FinalPay_15 extends JFrame {
         }else if(Seat_3_6.upgrade){
             seatFee=100;
         }
+        if(totalPrice==0){
+            priceState=false;
+        }else{
+            priceState=true;
+        }
     }
 
     /**
@@ -81,11 +91,9 @@ public class FinalPay_15 extends JFrame {
         String creditInfo = null;
         if(!(EnterBN_3.getPsnTemp()==null)) {
             creditInfo = "Your credit card number:" + EnterBN_3.getPsnTemp().getCreditCard().getCardNo();
-        }
-        if(!(EnterOther_3.getPsnTemp1()==null)) {
+        }else if(!(EnterOther_3.getPsnTemp1()==null)) {
             creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp1().getCreditCard().getCardNo();
-        }
-        if(!(EnterOther_3.getPsnTemp2()==null)) {
+        }else if(!(EnterOther_3.getPsnTemp2()==null)) {
             creditInfo = "Your credit card number:" + EnterOther_3.getPsnTemp2().getCreditCard().getCardNo();
         }
         
@@ -197,10 +205,10 @@ public class FinalPay_15 extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         credit();
         setBackground();
-        ArrayList<Flight> newFlight = new ArrayList<>();
-        newFlight.add(EnterBN_3.fltTemp);
-        newFlight.add(AirPassCse.flightChoose);
-        fDB.replaceAllFlights(newFlight);
+//        ArrayList<Flight> newFlight = new ArrayList<>();
+//        newFlight.add(EnterBN_3.fltTemp);
+//        newFlight.add(AirPassCse.flightChoose);
+//        fDB.replaceAllFlights(newFlight);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

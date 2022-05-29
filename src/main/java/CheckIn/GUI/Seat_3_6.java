@@ -64,24 +64,20 @@ public class Seat_3_6 extends JFrame {
 
     private void PrintFlight(ActionEvent e) {
 
-        if(!(stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)){
-            if(!(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
-                JOptionPane.showInternalConfirmDialog(null,"Please choose a seat","Choose a seat", JOptionPane.WARNING_MESSAGE);
-                new Seat_3_6().setVisible(true);
-            }
 
-        }else{
             if(upgrade){
                 dispose();
 //            new PrintFlightWindow().setVisible(true);
+                seat= busS.getSelectedItem().toString();
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
-                new MealWindow().setVisible(true);
+                new Meal_12().setVisible(true);
             }else{
                 dispose();
+                JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
 //            new PrintFlightWindow().setVisible(true);
-                new MealWindow().setVisible(true);
+                new Meal_12().setVisible(true);
             }
-        }
+
 
 
     }
@@ -283,7 +279,6 @@ public class Seat_3_6 extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         panel2 = new JPanel();
         button1 = new JButton();
@@ -315,13 +310,6 @@ public class Seat_3_6 extends JFrame {
         //======== panel2 ========
         {
             panel2.setOpaque(false);
-            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                    javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-                    .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-                    .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-                    .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
-                PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-                equals(e.getPropertyName()))throw new RuntimeException();}});
             panel2.setLayout(new BorderLayout());
 
             //---- button1 ----
@@ -332,13 +320,6 @@ public class Seat_3_6 extends JFrame {
             //---- button6 ----
             button6.setText(bundle.getString("button6.text"));
             button6.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
-            button6.addActionListener(e -> {
-                try {
-                    button3(e);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
             panel2.add(button6, BorderLayout.CENTER);
         }
         contentPane.add(panel2, BorderLayout.NORTH);
@@ -466,10 +447,10 @@ public class Seat_3_6 extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setBackground();
+        checkClass();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel panel2;
     private JButton button1;
     private JButton button6;

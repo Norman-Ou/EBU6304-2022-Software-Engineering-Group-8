@@ -2,13 +2,17 @@ package CheckIn.GUI;/*
  * Created by JFormDesigner on Wed Mar 30 11:36:13 CST 2022
  */
 
+import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
+import DataBase.fDB;
 import DataBase.pDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -16,7 +20,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class PrintBaggageWindow extends JFrame {
+public class PrintBag_11 extends JFrame {
     /**
      * The constant bagNo.
      */
@@ -29,7 +33,7 @@ public class PrintBaggageWindow extends JFrame {
     /**
      * Instantiates a new Print bag 11.
      */
-    public PrintBaggageWindow() {
+    public PrintBag_11() throws IOException {
         initComponents();
     }
 
@@ -186,10 +190,9 @@ public class PrintBaggageWindow extends JFrame {
         return null;
     }
 
-    private void initComponents() {
+    private void initComponents() throws IOException {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -218,13 +221,6 @@ public class PrintBaggageWindow extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-                    javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
-                    . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-                    .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-                    . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
-                PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-                equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -250,8 +246,8 @@ public class PrintBaggageWindow extends JFrame {
                     label1.setForeground(Color.black);
                     label1.setBackground(Color.white);
                     panel1.add(label1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label3 ----
                     label3.setText(bundle.getString("label3.text_4"));
@@ -263,8 +259,8 @@ public class PrintBaggageWindow extends JFrame {
                     label3.setForeground(Color.black);
                     label3.setBackground(Color.white);
                     panel1.add(label3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label2 ----
                     label2.setText(bundle.getString("label2.text_10"));
@@ -273,11 +269,11 @@ public class PrintBaggageWindow extends JFrame {
                     label2.setBackground(Color.white);
                     label2.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                     panel1.add(label2, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                        new Insets(0, 0, 0, 0), 0, 0));
                     panel1.add(Weight, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label10 ----
                     label10.setText(bundle.getString("label10.text_3"));
@@ -286,11 +282,11 @@ public class PrintBaggageWindow extends JFrame {
                     label10.setBackground(Color.white);
                     label10.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                     panel1.add(label10, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                        new Insets(0, 0, 0, 0), 0, 0));
                     panel1.add(BagNum, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
 
                     //---- label4 ----
                     label4.setText(bundle.getString("label4.text_3"));
@@ -299,11 +295,11 @@ public class PrintBaggageWindow extends JFrame {
                     label4.setBackground(Color.white);
                     label4.setFont(new Font(".AppleSystemUIFont", Font.PLAIN, 15));
                     panel1.add(label4, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.NONE,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                        new Insets(0, 0, 0, 0), 0, 0));
                     panel1.add(CounterNo, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
                 }
                 contentPanel.add(panel1);
             }
@@ -322,7 +318,6 @@ public class PrintBaggageWindow extends JFrame {
                     //---- button3 ----
                     button3.setText(bundle.getString("button3.text_5"));
                     button3.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
-                    button3.addActionListener(e -> showBagTag(e));
                     panel4.add(button3, BorderLayout.CENTER);
 
                     //---- button4 ----
@@ -356,12 +351,16 @@ public class PrintBaggageWindow extends JFrame {
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        pDB.updatePassengerInfo(PrintBaggageWindow.writeInBaggage());
+        pDB.updatePassengerInfo(PrintBag_11.writeInBaggage());
         setBackground();
+        showBag();
+        ArrayList<Flight> newFlight = new ArrayList<>();
+        newFlight.add(EnterBN_3.fltTemp);
+        newFlight.add(AirPassCse.flightChoose);
+        fDB.replaceAllFlights(newFlight);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;

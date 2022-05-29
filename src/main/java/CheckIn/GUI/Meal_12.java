@@ -11,11 +11,11 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class MealWindow extends JFrame {
+public class Meal_12 extends JFrame {
     /**
      * Instantiates a new Meal 12.
      */
-    public MealWindow() {
+    public Meal_12() {
         initComponents();
     }
 
@@ -27,7 +27,9 @@ public class MealWindow extends JFrame {
 
     private void cancelMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Confirm cancel your meal?","Cancel meal check", JOptionPane.WARNING_MESSAGE);
-        dispose();new ExitWindow().setVisible(true);}
+        dispose();
+        new BaggageWindow().setVisible(true);
+    }
 
     /**
      * Set background.
@@ -44,10 +46,14 @@ public class MealWindow extends JFrame {
         this.setVisible(true);
     }
 
+    private void return2Init(ActionEvent e) {
+        dispose();
+        new Airline_1().setVisible(true);
+    }
+
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -59,6 +65,7 @@ public class MealWindow extends JFrame {
         button2 = new JButton();
         panel6 = new JPanel();
         button3 = new JButton();
+        button5 = new JButton();
         panel1 = new JPanel();
         panel3 = new JPanel();
         label1 = new JLabel();
@@ -73,13 +80,6 @@ public class MealWindow extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-                    .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
-                    .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
-                    awt.Font.BOLD,12),java.awt.Color.red),dialogPane. getBorder()))
-            ;dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
-        ;
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -122,6 +122,11 @@ public class MealWindow extends JFrame {
                                 button3.setText(bundle.getString("button3.text_2"));
                                 button3.addActionListener(e -> cancelMeal(e));
                                 panel6.add(button3, BorderLayout.NORTH);
+
+                                //---- button5 ----
+                                button5.setText(bundle.getString("button5.text_6"));
+                                button5.addActionListener(e -> return2Init(e));
+                                panel6.add(button5, BorderLayout.SOUTH);
                             }
                             panel5.add(panel6, BorderLayout.CENTER);
                         }
@@ -166,7 +171,6 @@ public class MealWindow extends JFrame {
         setBackground();}
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel4;
@@ -177,6 +181,7 @@ public class MealWindow extends JFrame {
     private JButton button2;
     private JPanel panel6;
     private JButton button3;
+    private JButton button5;
     private JPanel panel1;
     private JPanel panel3;
     private JLabel label1;

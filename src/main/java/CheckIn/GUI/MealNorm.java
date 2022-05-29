@@ -41,7 +41,7 @@ public class MealNorm extends JFrame {
         JOptionPane.showMessageDialog(null, "You have chosen your meal: "+mealSelected+", and you need to pay ￡"+price+". Now handle your baggage.","Baggage next.", JOptionPane.QUESTION_MESSAGE);
         new BaggageWindow().setVisible(true);}
 
-    private void BackToMeal(ActionEvent e) {dispose();new MealWindow().setVisible(true);}
+    private void BackToMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 

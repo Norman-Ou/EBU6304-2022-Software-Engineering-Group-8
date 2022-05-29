@@ -257,7 +257,6 @@ new FormModel {
 						name: "onfirm"
 						"text": new FormMessage( null, "onfirm.text_3" )
 						"font": new java.awt.Font( ".AppleSystemUIFont", 1, 22 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showInitialInfo", true ) )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
 					} )
