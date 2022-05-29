@@ -27,7 +27,7 @@ public class PrintFlightWindow extends JFrame {
 
     public static String surname1;
     public static String psnID1;
-    public static boolean finalState;
+    public static boolean finalState=false;
 
     /**
      * Instantiates a new Print flight 6.
@@ -37,13 +37,6 @@ public class PrintFlightWindow extends JFrame {
     }
 
     private void printBoardingpass(ActionEvent e) {
-
-        finalCheckFlight();
-        finalState=pDB.finalCheck(surname1,psnID1);
-        if(finalState){
-        }else{
-            JOptionPane.showMessageDialog(null, "Please scan your ID card","SCAN", JOptionPane.WARNING_MESSAGE);
-        }
         info();
     }
 
@@ -53,7 +46,18 @@ public class PrintFlightWindow extends JFrame {
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void printThenBag(ActionEvent e) throws InterruptedException {bagInformation();}
+    private void printThenBag(ActionEvent e) throws InterruptedException {
+        if(finalState){
+            bagInformation();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please scan your ID card","SCAN", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void scanID(ActionEvent e) throws InterruptedException {
+        finalCheckFlight();
+        finalState=pDB.finalCheck(surname1,psnID1);
+    }
 
     public void finalCheckFlight(){
         if(!(EnterOther.getPsnTemp1()==null)){
@@ -278,6 +282,7 @@ public class PrintFlightWindow extends JFrame {
         PrintButton = new JButton();
         cancelButton = new JButton();
         button1 = new JButton();
+        ScanButton = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -512,6 +517,18 @@ public class PrintFlightWindow extends JFrame {
                 });
                 buttonBar.add(PrintButton);
 
+                //---- PrintButton ----
+                ScanButton.setText("Scan");
+                ScanButton.addActionListener(e -> {
+                    try {
+                        scanID(e);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                buttonBar.add(ScanButton);
+
+
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_12"));
                 cancelButton.addActionListener(e -> Back2Confirm(e));
@@ -570,5 +587,11 @@ public class PrintFlightWindow extends JFrame {
     private JButton PrintButton;
     private JButton cancelButton;
     private JButton button1;
+    private JButton ScanButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+    public static void main(String[] args) throws Exception {
+
+
+        new PrintFlightWindow().setVisible(true);
+    }
 }
