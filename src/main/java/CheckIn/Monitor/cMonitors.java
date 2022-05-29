@@ -67,20 +67,23 @@ public class cMonitors {
      * @param idDocument the idDocument unique for every passenger.
      * @return the target flight.
      */
-    // @Test
-    // public static Flight getFlightByIDDocument(IDDocument idDocument){
-    //     String targetFlightNo;
-    //     Flight targetFlight = new Flight();
-    //     try {
-    //         Passenger psg = pDB.loadPassengersByIDDocument(idDocument);
-    //         targetFlightNo = oDB.getOrderByBookingNumber(psg.getBookNumber()).getFlightNo();
-    //         targetFlight = cMonitors.findFlight(targetFlightNo);
-    //         return targetFlight;
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     return null;
-    // }
+     @Test
+     public static Flight getFlightByIDDocument(IDDocument idDocument){
+         String targetFlightNo;
+         Flight targetFlight = new Flight();
+         ArrayList<Passenger> psnList=new ArrayList<>();
+         try {
+             psnList = pDB.loadPassengersByIDDocument(idDocument);
+             for(Passenger psg:psnList){
+                 targetFlightNo = oDB.getOrderByBookingNumber(psg.getBookNumber()).getFlightNo();
+                 targetFlight = cMonitors.findFlight(targetFlightNo);
+             }
+             return targetFlight;
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         return null;
+     }
 
     /**
      * This function is designed to search the list of target flights

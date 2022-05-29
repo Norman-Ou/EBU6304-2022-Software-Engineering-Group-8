@@ -174,11 +174,15 @@ public class EnterOther extends JFrame {
             new CheckInWindow().setVisible(true);
         }else{
             for(Flight flt : list) {
+                try{
                 ETA=flt.getETA();
                 String eta=flt.getETA();
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 Date date1 = format.parse(nowTime);
                 Date date2 = format.parse(eta);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
         String eta=ETA;

@@ -2,6 +2,7 @@ package CheckIn.GUI;
 
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
+import DataBase.pDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -24,6 +25,10 @@ public class PrintFlightWindow extends JFrame {
      */
     public static String stage;
 
+    public static String surname1;
+    public static String psnID1;
+    public static boolean finalState;
+
     /**
      * Instantiates a new Print flight 6.
      */
@@ -32,6 +37,13 @@ public class PrintFlightWindow extends JFrame {
     }
 
     private void printBoardingpass(ActionEvent e) {
+
+        finalCheckFlight();
+        finalState=pDB.finalCheck(surname1,psnID1);
+        if(finalState){
+        }else{
+            JOptionPane.showMessageDialog(null, "Please scan your ID card","SCAN", JOptionPane.WARNING_MESSAGE);
+        }
         info();
     }
 
@@ -42,6 +54,33 @@ public class PrintFlightWindow extends JFrame {
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void printThenBag(ActionEvent e) throws InterruptedException {bagInformation();}
+
+    public void finalCheckFlight(){
+        if(!(EnterOther.getPsnTemp1()==null)){
+            try {
+                surname1 = EnterOther.getPsnTemp1().getSurName();
+                psnID1 = EnterOther.getPsnTemp1().getPassengerId();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        }
+        else if(!(EnterBookingNumber.getPsnTemp()==null)) {
+            try {
+                surname1 = EnterBookingNumber.getPsnTemp().getSurName();
+                psnID1 = EnterBookingNumber.getPsnTemp().getPassengerId();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }else if(!(EnterOther.getPsnTemp2()==null)){
+            try{
+                surname1 = EnterOther.getPsnTemp2().getSurName();
+                psnID1 = EnterOther.getPsnTemp2().getPassengerId();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
 
     /**
      * Bag information.

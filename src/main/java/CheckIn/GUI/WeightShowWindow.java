@@ -219,4 +219,12 @@ public class WeightShowWindow extends JFrame {
     private JButton button3;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public static void main(String[] args) throws Exception {
+
+//        Utils.updateTestData();
+        new WeightShowWindow().setVisible(true);
+    }
+
+
 }
