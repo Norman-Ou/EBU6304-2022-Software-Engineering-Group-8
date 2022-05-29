@@ -4,12 +4,12 @@ package Beans.Passenger.SubClasses;
 import java.io.Serializable;
 
 /**
- * This is the basic Passenger information class
+ * This is the boarding pass class for passenger after checking in
  *
  * @author Jiayi Wang
  * @author Ruizhe Ou
  * @author Jiacheng Li
- * @version 0.2 March 24th, 2022
+ * @version 1.0 May 2nd, 2022
  */
 public class BoardingPass implements Serializable {
     /**
