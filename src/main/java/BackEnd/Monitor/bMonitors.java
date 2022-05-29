@@ -14,6 +14,8 @@ import DataBase.oDB;
 import DataBase.pDB;
 import Exceptions.DataNotFound;
 
+import static org.junit.Assert.fail;
+
 /**
  * This is the control class for Admin end 
  *
@@ -41,7 +43,6 @@ public class bMonitors {
      * @param targetFlightNo the flight number used to find the target flight.
      * @return the list of target flight.
      */
-    @Test
     public Flight getFlightList(String targetFlightNo){
         Flight targetFlight = new Flight();
         for (int i = 0; i < flightList.size(); i++) {
@@ -59,7 +60,6 @@ public class bMonitors {
      * @param targetTime the flight ETD used to find the target flight.
      * @return the list of target flight.
      */
-    @Test
     public List<Flight> getFlightListByTime(String targetTime){
         List<Flight> targetFlightList = new ArrayList<Flight>();
         for (int i = 0; i < flightList.size(); i++) {
@@ -70,7 +70,7 @@ public class bMonitors {
         }
         return targetFlightList;
     }
-    
+
     /**
      * This function is designed to find all urgent flights 
      * which will take off 15 mins later.

@@ -163,4 +163,19 @@ public class pDB{
             return false;
         }
     }
+
+    /**
+     * Update the passenger information in data base after check in
+     *
+     * @param surname surname of the passenger
+     * @param passengerID ID of the passenger
+     * @return true means update successfully
+     * */
+    public static boolean finalCheck(String surname, String passengerID){
+        //The scanned ID Document object
+        IDDocument test_IDDocument;
+        //Used for test
+        test_IDDocument = new IDDocument(passengerID,surname);
+        return surname.equals(test_IDDocument.getSurname()) && passengerID.equals(test_IDDocument.getID());
+    }
 }
