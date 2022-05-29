@@ -97,7 +97,7 @@ public class fDB {
 
     @Test
     public void test1(){
-        System.out.println(this.loadFlightByFlightNo("BA3352"));
+        System.out.println(this.loadFlightByFlightNo("46921248"));
     }
 
 

@@ -54,11 +54,15 @@ public class cMonitors {
         Flight targetFlight = new Flight();
         try {
             targetFlightNo = oDB.getOrderByBookingNumber(bookingNo).getFlightNo();
-            targetFlight = cMonitors.findFlight(targetFlightNo);
+            targetFlight = findFlight(targetFlightNo);
         } catch (DataNotFound e) {
             e.printStackTrace();
         }
         return targetFlight;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getFlightByBookingNo("46921248"));
     }
 
     /**

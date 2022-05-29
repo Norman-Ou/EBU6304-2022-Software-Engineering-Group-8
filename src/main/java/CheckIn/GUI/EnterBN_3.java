@@ -7,6 +7,7 @@ package CheckIn.GUI;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
+import org.junit.Test;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -79,6 +80,7 @@ public class EnterBN_3 extends JFrame {
         try {
             flt = cMonitors.getFlightByBookingNo(bookNum);
             fltTemp = cMonitors.getFlightByBookingNo(bookNum);
+            System.out.println(fltTemp);
             Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
 //            fltTemp = flt;
             psnTemp = psn;
