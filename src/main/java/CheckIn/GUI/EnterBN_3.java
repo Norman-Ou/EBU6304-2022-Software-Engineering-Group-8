@@ -147,6 +147,7 @@ public class EnterBN_3 extends JFrame {
         if(firState){
             try{
                 checkTime();
+
 //                new ConfirmPage_3().setVisible(true);
                 new Seat_1_6().setVisible(true);
             } catch (IllegalAccessException e) {
