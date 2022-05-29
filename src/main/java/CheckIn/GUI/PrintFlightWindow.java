@@ -57,6 +57,7 @@ public class PrintFlightWindow extends JFrame {
     private void scanID(ActionEvent e) throws InterruptedException {
         finalCheckFlight();
         finalState=pDB.finalCheck(surname1,psnID1);
+        JOptionPane.showMessageDialog(null, "Confirmed. please print your Boarding Pass","CONFIRM", JOptionPane.WARNING_MESSAGE);
     }
 
     public void finalCheckFlight(){

@@ -70,19 +70,19 @@ public class EnterBookingNumber extends JFrame {
     public void bookNumHandel()throws Exception{
         String str=textField1.getText();
         bookNum=str;
-        Flight flt = new Flight();
-        try {
-            flt = cMonitors.getFlightByBookingNo(bookNum);
-            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
-            fltTemp = flt;
-            psnTemp = psn;
-        }catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, "Invalid input, confirm your Booking Number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-            new CheckInWindow().setVisible(true);
-        }
-        if(flt==null){
-            throw new Exception(bookNum);
-        }
+//        Flight flt = new Flight();
+        fltTemp = cMonitors.getFlightByBookingNo(bookNum);
+        psnTemp = cMonitors.getPassengerByBookingNo(bookNum);
+
+//        try {
+//            flt = cMonitors.getFlightByBookingNo(bookNum);
+//            fltTemp = cMonitors.getFlightByBookingNo(bookNum);
+//            Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
+////            fltTemp = flt;
+//            psnTemp = psn;
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
 
         try{
             firstCheck();

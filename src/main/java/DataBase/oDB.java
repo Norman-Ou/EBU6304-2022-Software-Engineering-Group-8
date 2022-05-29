@@ -6,6 +6,7 @@ import Config.Config;
 import Exceptions.DataNotFound;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,5 +71,13 @@ public class oDB {
     public static ArrayList<Order> getOrdersByPassengerId(String passengerID) throws DataNotFound{
         DataBase dataBase = new DataBase(Config.OrderFile);
         return dataBase.getObjects("passengerID", passengerID, Order.class);
+    }
+    @Test
+    public void test1(){
+        try {
+            System.out.println(this.getOrderByBookingNumber("46921248"));
+        } catch (DataNotFound dataNotFound) {
+            dataNotFound.printStackTrace();
+        }
     }
 }
