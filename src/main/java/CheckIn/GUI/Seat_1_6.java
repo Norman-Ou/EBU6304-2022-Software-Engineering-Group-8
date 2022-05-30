@@ -30,8 +30,9 @@ public class Seat_1_6 extends JFrame {
     private static HashMap<String, Seat> map=new HashMap<>();
     /**
      * The constant upgrade.
+     * True for upgrading.
      */
-//true for upgrading.
+
     public static boolean upgrade;
     /**
      * The Entry.
