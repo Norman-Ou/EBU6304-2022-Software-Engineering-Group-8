@@ -28,22 +28,28 @@ public class FlightPage extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         if(e.getSource()==button1){
             String f_ID=InputBar.getText();//Use f_ID as a key to search for information in DB
-            FlightID.setText(f_ID);
             bMonitors bMonitor = new bMonitors();
             Flight targetFlight = bMonitor.getFlightList(f_ID);
-            BoardingTime.setText(targetFlight.getETC());
-            TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
-            Destination.setText(targetFlight.getDestination());
-            List<Passenger> psgs = bMonitor.getUnboardedPassengerList(f_ID); 
-            List<String> infoList = bMonitor.printUnboardedPassengerList(psgs);
-            // 这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
-            TransInformation = "PassengerId     passengerName\n";
-            for(int j = 0; j<infoList.size(); j++){
-                String info = infoList.get(j);
-                TransInformation += info + "\n"; 
-                System.out.println(info);
+            if(targetFlight.getDeparture() == null){
+                System.out.println("ERROR by wy");
+                FlightID.setText("No such filght! Please try again.");
+                FlightID.setForeground(new Color(255,0,0));
+            }else{
+                FlightID.setText(f_ID);
+                FlightID.setForeground(new Color(0,0,0));
+                BoardingTime.setText(targetFlight.getETC());
+                TimeLefttoBoard.setText(bMonitor.calculateDiff(targetFlight.getETC()));
+                Destination.setText(targetFlight.getDestination());
+                List<Passenger> psgs = bMonitor.getUnboardedPassengerList(f_ID); 
+                List<String> infoList = bMonitor.printUnboardedPassengerList(psgs);
+                // 这里写获取乘客名单的方法就好，这个变量会传到下一个页面里去显示";
+                TransInformation = "PassengerId     passengerName\n";
+                for(int j = 0; j<infoList.size(); j++){
+                    String info = infoList.get(j);
+                    TransInformation += info + "\n"; 
+                }
+                System.out.println("done");
             }
-            System.out.println("done");
         }
     }
 

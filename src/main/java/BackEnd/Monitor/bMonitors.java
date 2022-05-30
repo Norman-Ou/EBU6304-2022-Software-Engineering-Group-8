@@ -254,7 +254,7 @@ public class bMonitors {
 			long hour = (between / (60 * 60 * 1000) - day * 24);
 			long min = ((between / (60 * 1000)) - day * 24 * 60 - hour * 60);
 			long s = (between / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
-            return day + "Day(s)" + hour + "Hour(s)" + min + "Minute(s)" + s + "Second(s)";
+            return day + " Day(s) " + hour + " Hour(s) " + min + " Minute(s) " + s + " Second(s) ";
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
