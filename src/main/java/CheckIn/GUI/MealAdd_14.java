@@ -46,7 +46,7 @@ public class MealAdd_14 extends JFrame {
     private void adMealState(ChangeEvent e) {JTabbedPane tabbedPane = (JTabbedPane) e.getSource();addMealAddContent(tabbedPane);}
 
     private void MealPay(ActionEvent e) throws IOException {
-//        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Choosing additional meal means your have to pay more.","Another payment attention", JOptionPane.WARNING_MESSAGE);
         dispose();
 //        new FinalPay_15().setVisible(true);
         new Baggage_7().setVisible(true);

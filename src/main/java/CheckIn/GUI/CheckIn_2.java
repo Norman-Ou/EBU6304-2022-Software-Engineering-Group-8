@@ -76,7 +76,13 @@ public class CheckIn_2 extends JFrame {
                 button1.setText(bundle.getString("button1.text_6"));
                 button1.setFont(new Font("Lucida Grande", Font.BOLD, 24));
                 button1.setOpaque(false);
-                button1.addActionListener(e -> CheckInButton(e));
+                button1.addActionListener(e -> {
+                    try {
+                        CheckInButton(e);
+                    } catch (ParseException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 contentPanel.add(button1);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);

@@ -152,6 +152,7 @@ public class FinalPay_15 extends JFrame {
         panel2 = new JPanel();
         panel3 = new JPanel();
         button3 = new JButton();
+        label1 = new JLabel();
         textField1 = new JTextField();
         buttonBar = new JPanel();
         scanButton = new JButton();
@@ -191,6 +192,12 @@ public class FinalPay_15 extends JFrame {
                             button3.setText(bundle.getString("button3.text_14"));
                             button3.addActionListener(e -> help(e));
                             panel3.add(button3, BorderLayout.EAST);
+
+                            //---- label1 ----
+                            label1.setText(bundle.getString("label1.text_23"));
+                            label1.setHorizontalAlignment(SwingConstants.CENTER);
+                            label1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 28));
+                            panel3.add(label1, BorderLayout.CENTER);
                         }
                         panel2.add(panel3, BorderLayout.NORTH);
 
@@ -245,6 +252,7 @@ public class FinalPay_15 extends JFrame {
     private JPanel panel2;
     private JPanel panel3;
     private JButton button3;
+    private JLabel label1;
     private JTextField textField1;
     private JPanel buttonBar;
     private JButton scanButton;

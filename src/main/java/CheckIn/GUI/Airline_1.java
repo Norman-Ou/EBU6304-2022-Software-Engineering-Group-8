@@ -22,8 +22,6 @@ public class Airline_1 extends JFrame {
 
     private void ok(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
-    private void exit(ActionEvent e) throws InterruptedException { dispose();}
-
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
 

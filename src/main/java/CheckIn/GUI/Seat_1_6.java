@@ -77,12 +77,14 @@ public class Seat_1_6 extends JFrame {
     private void PrintFlight(ActionEvent e) throws Exception {dispose();
         sortSeat();
         if(upgrade){
-                dispose();
+
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+            dispose();
                 new Meal_12().setVisible(true);
             }else{
-                dispose();
+
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+            dispose();
                 new Meal_12().setVisible(true);
             }
 //        }

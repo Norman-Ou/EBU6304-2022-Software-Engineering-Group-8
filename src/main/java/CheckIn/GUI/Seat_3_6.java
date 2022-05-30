@@ -66,15 +66,14 @@ public class Seat_3_6 extends JFrame {
 
 
             if(upgrade){
-                dispose();
-//            new PrintFlightWindow().setVisible(true);
                 seat= busS.getSelectedItem().toString();
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
+                dispose();
                 new Meal_12().setVisible(true);
             }else{
-                dispose();
+
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
-//            new PrintFlightWindow().setVisible(true);
+                dispose();
                 new Meal_12().setVisible(true);
             }
 

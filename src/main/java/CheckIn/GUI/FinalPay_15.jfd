@@ -31,6 +31,14 @@ new FormModel {
 								}, new FormLayoutConstraints( class java.lang.String ) {
 									"value": "East"
 								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label1"
+									"text": new FormMessage( null, "label1.text_23" )
+									"horizontalAlignment": 0
+									"font": new java.awt.Font( ".AppleSystemUIFont", 1, 28 )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "Center"
+								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "North"
 							} )
