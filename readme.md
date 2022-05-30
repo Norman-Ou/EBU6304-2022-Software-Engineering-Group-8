@@ -27,7 +27,9 @@
 
 ## Running Environment
 
-**JDK**: 16
+- **JDK** 16
+
+- **Apache Maven** 3.8.1
 
 ## Start Command
 
