@@ -2,7 +2,6 @@ package CheckIn.GUI;/*
  * Created by JFormDesigner on Wed Mar 30 11:36:13 CST 2022
  */
 
-import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import DataBase.fDB;
 import DataBase.pDB;
@@ -12,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -113,7 +111,7 @@ public class PrintBag_11 extends JFrame {
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court= BagStoreWindow.court;
+                int court= BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
@@ -126,7 +124,7 @@ public class PrintBag_11 extends JFrame {
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court= BagStoreWindow.court;
+                int court= BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
@@ -138,7 +136,7 @@ public class PrintBag_11 extends JFrame {
             try{
                 int weightPsn = WeightShowWindow.weightPsn;
                 String str=weightPsn+"";
-                int court= BagStoreWindow.court;
+                int court= BagStore_8.court;
                 String str1=court+"";
                 Weight.setText(str);
                 BagNum.setText(bagNo+"");
@@ -174,17 +172,17 @@ public class PrintBag_11 extends JFrame {
     public static Passenger writeInBaggage(){
         if(!(EnterBN_3.getPsnTemp()==null)) {
             EnterBN_3.getPsnTemp().getBaggage().setBaggageNo(bagNo+"");
-            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterBN_3.getPsnTemp().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterBN_3.getPsnTemp().setCheckinStatus(0);
             return EnterBN_3.getPsnTemp();
         }else if(!(EnterOther_3.getPsnTemp1()==null)){
             EnterOther_3.getPsnTemp1().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther_3.getPsnTemp1().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterOther_3.getPsnTemp1().setCheckinStatus(0);
             return EnterOther_3.getPsnTemp1();
         }else if(!(EnterOther_3.getPsnTemp2()==null)){
             EnterOther_3.getPsnTemp2().getBaggage().setBaggageNo(bagNo+"");
-            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(BagStoreWindow.court+"");
+            EnterOther_3.getPsnTemp2().getBaggage().setDropCounter(BagStore_8.court+"");
             EnterOther_3.getPsnTemp2().setCheckinStatus(0);
             return EnterOther_3.getPsnTemp2();
         }

@@ -74,12 +74,6 @@ new FormModel {
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
 					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "infoText"
-						"editable": false
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "North"
-					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 					"axis": 1

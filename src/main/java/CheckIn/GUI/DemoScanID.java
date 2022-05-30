@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class Demo1 extends JFrame {
+public class DemoScanID extends JFrame {
 
     /**
      *
@@ -20,8 +20,8 @@ public class Demo1 extends JFrame {
 
     protected InfiniteProgressPanel glassPane;
 
-    public Demo1() {
-        super("Scanning credit card...");
+    public DemoScanID() {
+        super("Scanning ID card...");
 
         build();
 
@@ -41,11 +41,11 @@ public class Demo1 extends JFrame {
 
         JPanel pane = new JPanel(new BorderLayout());
         JLabel label = new JLabel();
-        label.setText("Scanning credit card.");
+        label.setText("Scan ID card.");
         label.setFont(new Font(".AppleSystemUIFont", Font.BOLD | Font.ITALIC, 25));
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        glassPane = new InfiniteProgressPanel("Scanning credit card......");
+        glassPane = new InfiniteProgressPanel("Scanning ID card......");
         setGlassPane(glassPane);
 
         JTable table = new JTable();
@@ -65,13 +65,13 @@ public class Demo1 extends JFrame {
                     public void run() {
                         try {
                             Thread.sleep(3000);
-                            FinalPay_15.stateTemp=true;
+                            PrintFlight_6.scanState=true;
                             dispose();
-                            new FinalPay_15().setVisible(true);
+                            new PrintFlight_6().setVisible(true);
 //                            EnterOther_3.scanState=true;
 
                             return;
-                        } catch (InterruptedException | IOException ie) {
+                        } catch (InterruptedException ie) {
                         }
                         glassPane.stop();
                     }
@@ -85,7 +85,7 @@ public class Demo1 extends JFrame {
     }
 
     public static void main(String[] args) {
-        Demo1 d = new Demo1();
+        DemoScanID d = new DemoScanID();
         d.setVisible(true);
     }
 }

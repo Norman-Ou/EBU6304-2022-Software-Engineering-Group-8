@@ -144,13 +144,13 @@ public class Seat_1_6 extends JFrame {
 
         int intTemp=getSeatClazz();
         if(intTemp==0){
-            infoText.setText("You can choose form 11 to 30");
+//            infoText.setText("You can choose form 11 to 30");
             vip.setEnabled(false);
         }else if(intTemp==2){
-            infoText.setText("You can choose form 1 to 10");
+//            infoText.setText("You can choose form 1 to 10");
             ecoS.setEnabled(false);
         }else if(intTemp==-1){
-            infoText.setText("Seat class is -1 now");
+//            infoText.setText("Seat class is -1 now");
             ecoS.setEnabled(false);
             vip.setEnabled(false);
         }
@@ -298,7 +298,6 @@ public class Seat_1_6 extends JFrame {
         panel4 = new JPanel();
         scrollPane1 = new JScrollPane();
         label2 = new JLabel();
-        infoText = new JTextField();
         panel10 = new JPanel();
         panel6 = new JPanel();
         panel2 = new JPanel();
@@ -386,10 +385,6 @@ public class Seat_1_6 extends JFrame {
                     scrollPane1.setViewportView(label2);
                 }
                 panel4.add(scrollPane1, BorderLayout.CENTER);
-
-                //---- infoText ----
-                infoText.setEditable(false);
-                panel4.add(infoText, BorderLayout.NORTH);
             }
             dialogPane2.add(panel4);
 
@@ -466,7 +461,6 @@ public class Seat_1_6 extends JFrame {
     private JPanel panel4;
     private JScrollPane scrollPane1;
     private JLabel label2;
-    private JTextField infoText;
     private JPanel panel10;
     private JPanel panel6;
     private JPanel panel2;

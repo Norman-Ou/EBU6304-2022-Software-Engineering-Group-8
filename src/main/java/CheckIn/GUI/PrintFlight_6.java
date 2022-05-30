@@ -29,6 +29,7 @@ public class PrintFlight_6 extends JFrame {
     public static String surname1;
     public static String psnID1;
     public static boolean finalState=false;
+    public static boolean scanState=false;
 
     /**
      * Instantiates a new Print flight 6.
@@ -48,18 +49,39 @@ public class PrintFlight_6 extends JFrame {
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void printThenBag(ActionEvent e) throws InterruptedException, IOException {
-        scanCheck();
-        if(finalState){
-            bagInformation();
+        if(!scanState){
+            int temp=JOptionPane.showInternalConfirmDialog(null,
+                    "Please put your ID card in the rectangle on the table", "SCAN",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (temp == JOptionPane.NO_OPTION) {
+                return;
+            }if(temp == JOptionPane.YES_OPTION){
+                dispose();
+                new DemoScanID().setVisible(true);
+            }if(temp == JOptionPane.CANCEL_OPTION){
+                dispose();
+                new Airline_1().setVisible(true);
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "Please scan your ID card","SCAN", JOptionPane.WARNING_MESSAGE);
+
+            PrintButton.setText("Print Baggage tag");
+            scanCheck();
+            if(finalState){
+                bagInformation();
+            }else{
+                JOptionPane.showMessageDialog(null, "Please scan your ID card","SCAN", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }
 
     public void scanCheck(){
+
         finalCheckFlight();
         finalState=pDB.finalCheck(surname1,psnID1);
-        JOptionPane.showMessageDialog(null, "Confirmed, please check your Boarding Information","CONFIRM", JOptionPane.WARNING_MESSAGE);
+        if(scanState){
+            PrintButton.setText("Print Baggage tag");
+            JOptionPane.showMessageDialog(null, "Confirmed, please check your Boarding Information","CONFIRM", JOptionPane.WARNING_MESSAGE);
+        }
 
     }
 
@@ -94,21 +116,22 @@ public class PrintFlight_6 extends JFrame {
      * Bag information.
      */
     public void bagInformation() throws IOException {
-        int temp=JOptionPane.showInternalConfirmDialog(null,
-                "Ready for printing your Baggage Tag?", "Double check",
-                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (temp == JOptionPane.NO_OPTION) {
-            return;
-        }if(temp == JOptionPane.YES_OPTION){
+        if(scanState){
+            int temp=JOptionPane.showInternalConfirmDialog(null,
+                    "Ready for printing your Baggage Tag?", "Double check",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (temp == JOptionPane.NO_OPTION) {
+                return;
+            }if(temp == JOptionPane.YES_OPTION){
+                dispose();
+                new DemoScanID();
+                new PrintBag_11().setVisible(true);
+            }if(temp == JOptionPane.CANCEL_OPTION){
+                dispose();
+                new ErrorWindow().setVisible(true);
+            }
             dispose();
-//            new Demo().setVisible(true);
-            stage="BoardingPass";
-            new PrintBag_11().setVisible(true);
-        }if(temp == JOptionPane.CANCEL_OPTION){
-            dispose();
-            new ErrorWindow().setVisible(true);
         }
-        dispose();
     }
 
     /**
@@ -507,7 +530,9 @@ public class PrintFlight_6 extends JFrame {
                 PrintButton.addActionListener(e -> {
                     try {
                         printThenBag(e);
-                    } catch (InterruptedException | IOException ex) {
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
                         ex.printStackTrace();
                     }
                 });
@@ -533,6 +558,9 @@ public class PrintFlight_6 extends JFrame {
         setBackground();
         writeInBoardingPass();
         info();
+        if(scanState){
+            PrintButton.setText("Print Baggage tag");
+        }
 //        Utils.newPsnFile();
 
     }

@@ -21,9 +21,9 @@ public class BaggageWindow extends JFrame {
 
     private void weight(ActionEvent e) {dispose();new WeightShowWindow().setVisible(true);}
 
-    private void storeBaggage(ActionEvent e) {dispose();new BagStoreWindow().setVisible(true);}
+    private void storeBaggage(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
-    private void BagAdd(ActionEvent e) {dispose();new BagStoreWindow().setVisible(true);}
+    private void BagAdd(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
     private void seatAgain(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
 

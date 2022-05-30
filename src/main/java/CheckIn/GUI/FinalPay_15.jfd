@@ -25,8 +25,8 @@ new FormModel {
 								name: "panel3"
 								"opaque": false
 								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "button1"
-									"text": new FormMessage( null, "button1.text_20" )
+									name: "scanButton"
+									"text": new FormMessage( null, "scanButton.text_20" )
 									"font": new java.awt.Font( ".AppleSystemUIFont", 1, 28 )
 									addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "payAdMeal", true ) )
 								}, new FormLayoutConstraints( class java.lang.String ) {
@@ -45,6 +45,7 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JTextField" ) {
 								name: "textField1"
 								"horizontalAlignment": 0
+								"font": new java.awt.Font( ".AppleSystemUIFont", 1, 30 )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "Center"
 							} )

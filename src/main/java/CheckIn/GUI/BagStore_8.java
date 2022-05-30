@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class BagStoreWindow extends JFrame {
+public class BagStore_8 extends JFrame {
     /**
      * The constant court.
      * Store or additional baggage amount or court in destination.
@@ -26,7 +26,7 @@ public class BagStoreWindow extends JFrame {
     /**
      * Instantiates a new Bag store 8.
      */
-    public BagStoreWindow() {
+    public BagStore_8() {
         initComponents();
     }
 
@@ -92,7 +92,6 @@ public class BagStoreWindow extends JFrame {
     private void initComponents() {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -113,13 +112,6 @@ public class BagStoreWindow extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-                    . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing
-                    .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-                    Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName (
-        ) ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -132,6 +124,7 @@ public class BagStoreWindow extends JFrame {
 
                     //---- textField1 ----
                     textField1.setHorizontalAlignment(SwingConstants.CENTER);
+                    textField1.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 26));
                     textField1.addComponentListener(new ComponentAdapter() {
                         @Override
                         public void componentShown(ComponentEvent e) {
@@ -196,7 +189,6 @@ public class BagStoreWindow extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;

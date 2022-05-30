@@ -134,13 +134,13 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-                    infoText.setText("You can choose form 5 to 40");
+//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEnabled(false);
                 }else if(intTemp==2){
-                    infoText.setText("You can choose form 1 to 3");
+//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEnabled(false);
                 }else if(intTemp==-1){
-                    infoText.setText("Seat class is -1 now");
+//                    infoText.setText("Seat class is -1 now");
                 }
                 showSeats();
 
@@ -152,13 +152,13 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-                    infoText.setText("You can choose form 5 to 40");
+//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
                 }else if(intTemp==1){
-                    infoText.setText("You can choose form 1 to 3");
+//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEditable(false);
                 }else if(intTemp==-1){
-                    infoText.setText("Seat class is -1 now");
+//                    infoText.setText("Seat class is -1 now");
                     ecoS.setEditable(false);
                     busS.setEditable(false);
                 }
@@ -172,13 +172,13 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-                    infoText.setText("You can choose form 5 to 40");
+//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
                 }else if(intTemp==1){
-                    infoText.setText("You can choose form 1 to 3");
+//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEditable(false);
                 }else if(intTemp==-1){
-                    infoText.setText("Seat class is -1 now");
+//                    infoText.setText("Seat class is -1 now");
                     ecoS.setEditable(false);
                     busS.setEditable(false);
                 }
@@ -290,7 +290,6 @@ public class Seat_3_6 extends JFrame {
         button5 = new JButton();
         dialogPane3 = new JPanel();
         panel6 = new JPanel();
-        infoText = new JTextField();
         panel1 = new JPanel();
         scrollPane2 = new JScrollPane();
         label4 = new JLabel();
@@ -361,10 +360,6 @@ public class Seat_3_6 extends JFrame {
             //======== panel6 ========
             {
                 panel6.setLayout(new BorderLayout());
-
-                //---- infoText ----
-                infoText.setEditable(false);
-                panel6.add(infoText, BorderLayout.NORTH);
 
                 //======== panel1 ========
                 {
@@ -461,7 +456,6 @@ public class Seat_3_6 extends JFrame {
     private JButton button5;
     private JPanel dialogPane3;
     private JPanel panel6;
-    private JTextField infoText;
     private JPanel panel1;
     private JScrollPane scrollPane2;
     private JLabel label4;

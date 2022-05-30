@@ -111,6 +111,8 @@ public class ExitWindow extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setBackground();
+        FinalPay_15.stateTemp=false;
+        PrintFlight_6.scanState=false;
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

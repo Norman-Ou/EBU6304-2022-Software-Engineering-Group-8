@@ -61,12 +61,6 @@ new FormModel {
 				"opaque": false
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "panel6"
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "infoText"
-						"editable": false
-					}, new FormLayoutConstraints( class java.lang.String ) {
-						"value": "North"
-					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panel1"
 					}, new FormLayoutConstraints( class java.lang.String ) {

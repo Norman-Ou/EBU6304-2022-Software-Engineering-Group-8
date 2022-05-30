@@ -80,7 +80,7 @@ public class WeightShowWindow extends JFrame {
         if(wei>29){
             JOptionPane.showMessageDialog(null, "Overweight Baggage.","No permission", JOptionPane.WARNING_MESSAGE);
             dispose();
-            new BagStoreWindow().setVisible(true);
+            new BagStore_8().setVisible(true);
 
         }
     }
