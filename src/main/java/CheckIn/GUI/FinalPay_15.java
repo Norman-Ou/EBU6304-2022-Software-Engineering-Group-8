@@ -151,10 +151,10 @@ public class FinalPay_15 extends JFrame {
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
-        scanButton = new JButton();
         button3 = new JButton();
         textField1 = new JTextField();
         buttonBar = new JPanel();
+        scanButton = new JButton();
         cancelButton = new JButton();
 
         //======== this ========
@@ -187,12 +187,6 @@ public class FinalPay_15 extends JFrame {
                             panel3.setOpaque(false);
                             panel3.setLayout(new BorderLayout());
 
-                            //---- scanButton ----
-                            scanButton.setText(bundle.getString("scanButton.text_20"));
-                            scanButton.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 28));
-                            scanButton.addActionListener(e -> payAdMeal(e));
-                            panel3.add(scanButton, BorderLayout.CENTER);
-
                             //---- button3 ----
                             button3.setText(bundle.getString("button3.text_14"));
                             button3.addActionListener(e -> help(e));
@@ -218,8 +212,15 @@ public class FinalPay_15 extends JFrame {
                 buttonBar.setPreferredSize(new Dimension(260, 90));
                 buttonBar.setLayout(new GridLayout());
 
+                //---- scanButton ----
+                scanButton.setText(bundle.getString("scanButton.text_20"));
+                scanButton.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 18));
+                scanButton.addActionListener(e -> payAdMeal(e));
+                buttonBar.add(scanButton);
+
                 //---- cancelButton ----
                 cancelButton.setText(bundle.getString("cancelButton.text_13"));
+                cancelButton.setFont(new Font(".AppleSystemUIFont", Font.BOLD, 18));
                 cancelButton.addActionListener(e -> BackMeal(e));
                 buttonBar.add(cancelButton);
             }
@@ -243,10 +244,10 @@ public class FinalPay_15 extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
-    private JButton scanButton;
     private JButton button3;
     private JTextField textField1;
     private JPanel buttonBar;
+    private JButton scanButton;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

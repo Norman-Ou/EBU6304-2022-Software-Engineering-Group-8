@@ -94,12 +94,6 @@ new FormModel {
 						"opaque": false
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ok", true ) )
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "cancelButton"
-						"text": new FormMessage( null, "cancelButton.text_5" )
-						"opaque": false
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exit", true ) )
-					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"
 				} )

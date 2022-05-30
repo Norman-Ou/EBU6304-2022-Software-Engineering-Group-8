@@ -14,8 +14,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -205,7 +203,7 @@ public class EnterOther_3 extends JFrame {
         if(list==null){
             JOptionPane.showMessageDialog(null, "Invalid input, confirm your ID number or Surname again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
-            new CheckInWindow().setVisible(true);
+            new CheckIn_2().setVisible(true);
         }else{
             for(Flight flt : list) {
                 ETC =flt.getETC();

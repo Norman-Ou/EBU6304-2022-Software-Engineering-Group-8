@@ -7,7 +7,6 @@ package CheckIn.GUI;
 import Beans.Flight.Flight;
 import Beans.Passenger.Passenger;
 import CheckIn.Monitor.cMonitors;
-import org.junit.Test;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -124,7 +123,7 @@ public class EnterBN_3 extends JFrame {
         catch (InputMismatchException error){
             JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
             dispose();
-            new CheckInWindow().setVisible(true);
+            new CheckIn_2().setVisible(true);
         }
         secondCheck();
     }

@@ -30,7 +30,7 @@ public class ConfirmPage_3 extends JFrame {
 
     private void confirm1B(ActionEvent e){confirmInfo();}
 
-    private void Back2Init(ActionEvent e) {dispose();new CheckInWindow().setVisible(true);}
+    private void Back2Init(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
     private void showInitialInfo(ActionEvent e) {info();}
 

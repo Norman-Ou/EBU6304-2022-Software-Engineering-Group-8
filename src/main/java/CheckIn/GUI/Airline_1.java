@@ -20,7 +20,7 @@ public class Airline_1 extends JFrame {
         initComponents();
     }
 
-    private void ok(ActionEvent e) {dispose();new CheckInWindow().setVisible(true);}
+    private void ok(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
     private void exit(ActionEvent e) throws InterruptedException { dispose();}
 
@@ -58,7 +58,6 @@ public class Airline_1 extends JFrame {
         label2 = new JLabel();
         buttonBar = new JPanel();
         okButton = new JButton();
-        cancelButton = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -151,18 +150,6 @@ public class Airline_1 extends JFrame {
                 okButton.setOpaque(false);
                 okButton.addActionListener(e -> ok(e));
                 buttonBar.add(okButton);
-
-                //---- cancelButton ----
-                cancelButton.setText(bundle.getString("cancelButton.text_5"));
-                cancelButton.setOpaque(false);
-                cancelButton.addActionListener(e -> {
-                    try {
-                        exit(e);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                buttonBar.add(cancelButton);
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
@@ -187,7 +174,6 @@ public class Airline_1 extends JFrame {
     private JLabel label2;
     private JPanel buttonBar;
     private JButton okButton;
-    private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }
