@@ -1,6 +1,6 @@
 package CheckIn.GUI;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
 /**
  * @program: EBU6304-2022-Software-Engineering-Group-8
@@ -10,35 +10,35 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class Seat_DoubleWindowTest {
 
-    @org.junit.jupiter.api.BeforeEach
+    @Test
     void setUp() {
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @Test
     void tearDown() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void checkClass() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getSeatClazz() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setCombox() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void showSeats() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void init() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void resetAvSeat() {
     }
 }

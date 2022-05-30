@@ -28,24 +28,11 @@
 ## Running Environment
 
 - **JDK** 16
-
 - **Apache Maven** 3.8.1
+- **Libraries**
+  - `fastjson-1.2.79.jar`
+  - `junit-4.13.j`
 
-## Start Command
-
-**In the directory where the JAR package is stored**
-
-- Check-in Program
-
-```shell
-java -jar CheckIn.jar
-```
-
-- BackEnd (Demo)
-
-```shell
-java -jar BackEnd.jar
-```
 
 ## Running Source Code
 
@@ -68,6 +55,28 @@ java -jar BackEnd.jar
    ```
    src/java/EnterBackEnd.java
    ```
+
+## Running in Command Line
+
+### Check-in System
+
+In the following path to find compiled `.class` file: `target/classes`
+
+Run the following command in command line:
+
+```
+java EnterCheckIn
+```
+
+### BackEnd Demo
+
+In the following path to find compiled `.class` file: `target/classes`
+
+Run the following command in command line:
+
+```
+java EnterBackEnd
+```
 
 ## Configuration
 
@@ -95,16 +104,6 @@ public static final int[] flightStep_hour = {0, 3, 24, 26};
 ```java
 public static final int departureAfterClose = 30;
 ```
-
-# Directions for use
-
-## Kiosk manual
-
-
-
-## Back End Demo manual
-
-
 
 # Software Structure
 
