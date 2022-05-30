@@ -54,13 +54,13 @@ java -jar BackEnd.jar
    - Check-in project entrance.
 
    ```
-   src/java/CheckIn/EnterCheckIn.java
+   src/java/EnterCheckIn.java
    ```
 
    - BackEnd Demo entrance
 
    ```
-   src/java/BackEnd/EnterBackEnd
+   src/java/EnterBackEnd.java
    ```
 
 ## Configuration
