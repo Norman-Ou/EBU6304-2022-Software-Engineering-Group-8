@@ -72,10 +72,10 @@ public class fDB {
     public static void replaceAllFlights(ArrayList<Flight> flights) throws IOException {
         DataBase dataBase = new DataBase(Config.FlightFile);
         JSONArray jsonArray = new JSONArray();
-        dataBase.replaceAllData(jsonArray);
-        for (Flight flight : flights){
-            dataBase.addObject(flight);
+        for (Flight flight1 : flights){
+            jsonArray.add((JSONObject) JSON.toJSON(flight1));
         }
+        dataBase.replaceAllData(jsonArray);
     }
 
 

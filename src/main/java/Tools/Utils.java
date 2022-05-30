@@ -9,6 +9,7 @@ import DataBase.fDB;
 
 import java.io.*;
 import Config.Config;
+import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -49,6 +50,11 @@ public class Utils {
     public static String decoder(String encodedData){
         final Base64.Decoder decoder = Base64.getDecoder();
         return new String(decoder.decode(encodedData), StandardCharsets.UTF_8);
+    }
+
+    @Test
+    public void test1(){
+        updateTestData();
     }
 
     /**

@@ -47,7 +47,9 @@ public class DataBase {
     private JSONArray readFile() throws IOException{
         File file = new File(this.filePath);
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
-        return JSON.parseArray(reader.readLine());
+        JSONArray jsonArray = JSON.parseArray(reader.readLine());
+        reader.close();
+        return jsonArray;
     }
 
     /**
