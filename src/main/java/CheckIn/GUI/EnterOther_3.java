@@ -68,7 +68,7 @@ public class EnterOther_3 extends JFrame {
      */
     public static boolean scanState;
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void cancel(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
@@ -224,7 +224,7 @@ public class EnterOther_3 extends JFrame {
      */
     public static void errorHandel(){
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-        new ErrorWindow().setVisible(true);
+        new Error().setVisible(true);
     }
 
     private void initComponents() {

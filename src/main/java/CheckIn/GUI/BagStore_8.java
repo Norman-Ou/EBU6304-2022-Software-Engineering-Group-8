@@ -32,7 +32,7 @@ public class BagStore_8 extends JFrame {
 
     private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void ToMeal(ActionEvent e) throws IOException {dispose();
         payTotal();

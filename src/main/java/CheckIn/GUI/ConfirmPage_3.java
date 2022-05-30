@@ -26,7 +26,7 @@ public class ConfirmPage_3 extends JFrame {
         initComponents();
     }
 
-    private void ErrorPage(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void ErrorPage(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void confirm1B(ActionEvent e){confirmInfo();}
 
@@ -34,7 +34,7 @@ public class ConfirmPage_3 extends JFrame {
 
     private void showInitialInfo(ActionEvent e) {info();}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Confirm info.
@@ -69,7 +69,7 @@ public class ConfirmPage_3 extends JFrame {
             }
         }if(temp == JOptionPane.CANCEL_OPTION){
             dispose();
-            new ErrorWindow().setVisible(true);
+            new Error().setVisible(true);
         }
     }
 

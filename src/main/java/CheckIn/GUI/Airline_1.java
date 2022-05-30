@@ -22,7 +22,7 @@ public class Airline_1 extends JFrame {
 
     private void ok(ActionEvent e) {dispose();new CheckIn_2().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
 
     /**

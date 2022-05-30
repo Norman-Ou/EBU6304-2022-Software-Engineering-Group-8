@@ -1,14 +1,10 @@
 package CheckIn.GUI;
 
-import Beans.Flight.Flight;
-import DataBase.fDB;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -65,7 +61,7 @@ public class FinalPay_15 extends JFrame {
 
     private void BackMeal(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Pay for meal content.

@@ -43,7 +43,7 @@ public class MealNorm extends JFrame {
 
     private void BackToMeal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void NorMealStateChanged(ChangeEvent e) {JTabbedPane tabbedPane = (JTabbedPane) e.getSource();addMealNormContent(tabbedPane);}
 

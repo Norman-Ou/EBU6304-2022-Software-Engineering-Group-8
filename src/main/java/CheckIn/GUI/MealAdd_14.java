@@ -54,7 +54,7 @@ public class MealAdd_14 extends JFrame {
 
     private void Back2Meal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Add meal add content.

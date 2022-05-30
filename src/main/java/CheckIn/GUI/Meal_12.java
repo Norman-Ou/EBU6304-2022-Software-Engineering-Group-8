@@ -23,7 +23,7 @@ public class Meal_12 extends JFrame {
 
     private void VIPMeal(ActionEvent e) {dispose();new MealAdd_14().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void cancelMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Confirm cancel your meal?","Cancel meal check", JOptionPane.WARNING_MESSAGE);

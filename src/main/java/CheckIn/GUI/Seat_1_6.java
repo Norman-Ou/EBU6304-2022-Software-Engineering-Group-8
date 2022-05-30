@@ -48,7 +48,7 @@ public class Seat_1_6 extends JFrame {
      */
     public Seat_1_6() throws Exception {initComponents();}
 
-    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void Return(ActionEvent e) {dispose();
 
@@ -56,7 +56,7 @@ public class Seat_1_6 extends JFrame {
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();

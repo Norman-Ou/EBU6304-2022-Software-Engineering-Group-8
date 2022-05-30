@@ -44,9 +44,9 @@ public class PrintFlight_6 extends JFrame {
 
     private void Back2Confirm(ActionEvent e) {dispose();new Meal_12().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
     /**
      * Scan ID card.
      */
@@ -134,7 +134,7 @@ public class PrintFlight_6 extends JFrame {
                 new PrintBag_11().setVisible(true);
             }if(temp == JOptionPane.CANCEL_OPTION){
                 dispose();
-                new ErrorWindow().setVisible(true);
+                new Error().setVisible(true);
             }
             dispose();
         }

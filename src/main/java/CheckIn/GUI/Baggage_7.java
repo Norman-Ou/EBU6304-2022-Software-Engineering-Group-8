@@ -25,11 +25,11 @@ public class Baggage_7 extends JFrame {
 
     private void BagAdd(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void return2ini(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Set background.

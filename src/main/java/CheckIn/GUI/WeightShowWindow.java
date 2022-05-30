@@ -69,7 +69,7 @@ public class WeightShowWindow extends JFrame {
 
     private void Back2Bag(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     /**
      * Over weight.

@@ -25,7 +25,7 @@ public class CheckIn_2 extends JFrame {
 
     private void AirlineRe(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
     /**
      * Set background.
      */

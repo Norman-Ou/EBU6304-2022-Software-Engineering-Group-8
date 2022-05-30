@@ -61,7 +61,7 @@ public class EnterBN_3 extends JFrame {
 
     private void back(ActionEvent e) {new Airline_1().setVisible(true);dispose();}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void ok(ActionEvent e) throws Exception {bookNumHandel();}
 

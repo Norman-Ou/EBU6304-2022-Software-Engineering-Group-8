@@ -54,13 +54,13 @@ public class Seat_3_6 extends JFrame {
 
     private void Back2Confirm(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
 
-    private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void error(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void button3(ActionEvent e) throws Exception {checkClass();}
 
     private void upGrade(ActionEvent e) {setUpgrade();}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new Error().setVisible(true);}
 
     private void PrintFlight(ActionEvent e) {
 
