@@ -12,7 +12,6 @@ public class EnterCheckIn {
         System.out.println(fDB.loadAllFlights());
     }
     public static void main(String[] args) throws Exception {
-        System.out.println(Config.FlightFile);
         Utils.updateTestData();
         new Airline_1().setVisible(true);
     }
