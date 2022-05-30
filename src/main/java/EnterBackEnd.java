@@ -1,12 +1,10 @@
-package BackEnd;
-
 import BackEnd.GUI.backend;
 import Tools.Utils;
 
 import javax.swing.*;
 
 // import javax.swing.JFrame;
-public class ToEnterBackend {
+public class EnterBackEnd {
     public static void main(String[] args){
         Utils.updateTestData();
         //to invoke the class directly

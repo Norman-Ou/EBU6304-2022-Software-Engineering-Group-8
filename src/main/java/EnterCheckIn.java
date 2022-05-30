@@ -1,5 +1,3 @@
-package CheckIn;
-
 import CheckIn.GUI.Airline_1;
 import DataBase.fDB;
 import Tools.Utils;

@@ -60,7 +60,7 @@ java -jar BackEnd.jar
    - BackEnd Demo entrance
 
    ```
-   src/java/BackEnd/ToEnterBackend
+   src/java/BackEnd/EnterBackEnd
    ```
 
 ## Configuration
