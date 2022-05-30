@@ -62,6 +62,7 @@ public class Seat_1_6 extends JFrame {
         int stateChange = e.getStateChange();
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
             stateChangeTemp1=stateChange;
+
         }
         seat=vip.getSelectedItem().toString();
     }
