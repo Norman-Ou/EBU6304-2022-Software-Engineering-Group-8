@@ -9,6 +9,7 @@ import Config.Config;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -28,6 +29,8 @@ public class WeightShowWindow extends JFrame {
      */
     public static int dropCourt;
 
+    private boolean priceState;
+
     /**
      * Instantiates a new Weight show 8.
      */
@@ -39,9 +42,28 @@ public class WeightShowWindow extends JFrame {
         showWeight();
     }
 
-    private void button3(ActionEvent e) {dispose();
-//        new PrintBaggageWindow().setVisible(true);
-        new PrintFlight_6().setVisible(true);
+    private void button3(ActionEvent e) throws IOException {dispose();
+        payTotal();
+        if(priceState){
+            new FinalPay_15().setVisible(true);
+        }else{
+//            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+            new PrintFlight_6().setVisible(true);
+        }
+
+    }
+
+    public void payTotal(){
+
+        if(!(MealAdd_14.VIPmealSelected==null)){
+            priceState=true;
+        }
+        if(Seat_1_6.upgrade){
+            priceState=true;
+        }
+        if(Seat_3_6.upgrade){
+            priceState=true;
+        }
     }
 
     private void Back2Bag(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
@@ -192,7 +214,13 @@ public class WeightShowWindow extends JFrame {
 
                 //---- button3 ----
                 button3.setText(bundle.getString("button3.text_11"));
-                button3.addActionListener(e -> button3(e));
+                button3.addActionListener(e -> {
+                    try {
+                        button3(e);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 panel1.add(button3);
 
                 //---- button2 ----

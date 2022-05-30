@@ -67,16 +67,18 @@ public class Demo extends JFrame {
                         try {
                             Thread.sleep(3000);
                             dispose();
-                            JOptionPane.showMessageDialog(null, "Ready for paying?","Final payment", JOptionPane.QUESTION_MESSAGE);
-                            if(FinalPay_15.priceState){
-                                new BaggageWindow().setVisible(true);
-                                PrintFlight_6.stage="false";
-                            }else{
-                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
-                                new ExitWindow().setVisible(true);
-                            }
-                            new FinalPay_15().setVisible(true);
-                        } catch (InterruptedException | IOException ie) {
+//                            JOptionPane.showMessageDialog(null, "Ready for paying?","Final payment", JOptionPane.QUESTION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+                            new ExitWindow().setVisible(true);
+//                            if(FinalPay_15.priceState){
+//                                new BaggageWindow().setVisible(true);
+//                                PrintFlight_6.stage="false";
+//                            }else{
+//                                JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+//                                new ExitWindow().setVisible(true);
+//                            }
+//                            new FinalPay_15().setVisible(true);
+                        } catch (InterruptedException ie) {
                         }
                         glassPane.stop();
                     }

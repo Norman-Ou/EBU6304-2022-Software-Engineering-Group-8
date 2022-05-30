@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -354,10 +355,13 @@ public class PrintBag_11 extends JFrame {
         pDB.updatePassengerInfo(PrintBag_11.writeInBaggage());
         setBackground();
         showBag();
-        ArrayList<Flight> newFlight = new ArrayList<>();
-        newFlight.add(EnterBN_3.fltTemp);
-        newFlight.add(AirPassCse.flightChoose);
-        fDB.replaceAllFlights(newFlight);
+//        ArrayList<Flight> newFlight = new ArrayList<>();
+//        newFlight.add(EnterBN_3.fltTemp);
+//        newFlight.add(Objects.requireNonNull(AirPassCse.flightChoose));
+//        fDB.replaceAllFlights(newFlight);
+        //TODO write in file
+        fDB.updateFlightInfo(Objects.requireNonNull(EnterBN_3.fltTemp));
+        fDB.updateFlightInfo(Objects.requireNonNull(AirPassCse.flightChoose));
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

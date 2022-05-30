@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class FinalPay_15 extends JFrame {
     private static int seatFee=0;
     public static boolean priceState;
-    private static int totalPrice=0;
+    public static int totalPrice=0;
     private String mealTemp="";
 
     /**
@@ -54,7 +54,8 @@ public class FinalPay_15 extends JFrame {
         JOptionPane.showMessageDialog(null, "You have payed "+ MealAdd_14.price+" for your Meal: "+getMealTemp()+" and "+seatFee+" for a VIP seat"+". Enjoy your flight!","Goodbye.", JOptionPane.QUESTION_MESSAGE);
         dispose();
         totalPrice=seatFee+MealAdd_14.price;
-        new Demo().setVisible(true);
+//        new Demo().setVisible(true);
+        new PrintFlight_6().setVisible(true);
 //        new ExitWindow().setVisible(true);
 
     }

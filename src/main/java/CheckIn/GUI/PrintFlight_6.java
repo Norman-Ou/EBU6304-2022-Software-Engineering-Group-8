@@ -108,14 +108,6 @@ public class PrintFlight_6 extends JFrame {
             dispose();
             new ErrorWindow().setVisible(true);
         }
-        //TODO 总价格的计算，按照总价格是否为0进行跳转，不为0跳转支付界面，为0直接打印
-        if(FinalPay_15.priceState){
-            new BaggageWindow().setVisible(true);
-//            PrintFlight_6.stage="false";
-        }else{
-            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
-            new ExitWindow().setVisible(true);
-        }
         dispose();
     }
 

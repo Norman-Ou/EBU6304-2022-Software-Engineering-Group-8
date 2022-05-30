@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 
@@ -20,6 +21,7 @@ public class BagStoreWindow extends JFrame {
      * Store or additional baggage amount or court in destination.
      */
     public static int court;
+    private boolean priceState;
 
     /**
      * Instantiates a new Bag store 8.
@@ -28,9 +30,27 @@ public class BagStoreWindow extends JFrame {
         initComponents();
     }
 
-    private void ToMeal(ActionEvent e) {dispose();
-        new PrintFlight_6().setVisible(true);
-//        new PrintBaggageWindow().setVisible(true);
+    private void ToMeal(ActionEvent e) throws IOException {dispose();
+        payTotal();
+        if(priceState){
+            new FinalPay_15().setVisible(true);
+        }else{
+//            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
+            new PrintFlight_6().setVisible(true);
+        }
+
+    }
+    public void payTotal(){
+
+        if(!(MealAdd_14.VIPmealSelected==null)){
+            priceState=true;
+        }
+        if(Seat_1_6.upgrade){
+            priceState=true;
+        }
+        if(Seat_3_6.upgrade){
+            priceState=true;
+        }
     }
 
     private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
@@ -133,7 +153,13 @@ public class BagStoreWindow extends JFrame {
 
                 //---- okButton ----
                 okButton.setText(bundle.getString("okButton.text_7"));
-                okButton.addActionListener(e -> ToMeal(e));
+                okButton.addActionListener(e -> {
+                    try {
+                        ToMeal(e);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
                 buttonBar.add(okButton);
 
                 //---- cancelButton ----
