@@ -51,6 +51,10 @@ java -jar BackEnd.jar
 
 1. Import this project into `IDEA`
 
+2. Make sure Project SDK configuration is `16`
+
+   ![image-20220530215416203](https://typorastroage.oss-cn-beijing.aliyuncs.com/img/image-20220530215416203.png)
+
 2. Program Entrance:
 
    - Check-in project entrance.

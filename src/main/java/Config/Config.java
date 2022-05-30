@@ -2,7 +2,6 @@ package Config;
 
 import Beans.IDDocument.IDDocument;
 import Tools.Utils;
-import org.junit.Test;
 
 /**
  * Project Configuration class. Containing all the final value used in the project.
@@ -48,15 +47,15 @@ public class Config {
     public static final int Dubai2London_ms   = 35100000;
 
     //------2020/05/22 data version v6------//
-    public static final String PassengerFile = Utils.getRsrFile("passenger_data_v6.json");
+    public static final String PassengerFile = Utils.getRsrFile("passenger_data.json");
     public static final String PassengerNewFile = Utils.getRsrFile("passengerNew_data_v6.json");
-    public static final String FlightFile = Utils.getRsrFile("flight_data_v6.json");
-    public static final String OrderFile = Utils.getRsrFile("order_data_v6.json");
+    public static final String FlightFile = Utils.getRsrFile("flight_data.json");
+    public static final String OrderFile = Utils.getRsrFile("order_data.json");
     public static final String IDFile = Utils.getRsrFile("iddocument_data_v6.json");
 
     public static final IDDocument idDocument1 = new IDDocument("912843", "Statham");//The passenger booked two flights
     public static final IDDocument idDocument2 = new IDDocument("493807", "Miller");//3 col test
-    public static final String bgPic = Utils.getRsrFile("Img.png");
+    public static final String bgPic = Utils.getRsrFile("img.png");
     public static final String backEndPic1 = Utils.getRsrFile("icon.png");
     //--------------------------//
 }

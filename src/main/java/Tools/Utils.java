@@ -52,11 +52,6 @@ public class Utils {
         return new String(decoder.decode(encodedData), StandardCharsets.UTF_8);
     }
 
-    @Test
-    public void test1(){
-        updateTestData();
-    }
-
     /**
      * Update Test Data
      *
@@ -226,6 +221,11 @@ public class Utils {
         return false;
     }
 
+    @Test
+    public void test1(){
+        updateTestData();
+    }
+
     /**
      * Get the file path in fold resource
      *
@@ -234,7 +234,7 @@ public class Utils {
      * */
     public static String getRsrFile(String fileName){
         try {   
-            return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName)).getPath();
+            return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(fileName).getPath());
         } catch (NullPointerException e){
             System.out.println("No " + fileName + " in Resource.");
             return null;
