@@ -74,20 +74,11 @@ public class EnterBN_3 extends JFrame {
         String str=textField1.getText();
         bookNum=str;
         Flight flt = new Flight();
-//        fltTemp = cMonitors.getFlightByBookingNo(bookNum);
-//        psnTemp = cMonitors.getPassengerByBookingNo(bookNum);
-
         try {
             flt = cMonitors.getFlightByBookingNo(bookNum);
-
-//            System.out.println(flt);
-//            fltTemp = cMonitors.getFlightByBookingNo(bookNum);
-            System.out.println(fltTemp);
             Passenger psn = cMonitors.getPassengerByBookingNo(bookNum);
             fltTemp = flt;
-            System.out.println(fltTemp);
             psnTemp = psn;
-//            System.out.println(psnTemp+"222");
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -96,7 +87,6 @@ public class EnterBN_3 extends JFrame {
             firstCheck();
         } catch (IllegalAccessException illegalAccessException) {
             illegalAccessException.printStackTrace();
-//            errorHandel();
         } catch (ParseException parseException) {
             parseException.printStackTrace();
         } catch (Exception exception){
@@ -110,15 +100,11 @@ public class EnterBN_3 extends JFrame {
      */
     public static void errorHandel() throws Exception {
         JOptionPane.showMessageDialog(null, "Sorry for the rejection of your checking in for there's less than 30 minutes for your flight.","Sorry", JOptionPane.WARNING_MESSAGE);
-//        new ErrorWindow().setVisible(true);
         new Seat_1_6().setVisible(true);
     }
 
     public void inputValid() throws InputMismatchException {
         if (psnTemp == null) {
-//            JOptionPane.showMessageDialog(null, "Please enter your booking number again.","Invalid input", JOptionPane.WARNING_MESSAGE);
-//            dispose();
-//            new CheckInWindow().setVisible(true);
             throw new InputMismatchException();
         }else{
             firState=true;
@@ -147,9 +133,7 @@ public class EnterBN_3 extends JFrame {
         if(firState){
             try{
                 checkTime();
-
                 new ConfirmPage_3().setVisible(true);
-//                new Seat_1_6().setVisible(true);
             } catch (IllegalAccessException e) {
                 errorHandel();
                 e.printStackTrace();
@@ -159,6 +143,10 @@ public class EnterBN_3 extends JFrame {
         }
 
     }
+    /**
+     * CHeck time, if overtime then deny.
+     *
+     */
     public void checkTime() throws ParseException, IllegalAccessException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date1 = format.parse(nowTime);
@@ -167,7 +155,6 @@ public class EnterBN_3 extends JFrame {
         date2 = format.parse(fltTemp.getETD());
         long nowMillisecond = date1.getTime();
         long etdMillisecond = date2.getTime();
-        //etdMillisecond - nowMillisecond < 1800000
         if(etdMillisecond - nowMillisecond < 1800000){
             throw new IllegalAccessException();
         }

@@ -32,7 +32,6 @@ public class Seat_1_6 extends JFrame {
      * The constant upgrade.
      * True for upgrading.
      */
-
     public static boolean upgrade;
     /**
      * The Entry.
@@ -51,8 +50,6 @@ public class Seat_1_6 extends JFrame {
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void button3(ActionEvent e) throws Exception {checkClass();}
-
     private void Return(ActionEvent e) {dispose();
 
         new ConfirmPage_3().setVisible(true);}
@@ -63,37 +60,28 @@ public class Seat_1_6 extends JFrame {
 
     private void firClass(ItemEvent e) {
         int stateChange = e.getStateChange();
-        stateChangeTemp1=stateChange;
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            seat=vip.getSelectedItem().toString();
-        }seat=vip.getSelectedItem().toString();
+            stateChangeTemp1=stateChange;
+        }
+        seat=vip.getSelectedItem().toString();
     }
     private void ecoSeat(ItemEvent e) {
         int stateChange = e.getStateChange();
-        stateChangeTemp2=stateChange;
+
         if (stateChange == ItemEvent.ITEM_STATE_CHANGED){
-            seat=ecoS.getSelectedItem().toString();
-        }
+            stateChangeTemp2=stateChange;
+        }seat=ecoS.getSelectedItem().toString();
     }
 
     private void PrintFlight(ActionEvent e) throws Exception {dispose();
         sortSeat();
-//        if(!(stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)){
-//            if(!(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
-//                JOptionPane.showMessageDialog(null,"Please choose a seat","Choose a seat", JOptionPane.QUESTION_MESSAGE);
-//                new Seat_1_6().setVisible(true);
-//            }
-//        }else if((stateChangeTemp1==ItemEvent.ITEM_STATE_CHANGED)||(stateChangeTemp2==ItemEvent.ITEM_STATE_CHANGED)){
-            if(upgrade){
+        if(upgrade){
                 dispose();
-//            new PrintFlightWindow().setVisible(true);
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
                 new Meal_12().setVisible(true);
             }else{
                 dispose();
-//            new PrintFlightWindow().setVisible(true);
                 JOptionPane.showMessageDialog(null, "You have chosen seat "+seat,"Seat confirm", JOptionPane.QUESTION_MESSAGE);
-
                 new Meal_12().setVisible(true);
             }
 //        }
@@ -145,13 +133,10 @@ public class Seat_1_6 extends JFrame {
 
         int intTemp=getSeatClazz();
         if(intTemp==0){
-//            infoText.setText("You can choose form 11 to 30");
             vip.setEnabled(false);
         }else if(intTemp==2){
-//            infoText.setText("You can choose form 1 to 10");
             ecoS.setEnabled(false);
         }else if(intTemp==-1){
-//            infoText.setText("Seat class is -1 now");
             ecoS.setEnabled(false);
             vip.setEnabled(false);
         }

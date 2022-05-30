@@ -63,8 +63,11 @@ public class EnterOther_3 extends JFrame {
     /**
      * The constant nowTime.
      */
-//    public static String nowTime = "07-09-2022 7:42:32";
     public static String nowTime = format.format(time.getTime());
+    /**
+     * The constant scanState.
+     * Have not scanned for false, true for scanned.
+     */
     public static boolean scanState;
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
@@ -172,7 +175,10 @@ public class EnterOther_3 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
+    /**
+     * Check time, if overtime then deny.
+     *
+     */
     public void checkTime() throws ParseException, IllegalAccessException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date1 = format.parse(nowTime);

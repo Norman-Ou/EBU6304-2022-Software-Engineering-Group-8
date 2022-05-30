@@ -11,11 +11,11 @@ import java.util.ResourceBundle;
  *
  * @author Jiayi Wang
  */
-public class BaggageWindow extends JFrame {
+public class Baggage_7 extends JFrame {
     /**
      * Instantiates a new Baggage 7.
      */
-    public BaggageWindow() {
+    public Baggage_7() {
         initComponents();
     }
 
@@ -25,11 +25,12 @@ public class BaggageWindow extends JFrame {
 
     private void BagAdd(ActionEvent e) {dispose();new BagStore_8().setVisible(true);}
 
-    private void seatAgain(ActionEvent e) {dispose();new ConfirmPage_3().setVisible(true);}
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+
+    private void return2ini(ActionEvent e) {dispose();new Airline_1().setVisible(true);}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**
      * Set background.
      */
@@ -49,7 +50,6 @@ public class BaggageWindow extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
         ResourceBundle bundle = ResourceBundle.getBundle("Check");
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -60,8 +60,8 @@ public class BaggageWindow extends JFrame {
         label1 = new JLabel();
         button5 = new JButton();
         buttonBar = new JPanel();
+        Return = new JButton();
         cancelButton = new JButton();
-        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -71,13 +71,6 @@ public class BaggageWindow extends JFrame {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setOpaque(false);
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-                    . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
-                    .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-                    Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-        ) ) )throw new RuntimeException( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -118,45 +111,35 @@ public class BaggageWindow extends JFrame {
                 panel1.add(button5, BorderLayout.EAST);
             }
             dialogPane.add(panel1, BorderLayout.NORTH);
+
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar.setOpaque(false);
+                buttonBar.setMinimumSize(new Dimension(168, 60));
+                buttonBar.setPreferredSize(new Dimension(168, 90));
+                buttonBar.setLayout(new GridLayout());
+
+                //---- Return ----
+                Return.setText(bundle.getString("Return.text_6"));
+                Return.addActionListener(e -> return2ini(e));
+                buttonBar.add(Return);
+
+                //---- cancelButton ----
+                cancelButton.setText(bundle.getString("cancelButton.text_17"));
+                cancelButton.addActionListener(e -> error(e));
+                buttonBar.add(cancelButton);
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(900, 550);
         setLocationRelativeTo(getOwner());
-
-        //======== buttonBar ========
-        {
-            buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
-            buttonBar.setOpaque(false);
-            buttonBar.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                    . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-                    . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-                    12 ), java. awt. Color. red) ,buttonBar. getBorder( )) ); buttonBar. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
-            buttonBar.setLayout(new FlowLayout());
-
-            //---- cancelButton ----
-            cancelButton.setText(bundle.getString("cancelButton.text_17"));
-            cancelButton.addActionListener(e -> {
-                try {
-                    seatAgain(e);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-            buttonBar.add(cancelButton);
-
-            //---- button4 ----
-            button4.setText(bundle.getString("button4.text_3"));
-            button4.addActionListener(e -> error(e));
-            buttonBar.add(button4);
-        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         setBackground();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Gabirella Cambridge
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JButton button2;
@@ -166,8 +149,8 @@ public class BaggageWindow extends JFrame {
     private JLabel label1;
     private JButton button5;
     private JPanel buttonBar;
+    private JButton Return;
     private JButton cancelButton;
-    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 

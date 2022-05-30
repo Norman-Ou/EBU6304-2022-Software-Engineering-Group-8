@@ -11,9 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 16:44:21 CST 2022
- */
 
 
 /**

@@ -6,9 +6,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.util.ResourceBundle;
-/*
- * Created by JFormDesigner on Tue Mar 29 19:11:34 CST 2022
- */
 
 
 /**

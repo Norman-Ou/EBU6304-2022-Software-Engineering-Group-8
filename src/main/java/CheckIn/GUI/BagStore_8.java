@@ -30,18 +30,23 @@ public class BagStore_8 extends JFrame {
         initComponents();
     }
 
+    private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
+
+    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
+
     private void ToMeal(ActionEvent e) throws IOException {dispose();
         payTotal();
         if(priceState){
             new FinalPay_15().setVisible(true);
         }else{
-//            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
             new PrintFlight_6().setVisible(true);
         }
 
     }
+    /**
+     * Check total fee.
+     */
     public void payTotal(){
-
         if(!(MealAdd_14.VIPmealSelected==null)){
             priceState=true;
         }
@@ -53,9 +58,6 @@ public class BagStore_8 extends JFrame {
         }
     }
 
-    private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
-
-    private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
     /**
      * Court shown.
      *
@@ -65,7 +67,13 @@ public class BagStore_8 extends JFrame {
         court = (int)(Math.random()*100)+2;
         e.setSource(court);
     }
-
+    /**
+     * Set court.
+     */
+    public void setCourt(){
+        court = (int)(Math.random()*100);
+        textField1.setText("Court: "+court+"");
+    }
     /**
      * Set background.
      */
@@ -79,13 +87,6 @@ public class BagStore_8 extends JFrame {
         this.setTitle("Passenger check-in system");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-    }
-    /**
-     * Set court.
-     */
-    public void setCourt(){
-        court = (int)(Math.random()*100);
-        textField1.setText("Court: "+court+"");
     }
 
 

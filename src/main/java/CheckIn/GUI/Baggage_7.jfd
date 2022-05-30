@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -53,30 +53,31 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "North"
 				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					"opaque": false
+					"minimumSize": new java.awt.Dimension( 168, 60 )
+					"preferredSize": new java.awt.Dimension( 168, 90 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Return"
+						"text": new FormMessage( null, "Return.text_6" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "return2ini", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "cancelButton"
+						"text": new FormMessage( null, "cancelButton.text_17" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "error", true ) )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 900, 550 )
-		} )
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-			name: "buttonBar"
-			"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
-			"opaque": false
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "cancelButton"
-				"text": new FormMessage( null, "cancelButton.text_17" )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "seatAgain", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button4"
-				"text": new FormMessage( null, "button4.text_3" )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "error", true ) )
-			} )
-		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 566 )
-			"size": new java.awt.Dimension( 874, 52 )
 		} )
 	}
 }

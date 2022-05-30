@@ -134,13 +134,10 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterBN_3.getPsnTemp().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEnabled(false);
                 }else if(intTemp==2){
-//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEnabled(false);
                 }else if(intTemp==-1){
-//                    infoText.setText("Seat class is -1 now");
                 }
                 showSeats();
 
@@ -152,13 +149,10 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp1().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
                 }else if(intTemp==1){
-//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEditable(false);
                 }else if(intTemp==-1){
-//                    infoText.setText("Seat class is -1 now");
                     ecoS.setEditable(false);
                     busS.setEditable(false);
                 }
@@ -172,13 +166,10 @@ public class Seat_3_6 extends JFrame {
                 Order order = oDB.getOrderByBookingNumber(EnterOther_3.getPsnTemp2().getBookNumber());
                 int intTemp=order.getSeatClass();
                 if(intTemp==0){
-//                    infoText.setText("You can choose form 5 to 40");
                     busS.setEditable(false);
                 }else if(intTemp==1){
-//                    infoText.setText("You can choose form 1 to 3");
                     ecoS.setEditable(false);
                 }else if(intTemp==-1){
-//                    infoText.setText("Seat class is -1 now");
                     ecoS.setEditable(false);
                     busS.setEditable(false);
                 }

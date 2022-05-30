@@ -87,6 +87,11 @@ public class AirPassCse extends JFrame {
     }
 
     /**
+     * Set content in the airline combox.
+     */
+    public void setContent(){airLine.addItem(flightNo);}
+
+    /**
      * Airline add.
      * If the remaining time is less than 30min, then the passenger would be rejected from checkin.
      *
@@ -112,25 +117,6 @@ public class AirPassCse extends JFrame {
             }else{
                 throw new IllegalAccessException();
             }
-        }
-    }
-
-    /**
-     * Set content in the airline combox.
-     */
-    public void setContent(){airLine.addItem(flightNo);}
-
-    /**
-     * Test do. Detect exceptions from overtime.
-     *
-     * @param e the top button action event.
-     */
-    public void testDO(ActionEvent e) {
-        try{
-            airlineAdd();
-        } catch (IllegalAccessException | ParseException e1) {
-            errorHandel();
-            e1.printStackTrace();
         }
     }
 

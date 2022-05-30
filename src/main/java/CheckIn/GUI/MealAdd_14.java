@@ -49,7 +49,7 @@ public class MealAdd_14 extends JFrame {
 //        JOptionPane.showMessageDialog(null, "Make sure your are in a safe payment environment","Safe pay", JOptionPane.WARNING_MESSAGE);
         dispose();
 //        new FinalPay_15().setVisible(true);
-        new BaggageWindow().setVisible(true);
+        new Baggage_7().setVisible(true);
     }
 
     private void Back2Meal(ActionEvent e) {dispose();new Meal_12().setVisible(true);}

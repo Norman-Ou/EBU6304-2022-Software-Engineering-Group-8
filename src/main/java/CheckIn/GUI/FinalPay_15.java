@@ -55,9 +55,7 @@ public class FinalPay_15 extends JFrame {
             JOptionPane.showMessageDialog(null, "You have payed " + MealAdd_14.price + " for your Meal: " + getMealTemp() + " and " + seatFee + " for a VIP seat" + ". Please print your tags!", "Success pay!", JOptionPane.QUESTION_MESSAGE);
             dispose();
             totalPrice = seatFee + MealAdd_14.price;
-//        new Demo().setVisible(true);
             new PrintFlight_6().setVisible(true);
-//        new ExitWindow().setVisible(true);
         }
     }
 

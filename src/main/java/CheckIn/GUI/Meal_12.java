@@ -28,7 +28,7 @@ public class Meal_12 extends JFrame {
     private void cancelMeal(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Confirm cancel your meal?","Cancel meal check", JOptionPane.WARNING_MESSAGE);
         dispose();
-        new BaggageWindow().setVisible(true);
+        new Baggage_7().setVisible(true);
     }
 
     /**

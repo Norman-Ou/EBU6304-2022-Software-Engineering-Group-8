@@ -40,10 +40,11 @@ public class PrintBag_11 extends JFrame {
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
-    private void Return2Baggage(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
+    private void Return2Baggage(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
 
-    private void showBagTag(ActionEvent e) {showBag();}
-
+    /**
+     * Check before print.
+     */
     public void toMealPage(){
         int temp=JOptionPane.showInternalConfirmDialog(null,
                 "Ready for printing?", "Double check",
@@ -357,7 +358,6 @@ public class PrintBag_11 extends JFrame {
 //        newFlight.add(EnterBN_3.fltTemp);
 //        newFlight.add(Objects.requireNonNull(AirPassCse.flightChoose));
 //        fDB.replaceAllFlights(newFlight);
-        //TODO write in file
         fDB.updateFlightInfo(Objects.requireNonNull(EnterBN_3.fltTemp));
         fDB.updateFlightInfo(Objects.requireNonNull(AirPassCse.flightChoose));
     }

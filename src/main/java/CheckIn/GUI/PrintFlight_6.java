@@ -47,8 +47,10 @@ public class PrintFlight_6 extends JFrame {
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
     private void error(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
-
-    private void printThenBag(ActionEvent e) throws InterruptedException, IOException {
+    /**
+     * Scan ID card.
+     */
+    public void printThenBag(ActionEvent e) throws InterruptedException, IOException {
         if(!scanState){
             int temp=JOptionPane.showInternalConfirmDialog(null,
                     "Please put your ID card in the rectangle on the table", "SCAN",
@@ -73,7 +75,9 @@ public class PrintFlight_6 extends JFrame {
             }
         }
     }
-
+    /**
+     *  After loading, go to Baggage confirm page.
+     */
     public void scanCheck(){
 
         finalCheckFlight();
@@ -84,7 +88,9 @@ public class PrintFlight_6 extends JFrame {
         }
 
     }
-
+    /**
+     *  Check flight.
+     */
     public void finalCheckFlight(){
         if(!(EnterOther_3.getPsnTemp1()==null)){
             try {
@@ -263,11 +269,8 @@ public class PrintFlight_6 extends JFrame {
         label3.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
         JPanel myPanel = (JPanel)this.getContentPane();
         myPanel.setOpaque(false);
-//        myPanel.setLayout(new FlowLayout());
-//        this.getLayeredPane().setLayout(null);
         this.getLayeredPane().add(label3, Integer.valueOf(Integer.MIN_VALUE));
         this.setTitle("Passenger check-in system");
-//        this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

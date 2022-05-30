@@ -47,12 +47,13 @@ public class WeightShowWindow extends JFrame {
         if(priceState){
             new FinalPay_15().setVisible(true);
         }else{
-//            JOptionPane.showMessageDialog(null, "Please take your Boarding-pass and Baggage Tag for security check .","Tips", JOptionPane.WARNING_MESSAGE);
             new PrintFlight_6().setVisible(true);
         }
 
     }
-
+    /**
+     * Calculate total fee.
+     */
     public void payTotal(){
 
         if(!(MealAdd_14.VIPmealSelected==null)){
@@ -66,7 +67,7 @@ public class WeightShowWindow extends JFrame {
         }
     }
 
-    private void Back2Bag(ActionEvent e) {dispose();new BaggageWindow().setVisible(true);}
+    private void Back2Bag(ActionEvent e) {dispose();new Baggage_7().setVisible(true);}
 
     private void help(ActionEvent e) {dispose();new ErrorWindow().setVisible(true);}
 
